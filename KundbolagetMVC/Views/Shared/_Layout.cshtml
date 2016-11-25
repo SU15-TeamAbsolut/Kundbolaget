@@ -1,0 +1,20 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+  <link href="~/Content/bootstrap-theme.min.css" rel="stylesheet" />
+  <title>@ViewBag.Title</title>
+</head>
+<body>
+<header>
+  @Html.Partial("_Navbar")
+</header>
+<div class="container-fluid">
+  @RenderBody()
+</div>
+<script src="~/Scripts/jquery-1.9.1.min.js"></script>
+<script src="~/Scripts/bootstrap.min.js"></script>
+</body>
+</html>
