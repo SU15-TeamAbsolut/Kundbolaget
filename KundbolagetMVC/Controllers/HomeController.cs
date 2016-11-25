@@ -9,13 +9,6 @@ namespace MVCCMS.Controllers
 {
     public class HomeController : Controller
     {
-        private IStoreRepository repository;
-
-        public HomeController()
-        {
-            repository = new DbStoreRepository();
-        }
-
         // GET: Home
         public ActionResult Index()
         {
