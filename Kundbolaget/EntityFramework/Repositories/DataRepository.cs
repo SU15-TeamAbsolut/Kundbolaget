@@ -1,30 +1,46 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
+using Kundbolaget.EntityFramework.Contexts;
+using Kundbolaget.Models.EntityModels;
 
 namespace Kundbolaget.EntityFramework.Repositories
 {
-    public class DataRepository<T> : IRepository<T>
+    public class DataRepository : IRepository
     {
-        public T Find(int id)
+        public Supplier Find(int id)
+        {
+            using (var db = new DataContext())
+            {
+                return db.Suppliers.SingleOrDefault(s => s.Id == id);
+            }
+        }
+
+        public IList<Supplier> GetAll()
+        {
+            using (var db = new DataContext())
+            {
+                return db.Suppliers.ToList();
+            }
+        }
+
+        public void Create(Supplier item)
         {
             throw new NotImplementedException();
         }
 
-        public IEnumerable<T> GetAll()
+        public void Update(Supplier item)
         {
-            throw new NotImplementedException();
-        }
-
-        public void Create(T item)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Update(T item)
-        {
-            throw new NotImplementedException();
+            using (var db = new DataContext())
+            {
+                db.Suppliers.Attach(item);
+                var entry = db.Entry(item);
+                entry.State = EntityState.Modified;
+                db.SaveChanges();
+            }
         }
 
         public void Delete(int id)

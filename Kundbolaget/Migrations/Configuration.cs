@@ -1,8 +1,10 @@
+
 namespace Kundbolaget.Migrations
 {
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
+    using Kundbolaget.Models.EntityModels;
     using System.Linq;
 
     internal sealed class Configuration : DbMigrationsConfiguration<Kundbolaget.EntityFramework.Contexts.DataContext>
@@ -14,18 +16,12 @@ namespace Kundbolaget.Migrations
 
         protected override void Seed(Kundbolaget.EntityFramework.Contexts.DataContext context)
         {
-            //  This method will be called after migrating to the latest version.
+            Supplier[] suppliers =
+            {
+                new Supplier { Name = "Bengts Vodka", Email = "bengt@example.net" }
+            };
 
-            //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
-            //  to avoid creating duplicate seed data. E.g.
-            //
-            //    context.People.AddOrUpdate(
-            //      p => p.FullName,
-            //      new Person { FullName = "Andrew Peters" },
-            //      new Person { FullName = "Brice Lambson" },
-            //      new Person { FullName = "Rowan Miller" }
-            //    );
-            //
+            context.Suppliers.AddOrUpdate(suppliers);
         }
     }
 }
