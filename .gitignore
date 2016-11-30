@@ -1,5 +1,5 @@
 # Ignore Bootstrap/jQuery data files from NuGet packages
-**/Content/bootstrap.*
+**/Content/bootstrap*
 **/fonts/glyphicons*
 **/scripts/bootstrap*
 **/scripts/jquery*
