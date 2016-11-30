@@ -142,6 +142,10 @@
     <Compile Include="Migrations\201611301301058_InitialSupplierModel.Designer.cs">
       <DependentUpon>201611301301058_InitialSupplierModel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201611301418488_SupplierAddIsActiveBool.cs" />
+    <Compile Include="Migrations\201611301418488_SupplierAddIsActiveBool.Designer.cs">
+      <DependentUpon>201611301418488_SupplierAddIsActiveBool.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\EntityModels\Supplier.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -171,6 +175,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201611301301058_InitialSupplierModel.resx">
       <DependentUpon>201611301301058_InitialSupplierModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201611301418488_SupplierAddIsActiveBool.resx">
+      <DependentUpon>201611301418488_SupplierAddIsActiveBool.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
