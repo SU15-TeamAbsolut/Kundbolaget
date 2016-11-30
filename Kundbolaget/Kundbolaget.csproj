@@ -130,9 +130,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="EntityFramework\Repositories\DataRepository.cs" />
+    <Compile Include="EntityFramework\Repositories\IRepository.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\EntityModels\Supplier.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -151,7 +154,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Controllers\" />
-    <Folder Include="Models\" />
+    <Folder Include="EntityFramework\Contexts\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
