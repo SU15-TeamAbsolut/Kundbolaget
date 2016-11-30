@@ -9,34 +9,38 @@ using Kundbolaget.Models.EntityModels;
 
 namespace Kundbolaget.EntityFramework.Repositories
 {
-    public class DataRepository : IRepository
+    public class DataRepository<T> : IRepository<T> where T : class
     {
-        public Supplier Find(int id)
+        public T Find(int id)
         {
             using (var db = new DataContext())
             {
-                return db.Suppliers.SingleOrDefault(s => s.Id == id);
+                return db.Set<T>().Find(id);
             }
         }
 
-        public IList<Supplier> GetAll()
+        public IList<T> GetAll()
         {
             using (var db = new DataContext())
             {
-                return db.Suppliers.ToList();
+                return db.Set<T>().ToList();
             }
         }
 
-        public void Create(Supplier item)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Update(Supplier item)
+        public void Create(T item)
         {
             using (var db = new DataContext())
             {
-                db.Suppliers.Attach(item);
+                db.Set<T>().Add(item);
+                db.SaveChanges();
+            }
+        }
+
+        public void Update(T item)
+        {
+            using (var db = new DataContext())
+            {
+                db.Set<T>().Attach(item);
                 var entry = db.Entry(item);
                 entry.State = EntityState.Modified;
                 db.SaveChanges();

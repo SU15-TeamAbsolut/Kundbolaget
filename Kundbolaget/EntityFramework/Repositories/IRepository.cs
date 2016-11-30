@@ -5,12 +5,12 @@ using Kundbolaget.Models.EntityModels;
 
 namespace Kundbolaget.EntityFramework.Repositories
 {
-    public interface IRepository
+    public interface IRepository<T> where T : class
     {
-        Supplier Find(int id);
-        IList<Supplier> GetAll();
-        void Create(Supplier item);
-        void Update(Supplier item);
+        T Find(int id);
+        IList<T> GetAll();
+        void Create(T item);
+        void Update(T item);
         void Delete(int id);
     }
 }

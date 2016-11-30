@@ -10,11 +10,11 @@ namespace Kundbolaget.Controllers
 {
     public class SupplierController : Controller
     {
-        private IRepository repository;
+        private IRepository<Supplier> repository;
 
         public SupplierController()
         {
-            repository = new DataRepository();
+            repository = new DataRepository<Supplier>();
         } 
 
         // GET: Supplier
@@ -22,6 +22,24 @@ namespace Kundbolaget.Controllers
         {
             var model = repository.GetAll();
             return View(model);
+        }
+
+        // GET: Supplier/Create
+        public ActionResult Create()
+        {
+            return View();
+        }
+
+        // POST: Supplier/Create/
+        [HttpPost]
+        public ActionResult Create(Supplier model)
+        {
+            if (!ModelState.IsValid)
+                return View(model);
+
+            repository.Create(model);
+
+            return RedirectToAction("Index");
         }
 
         // GET: Supplier/Edit/{id}
