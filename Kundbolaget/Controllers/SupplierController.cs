@@ -43,5 +43,12 @@ namespace Kundbolaget.Controllers
             repository.Update(model);
             return RedirectToAction("Index");
         }
+
+        // GET: Supplier/Details/{id}
+        public ActionResult Details(int id)
+        {
+            var model = repository.Find(id);
+            return View(model);
+        }
     }
 }
