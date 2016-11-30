@@ -132,11 +132,17 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\SupplierController.cs" />
+    <Compile Include="EntityFramework\Contexts\DataContext.cs" />
     <Compile Include="EntityFramework\Repositories\DataRepository.cs" />
     <Compile Include="EntityFramework\Repositories\IRepository.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201611301301058_InitialSupplierModel.cs" />
+    <Compile Include="Migrations\201611301301058_InitialSupplierModel.Designer.cs">
+      <DependentUpon>201611301301058_InitialSupplierModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\EntityModels\Supplier.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -149,6 +155,7 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Supplier\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -158,8 +165,11 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="EntityFramework\Contexts\" />
-    <Folder Include="Views\Supplier\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201611301301058_InitialSupplierModel.resx">
+      <DependentUpon>201611301301058_InitialSupplierModel.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
