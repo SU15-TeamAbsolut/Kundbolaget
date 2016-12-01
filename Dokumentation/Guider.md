@@ -32,3 +32,16 @@ Add-Migration CreateSupplierModel
 
 Detta skapar en datum-markerad migrationsfil. Efter att ha verifierat att migrationen
 utför korrekta ändringar, körs migrationen med `Update-Database` i konsollen.
+
+## Nollställa databasen
+Rulla tillbaka alla migrationer:
+
+```
+Update-Database -Target 0
+```
+
+Uppdatera sedan till den senaste migrationen:
+
+```
+Update-Database
+```
