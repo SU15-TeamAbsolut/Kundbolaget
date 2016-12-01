@@ -2,7 +2,7 @@
 
 ## Utvecklingsmiljö
 Projektet använder Git för versionshantering, med GitHub som centralt
-repository. Trello används som scrum board för att hantera projektets backlog
+repository. Waffle används som scrum board för att hantera projektets backlog
 och sprintplanering.
 
 ## Definition of Done
