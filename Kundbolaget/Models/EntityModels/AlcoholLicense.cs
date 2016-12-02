@@ -16,8 +16,8 @@ namespace Kundbolaget.Models.EntityModels
         public DateTime EndDate { get; set; }
         [Required]
         public bool IsValid { get; set; }
-        public virtual Customer Customers { get; set; }
-        public virtual Address ShippingAddresses { get; set; }
+        //public virtual Customer Customers { get; set; }
+        //public virtual Address ShippingAddresses { get; set; }
 
     }
 }
