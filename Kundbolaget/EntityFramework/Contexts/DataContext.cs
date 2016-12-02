@@ -6,5 +6,6 @@ namespace Kundbolaget.EntityFramework.Contexts
     public class DataContext : DbContext
     {
         public DbSet<Supplier> Suppliers { get; set; }
+        public DbSet<Customer> Customers { get; set; }
     }
 }

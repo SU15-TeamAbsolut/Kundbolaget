@@ -164,7 +164,12 @@
     <Compile Include="Migrations\201611301418488_SupplierAddIsActiveBool.Designer.cs">
       <DependentUpon>201611301418488_SupplierAddIsActiveBool.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201612021257029_CreateCustomerModel.cs" />
+    <Compile Include="Migrations\201612021257029_CreateCustomerModel.Designer.cs">
+      <DependentUpon>201612021257029_CreateCustomerModel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\EntityModels\Customer.cs" />
     <Compile Include="Models\EntityModels\Supplier.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -199,6 +204,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201611301418488_SupplierAddIsActiveBool.resx">
       <DependentUpon>201611301418488_SupplierAddIsActiveBool.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201612021257029_CreateCustomerModel.resx">
+      <DependentUpon>201612021257029_CreateCustomerModel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

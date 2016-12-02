@@ -1,4 +1,6 @@
 
+using Kundbolaget.EntityFramework.Contexts;
+
 namespace Kundbolaget.Migrations
 {
     using System;
@@ -26,6 +28,18 @@ namespace Kundbolaget.Migrations
             };
 
             context.Suppliers.AddOrUpdate(suppliers);
+
+            SeedCustomers(context);
+        }
+
+        private void SeedCustomers(DataContext context)
+        {
+            Customer[] customers =
+            {
+                new Customer {Name = "Ica"}
+            };
+
+            context.Customers.AddOrUpdate(customers);
         }
     }
 }
