@@ -11,6 +11,6 @@ namespace Kundbolaget.Models.EntityModels
         public int CreditLine { get; set; }
         public int PaymentTerm { get; set; }
         public int AccountingCode { get; set; }
-        public int OrganizationNumber { get; set; }
+        public long OrganizationNumber { get; set; }
     }
 }
