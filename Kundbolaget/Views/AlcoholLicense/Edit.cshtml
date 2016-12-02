@@ -3,22 +3,37 @@
 @{
     ViewBag.Title = "Edit";
 }
+<link href="~/Content/bootstrap.css" rel="stylesheet" type="text/css"/>
+<link href="~/Content/themes/base/all.css" rel="stylesheet" type="text/css"/>
+<script src="~/Scripts/jquery-1.12.4.min.js"></script>
+<script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
+
+<script type="text/javascript">
+    $(function() {
+        $("input[type=DateTime]").datepicker({
+            dateFormat: "yy-mm-dd",
+            changeMonth: true,
+            changeYear: true,
+            yearRange: "-30:+100"
+        });
+    });
+</script>
 
 <h2>Edit</h2>
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
-        <h4>AlcoholLicense</h4>
+        <h4>Alcohol Licenses</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.Id)
 
         <div class="form-group">
             @Html.LabelFor(model => model.StartDate, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
+            <div class="col-md-2">
                 @Html.EditorFor(model => model.StartDate, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.StartDate, "", new { @class = "text-danger" })
             </div>
@@ -26,7 +41,7 @@
 
         <div class="form-group">
             @Html.LabelFor(model => model.EndDate, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
+            <div class="col-md-2">
                 @Html.EditorFor(model => model.EndDate, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.EndDate, "", new { @class = "text-danger" })
             </div>
