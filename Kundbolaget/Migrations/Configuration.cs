@@ -1,4 +1,6 @@
 
+using Kundbolaget.EntityFramework.Contexts;
+
 namespace Kundbolaget.Migrations
 {
     using System;
@@ -16,6 +18,8 @@ namespace Kundbolaget.Migrations
 
         protected override void Seed(Kundbolaget.EntityFramework.Contexts.DataContext context)
         {
+            SeedAlcoholLicenses(context);
+
             Supplier[] suppliers =
             {
                 new Supplier { Id = 1, Name = "Bengts Bärs", Email = "bengt@example.net" },
@@ -26,6 +30,18 @@ namespace Kundbolaget.Migrations
             };
 
             context.Suppliers.AddOrUpdate(suppliers);
+        }
+
+        private void SeedAlcoholLicenses(DataContext context)
+        {
+            AlcoholLicense[] alcoholLicenses =
+            {
+                new AlcoholLicense {StartDate = DateTime.Today, EndDate = new DateTime(2020,12,24), IsValid = true},
+                new AlcoholLicense {StartDate = DateTime.Today, EndDate = new DateTime(2021,12,24), IsValid = true},
+                new AlcoholLicense {StartDate = DateTime.Today, EndDate = new DateTime(2022,12,24), IsValid = true}
+            };
+
+            context.AlcoholLicenses.AddOrUpdate(alcoholLicenses);
         }
     }
 }
