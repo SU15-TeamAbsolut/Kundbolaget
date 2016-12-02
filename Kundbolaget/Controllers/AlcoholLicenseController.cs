@@ -21,7 +21,7 @@ namespace Kundbolaget.Controllers
         public ActionResult Index()
         {
             var model = repository.GetAll();
-            return View();
+            return View(model);
         }
 
         //GET: AlcoholLicense/Create
@@ -30,7 +30,9 @@ namespace Kundbolaget.Controllers
             return View();
         }
 
+
         //POST: AlcoholLicense/Create/
+        [HttpPost]
         public ActionResult Create(AlcoholLicense model)
         {
             if (!ModelState.IsValid)
