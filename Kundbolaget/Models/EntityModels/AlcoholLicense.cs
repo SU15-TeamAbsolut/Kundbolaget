@@ -11,8 +11,10 @@ namespace Kundbolaget.Models.EntityModels
     {
         public int Id { get; set; }
         [Required]
+        [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd}")]
         public DateTime StartDate { get; set; }
         [Required]
+        [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd}")]
         public DateTime EndDate { get; set; }
         [Required]
         public bool IsValid { get; set; }
