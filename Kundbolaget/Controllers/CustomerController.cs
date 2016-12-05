@@ -11,7 +11,7 @@ using Kundbolaget.Models.EntityModels;
 
 namespace Kundbolaget.Controllers
 {
-    public class CustomersController : Controller
+    public class CustomerController : Controller
     {
         private DataContext db = new DataContext();
 

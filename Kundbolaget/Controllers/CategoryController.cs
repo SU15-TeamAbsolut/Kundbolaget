@@ -11,11 +11,11 @@ namespace Kundbolaget.Controllers
     public class CategoryController : Controller
     {
      
-        private readonly IRepository<Category> _categoryRepository;
+        private readonly IRepository<ProductCategory> _categoryRepository;
         // GET: Product
         public CategoryController()
         {
-            _categoryRepository = new DataRepository<Category>();
+            _categoryRepository = new DataRepository<ProductCategory>();
         }
 
         public ActionResult Index()
@@ -31,7 +31,7 @@ namespace Kundbolaget.Controllers
         }
 
         [HttpPost]
-        public ActionResult Create(Category model)
+        public ActionResult Create(ProductCategory model)
         {
             if (!ModelState.IsValid)
             {
@@ -48,7 +48,7 @@ namespace Kundbolaget.Controllers
             return View(model);
         }
         [HttpPost]
-        public ActionResult Edit(Category model)
+        public ActionResult Edit(ProductCategory model)
         {
             if (!ModelState.IsValid)
             {

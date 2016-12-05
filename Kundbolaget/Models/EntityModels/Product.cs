@@ -32,7 +32,7 @@ namespace Kundbolaget.Models.EntityModels
         public int VatCode { get; set; }
 
         //FK Key
-        public virtual Category Category { get; set; }
+        public virtual ProductCategory ProductCategory { get; set; }
         
     }
 }

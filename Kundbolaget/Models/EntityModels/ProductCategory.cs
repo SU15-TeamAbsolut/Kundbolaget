@@ -5,7 +5,7 @@ using System.Web;
 
 namespace Kundbolaget.Models.EntityModels
 {
-    public class Category
+    public class ProductCategory
     {
         public int Id { get; set; }
 

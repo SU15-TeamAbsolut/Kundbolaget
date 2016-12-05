@@ -197,7 +197,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Controllers\CustomersController.cs" />
+    <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\AlcoholLicenseController.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -210,20 +210,16 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201612051134060_InitialDb.cs" />
-    <Compile Include="Migrations\201612051134060_InitialDb.Designer.cs">
-      <DependentUpon>201612051134060_InitialDb.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201612051215562_CountriesandAddresses.cs" />
-    <Compile Include="Migrations\201612051215562_CountriesandAddresses.Designer.cs">
-      <DependentUpon>201612051215562_CountriesandAddresses.cs</DependentUpon>
+    <Compile Include="Migrations\201612051240418_InitialDb.cs" />
+    <Compile Include="Migrations\201612051240418_InitialDb.Designer.cs">
+      <DependentUpon>201612051240418_InitialDb.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\EntityModels\Address.cs" />
     <Compile Include="Models\EntityModels\Country.cs" />
     <Compile Include="Models\EntityModels\Customer.cs" />
     <Compile Include="Models\EntityModels\AlcoholLicense.cs" />
-    <Compile Include="Models\EntityModels\Category.cs" />
+    <Compile Include="Models\EntityModels\ProductCategory.cs" />
     <Compile Include="Models\EntityModels\Product.cs" />
     <Compile Include="Models\EntityModels\Supplier.cs" />
     <Compile Include="Models\EntityModels\Warehouse.cs" />
@@ -247,11 +243,11 @@
     <Content Include="Views\Warehouse\Create.cshtml" />
     <Content Include="Views\Warehouse\Edit.cshtml" />
     <Content Include="Views\Warehouse\Details.cshtml" />
-    <Content Include="Views\Customers\Create.cshtml" />
-    <Content Include="Views\Customers\Delete.cshtml" />
-    <Content Include="Views\Customers\Details.cshtml" />
-    <Content Include="Views\Customers\Edit.cshtml" />
-    <Content Include="Views\Customers\Index.cshtml" />
+    <Content Include="Views\Customer\Create.cshtml" />
+    <Content Include="Views\Customer\Delete.cshtml" />
+    <Content Include="Views\Customer\Details.cshtml" />
+    <Content Include="Views\Customer\Edit.cshtml" />
+    <Content Include="Views\Customer\Index.cshtml" />
     <Content Include="Scripts\jquery-3.1.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.1.1.min.map" />
     <Content Include="Views\AlcoholLicense\Index.cshtml" />
@@ -277,11 +273,8 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201612051134060_InitialDb.resx">
-      <DependentUpon>201612051134060_InitialDb.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201612051215562_CountriesandAddresses.resx">
-      <DependentUpon>201612051215562_CountriesandAddresses.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201612051240418_InitialDb.resx">
+      <DependentUpon>201612051240418_InitialDb.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
