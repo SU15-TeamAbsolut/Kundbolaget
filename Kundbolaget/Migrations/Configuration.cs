@@ -1,4 +1,5 @@
 
+using System.Collections.Generic;
 using Kundbolaget.EntityFramework.Contexts;
 
 namespace Kundbolaget.Migrations
@@ -24,6 +25,9 @@ namespace Kundbolaget.Migrations
             SeedSuppliers(context);
             SeedCustomers(context);
             SeedAlcoholLicenses(context);
+            SeedProductCategories(context);
+            SeedProducts(context);
+
         }
 
         private void SeedCountries(DataContext context)
@@ -125,6 +129,63 @@ namespace Kundbolaget.Migrations
             };
 
             context.AlcoholLicenses.AddOrUpdate(alcoholLicenses);
+        }
+
+        private void SeedProductCategories(DataContext context)
+        {
+            ProductCategory[] productCategories =
+            {
+              new ProductCategory() {Id=1, Name = "Beer"},
+              new ProductCategory() {Id=2, Name = "Cider"},
+              new ProductCategory() {Id=3, Name = "White wine"},
+              new ProductCategory() {Id=4, Name = "Red wine"},
+              new ProductCategory() {Id=4, Name = "Liquor"},
+            };
+            context.ProductCategories.AddOrUpdate(productCategories);
+        }
+        private void SeedProducts(DataContext context)
+        {
+            Product[] products =
+            {
+                new Product()
+                {
+                    Id = 1, ProductCategoryId = 1, Name = "117 Grythyttan", AlcoholPercentage = 5.8m,
+                    Price = 15, Description = "Humlearomatisk smak med tydlig beska, inslag av aprikos, blodgrapefrukt, gräddkola, örter och knäckebröd.",
+                    ProductNumber = 88093, AccountingCode = 00100, VatCode = 02, Volume = 330
+                },
+                new Product()
+                {
+                    Id = 2, ProductCategoryId = 1, Name = "15 Minutes of Flame", AlcoholPercentage = 5.5m,
+                    Price = 25, Description = "Fruktig smak med tydlig beska, inslag av torkad frukt, knäckebröd, honung, kryddor och mandarin.",
+                    ProductNumber = 31027, AccountingCode = 00100, VatCode = 02, Volume = 330
+                },
+                new Product()
+                {
+                    Id = 3, ProductCategoryId = 2, Name = "Ahlafors ", AlcoholPercentage = 4.5m,
+                    Price = 12, Description = "Kryddig, fruktig, söt smak med tydlig karaktär av ingefära, inslag av päron och citron.",
+                    ProductNumber = 88093, AccountingCode = 00200, VatCode = 01, Volume = 330
+                },
+                new Product()
+                {
+                    Id = 4, ProductCategoryId = 2, Name = "Alice Wilson ", AlcoholPercentage = 4.5m,
+                    Price = 15, Description = "Fruktig smak med tydlig karaktär av päron, inslag av citrus och vanilj.",
+                    ProductNumber =  33001, AccountingCode = 00200, VatCode = 01, Volume = 330
+                },
+                new Product()
+                {
+                    Id = 5, ProductCategoryId = 3, Name = "Alvarinho Curtimenta", AlcoholPercentage = 12.5m,
+                    Price = 215, Description = "Fruktig, aromatisk smak med inslag av päron, vita blommor, honung, krusbär, örter, persika och ananas.",
+                    ProductNumber = 92504, AccountingCode = 00300, VatCode = 03, Volume = 750
+                },
+                new Product()
+                {
+                    Id = 6, ProductCategoryId = 4, Name = "Amarone ", AlcoholPercentage = 15.8m,
+                    Price = 75, Description = "Kryddigt, smakrikt vin med fatkaraktär, inslag av russin, plommon, choklad, pinjenötter, pomerans och vanilj.",
+                    ProductNumber = 12343, AccountingCode = 00300, VatCode = 03, Volume = 750
+                },
+            };
+            context.Products.AddOrUpdate(products);
+
         }
     }
 }
