@@ -7,13 +7,13 @@ namespace Kundbolaget.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class InitialSupplierModel : IMigrationMetadata
+    public sealed partial class InitialDatabase : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(InitialSupplierModel));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(InitialDatabase));
         
         string IMigrationMetadata.Id
         {
-            get { return "201611301301058_InitialSupplierModel"; }
+            get { return "201612051030575_InitialDatabase"; }
         }
         
         string IMigrationMetadata.Source

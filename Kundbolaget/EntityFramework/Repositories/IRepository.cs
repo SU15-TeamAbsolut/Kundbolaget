@@ -1,7 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using Kundbolaget.Models.EntityModels;
+﻿using System.Collections.Generic;
 
 namespace Kundbolaget.EntityFramework.Repositories
 {

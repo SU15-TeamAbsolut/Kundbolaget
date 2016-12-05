@@ -7,5 +7,7 @@ namespace Kundbolaget.EntityFramework.Contexts
     {
         public DbSet<Supplier> Suppliers { get; set; }
         public DbSet<Warehouse> Warehouses { get; set; }
+        public DbSet<Customer> Customers { get; set; }
+        public DbSet<AlcoholLicense> AlcoholLicenses { get; set; }
     }
 }
