@@ -201,21 +201,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201611301301058_InitialSupplierModel.cs" />
-    <Compile Include="Migrations\201611301301058_InitialSupplierModel.Designer.cs">
-      <DependentUpon>201611301301058_InitialSupplierModel.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201611301418488_SupplierAddIsActiveBool.cs" />
-    <Compile Include="Migrations\201611301418488_SupplierAddIsActiveBool.Designer.cs">
-      <DependentUpon>201611301418488_SupplierAddIsActiveBool.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201612021352274_CreateCustomerModel.cs" />
-    <Compile Include="Migrations\201612021352274_CreateCustomerModel.Designer.cs">
-      <DependentUpon>201612021352274_CreateCustomerModel.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201612021315379_CreatedAlcoLicense.cs" />
-    <Compile Include="Migrations\201612021315379_CreatedAlcoLicense.Designer.cs">
-      <DependentUpon>201612021315379_CreatedAlcoLicense.cs</DependentUpon>
+    <Compile Include="Migrations\201612051030575_InitialDatabase.cs" />
+    <Compile Include="Migrations\201612051030575_InitialDatabase.Designer.cs">
+      <DependentUpon>201612051030575_InitialDatabase.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\EntityModels\Customer.cs" />
@@ -259,17 +247,8 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201611301301058_InitialSupplierModel.resx">
-      <DependentUpon>201611301301058_InitialSupplierModel.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201611301418488_SupplierAddIsActiveBool.resx">
-      <DependentUpon>201611301418488_SupplierAddIsActiveBool.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201612021352274_CreateCustomerModel.resx">
-      <DependentUpon>201612021352274_CreateCustomerModel.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201612021315379_CreatedAlcoLicense.resx">
-      <DependentUpon>201612021315379_CreatedAlcoLicense.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201612051030575_InitialDatabase.resx">
+      <DependentUpon>201612051030575_InitialDatabase.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
