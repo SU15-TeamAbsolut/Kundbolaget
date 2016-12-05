@@ -270,12 +270,12 @@
     <EmbeddedResource Include="Migrations\201612051030575_InitialDatabase.resx">
       <DependentUpon>201612051030575_InitialDatabase.cs</DependentUpon>
     </EmbeddedResource>
-    </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201612042124333_Warehouse.resx">
       <DependentUpon>201612042124333_Warehouse.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201612042132510_WarehouseAddedToDataContext.resx">
       <DependentUpon>201612042132510_WarehouseAddedToDataContext.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
