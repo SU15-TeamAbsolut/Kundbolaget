@@ -1,4 +1,6 @@
 
+using Kundbolaget.EntityFramework.Contexts;
+
 namespace Kundbolaget.Migrations
 {
     using System;
@@ -26,6 +28,32 @@ namespace Kundbolaget.Migrations
             };
 
             context.Suppliers.AddOrUpdate(suppliers);
+
+            SeedCustomers(context);
+        }
+
+        private void SeedCustomers(DataContext context)
+        {
+            Customer[] customers =
+            {
+                new Customer
+                {
+                    Id = 10000, Name = "Ica", OrganizationNumber = 5560210261,
+                    CreditLine = 150000, PaymentTerm = 30
+                },
+                new Customer
+                {
+                    Id = 10001, Name = "Coop",
+                    CreditLine = 250000, PaymentTerm = 90
+                },
+                new Customer
+                {
+                    Id= 10002, Name = "Systembolaget",
+                    CreditLine = 50000, PaymentTerm = 30
+                }
+            };
+
+            context.Customers.AddOrUpdate(customers);
         }
     }
 }
