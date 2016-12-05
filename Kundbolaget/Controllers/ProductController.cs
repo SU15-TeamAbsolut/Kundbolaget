@@ -17,6 +17,7 @@ namespace Kundbolaget.Controllers
             _productRepository = new DataRepository<Product>();
         }
 
+        // GET: Product/Index
         public ActionResult Index()
         {
             var model = _productRepository.GetAll();
@@ -24,11 +25,13 @@ namespace Kundbolaget.Controllers
             return View(model);
         }
 
+        // GET: Product/Create    
         public ActionResult Create()
         {
             return View();
         }
 
+        // POST: Product/Create/{model}
         [HttpPost]
         public ActionResult Create(Product model)
         {
@@ -41,11 +44,14 @@ namespace Kundbolaget.Controllers
             return RedirectToAction("Index");
         }
 
+        // GET: Product/Edit/{id}
         public ActionResult Edit(int id)
         {
             var model =_productRepository.Find(id);
             return View(model);
         }
+
+        // POST: Product/Index/{model}
         [HttpPost]
         public ActionResult Edit(Product model)
         {
@@ -58,6 +64,7 @@ namespace Kundbolaget.Controllers
             return RedirectToAction("Index");
         }
 
+        // GET: Product/Details/{id}
         public ActionResult Details(int id)
         {
             var model = _productRepository.Find(id);
