@@ -139,16 +139,27 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
+    <None Include="Scripts\jquery-1.10.2-vsdoc.js" />
+    <Content Include="Scripts\jquery-1.10.2.js" />
+    <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <Content Include="Scripts\jquery-1.10.2.min.map" />
     <None Include="Scripts\jquery-1.9.1.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-1.9.1.js" />
     <Content Include="Scripts\jquery-1.9.1.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\SupplierController.cs" />
     <Compile Include="EntityFramework\Contexts\DataContext.cs" />
     <Compile Include="EntityFramework\Repositories\DataRepository.cs" />
@@ -164,7 +175,21 @@
     <Compile Include="Migrations\201611301418488_SupplierAddIsActiveBool.Designer.cs">
       <DependentUpon>201611301418488_SupplierAddIsActiveBool.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201612041630094_InitialProductTable.cs" />
+    <Compile Include="Migrations\201612041630094_InitialProductTable.Designer.cs">
+      <DependentUpon>201612041630094_InitialProductTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201612042259554_AddedRelationshipProduct-Category.cs" />
+    <Compile Include="Migrations\201612042259554_AddedRelationshipProduct-Category.Designer.cs">
+      <DependentUpon>201612042259554_AddedRelationshipProduct-Category.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201612042306127_AddedRelationshipProduct-Category-tables.cs" />
+    <Compile Include="Migrations\201612042306127_AddedRelationshipProduct-Category-tables.Designer.cs">
+      <DependentUpon>201612042306127_AddedRelationshipProduct-Category-tables.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\EntityModels\Category.cs" />
+    <Compile Include="Models\EntityModels\Product.cs" />
     <Compile Include="Models\EntityModels\Supplier.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -183,6 +208,14 @@
     <Content Include="Views\Supplier\Create.cshtml" />
     <Content Include="Scripts\jquery-1.9.1.min.map" />
     <Content Include="Views\Shared\_Navbar.cshtml" />
+    <Content Include="Views\Product\Index.cshtml" />
+    <Content Include="Views\Product\Create.cshtml" />
+    <Content Include="Views\Product\Edit.cshtml" />
+    <Content Include="Views\Product\Details.cshtml" />
+    <Content Include="Views\Category\Index.cshtml" />
+    <Content Include="Views\Category\Create.cshtml" />
+    <Content Include="Views\Category\Edit.cshtml" />
+    <Content Include="Views\Category\Details.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -199,6 +232,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201611301418488_SupplierAddIsActiveBool.resx">
       <DependentUpon>201611301418488_SupplierAddIsActiveBool.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201612041630094_InitialProductTable.resx">
+      <DependentUpon>201612041630094_InitialProductTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201612042259554_AddedRelationshipProduct-Category.resx">
+      <DependentUpon>201612042259554_AddedRelationshipProduct-Category.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201612042306127_AddedRelationshipProduct-Category-tables.resx">
+      <DependentUpon>201612042306127_AddedRelationshipProduct-Category-tables.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
