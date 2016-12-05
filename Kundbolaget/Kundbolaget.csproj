@@ -205,7 +205,13 @@
     <Compile Include="Migrations\201612051030575_InitialDatabase.Designer.cs">
       <DependentUpon>201612051030575_InitialDatabase.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201612051215562_CountriesandAddresses.cs" />
+    <Compile Include="Migrations\201612051215562_CountriesandAddresses.Designer.cs">
+      <DependentUpon>201612051215562_CountriesandAddresses.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\EntityModels\Address.cs" />
+    <Compile Include="Models\EntityModels\Country.cs" />
     <Compile Include="Models\EntityModels\Customer.cs" />
     <Compile Include="Models\EntityModels\AlcoholLicense.cs" />
     <Compile Include="Models\EntityModels\Supplier.cs" />
@@ -249,6 +255,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201612051030575_InitialDatabase.resx">
       <DependentUpon>201612051030575_InitialDatabase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201612051215562_CountriesandAddresses.resx">
+      <DependentUpon>201612051215562_CountriesandAddresses.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
