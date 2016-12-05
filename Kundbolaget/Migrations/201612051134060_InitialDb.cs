@@ -3,7 +3,7 @@ namespace Kundbolaget.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class InitialDatabase : DbMigration
+    public partial class InitialDb : DbMigration
     {
         public override void Up()
         {
@@ -31,9 +31,7 @@ namespace Kundbolaget.Migrations
                         OrganizationNumber = c.Long(nullable: false),
                     })
                 .PrimaryKey(t => t.Id);
-            // Set initial auto-increment value to 10000
-            Sql("DBCC CHECKIDENT ('Customers', RESEED, 10000);");
-
+            
             CreateTable(
                 "dbo.Suppliers",
                 c => new
@@ -46,10 +44,23 @@ namespace Kundbolaget.Migrations
                     })
                 .PrimaryKey(t => t.Id);
             
+            CreateTable(
+                "dbo.Warehouses",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        Name = c.String(nullable: false),
+                        AdressId = c.Int(nullable: false),
+                        ContactId = c.Int(nullable: false),
+                        IsActive = c.Boolean(nullable: false),
+                    })
+                .PrimaryKey(t => t.Id);
+            
         }
         
         public override void Down()
         {
+            DropTable("dbo.Warehouses");
             DropTable("dbo.Suppliers");
             DropTable("dbo.Customers");
             DropTable("dbo.AlcoholLicenses");

@@ -208,17 +208,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201612051030575_InitialDatabase.cs" />
-    <Compile Include="Migrations\201612051030575_InitialDatabase.Designer.cs">
-      <DependentUpon>201612051030575_InitialDatabase.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201612042124333_Warehouse.cs" />
-    <Compile Include="Migrations\201612042124333_Warehouse.Designer.cs">
-      <DependentUpon>201612042124333_Warehouse.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201612042132510_WarehouseAddedToDataContext.cs" />
-    <Compile Include="Migrations\201612042132510_WarehouseAddedToDataContext.Designer.cs">
-      <DependentUpon>201612042132510_WarehouseAddedToDataContext.cs</DependentUpon>
+    <Compile Include="Migrations\201612051134060_InitialDb.cs" />
+    <Compile Include="Migrations\201612051134060_InitialDb.Designer.cs">
+      <DependentUpon>201612051134060_InitialDb.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\EntityModels\Customer.cs" />
@@ -267,14 +259,8 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201612051030575_InitialDatabase.resx">
-      <DependentUpon>201612051030575_InitialDatabase.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201612042124333_Warehouse.resx">
-      <DependentUpon>201612042124333_Warehouse.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201612042132510_WarehouseAddedToDataContext.resx">
-      <DependentUpon>201612042132510_WarehouseAddedToDataContext.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201612051134060_InitialDb.resx">
+      <DependentUpon>201612051134060_InitialDb.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
