@@ -18,8 +18,12 @@ namespace Kundbolaget.Models.EntityModels
         public DateTime EndDate { get; set; }
         [Required]
         public bool IsValid { get; set; }
-        //public virtual Customer Customers { get; set; }
-        //public virtual Address ShippingAddresses { get; set; }
+        [Required]
+        public int CustomerId { get; set; }
+        public virtual Customer Customer { get; set; }
+        [Required]
+        public int AddressId { get; set; }
+        public virtual Address Address { get; set; }
 
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Kundbolaget.Models.EntityModels
 {
@@ -12,5 +13,13 @@ namespace Kundbolaget.Models.EntityModels
         public int PaymentTerm { get; set; }
         public int AccountingCode { get; set; }
         public long OrganizationNumber { get; set; }
+        [Required]
+        public int InvoiceAddressId { get; set; }
+        [ForeignKey("InvoiceAddressId")]
+        public virtual Address InvoiceAddress { get; set; }
+        [Required]
+        public int VisitingAddressId { get; set; }
+        [ForeignKey("VisitingAddressId")]
+        public virtual Address VisitingAddress { get; set; }
     }
 }

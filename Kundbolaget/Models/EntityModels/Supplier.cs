@@ -10,5 +10,8 @@ namespace Kundbolaget.Models.EntityModels
         public string Phone { get; set; }
         public string Email { get; set; }
         public bool IsActive { get; set; }
+        [Required]
+        public int AddressId { get; set; }
+        public virtual Address Address { get; set; }
     }
 }

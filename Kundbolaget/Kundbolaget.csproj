@@ -214,6 +214,10 @@
     <Compile Include="Migrations\201612051240418_InitialDb.Designer.cs">
       <DependentUpon>201612051240418_InitialDb.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201612051432137_AddRelations.cs" />
+    <Compile Include="Migrations\201612051432137_AddRelations.Designer.cs">
+      <DependentUpon>201612051432137_AddRelations.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\EntityModels\Address.cs" />
     <Compile Include="Models\EntityModels\Country.cs" />
@@ -274,6 +278,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201612051240418_InitialDb.resx">
       <DependentUpon>201612051240418_InitialDb.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201612051432137_AddRelations.resx">
+      <DependentUpon>201612051432137_AddRelations.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

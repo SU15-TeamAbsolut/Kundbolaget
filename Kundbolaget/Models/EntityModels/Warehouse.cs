@@ -11,7 +11,9 @@ namespace Kundbolaget.Models.EntityModels
         public int Id { get; set; }
         [Required]
         public string Name { get; set; }
-        public int AdressId { get; set; }
+        [Required]
+        public int AddressId { get; set; }
+        public virtual Address Adress { get; set; }
         public int ContactId { get; set; }
         public bool IsActive { get; set; }
     }

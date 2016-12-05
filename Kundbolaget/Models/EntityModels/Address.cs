@@ -16,6 +16,7 @@ namespace Kundbolaget.Models.EntityModels
         [Required]
         public string City { get; set; }
         [Required]
-        public Country Country { get; set; }
+        public int CountryId { get; set; }
+        public virtual Country Country { get; set; }
     }
 }
