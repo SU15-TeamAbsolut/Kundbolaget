@@ -10,11 +10,12 @@ namespace Kundbolaget.Controllers
 {
     public class ProductController : Controller
     {
-        private readonly IRepository<Product> _productRepository;
+        private readonly ProductRepository _productRepository;
+
         // GET: Product
         public ProductController()
         {
-            _productRepository = new DataRepository<Product>();
+            _productRepository = new ProductRepository();
         }
 
         // GET: Product/Index
@@ -68,6 +69,23 @@ namespace Kundbolaget.Controllers
         public ActionResult Details(int id)
         {
             var model = _productRepository.Find(id);
+            return View(model);
+        }
+
+        // GET: Product/Search
+        public ActionResult Search()
+        {
+            IEnumerable<Product> model = new List<Product>();
+            return View(model);
+        }
+
+        // POST: Product/Search/{searchTerm}
+        [HttpPost]
+        public ActionResult Search(FormCollection searchForm)
+        {
+            string searchString = searchForm["value"];
+            IList<Product> model = _productRepository.SearchByName(searchString);
+
             return View(model);
         }
     }
