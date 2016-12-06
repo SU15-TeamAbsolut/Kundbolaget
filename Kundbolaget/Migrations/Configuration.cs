@@ -135,11 +135,11 @@ namespace Kundbolaget.Migrations
         {
             ProductCategory[] productCategories =
             {
-              new ProductCategory() {Id=1, Name = "Beer"},
+              new ProductCategory() {Id=1, Name = "Öl"},
               new ProductCategory() {Id=2, Name = "Cider"},
-              new ProductCategory() {Id=3, Name = "White wine"},
-              new ProductCategory() {Id=4, Name = "Red wine"},
-              new ProductCategory() {Id=4, Name = "Liquor"},
+              new ProductCategory() {Id=3, Name = "Vitt vin"},
+              new ProductCategory() {Id=4, Name = "Rött vin"},
+              new ProductCategory() {Id=5, Name = "Sprit"},
             };
             context.ProductCategories.AddOrUpdate(productCategories);
         }
