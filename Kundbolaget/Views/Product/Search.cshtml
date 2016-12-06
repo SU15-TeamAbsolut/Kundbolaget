@@ -4,41 +4,34 @@
     ViewBag.Title = "Search";
 }
 
-<h2>Search</h2>
-
+<h2>Produktsökning</h2>
 <p>
-    @Html.ActionLink("Create New", "Create")
+  @ViewBag.SearchResultCount sökresultat
 </p>
+
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.ProductCategory.Name)
+            Kategori
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Name)
+            Produktnamn
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Description)
+            Beskrivning
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Price)
+            Pris
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ProductNumber)
+            Artikelnummer
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Volume)
+            Volym
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.AlcoholPercentage)
+            Alkoholprocent
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.AccountingCode)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.VatCode)
-        </th>
-        <th></th>
     </tr>
 
 @foreach (var item in Model) {
@@ -63,17 +56,6 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.AlcoholPercentage)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.AccountingCode)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.VatCode)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
         </td>
     </tr>
 }
