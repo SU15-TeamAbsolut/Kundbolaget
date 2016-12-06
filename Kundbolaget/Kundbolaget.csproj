@@ -166,6 +166,7 @@
     <Compile Include="EntityFramework\Contexts\DataContext.cs" />
     <Compile Include="EntityFramework\Repositories\DataRepository.cs" />
     <Compile Include="EntityFramework\Repositories\IRepository.cs" />
+    <Compile Include="EntityFramework\Repositories\ProductRepository.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -229,6 +230,7 @@
     <Content Include="Views\Category\Create.cshtml" />
     <Content Include="Views\Category\Edit.cshtml" />
     <Content Include="Views\Category\Details.cshtml" />
+    <Content Include="Views\Product\Search.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
