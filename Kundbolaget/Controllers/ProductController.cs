@@ -5,42 +5,94 @@ using System.Web;
 using System.Web.Mvc;
 using Kundbolaget.EntityFramework.Repositories;
 using Kundbolaget.Models.EntityModels;
+using Kundbolaget.ViewModels;
 
 namespace Kundbolaget.Controllers
 {
     public class ProductController : Controller
     {
-        private readonly ProductRepository _productRepository;
-
+        private readonly IRepository<ProductCategory> _productCategoryRepository;
+        private readonly IRepository<Product> _productRepository;
         // GET: Product
         public ProductController()
         {
-            _productRepository = new ProductRepository();
+            _productRepository = new DataRepository<Product>();
+            _productCategoryRepository = new DataRepository<ProductCategory>();
         }
 
         // GET: Product/Index
         public ActionResult Index()
         {
-            var model = _productRepository.GetAll();
 
-            return View(model);
+            var viewModel = new ProductCategoryViewModel()
+            {
+                Products = _productRepository.GetAll(),
+                ProductCategories = _productCategoryRepository.GetAll(),
+                ProductCategory = new ProductCategory()
+            };
+            
+            return View(viewModel);
+        }
+        [HttpPost]
+        public ActionResult Index(ProductCategoryViewModel categoryModel)
+        {
+            int id = categoryModel.ProductCategory.Id;
+            List<Product> productList;
+
+            if (id == 0)
+            {
+                productList = _productRepository.GetAll().ToList();
+            }
+            else
+            {
+                productList = _productRepository.GetAll()
+                   .Where(x => x.ProductCategoryId == id).ToList();
+            }
+                
+            var viewModel = new ProductCategoryViewModel()
+            {
+                Products = productList,
+                ProductCategories = _productCategoryRepository.GetAll(),
+                ProductCategory = new ProductCategory()
+            };
+
+            return View(viewModel);
         }
 
-        // GET: Product/Create    
         public ActionResult Create()
         {
-            return View();
+            var viewModel = new ProductCategoryViewModel()
+            {
+                ProductCategories = _productCategoryRepository.GetAll(),
+                ProductCategory = new ProductCategory()
+            };
+
+            return View(viewModel);
         }
 
         // POST: Product/Create/{model}
         [HttpPost]
-        public ActionResult Create(Product model)
+        public ActionResult Create(ProductCategoryViewModel viewModel)
         {
             if (!ModelState.IsValid)
             {
-                return View(model);
+                return View(viewModel);
             }
-            _productRepository.Create(model);
+
+            var newProduct = new Product()
+            {
+                Name = viewModel.Product.Name,
+                ProductCategoryId = viewModel.Product.ProductCategoryId,
+                Description = viewModel.Product.Description,
+                Price = viewModel.Product.Price,
+                ProductNumber = viewModel.Product.ProductNumber,
+                Volume = viewModel.Product.Volume,
+                AlcoholPercentage = viewModel.Product.AlcoholPercentage,
+                AccountingCode = viewModel.Product.AccountingCode,
+                VatCode = viewModel.Product.VatCode
+            };
+
+            _productRepository.Create(newProduct);
 
             return RedirectToAction("Index");
         }
