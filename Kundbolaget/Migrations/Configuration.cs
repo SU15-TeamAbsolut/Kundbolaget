@@ -22,6 +22,7 @@ namespace Kundbolaget.Migrations
             SeedCountries(context);
             SeedAddresses(context);
 
+            SeedWarehouses(context);
             SeedSuppliers(context);
             SeedCustomers(context);
             SeedAlcoholLicenses(context);
@@ -200,6 +201,19 @@ namespace Kundbolaget.Migrations
                 new Contact() {Id = 5, AdressId = 1, Email = "Eva.Dahl@gmail.com", Name = "Eva Dahl", PhoneNumber = "0221-34600"},
             };
             context.Contacts.AddOrUpdate(contacts);
+        }
+
+        private void SeedWarehouses(DataContext context)
+        {
+            Warehouse[] warehouises =
+            {
+                new Warehouse { Id = 1, Name = "Stockholms lager", AddressId = 1, ContactId = 1, IsActive = true},
+                new Warehouse { Id = 2, Name = "Göteborgs lager", AddressId = 1, ContactId = 2, IsActive = true},
+                new Warehouse { Id = 3, Name = "Malmös lager", AddressId = 1, ContactId = 3, IsActive = true},
+                new Warehouse { Id = 4, Name = "Faluns lager", AddressId = 1, ContactId = 4, IsActive = true},
+                new Warehouse { Id = 5, Name = "Uppsalas lager", AddressId = 1, ContactId = 5, IsActive = true}
+            };
+            context.Warehouses.AddOrUpdate(warehouises);
         }
     }
 }
