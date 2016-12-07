@@ -33,10 +33,9 @@ namespace Kundbolaget.Controllers
             return View(viewModel);
         }
         [HttpPost]
-        public ActionResult Index(FormCollection collection)
+        public ActionResult Index(ProductCategoryViewModel categoryModel)
         {
-            int id = 0;
-            int.TryParse(Request["ProductCategory"], out id);
+            int id = categoryModel.ProductCategory.Id;
             List<Product> productList;
 
             if (id == 0)
@@ -61,17 +60,37 @@ namespace Kundbolaget.Controllers
 
         public ActionResult Create()
         {
-            return View();
+            var viewModel = new ProductCategoryViewModel()
+            {
+                ProductCategories = _productCategoryRepository.GetAll(),
+                ProductCategory = new ProductCategory()
+            };
+
+            return View(viewModel);
         }
 
         [HttpPost]
-        public ActionResult Create(Product model)
+        public ActionResult Create(ProductCategoryViewModel viewModel)
         {
             if (!ModelState.IsValid)
             {
-                return View(model);
+                return View(viewModel);
             }
-            _productRepository.Create(model);
+
+            var newProduct = new Product()
+            {
+                Name = viewModel.Product.Name,
+                ProductCategoryId = viewModel.Product.ProductCategoryId,
+                Description = viewModel.Product.Description,
+                Price = viewModel.Product.Price,
+                ProductNumber = viewModel.Product.ProductNumber,
+                Volume = viewModel.Product.Volume,
+                AlcoholPercentage = viewModel.Product.AlcoholPercentage,
+                AccountingCode = viewModel.Product.AccountingCode,
+                VatCode = viewModel.Product.VatCode
+            };
+
+            _productRepository.Create(newProduct);
 
             return RedirectToAction("Index");
         }
