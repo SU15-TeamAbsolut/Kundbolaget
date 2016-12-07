@@ -12,11 +12,11 @@ namespace Kundbolaget.Controllers
     public class ProductController : Controller
     {
         private readonly IRepository<ProductCategory> _productCategoryRepository;
-        private readonly IRepository<Product> _productRepository;
+        private readonly ProductRepository _productRepository;
         // GET: Product
         public ProductController()
         {
-            _productRepository = new DataRepository<Product>();
+            _productRepository = new ProductRepository();
             _productCategoryRepository = new DataRepository<ProductCategory>();
         }
 
