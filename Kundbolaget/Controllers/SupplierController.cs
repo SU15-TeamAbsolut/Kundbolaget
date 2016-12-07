@@ -5,17 +5,20 @@ using System.Web;
 using System.Web.Mvc;
 using Kundbolaget.EntityFramework.Repositories;
 using Kundbolaget.Models.EntityModels;
+using Kundbolaget.ViewModels;
 
 namespace Kundbolaget.Controllers
 {
     public class SupplierController : Controller
     {
         private IRepository<Supplier> repository;
+        private IRepository<Address> addressRepository;
 
         public SupplierController()
         {
             repository = new DataRepository<Supplier>();
-        } 
+            addressRepository = new DataRepository<Address>();
+        }
 
         // GET: Supplier
         public ActionResult Index()
@@ -27,7 +30,20 @@ namespace Kundbolaget.Controllers
         // GET: Supplier/Create
         public ActionResult Create()
         {
-            return View();
+            IEnumerable<SelectListItem> addressList = addressRepository.GetAll()
+                .Select(a => new SelectListItem
+                {
+                    Value = a.Id.ToString(),
+                    Text = a.Street
+
+                });
+
+            var viewModel = new CreateSupplierViewModel
+            {
+                AddressList = addressList
+            };
+
+            return View(viewModel);
         }
 
         // POST: Supplier/Create/
