@@ -5,7 +5,7 @@ using System.Linq;
 using System.Web;
 using Kundbolaget.EntityFramework.Contexts;
 using Kundbolaget.Models.EntityModels;
-using Kundbolaget.ViewModels;
+using Kundbolaget.Models.ViewModels;
 
 namespace Kundbolaget.EntityFramework.Repositories
 {
