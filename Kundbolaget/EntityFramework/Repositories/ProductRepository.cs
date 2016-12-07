@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web;
 using Kundbolaget.EntityFramework.Contexts;
 using Kundbolaget.Models.EntityModels;
+using Kundbolaget.ViewModels;
 
 namespace Kundbolaget.EntityFramework.Repositories
 {
@@ -19,6 +20,29 @@ namespace Kundbolaget.EntityFramework.Repositories
                     .Include(p => p.ProductCategory)
                     .ToList();
             }
+        }
+
+        public void CreateProduct(ProductCategoryViewModel viewModel)
+        {
+            using (var db = new DataContext())
+            {
+                var newProduct = new Product()
+                {
+                    Name = viewModel.Product.Name,
+                    ProductCategoryId = viewModel.Product.ProductCategoryId,
+                    Description = viewModel.Product.Description,
+                    Price = viewModel.Product.Price,
+                    ProductNumber = viewModel.Product.ProductNumber,
+                    Volume = viewModel.Product.Volume,
+                    AlcoholPercentage = viewModel.Product.AlcoholPercentage,
+                    AccountingCode = viewModel.Product.AccountingCode,
+                    VatCode = viewModel.Product.VatCode
+                };
+                db.Products.Add(newProduct);
+                db.SaveChanges();
+            }
+
+
         }
     }
 }

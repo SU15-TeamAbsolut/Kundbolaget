@@ -78,21 +78,7 @@ namespace Kundbolaget.Controllers
             {
                 return View(viewModel);
             }
-
-            var newProduct = new Product()
-            {
-                Name = viewModel.Product.Name,
-                ProductCategoryId = viewModel.Product.ProductCategoryId,
-                Description = viewModel.Product.Description,
-                Price = viewModel.Product.Price,
-                ProductNumber = viewModel.Product.ProductNumber,
-                Volume = viewModel.Product.Volume,
-                AlcoholPercentage = viewModel.Product.AlcoholPercentage,
-                AccountingCode = viewModel.Product.AccountingCode,
-                VatCode = viewModel.Product.VatCode
-            };
-
-            _productRepository.Create(newProduct);
+            _productRepository.CreateProduct(viewModel);
 
             return RedirectToAction("Index");
         }
