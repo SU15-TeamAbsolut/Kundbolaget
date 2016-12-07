@@ -1,0 +1,63 @@
+﻿@model IEnumerable<Kundbolaget.Models.EntityModels.Product>
+
+@{
+    ViewBag.Title = "Search";
+}
+
+<h2>Produktsökning</h2>
+<p>
+  @ViewBag.SearchResultCount sökresultat
+</p>
+
+<table class="table">
+    <tr>
+        <th>
+            Kategori
+        </th>
+        <th>
+            Produktnamn
+        </th>
+        <th>
+            Beskrivning
+        </th>
+        <th>
+            Pris
+        </th>
+        <th>
+            Artikelnummer
+        </th>
+        <th>
+            Volym
+        </th>
+        <th>
+            Alkoholprocent
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProductCategory.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Price)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProductNumber)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Volume)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AlcoholPercentage)
+        </td>
+    </tr>
+}
+
+</table>

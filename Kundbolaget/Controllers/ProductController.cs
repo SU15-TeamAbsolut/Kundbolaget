@@ -20,6 +20,7 @@ namespace Kundbolaget.Controllers
             _productCategoryRepository = new DataRepository<ProductCategory>();
         }
 
+        // GET: Product/Index
         public ActionResult Index()
         {
 
@@ -69,6 +70,7 @@ namespace Kundbolaget.Controllers
             return View(viewModel);
         }
 
+        // POST: Product/Create/{model}
         [HttpPost]
         public ActionResult Create(ProductCategoryViewModel viewModel)
         {
@@ -95,11 +97,14 @@ namespace Kundbolaget.Controllers
             return RedirectToAction("Index");
         }
 
+        // GET: Product/Edit/{id}
         public ActionResult Edit(int id)
         {
             var model =_productRepository.Find(id);
             return View(model);
         }
+
+        // POST: Product/Index/{model}
         [HttpPost]
         public ActionResult Edit(Product model)
         {
@@ -112,9 +117,27 @@ namespace Kundbolaget.Controllers
             return RedirectToAction("Index");
         }
 
+        // GET: Product/Details/{id}
         public ActionResult Details(int id)
         {
             var model = _productRepository.Find(id);
+            return View(model);
+        }
+
+        // GET: Product/Search
+        public ActionResult Search()
+        {
+            IEnumerable<Product> model = new List<Product>();
+            return View(model);
+        }
+
+        // POST: Product/Search/{searchTerm}
+        [HttpPost]
+        public ActionResult Search(FormCollection searchForm)
+        {
+            string searchString = searchForm["value"];
+            IList<Product> model = _productRepository.SearchByName(searchString);
+
             return View(model);
         }
     }
