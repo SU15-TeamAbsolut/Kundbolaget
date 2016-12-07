@@ -63,12 +63,11 @@ Separata databaser ska användas för utveckling, testande och demonstration, d�
 test-databasen innehåller gemensam data så att teamet testar mot samma data.
 
 Om vi upptäcker att vi behöver fler fält i databasen, ska detta hanteras som en
-separat issue/story som omgående mergas in i develop, så att resten av teamet
+separat issue/story som omgående mergas in i `develop`, så att resten av teamet
 snabbt kan ta del av ändringarna i databasen.
 
 ## Demonstrationsmiljö
-För demonstrationssyften används `demo`-grenen i vårt git-repository. Denna kod
-deployas till Azure för en separat demonstrationsmiljö.
+För demonstrationssyften används `demo`-grenen i vårt git-repository.
 
 [gitflow]:https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow/
 [semver]:http://semver.org/lang/sv/
