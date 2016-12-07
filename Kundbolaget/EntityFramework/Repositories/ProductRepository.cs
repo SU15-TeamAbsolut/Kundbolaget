@@ -22,10 +22,8 @@ namespace Kundbolaget.EntityFramework.Repositories
             }
         }
 
-        public void CreateProduct(ProductCategoryViewModel viewModel)
+        public Product CreateProduct(ProductCategoryViewModel viewModel)
         {
-            using (var db = new DataContext())
-            {
                 var newProduct = new Product()
                 {
                     Name = viewModel.Product.Name,
@@ -38,11 +36,7 @@ namespace Kundbolaget.EntityFramework.Repositories
                     AccountingCode = viewModel.Product.AccountingCode,
                     VatCode = viewModel.Product.VatCode
                 };
-                db.Products.Add(newProduct);
-                db.SaveChanges();
-            }
-
-
+            return newProduct;
         }
     }
 }

@@ -78,7 +78,8 @@ namespace Kundbolaget.Controllers
             {
                 return View(viewModel);
             }
-            _productRepository.CreateProduct(viewModel);
+            var model =_productRepository.CreateProduct(viewModel);
+            _productRepository.Create(model);
 
             return RedirectToAction("Index");
         }
@@ -86,18 +87,30 @@ namespace Kundbolaget.Controllers
         // GET: Product/Edit/{id}
         public ActionResult Edit(int id)
         {
-            var model =_productRepository.Find(id);
-            return View(model);
+           
+
+            var viewModel = new ProductCategoryViewModel()
+            {
+                Product = _productRepository.Find(id),
+                ProductCategories = _productCategoryRepository.GetAll()
+            };
+
+
+            return View(viewModel);
         }
 
         // POST: Product/Index/{model}
         [HttpPost]
-        public ActionResult Edit(Product model)
+        public ActionResult Edit(ProductCategoryViewModel viewModel)
         {
             if (!ModelState.IsValid)
             {
-                return View(model);
+                return View(viewModel);
             }
+
+            var model = _productRepository.CreateProduct(viewModel);
+
+            model.Id = viewModel.Product.Id;
             _productRepository.Update(model);
 
             return RedirectToAction("Index");
