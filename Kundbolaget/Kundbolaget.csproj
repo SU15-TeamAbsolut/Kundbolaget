@@ -182,8 +182,13 @@
     <Compile Include="Migrations\201612061000121_addedConstructorToProductCategory.Designer.cs">
       <DependentUpon>201612061000121_addedConstructorToProductCategory.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201612071000118_AddedContactModel.cs" />
+    <Compile Include="Migrations\201612071000118_AddedContactModel.Designer.cs">
+      <DependentUpon>201612071000118_AddedContactModel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\EntityModels\Address.cs" />
+    <Compile Include="Models\EntityModels\Contact.cs" />
     <Compile Include="Models\EntityModels\Country.cs" />
     <Compile Include="Models\EntityModels\Customer.cs" />
     <Compile Include="Models\EntityModels\AlcoholLicense.cs" />
@@ -250,6 +255,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201612061000121_addedConstructorToProductCategory.resx">
       <DependentUpon>201612061000121_addedConstructorToProductCategory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201612071000118_AddedContactModel.resx">
+      <DependentUpon>201612071000118_AddedContactModel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -27,6 +27,7 @@ namespace Kundbolaget.Migrations
             SeedAlcoholLicenses(context);
             SeedProductCategories(context);
             SeedProducts(context);
+            SeedContacts(context);
 
         }
 
@@ -186,6 +187,19 @@ namespace Kundbolaget.Migrations
             };
             context.Products.AddOrUpdate(products);
 
+        }
+
+        private void SeedContacts(DataContext context)
+        {
+            Contact[] contacts =
+            {
+                new Contact() {Id = 1, AdressId = 1, Email = "Göran.Eriksson@gmail.com", Name = "Göran Eriksson", PhoneNumber = "0221-34600"},
+                new Contact() {Id = 2, AdressId = 1, Email = "Lisa.Nilsson@gmail.com", Name = "Lisa Nilsson", PhoneNumber = "0221-34500"},
+                new Contact() {Id = 3, AdressId = 1, Email = "Henrik.Storm@gmail.com", Name = "Henrik Storm", PhoneNumber = "0589-18105"},
+                new Contact() {Id = 4, AdressId = 1, Email = "Greta.Andersson@gmail.com", Name = "Greta Andersson", PhoneNumber = "08-777850"},
+                new Contact() {Id = 5, AdressId = 1, Email = "Eva.Dahl@gmail.com", Name = "Eva Dahl", PhoneNumber = "0221-34600"},
+            };
+            context.Contacts.AddOrUpdate(contacts);
         }
     }
 }

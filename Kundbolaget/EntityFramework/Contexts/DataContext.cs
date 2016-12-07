@@ -13,5 +13,6 @@ namespace Kundbolaget.EntityFramework.Contexts
         public DbSet<AlcoholLicense> AlcoholLicenses { get; set; }
         public DbSet<Country> Countries { get; set; }
         public DbSet<Address> Addresses { get; set; }
+        public DbSet<Contact> Contacts { get; set; }
     }
 }
