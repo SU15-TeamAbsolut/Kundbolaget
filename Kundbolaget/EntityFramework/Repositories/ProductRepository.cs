@@ -22,7 +22,7 @@ namespace Kundbolaget.EntityFramework.Repositories
             }
         }
 
-        public Product CreateProduct(ProductCategoryViewModel viewModel)
+        public Product CreateModel(ProductCategoryViewModel viewModel)
         {
                 var newProduct = new Product()
                 {
@@ -32,6 +32,7 @@ namespace Kundbolaget.EntityFramework.Repositories
                     Price = viewModel.Product.Price,
                     ProductNumber = viewModel.Product.ProductNumber,
                     Volume = viewModel.Product.Volume,
+                    PackageAmount = viewModel.Product.PackageAmount,
                     AlcoholPercentage = viewModel.Product.AlcoholPercentage,
                     AccountingCode = viewModel.Product.AccountingCode,
                     VatCode = viewModel.Product.VatCode

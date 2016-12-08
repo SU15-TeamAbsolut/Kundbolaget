@@ -78,7 +78,7 @@ namespace Kundbolaget.Controllers
             {
                 return View(viewModel);
             }
-            var model =_productRepository.CreateProduct(viewModel);
+            var model =_productRepository.CreateModel(viewModel);
             _productRepository.Create(model);
 
             return RedirectToAction("Index");
@@ -108,7 +108,7 @@ namespace Kundbolaget.Controllers
                 return View(viewModel);
             }
 
-            var model = _productRepository.CreateProduct(viewModel);
+            var model = _productRepository.CreateModel(viewModel);
 
             model.Id = viewModel.Product.Id;
             _productRepository.Update(model);
@@ -120,7 +120,7 @@ namespace Kundbolaget.Controllers
         public ActionResult Details(int id)
         {
             var model = _productRepository.Find(id);
-            int categoryId = model.Id;
+            int categoryId = model.ProductCategoryId;
             model.ProductCategory = _productCategoryRepository.Find(categoryId);
             return View(model);
         }
