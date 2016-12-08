@@ -153,37 +153,37 @@ namespace Kundbolaget.Migrations
                 {
                     Id = 1, ProductCategoryId = 1, Name = "117 Grythyttan", AlcoholPercentage = 5.8m,
                     Price = 15, Description = "Humlearomatisk smak med tydlig beska, inslag av aprikos, blodgrapefrukt, gräddkola, örter och knäckebröd.",
-                    ProductNumber = 88093, AccountingCode = 00100, VatCode = 02, Volume = 330
+                    ProductNumber = 88093, AccountingCode = 00100, VatCode = 02, Volume = 330, PackageAmount = 20
                 },
                 new Product()
                 {
                     Id = 2, ProductCategoryId = 1, Name = "15 Minutes of Flame", AlcoholPercentage = 5.5m,
                     Price = 25, Description = "Fruktig smak med tydlig beska, inslag av torkad frukt, knäckebröd, honung, kryddor och mandarin.",
-                    ProductNumber = 31027, AccountingCode = 00100, VatCode = 02, Volume = 330
+                    ProductNumber = 31027, AccountingCode = 00100, VatCode = 02, Volume = 330, PackageAmount = 20
                 },
                 new Product()
                 {
                     Id = 3, ProductCategoryId = 2, Name = "Ahlafors ", AlcoholPercentage = 4.5m,
                     Price = 12, Description = "Kryddig, fruktig, söt smak med tydlig karaktär av ingefära, inslag av päron och citron.",
-                    ProductNumber = 88093, AccountingCode = 00200, VatCode = 01, Volume = 330
+                    ProductNumber = 88093, AccountingCode = 00200, VatCode = 01, Volume = 330, PackageAmount = 20
                 },
                 new Product()
                 {
                     Id = 4, ProductCategoryId = 2, Name = "Alice Wilson ", AlcoholPercentage = 4.5m,
                     Price = 15, Description = "Fruktig smak med tydlig karaktär av päron, inslag av citrus och vanilj.",
-                    ProductNumber =  33001, AccountingCode = 00200, VatCode = 01, Volume = 330
+                    ProductNumber =  33001, AccountingCode = 00200, VatCode = 01, Volume = 330, PackageAmount = 20
                 },
                 new Product()
                 {
                     Id = 5, ProductCategoryId = 3, Name = "Alvarinho Curtimenta", AlcoholPercentage = 12.5m,
                     Price = 215, Description = "Fruktig, aromatisk smak med inslag av päron, vita blommor, honung, krusbär, örter, persika och ananas.",
-                    ProductNumber = 92504, AccountingCode = 00300, VatCode = 03, Volume = 750
+                    ProductNumber = 92504, AccountingCode = 00300, VatCode = 03, Volume = 750, PackageAmount = 15
                 },
                 new Product()
                 {
                     Id = 6, ProductCategoryId = 4, Name = "Amarone ", AlcoholPercentage = 15.8m,
                     Price = 75, Description = "Kryddigt, smakrikt vin med fatkaraktär, inslag av russin, plommon, choklad, pinjenötter, pomerans och vanilj.",
-                    ProductNumber = 12343, AccountingCode = 00300, VatCode = 03, Volume = 750
+                    ProductNumber = 12343, AccountingCode = 00300, VatCode = 03, Volume = 750, PackageAmount = 10
                 },
             };
             context.Products.AddOrUpdate(products);
