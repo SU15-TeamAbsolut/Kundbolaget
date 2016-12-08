@@ -191,6 +191,10 @@
     <Compile Include="Migrations\201612081433435_AddedOrderAndOrderRowModels.Designer.cs">
       <DependentUpon>201612081433435_AddedOrderAndOrderRowModels.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201612081823544_AddedFieldPackageAmount.cs" />
+    <Compile Include="Migrations\201612081823544_AddedFieldPackageAmount.Designer.cs">
+      <DependentUpon>201612081823544_AddedFieldPackageAmount.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\EntityModels\Address.cs" />
     <Compile Include="Models\EntityModels\Contact.cs" />
@@ -269,6 +273,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201612081433435_AddedOrderAndOrderRowModels.resx">
       <DependentUpon>201612081433435_AddedOrderAndOrderRowModels.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201612081823544_AddedFieldPackageAmount.resx">
+      <DependentUpon>201612081823544_AddedFieldPackageAmount.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
