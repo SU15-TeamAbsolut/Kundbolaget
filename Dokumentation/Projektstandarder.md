@@ -10,7 +10,7 @@ Projektets DoD definieras i detta dokument, och skall finnas som ett kort i
 Done-kolumnen på vår scrum board som en referens.
 -   Alla tester ska fungera
 -   Ändringar i databasen ska ha migrationer skapade och incheckade
--   Code Review av user stories ska vara utförd
+-   Code Review av user stories ska vara utförd på de stories taggade som `review`
 -   Humangränssnittet ska vara testat
 
 ## Versionering av projektet
