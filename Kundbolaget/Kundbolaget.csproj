@@ -195,6 +195,10 @@
     <Compile Include="Migrations\201612081823544_AddedFieldPackageAmount.Designer.cs">
       <DependentUpon>201612081823544_AddedFieldPackageAmount.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201612081947258_ReseedTablesTo10k.cs" />
+    <Compile Include="Migrations\201612081947258_ReseedTablesTo10k.Designer.cs">
+      <DependentUpon>201612081947258_ReseedTablesTo10k.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\EntityModels\Address.cs" />
     <Compile Include="Models\EntityModels\Contact.cs" />
@@ -276,6 +280,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201612081823544_AddedFieldPackageAmount.resx">
       <DependentUpon>201612081823544_AddedFieldPackageAmount.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201612081947258_ReseedTablesTo10k.resx">
+      <DependentUpon>201612081947258_ReseedTablesTo10k.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
