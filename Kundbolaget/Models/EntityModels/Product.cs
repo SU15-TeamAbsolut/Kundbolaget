@@ -23,6 +23,9 @@ namespace Kundbolaget.Models.EntityModels
         public int Volume { get; set; }
 
         [Required]
+        public int PackageAmount { get; set; }
+
+        [Required]
         public decimal AlcoholPercentage { get; set; }
 
         [Required]

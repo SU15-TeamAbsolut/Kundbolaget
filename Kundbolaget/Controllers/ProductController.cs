@@ -28,7 +28,7 @@ namespace Kundbolaget.Controllers
             {
                 Products = _productRepository.GetAll(),
                 ProductCategories = _productCategoryRepository.GetAll(),
-                ProductCategory = new ProductCategory()
+                
             };
             
             return View(viewModel);
@@ -120,6 +120,8 @@ namespace Kundbolaget.Controllers
         public ActionResult Details(int id)
         {
             var model = _productRepository.Find(id);
+            int categoryId = model.Id;
+            model.ProductCategory = _productCategoryRepository.Find(categoryId);
             return View(model);
         }
 
