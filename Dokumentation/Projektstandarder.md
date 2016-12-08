@@ -69,5 +69,10 @@ snabbt kan ta del av ändringarna i databasen.
 ## Demonstrationsmiljö
 För demonstrationssyften används `demo`-grenen i vårt git-repository.
 
+## Code Review
+Om en utvecklare upplever att en viss story behöver en utförligare genomgång
+under vår sprint retrospective, ska denna story taggas med `review` i Waffle
+för att flagga detta.
+
 [gitflow]:https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow/
 [semver]:http://semver.org/lang/sv/
