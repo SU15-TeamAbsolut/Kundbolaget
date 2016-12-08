@@ -14,5 +14,7 @@ namespace Kundbolaget.EntityFramework.Contexts
         public DbSet<Country> Countries { get; set; }
         public DbSet<Address> Addresses { get; set; }
         public DbSet<Contact> Contacts { get; set; }
+        public DbSet<Order> Orders { get; set; }
+        public DbSet<OrderRow> OrderRows { get; set; }
     }
 }
