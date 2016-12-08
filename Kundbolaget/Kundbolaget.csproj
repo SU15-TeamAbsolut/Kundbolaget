@@ -167,6 +167,7 @@
     <Compile Include="EntityFramework\Repositories\DataRepository.cs" />
     <Compile Include="EntityFramework\Repositories\IRepository.cs" />
     <Compile Include="EntityFramework\Repositories\ProductRepository.cs" />
+    <Compile Include="Enums\OrderStatus.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -186,12 +187,18 @@
     <Compile Include="Migrations\201612071000118_AddedContactModel.Designer.cs">
       <DependentUpon>201612071000118_AddedContactModel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201612081418026_AddedOrderAndOrderRowModels.cs" />
+    <Compile Include="Migrations\201612081418026_AddedOrderAndOrderRowModels.Designer.cs">
+      <DependentUpon>201612081418026_AddedOrderAndOrderRowModels.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\EntityModels\Address.cs" />
     <Compile Include="Models\EntityModels\Contact.cs" />
     <Compile Include="Models\EntityModels\Country.cs" />
     <Compile Include="Models\EntityModels\Customer.cs" />
     <Compile Include="Models\EntityModels\AlcoholLicense.cs" />
+    <Compile Include="Models\EntityModels\Order.cs" />
+    <Compile Include="Models\EntityModels\OrderRow.cs" />
     <Compile Include="Models\EntityModels\ProductCategory.cs" />
     <Compile Include="Models\EntityModels\Product.cs" />
     <Compile Include="Models\EntityModels\Supplier.cs" />
@@ -259,6 +266,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201612071000118_AddedContactModel.resx">
       <DependentUpon>201612071000118_AddedContactModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201612081418026_AddedOrderAndOrderRowModels.resx">
+      <DependentUpon>201612081418026_AddedOrderAndOrderRowModels.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
