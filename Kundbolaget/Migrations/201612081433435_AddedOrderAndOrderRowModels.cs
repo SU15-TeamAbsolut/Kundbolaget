@@ -15,7 +15,7 @@ namespace Kundbolaget.Migrations
                         OrderId = c.Int(nullable: false),
                         AmountOrdered = c.Int(nullable: false),
                         ProductId = c.Int(nullable: false),
-                        Price = c.Single(nullable: false),
+                        Price = c.Decimal(nullable: false, precision: 18, scale: 2),
                         AmountShipped = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.Id)

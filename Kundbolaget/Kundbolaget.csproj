@@ -187,9 +187,9 @@
     <Compile Include="Migrations\201612071000118_AddedContactModel.Designer.cs">
       <DependentUpon>201612071000118_AddedContactModel.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201612081418026_AddedOrderAndOrderRowModels.cs" />
-    <Compile Include="Migrations\201612081418026_AddedOrderAndOrderRowModels.Designer.cs">
-      <DependentUpon>201612081418026_AddedOrderAndOrderRowModels.cs</DependentUpon>
+    <Compile Include="Migrations\201612081433435_AddedOrderAndOrderRowModels.cs" />
+    <Compile Include="Migrations\201612081433435_AddedOrderAndOrderRowModels.Designer.cs">
+      <DependentUpon>201612081433435_AddedOrderAndOrderRowModels.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\EntityModels\Address.cs" />
@@ -267,8 +267,8 @@
     <EmbeddedResource Include="Migrations\201612071000118_AddedContactModel.resx">
       <DependentUpon>201612071000118_AddedContactModel.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201612081418026_AddedOrderAndOrderRowModels.resx">
-      <DependentUpon>201612081418026_AddedOrderAndOrderRowModels.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201612081433435_AddedOrderAndOrderRowModels.resx">
+      <DependentUpon>201612081433435_AddedOrderAndOrderRowModels.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

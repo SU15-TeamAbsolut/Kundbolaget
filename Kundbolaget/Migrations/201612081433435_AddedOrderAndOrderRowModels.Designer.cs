@@ -13,7 +13,7 @@ namespace Kundbolaget.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201612081418026_AddedOrderAndOrderRowModels"; }
+            get { return "201612081433435_AddedOrderAndOrderRowModels"; }
         }
         
         string IMigrationMetadata.Source
