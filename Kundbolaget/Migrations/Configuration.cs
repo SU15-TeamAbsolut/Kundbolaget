@@ -99,19 +99,22 @@ namespace Kundbolaget.Migrations
                 {
                     Id = 1, Name = "Ica", OrganizationNumber = 5560210261,
                     CreditLine = 150000, PaymentTerm = 30,
-                    InvoiceAddressId = 1, VisitingAddressId = 1
+                    InvoiceAddressId = 1, VisitingAddressId = 1,
+                    AlcoholLicenseId = 1 
                 },
                 new Customer
                 {
                     Id = 2, Name = "Coop",
                     CreditLine = 250000, PaymentTerm = 90,
-                    InvoiceAddressId = 1, VisitingAddressId = 1
+                    InvoiceAddressId = 1, VisitingAddressId = 1,
+                    AlcoholLicenseId = 2
                 },
                 new Customer
                 {
                     Id= 3, Name = "Systembolaget",
                     CreditLine = 50000, PaymentTerm = 30,
-                    InvoiceAddressId = 1, VisitingAddressId = 1
+                    InvoiceAddressId = 1, VisitingAddressId = 1,
+                    AlcoholLicenseId = 3
                 }
             };
 
@@ -123,11 +126,11 @@ namespace Kundbolaget.Migrations
             AlcoholLicense[] alcoholLicenses =
             {
                 new AlcoholLicense {Id = 1, StartDate = DateTime.Today, EndDate = new DateTime(2020,12,24),
-                    AddressId = 1, CustomerId = 1, IsValid = true},
+                    IsValid = true},
                 new AlcoholLicense {Id = 2, StartDate = DateTime.Today, EndDate = new DateTime(2021,12,24),
-                    AddressId = 1, CustomerId = 1, IsValid = true},
+                    IsValid = true},
                 new AlcoholLicense {Id = 3, StartDate = DateTime.Today, EndDate = new DateTime(2022,12,24),
-                    AddressId = 1, CustomerId = 1, IsValid = true},
+                    IsValid = true},
             };
 
             context.AlcoholLicenses.AddOrUpdate(alcoholLicenses);
