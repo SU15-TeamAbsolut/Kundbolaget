@@ -6,7 +6,7 @@ för mottagning av en order från en kund.
 
 Filen skall innehålla:
  - `CustomerId` (integer) -- kundens id
- - `DeliveryDate` (date-time) -- önskat leveransdatum, i [kombinerat UTC-format][utc-time], exempel `2016-12-09T15:07:31+00:00`
+ - `DeliveryDate` (date-time) -- önskat leveransdatum, i [kombinerat UTC-format][utc-time], exempel `2016-12-09T15:07:31+00:00`, enligt [ISO 8601][iso8601].
  - `DeliveryAddressID` (integer) -- leveransadressens id
  - `OrderRows` (array) -- JSON-objekt med orderrader
 
@@ -15,6 +15,7 @@ Filen skall innehålla:
  - `Amount` (integer) -- antal som skall beställas
 
 [utc-time]:https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations
+[iso8601]:https://en.wikipedia.org/wiki/ISO_8601
 
 ### Exempelfil
 
