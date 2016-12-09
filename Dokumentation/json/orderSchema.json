@@ -1,0 +1,51 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "title": "JsonOrder",
+  "additionalProperties": false,
+  "required": [
+    "CustomerId",
+    "DeliveryDate",
+    "DeliveryAddressId",
+    "OrderRows"
+  ],
+  "properties": {
+    "CustomerId": {
+      "type": "integer"
+    },
+    "DeliveryDate": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "DeliveryAddressId": {
+      "type": "integer"
+    },
+    "OrderRows": {
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "$ref": "#/definitions/JsonOrderRow"
+      }
+    }
+  },
+  "definitions": {
+    "JsonOrderRow": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "ArticleId",
+        "Amount"
+      ],
+      "properties": {
+        "ArticleId": {
+          "type": "integer"
+        },
+        "Amount": {
+          "type": "integer"
+        }
+      }
+    }
+  }
+}
