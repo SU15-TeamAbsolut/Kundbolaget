@@ -6,7 +6,7 @@ för mottagning av en order från en kund.
 
 Filen skall innehålla:
  - `CustomerId` (integer) -- kundens id
- - `DeliveryDate` (date-time) -- önskat leveransdatum
+ - `DeliveryDate` (date-time) -- önskat leveransdatum, i kombinerat UTC-format, exempel `2016-12-09T15:07:31+00:00`
  - `DeliveryAddressID` (integer) -- leveransadressens id
  - `OrderRows` (array) -- JSON-objekt med orderrader
 
