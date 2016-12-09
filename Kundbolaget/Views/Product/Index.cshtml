@@ -4,21 +4,11 @@
     ViewBag.Title = "Index";
 }
 <div class="ProductMainWindow" style="padding-left: 15px;">
-<h2></h2>
-
-
-
+<br/>
 @using (Html.BeginForm("Index", "Product"))
 {
-    <Div class="form-group" style= "width: 20%" >
-      
-        @Html.DropDownListFor(m => m.ProductCategory.Id, new SelectList(Model.ProductCategories, "Id", "Name"), "Alla kategorier", new {@class = "form-control"})
-
-    </div>
-    <div class="form-group">
-    <div >
-        <input type="submit" value="Välj" class="btn btn-primary"/>
-    </div>
+        <Div class="form-group" style= "width: 10%; padding-bottom: 10px" >
+        @Html.DropDownListFor(m => m.ProductCategory.Id, new SelectList(Model.ProductCategories, "Id", "Name"), "Alla kategorier", new {onchange = @"form-submit();", @class = "form-control"})
         </div>
  }
 
