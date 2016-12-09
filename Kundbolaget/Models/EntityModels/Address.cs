@@ -18,5 +18,10 @@ namespace Kundbolaget.Models.EntityModels
         [Required]
         public int CountryId { get; set; }
         public virtual Country Country { get; set; }
+
+        public override string ToString()
+        {
+            return $"{Street}, {ZipNumber}, {City}";
+        }
     }
 }

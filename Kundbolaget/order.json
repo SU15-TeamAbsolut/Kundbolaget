@@ -1,0 +1,19 @@
+{
+  "CustomerId":-1,
+  "DeliveryDate":"2016-12-13T22:31:21.7282317+01:00",
+  "DeliveryAddressId":147,
+  "OrderRows":[
+    {
+      "ArticleId":15626,
+      "Amount":28
+    },
+    {
+      "ArticleId":25626,
+      "Amount":10
+    },
+    {
+      "ArticleId":23577,
+      "Amount":150
+    }
+  ]
+}
