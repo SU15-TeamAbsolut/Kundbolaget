@@ -44,6 +44,7 @@ namespace Kundbolaget.Controllers
                 {
                     Customer = _customerRepository.Find(orderData.CustomerId),
                     ShippingAddress = _addressRepository.Find(orderData.DeliveryAddressId),
+                    DesiredDeliveryDate = orderData.DeliveryDate,
                     OrderRows = new List<OrderRow>()
                 },
             };
