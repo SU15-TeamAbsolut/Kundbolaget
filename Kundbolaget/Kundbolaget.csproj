@@ -199,6 +199,10 @@
     <Compile Include="Migrations\201612081947258_ReseedTablesTo10k.Designer.cs">
       <DependentUpon>201612081947258_ReseedTablesTo10k.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201612091424264_UpdatedAlcholLicenseRelations.cs" />
+    <Compile Include="Migrations\201612091424264_UpdatedAlcholLicenseRelations.Designer.cs">
+      <DependentUpon>201612091424264_UpdatedAlcholLicenseRelations.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\EntityModels\Address.cs" />
     <Compile Include="Models\EntityModels\Contact.cs" />
@@ -284,6 +288,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201612081947258_ReseedTablesTo10k.resx">
       <DependentUpon>201612081947258_ReseedTablesTo10k.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201612091424264_UpdatedAlcholLicenseRelations.resx">
+      <DependentUpon>201612091424264_UpdatedAlcholLicenseRelations.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
