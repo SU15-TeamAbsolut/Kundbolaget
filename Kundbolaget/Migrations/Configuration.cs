@@ -44,15 +44,54 @@ namespace Kundbolaget.Migrations
 
         private void SeedAddresses(DataContext context)
         {
-            // Fetch Sweden
-            var country = context.Countries.Find(1);
-
+            
             Address[] addresses =
             {
+                #region AddressRegion
+                
                 new Address { Id = 1, Street = "Stora Gatan 1", City = "Stockholm",
-                    ZipNumber = "12301", Country = country }
+                    ZipNumber = "12301", CountryId = 1 },
+                new Address { Id = 2, Street = "Strandgatan 20", City = "Stockholm",
+                    ZipNumber = "12301", CountryId = 1 },
+                new Address { Id = 3, Street = "Västraskogsvägen 65", City = "Stockholm",
+                    ZipNumber = "25630", CountryId = 1 },
+                new Address { Id = 4, Street = "Blygatan 34", City = "Stockholm",
+                    ZipNumber = "65307", CountryId = 1 },
+                new Address { Id = 5, Street = "Sågspånsgatan 43", City = "Stockholm",
+                    ZipNumber = "25630", CountryId = 1 },
+                new Address { Id = 6, Street = "Pellesvanslösgränd 32", City = "Uppsala",
+                    ZipNumber = "33561", CountryId = 1 },
+                new Address { Id = 7, Street = "Spårvagnsplan 48", City = "Stockholm",
+                    ZipNumber = "44568", CountryId = 1 },
+                new Address { Id = 8, Street = "Glödbäddsvägen 26", City = "Stockholm",
+                    ZipNumber = "25630", CountryId = 1 },
+                new Address { Id = 9, Street = "Nya kvarngatan 77", City = "Stockholm",
+                    ZipNumber = "21550", CountryId = 1 },
+                new Address { Id = 10, Street = "Handelsgatan 22", City = "Malmö",
+                    ZipNumber = "44630", CountryId = 1 },
+                new Address { Id = 11, Street = "Strandgatan 20", City = "Malmö",
+                    ZipNumber = "44630", CountryId = 1 },
+                new Address { Id = 12, Street = "Jesusgatan 11", City = "Malmö",
+                    ZipNumber = "44630", CountryId = 1 },
+                new Address { Id = 13, Street = "Stenskottarvägen 5", City = "Göteborg",
+                    ZipNumber = "21213", CountryId = 1 },
+                new Address { Id = 14, Street = "Lövblåsargatan 88", City = "Göteborg",
+                    ZipNumber = "21213", CountryId = 1 },
+                new Address { Id = 15, Street = "Hattmakarvägen 5", City = "Göteborg",
+                    ZipNumber = "21213", CountryId = 1 },
+                new Address { Id = 16, Street = "Harskuttsgatan 13", City = "Göteborg",
+                    ZipNumber = "21218", CountryId = 1 },
+                new Address { Id = 17, Street = "Asklundsvägen 24", City = "Göteborg",
+                    ZipNumber = "21218", CountryId = 1 },
+                new Address { Id = 18, Street = "Varggatan 66", City = "Örebro",
+                    ZipNumber = "85036", CountryId = 1 },
+                new Address { Id = 19, Street = "Bäverjagargatan 64", City = "Lindköping",
+                    ZipNumber = "28779", CountryId = 1 },
+                new Address { Id = 20, Street = "Giraffstigen 64", City = "Sundsvall",
+                    ZipNumber = "44896", CountryId = 1 },
+                #endregion
             };
-
+            
             context.Addresses.AddOrUpdate(addresses);
         }
 
