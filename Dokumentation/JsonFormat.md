@@ -8,7 +8,7 @@ finns tillgängligt för validering på kundens sida innan orderfilen skickas.
 
 Filen skall innehålla:
  - `CustomerId` (integer) -- kundens id
- - `DeliveryDate` (date-time) -- önskat leveransdatum, i [kombinerat UTC-format][utc-time], exempel `2016-12-09T15:07:31+00:00`, enligt [ISO 8601][iso8601].
+ - `DeliveryDate` (date-time) -- önskat leveransdatum, i [kombinerat UTC-format][utc-time], enligt [ISO 8601][iso8601].
  - `DeliveryAddressID` (integer) -- leveransadressens id
  - `OrderRows` (array av orderrader) -- JSON-objekt med orderrader
 
