@@ -63,27 +63,27 @@ namespace Kundbolaget.Migrations
             {
                 new Supplier
                 {
-                    Id = 1, Name = "Bengts Bärs", Email = "bengt@example.net",
+                    Id = 1, Name = "Gotlands Bryggeri AB", Email = "Gotland@example.net",
                     AddressId = 1
                 },
                 new Supplier
                 {
-                    Id = 2, Name = "Vlads Vodka", Email = "vlad@example.net",
+                    Id = 2, Name = "The Absolut Company AB", Email = "Absolut@example.net",
                     AddressId = 1
                 },
                 new Supplier
                 {
-                    Id = 3, Name = "Cissis Cider", Email = "cissi@example.net",
+                    Id = 3, Name = "Mackmyra Svensk Whisky", Email = "Mackmyra@example.net",
                     AddressId = 1
                 },
                 new Supplier
                 {
-                    Id = 4, Name = "Pontus Punsch", Email = "pontus@example.net",
+                    Id = 4, Name = "Åbro Wines (AB Åbro Bryggeri)", Email = "Åbro@example.net",
                     AddressId = 1
                 },
                 new Supplier
                 {
-                    Id = 5, Name = "Håkans Hembränt", Email = "håkan@example.net",
+                    Id = 5, Name = "Arvid Nordquist Vin och Sprithandel", Email = "Nordquist@example.net",
                     AddressId = 1
                 },
             };
@@ -144,7 +144,13 @@ namespace Kundbolaget.Migrations
               new ProductCategory() {Id=2, Name = "Cider"},
               new ProductCategory() {Id=3, Name = "Vitt vin"},
               new ProductCategory() {Id=4, Name = "Rött vin"},
-              new ProductCategory() {Id=5, Name = "Sprit"},
+              new ProductCategory() {Id=5, Name = "Rom"},
+              new ProductCategory() {Id=6, Name = "Whisky"},
+              new ProductCategory() {Id=7, Name = "Gin"},
+              new ProductCategory() {Id=8, Name = "Sherry"},
+              new ProductCategory() {Id=9, Name = "Tequila"},
+              new ProductCategory() {Id=10, Name = "Glögg"},
+
             };
             context.ProductCategories.AddOrUpdate(productCategories);
         }
