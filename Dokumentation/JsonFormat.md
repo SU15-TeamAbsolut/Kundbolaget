@@ -1,8 +1,10 @@
 # Formattering för JSON-filer
 
 ## Order från kund
-[JSON Schema](https://github.com/SU15-TeamAbsolut/Kundbolaget/blob/develop/Dokumentation/json/orderSchema.json)
-för mottagning av en order från en kund.
+Endast giltig, korrekt formatterad JSON accepteras för mottagning av orderfiler från kund. Ett [JSON Schema för formatet](https://github.com/SU15-TeamAbsolut/Kundbolaget/blob/develop/Dokumentation/json/orderSchema.json)
+finns tillgängligt för validering på kundens sida innan orderfilen skickas.
+
+### Filformat
 
 Filen skall innehålla:
  - `CustomerId` (integer) -- kundens id
@@ -17,7 +19,7 @@ Filen skall innehålla:
 [utc-time]:https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations
 [iso8601]:https://en.wikipedia.org/wiki/ISO_8601
 
-### Exempelfil
+### Exempel på orderfil
 
 ``` json
 {
