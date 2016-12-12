@@ -1,6 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Web.Mvc;
 using Kundbolaget.EntityFramework.Repositories;
+using Kundbolaget.Enums;
 using Kundbolaget.Models.EntityModels;
 using Kundbolaget.Models.JsonModels;
 using Kundbolaget.Models.ViewModels;
@@ -12,17 +14,10 @@ namespace Kundbolaget.Controllers
 {
     public class OrderValidationController : Controller
     {
-        private readonly CustomerRepository _customerRepository;
-        private readonly IRepository<Address> _addressRepository;
-        private readonly ProductRepository _productRepository;
-        private readonly IRepository<Order> _orderRepository;
-
-        public OrderValidationController()
-        {
-            _customerRepository = new CustomerRepository();
-            _addressRepository = new DataRepository<Address>();
-            _productRepository = new ProductRepository();
-        }
+        private readonly IRepository<Customer> customerRepository = new CustomerRepository();
+        private readonly IRepository<Address> addressRepository = new DataRepository<Address>();
+        private readonly IRepository<Product> productRepository = new ProductRepository();
+        private readonly IRepository<Order> orderRepository = new DataRepository<Order>();
 
         // GET: OrderValidation
         public ActionResult Index()
@@ -40,10 +35,13 @@ namespace Kundbolaget.Controllers
             {
                 Json = orderJson,
                 ValidationErrors = errors,
+                OrderIsValid = true,
                 Order = new Order
                 {
-                    Customer = _customerRepository.Find(orderData.CustomerId),
-                    ShippingAddress = _addressRepository.Find(orderData.DeliveryAddressId),
+                    Customer = customerRepository.Find(orderData.CustomerId),
+                    CustomerId = orderData.CustomerId,
+                    ShippingAddress = addressRepository.Find(orderData.DeliveryAddressId),
+                    ShippingAddressId = orderData.DeliveryAddressId,
                     DesiredDeliveryDate = orderData.DeliveryDate,
                     OrderRows = new List<OrderRow>()
                 },
@@ -60,7 +58,7 @@ namespace Kundbolaget.Controllers
             // Check if products exist
             foreach (var fileOrderRow in orderData.OrderRows)
             {
-                var product = _productRepository.Find(fileOrderRow.ArticleId);
+                var product = productRepository.Find(fileOrderRow.ArticleId);
                 if (product != null)
                 {
                     var orderRow = new OrderRow
@@ -83,9 +81,23 @@ namespace Kundbolaget.Controllers
         }
 
         [HttpPost]
-        public ActionResult PlaceOrder(Order order)
+        public ActionResult PlaceOrder(JsonOrderViewModel orderModel)
         {
-            _orderRepository.Create(order);
+            Order order = orderModel.Order;
+
+            // Loop through order rows, copy price from products
+            foreach (var row in order.OrderRows)
+            {
+                row.Order = order;
+                row.Price = productRepository.Find(row.ProductId).Price;
+            }
+
+            // Set order registration date, status
+            order.OrderStatus = OrderStatus.Registered;
+            order.OrderPlaced = DateTime.Now;
+
+            // shipit.jpg
+            orderRepository.Create(order);
 
             return View(order);
         }
