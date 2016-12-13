@@ -83,7 +83,13 @@ namespace Kundbolaget.Controllers
         [HttpPost]
         public ActionResult PlaceOrder(JsonOrderViewModel orderModel)
         {
-            Order order = orderModel.Order;
+            var order = orderModel.Order;
+
+            // fetch customer data for the view
+            if (order.Customer == null)
+            {
+                order.Customer = customerRepository.Find(order.CustomerId);
+            }
 
             // Loop through order rows, copy price from products
             foreach (var row in order.OrderRows)
