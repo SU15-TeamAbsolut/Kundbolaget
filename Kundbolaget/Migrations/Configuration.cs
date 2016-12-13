@@ -89,6 +89,8 @@ namespace Kundbolaget.Migrations
                     ZipNumber = "28779", CountryId = 1 },
                 new Address { Id = 20, Street = "Giraffstigen 64", City = "Sundsvall",
                     ZipNumber = "44896", CountryId = 1 },
+                new Address { Id = 21, Street = "Älgstigen 64", City = "Uppsala",
+                    ZipNumber = "45953", CountryId = 1 },
                 #endregion
             };
             
@@ -108,22 +110,22 @@ namespace Kundbolaget.Migrations
                 new Supplier
                 {
                     Id = 2, Name = "The Absolut Company AB", Email = "Absolut@example.net",
-                    AddressId = 1
+                    AddressId = 2
                 },
                 new Supplier
                 {
                     Id = 3, Name = "Mackmyra Svensk Whisky", Email = "Mackmyra@example.net",
-                    AddressId = 1
+                    AddressId = 3
                 },
                 new Supplier
                 {
                     Id = 4, Name = "Åbro Wines (AB Åbro Bryggeri)", Email = "Åbro@example.net",
-                    AddressId = 1
+                    AddressId = 4
                 },
                 new Supplier
                 {
                     Id = 5, Name = "Arvid Nordquist Vin och Sprithandel", Email = "Nordquist@example.net",
-                    AddressId = 1
+                    AddressId = 5
                 },
             };
 
@@ -138,21 +140,21 @@ namespace Kundbolaget.Migrations
                 {
                     Id = 1, Name = "Ica", OrganizationNumber = 5560210261,
                     CreditLine = 150000, PaymentTerm = 30,
-                    InvoiceAddressId = 1, VisitingAddressId = 1,
+                    InvoiceAddressId = 9, VisitingAddressId = 6,
                     AlcoholLicenseId = 1 
                 },
                 new Customer
                 {
                     Id = 2, Name = "Coop",
                     CreditLine = 250000, PaymentTerm = 90,
-                    InvoiceAddressId = 1, VisitingAddressId = 1,
+                    InvoiceAddressId = 10, VisitingAddressId = 7,
                     AlcoholLicenseId = 2
                 },
                 new Customer
                 {
                     Id= 3, Name = "Systembolaget",
                     CreditLine = 50000, PaymentTerm = 30,
-                    InvoiceAddressId = 1, VisitingAddressId = 1,
+                    InvoiceAddressId = 11, VisitingAddressId = 8,
                     AlcoholLicenseId = 3
                 }
             };
@@ -426,11 +428,11 @@ namespace Kundbolaget.Migrations
         {
             Contact[] contacts =
             {
-                new Contact() {Id = 1, AdressId = 1, Email = "Göran.Eriksson@gmail.com", Name = "Göran Eriksson", PhoneNumber = "0221-34600"},
-                new Contact() {Id = 2, AdressId = 1, Email = "Lisa.Nilsson@gmail.com", Name = "Lisa Nilsson", PhoneNumber = "0221-34500"},
-                new Contact() {Id = 3, AdressId = 1, Email = "Henrik.Storm@gmail.com", Name = "Henrik Storm", PhoneNumber = "0589-18105"},
-                new Contact() {Id = 4, AdressId = 1, Email = "Greta.Andersson@gmail.com", Name = "Greta Andersson", PhoneNumber = "08-777850"},
-                new Contact() {Id = 5, AdressId = 1, Email = "Eva.Dahl@gmail.com", Name = "Eva Dahl", PhoneNumber = "0221-34600"},
+                new Contact() {Id = 1, AdressId = 12, Email = "Göran.Eriksson@gmail.com", Name = "Göran Eriksson", PhoneNumber = "0221-34600"},
+                new Contact() {Id = 2, AdressId = 13, Email = "Lisa.Nilsson@gmail.com", Name = "Lisa Nilsson", PhoneNumber = "0221-34500"},
+                new Contact() {Id = 3, AdressId = 14, Email = "Henrik.Storm@gmail.com", Name = "Henrik Storm", PhoneNumber = "0589-18105"},
+                new Contact() {Id = 4, AdressId = 15, Email = "Greta.Andersson@gmail.com", Name = "Greta Andersson", PhoneNumber = "08-777850"},
+                new Contact() {Id = 5, AdressId = 16, Email = "Eva.Dahl@gmail.com", Name = "Eva Dahl", PhoneNumber = "0221-34600"},
             };
             context.Contacts.AddOrUpdate(contacts);
         }
@@ -439,11 +441,11 @@ namespace Kundbolaget.Migrations
         {
             Warehouse[] warehouises =
             {
-                new Warehouse { Id = 1, Name = "Stockholms lager", AddressId = 1, ContactId = 1, IsActive = true},
-                new Warehouse { Id = 2, Name = "Göteborgs lager", AddressId = 1, ContactId = 2, IsActive = true},
-                new Warehouse { Id = 3, Name = "Malmös lager", AddressId = 1, ContactId = 3, IsActive = true},
-                new Warehouse { Id = 4, Name = "Faluns lager", AddressId = 1, ContactId = 4, IsActive = true},
-                new Warehouse { Id = 5, Name = "Uppsalas lager", AddressId = 1, ContactId = 5, IsActive = true}
+                new Warehouse { Id = 1, Name = "Stockholms lager", AddressId = 17, ContactId = 1, IsActive = true},
+                new Warehouse { Id = 2, Name = "Göteborgs lager", AddressId = 18, ContactId = 2, IsActive = true},
+                new Warehouse { Id = 3, Name = "Malmös lager", AddressId = 19, ContactId = 3, IsActive = true},
+                new Warehouse { Id = 4, Name = "Faluns lager", AddressId = 20, ContactId = 4, IsActive = true},
+                new Warehouse { Id = 5, Name = "Uppsalas lager", AddressId = 21, ContactId = 5, IsActive = true}
             };
             context.Warehouses.AddOrUpdate(warehouises);
         }
