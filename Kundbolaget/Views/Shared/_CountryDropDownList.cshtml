@@ -1,4 +1,6 @@
-﻿@using Kundbolaget.EntityFramework.Contexts
+﻿@model Kundbolaget.Models.EntityModels.Address
+
+@using Kundbolaget.EntityFramework.Contexts
 @using Kundbolaget.EntityFramework.Repositories
 @using Kundbolaget.Models.EntityModels
 @using Kundbolaget.Models.ViewModels
@@ -14,6 +16,6 @@
 
 
 <Div class="form-group" style="width: 10%; padding-bottom: 10px">
-    @Html.DropDownListFor(m => countryModel.Address.Country.Id, new SelectList(countryModel.Countries, "Id", "Name"), "Välj land",new {@class = "form-control" })
-    @Html.HiddenFor(m => countryModel.Address.Id)
+    @Html.DropDownListFor(m => m.CountryId, new SelectList(countryModel.Countries, "Id", "Name"), "Välj land",new {@class = "form-control" })
+    @Html.HiddenFor(m => m.CountryId)
 </Div>

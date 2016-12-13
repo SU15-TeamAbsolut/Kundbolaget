@@ -2,22 +2,24 @@
 using Kundbolaget.Models.EntityModels;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Kundbolaget.EntityFramework.Contexts;
 using Kundbolaget.Models.ViewModels;
 
 namespace Kundbolaget.Controllers
 {
     public class WarehouseController : Controller
     {
-        private readonly IRepository<Warehouse> _warehouseRepository;
+        private readonly WarehouseRepository _warehouseRepository;
         private readonly IRepository<Address> _addressRepository;
         private readonly IRepository<Country> _countryRepository;
 
         public WarehouseController()
         {
-            _warehouseRepository = new DataRepository<Warehouse>();
+            _warehouseRepository = new WarehouseRepository();
             _addressRepository = new DataRepository<Address>();
             _countryRepository = new DataRepository<Country>();
         }
@@ -66,8 +68,9 @@ namespace Kundbolaget.Controllers
 
         public ActionResult Edit(int id)
         {
-            var model = _warehouseRepository.Find(id);
-            model.Address = _addressRepository.Find(model.AddressId);
+
+            var model = _warehouseRepository.FindWarehouse(id);
+
             return View(model);
         }
 
@@ -81,13 +84,13 @@ namespace Kundbolaget.Controllers
             adressModel.Id = warehouseModel.AddressId;
             warehouseModel.Address = adressModel;
             _warehouseRepository.Update(warehouseModel);
+            _addressRepository.Update(adressModel);
             return RedirectToAction("Index");
         }
 
         public ActionResult Details(int id)
         {
-            var model = _warehouseRepository.Find(id);
-            model.Address = _addressRepository.Find(model.AddressId);
+            var model = _warehouseRepository.FindWarehouse(id);
             model.Address.Country = _countryRepository.Find(model.Address.CountryId);
             return View(model);
         }
