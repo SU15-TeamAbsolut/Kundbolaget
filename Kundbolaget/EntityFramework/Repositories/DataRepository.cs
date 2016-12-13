@@ -8,7 +8,7 @@ namespace Kundbolaget.EntityFramework.Repositories
 {
     public class DataRepository<T> : IRepository<T> where T : class
     {
-        public T Find(int id)
+        public virtual T Find(int id)
         {
             using (var db = new DataContext())
             {

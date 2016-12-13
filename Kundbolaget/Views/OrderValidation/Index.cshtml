@@ -1,0 +1,61 @@
+﻿@model Kundbolaget.Models.ViewModels.JsonOrderViewModel
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+Antal valideringsfel i JSON: @Model.ValidationErrors.Count
+@if (Model.ValidationErrors.Count > 0)
+{
+  foreach (var error in Model.ValidationErrors)
+  {
+    @error.Kind
+  }
+}
+<h2>Ny order</h2>
+
+<table class="table">
+  <tr>
+    <th colspan="2">Artikel</th>
+    <th>Antal</th>
+    <th>Pris styck</th>
+    <th>Totalt</th>
+  </tr>
+@foreach (var orderRow in Model.Order.OrderRows)
+{
+  <tr>
+    <td>@orderRow.Product.Id</td>
+    <td>@orderRow.Product.Name</td>
+    <td>@orderRow.AmountOrdered</td>
+    <td>@orderRow.Product.Price</td>
+    <td>@(orderRow.Product.Price * orderRow.AmountOrdered)</td>
+  </tr>  
+}
+</table>
+
+<ul>
+  <li><strong>Kund:</strong> @Model.Order.Customer.Name, kund-nr @Model.Order.Customer.Id</li>
+  <li><strong>Faktureringsadress:</strong> @Model.Order.Customer.InvoiceAddress</li>
+  <li><strong>Leveransadress:</strong> @Model.Order.ShippingAddress</li>
+  <li><strong>Önskat leveransdatum:</strong> @Model.Order.DesiredDeliveryDate</li>
+</ul>
+
+@if (!Model.OrderIsValid)
+{
+  <p>Fel i ordern: @Model.ErrorMessage</p>
+}
+
+@using (Html.BeginForm("PlaceOrder", "OrderValidation"))
+{
+  @Html.HiddenFor(model => model.Order.CustomerId)
+  @Html.HiddenFor(model => model.Order.ShippingAddressId)
+  @Html.HiddenFor(model => model.Order.DesiredDeliveryDate)
+  for (int i = 0; i < Model.Order.OrderRows.Count; i++)
+  {
+       @Html.HiddenFor(o => o.Order.OrderRows[i].ProductId)
+       @Html.HiddenFor(o => o.Order.OrderRows[i].AmountOrdered)
+  }
+  <input type="submit" value="Lägg order" class="btn btn-primary" />
+}

@@ -20,5 +20,10 @@ namespace Kundbolaget.Models.EntityModels
         public int CountryId { get; set; }
         [ForeignKey("CountryId")]
         public virtual Country Country { get; set; }
+
+        public override string ToString()
+        {
+            return $"{Street}, {ZipNumber}, {City}";
+        }
     }
 }
