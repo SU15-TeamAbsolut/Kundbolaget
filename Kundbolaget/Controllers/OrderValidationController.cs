@@ -17,7 +17,7 @@ namespace Kundbolaget.Controllers
         private readonly IRepository<Customer> customerRepository = new CustomerRepository();
         private readonly IRepository<Address> addressRepository = new DataRepository<Address>();
         private readonly IRepository<Product> productRepository = new ProductRepository();
-        private readonly IRepository<Order> orderRepository = new DataRepository<Order>();
+        private readonly IRepository<Order> orderRepository = new OrderRepository();
 
         // GET: OrderValidation
         public ActionResult Index()
