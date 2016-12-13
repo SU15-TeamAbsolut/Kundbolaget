@@ -63,8 +63,12 @@
                 @Html.ValidationMessageFor(model => model.OrganizationNumber, "", new { @class = "text-danger" })
             </div>
         </div>
+      
+      @Html.HiddenFor(model => model.InvoiceAddressId)
+      @Html.HiddenFor(model => model.VisitingAddressId)
+      @Html.HiddenFor(model => model.AlcoholLicenseId)
 
-        <div class="form-group">
+      <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <input type="submit" value="Save" class="btn btn-default" />
             </div>
