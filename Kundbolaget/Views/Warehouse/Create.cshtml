@@ -12,7 +12,6 @@
 {
     @Html.AntiForgeryToken()
 
-    <Div>
         <div class="form-horizontal">
             <h4>Warehouse</h4>
             <hr />
@@ -24,10 +23,7 @@
                     @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
                 </div>
             </div>
-
-
-        </div>
-
+        
         <div class="form-group">
             @Html.LabelFor(model => model.ContactId, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -35,7 +31,6 @@
                 @Html.ValidationMessageFor(model => model.ContactId, "", new { @class = "text-danger" })
             </div>
         </div>
-
         <div class="form-group">
             @Html.LabelFor(model => model.IsActive, htmlAttributes: new {@class = "control-label col-md-2"})
             <div class="col-md-10">
@@ -48,11 +43,10 @@
         <br/>
       
          @Html.Partial("_CountryDropDownList", Model.Address)
-        <br/>
-            @Html.Partial("_Adress", Model.Address)
+         @Html.Partial("_Adress", Model.Address)
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <input type="submit" value="spara" class="btn btn-primary" />
             </div>
         </div>
     </Div>
