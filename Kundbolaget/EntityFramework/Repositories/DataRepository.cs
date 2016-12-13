@@ -24,7 +24,7 @@ namespace Kundbolaget.EntityFramework.Repositories
             }
         }
 
-        public void Create(T item)
+        public virtual void Create(T item)
         {
             using (var db = new DataContext())
             {
