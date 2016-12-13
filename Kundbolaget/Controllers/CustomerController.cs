@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Kundbolaget.EntityFramework.Contexts;
+using Kundbolaget.EntityFramework.Repositories;
 using Kundbolaget.Models.EntityModels;
 
 namespace Kundbolaget.Controllers
@@ -14,6 +15,14 @@ namespace Kundbolaget.Controllers
     public class CustomerController : Controller
     {
         private DataContext db = new DataContext();
+        private CustomerRepository _customerRepository;
+        private DataRepository<Address> _addressRepository;
+
+        public CustomerController()
+        {
+            _customerRepository = new CustomerRepository();
+            _addressRepository = new DataRepository<Address>();
+        }
 
         // GET: Customers
         public ActionResult Index()
@@ -57,9 +66,8 @@ namespace Kundbolaget.Controllers
             if (ModelState.IsValid)
             {
                 customer.VisitingAddress = address;
-                customer.VisitingAddress.CountryId = address.CountryId;
-                db.Customers.Add(customer);
-                db.SaveChanges();
+                _customerRepository.Create(customer);
+
                 return RedirectToAction("Index");
             }
 
@@ -73,7 +81,7 @@ namespace Kundbolaget.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Customer customer = db.Customers.Find(id);
+            Customer customer = _customerRepository.FindCustomer(id);
             if (customer == null)
             {
                 return HttpNotFound();
@@ -85,13 +93,17 @@ namespace Kundbolaget.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Name,Password,CreditLine,PaymentTerm,AccountingCode,OrganizationNumber")] Customer customer)
+        //[ValidateAntiForgeryToken]
+        public ActionResult Edit(Customer customer, Address adress)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(customer).State = EntityState.Modified;
-                db.SaveChanges();
+                adress.Id = customer.VisitingAddressId;
+               
+                customer.VisitingAddress = adress;
+                _addressRepository.Update(adress);
+                _customerRepository.Update(customer);
+               
                 return RedirectToAction("Index");
             }
             return View(customer);

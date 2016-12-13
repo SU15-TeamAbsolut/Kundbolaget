@@ -164,6 +164,7 @@
     <Compile Include="Controllers\SupplierController.cs" />
     <Compile Include="Controllers\WarehouseController.cs" />
     <Compile Include="EntityFramework\Contexts\DataContext.cs" />
+    <Compile Include="EntityFramework\Repositories\CustomerRepository.cs" />
     <Compile Include="EntityFramework\Repositories\DataRepository.cs" />
     <Compile Include="EntityFramework\Repositories\IRepository.cs" />
     <Compile Include="EntityFramework\Repositories\ProductRepository.cs" />
@@ -203,6 +204,14 @@
     <Compile Include="Migrations\201612091424264_UpdatedAlcholLicenseRelations.cs" />
     <Compile Include="Migrations\201612091424264_UpdatedAlcholLicenseRelations.Designer.cs">
       <DependentUpon>201612091424264_UpdatedAlcholLicenseRelations.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201612131125135_addedDeliveryAddressToCustomer.cs" />
+    <Compile Include="Migrations\201612131125135_addedDeliveryAddressToCustomer.Designer.cs">
+      <DependentUpon>201612131125135_addedDeliveryAddressToCustomer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201612131210058_SetPropertyToNullableInCustomerAndOrderRow.cs" />
+    <Compile Include="Migrations\201612131210058_SetPropertyToNullableInCustomerAndOrderRow.Designer.cs">
+      <DependentUpon>201612131210058_SetPropertyToNullableInCustomerAndOrderRow.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\EntityModels\Address.cs" />
@@ -295,6 +304,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201612091424264_UpdatedAlcholLicenseRelations.resx">
       <DependentUpon>201612091424264_UpdatedAlcholLicenseRelations.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201612131125135_addedDeliveryAddressToCustomer.resx">
+      <DependentUpon>201612131125135_addedDeliveryAddressToCustomer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201612131210058_SetPropertyToNullableInCustomerAndOrderRow.resx">
+      <DependentUpon>201612131210058_SetPropertyToNullableInCustomerAndOrderRow.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
