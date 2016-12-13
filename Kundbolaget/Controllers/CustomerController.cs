@@ -81,7 +81,7 @@ namespace Kundbolaget.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Customer customer = _customerRepository.FindCustomer(id);
+            Customer customer = _customerRepository.Find(id);
             if (customer == null)
             {
                 return HttpNotFound();

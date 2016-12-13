@@ -12,7 +12,7 @@ namespace Kundbolaget.EntityFramework.Repositories
 {
     public class WarehouseRepository : DataRepository<Warehouse> 
     {
-        public Warehouse FindWarehouse(int id)
+        public override Warehouse Find(int id)
         {
 
             using (var db = new DataContext())

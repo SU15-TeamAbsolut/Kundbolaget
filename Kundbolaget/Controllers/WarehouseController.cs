@@ -69,7 +69,7 @@ namespace Kundbolaget.Controllers
         public ActionResult Edit(int id)
         {
 
-            var model = _warehouseRepository.FindWarehouse(id);
+            var model = _warehouseRepository.Find(id);
 
             return View(model);
         }
@@ -90,7 +90,7 @@ namespace Kundbolaget.Controllers
 
         public ActionResult Details(int id)
         {
-            var model = _warehouseRepository.FindWarehouse(id);
+            var model = _warehouseRepository.Find(id);
             model.Address.Country = _countryRepository.Find(model.Address.CountryId);
             return View(model);
         }
