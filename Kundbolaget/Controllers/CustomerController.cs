@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Kundbolaget.EntityFramework.Contexts;
+using Kundbolaget.EntityFramework.Repositories;
 using Kundbolaget.Models.EntityModels;
 
 namespace Kundbolaget.Controllers
@@ -14,6 +15,7 @@ namespace Kundbolaget.Controllers
     public class CustomerController : Controller
     {
         private DataContext db = new DataContext();
+        private CustomerRepository customerRepository = new CustomerRepository();
 
         // GET: Customers
         public ActionResult Index()
@@ -60,13 +62,9 @@ namespace Kundbolaget.Controllers
         }
 
         // GET: Customers/Edit/5
-        public ActionResult Edit(int? id)
+        public ActionResult Edit(int id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Customer customer = db.Customers.Find(id);
+            Customer customer = customerRepository.Find(id);
             if (customer == null)
             {
                 return HttpNotFound();
@@ -79,12 +77,13 @@ namespace Kundbolaget.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Name,Password,CreditLine,PaymentTerm,AccountingCode,OrganizationNumber")] Customer customer)
+        public ActionResult Edit(Customer customer)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(customer).State = EntityState.Modified;
-                db.SaveChanges();
+                customerRepository.Update(customer);
+                //db.Entry(customer).State = EntityState.Modified;
+                //db.SaveChanges();
                 return RedirectToAction("Index");
             }
             return View(customer);
