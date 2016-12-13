@@ -39,18 +39,25 @@ namespace Kundbolaget.Controllers
         // GET: Customers/Create
         public ActionResult Create()
         {
-            return View();
+            var customer = new Customer()
+            {
+                VisitingAddress = new Address()
+            };
+
+            return View(customer);
         }
 
         // POST: Customers/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Name,Password,CreditLine,PaymentTerm,AccountingCode,OrganizationNumber")] Customer customer)
+        //[ValidateAntiForgeryToken]
+        public ActionResult Create([Bind(Include = "Id,Name,Password,CreditLine,PaymentTerm,AccountingCode,OrganizationNumber")] Customer customer, Address address)
         {
             if (ModelState.IsValid)
             {
+                customer.VisitingAddress = address;
+                customer.VisitingAddress.CountryId = address.CountryId;
                 db.Customers.Add(customer);
                 db.SaveChanges();
                 return RedirectToAction("Index");

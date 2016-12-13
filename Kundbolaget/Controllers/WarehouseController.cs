@@ -5,61 +5,90 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Kundbolaget.Models.ViewModels;
 
 namespace Kundbolaget.Controllers
 {
     public class WarehouseController : Controller
     {
-        private IRepository<Warehouse> repository;
+        private readonly IRepository<Warehouse> _warehouseRepository;
+        private readonly IRepository<Address> _addressRepository;
+        private readonly IRepository<Country> _countryRepository;
 
         public WarehouseController()
         {
-            repository = new DataRepository<Warehouse>();
+            _warehouseRepository = new DataRepository<Warehouse>();
+            _addressRepository = new DataRepository<Address>();
+            _countryRepository = new DataRepository<Country>();
         }
 
         public ActionResult Index()
         {
-            var model = repository.GetAll();
-            return View(model);
+            var warehouses = _warehouseRepository.GetAll();
+
+           
+
+            return View(warehouses);
         }
 
         public ActionResult Create()
         {
-            return View();
+            var warehouse = new Warehouse()
+            {
+                Address = new Address()
+            };
+
+            return View(warehouse);
         }
 
         [HttpPost]
-        public ActionResult Create(Warehouse model)
+        public ActionResult Create(Warehouse warehouse, Address address)
         {
-            if (!ModelState.IsValid)
-                return View(model);
 
-            repository.Create(model);
+
+            //if (!ModelState.IsValid)
+            //    return View(warehouse);
+
+
+            var newWarehouse = new Warehouse()
+            {
+                Address = address,
+                Name = warehouse.Name,
+                ContactId = warehouse.ContactId
+
+            };
+
+
+            _warehouseRepository.Create(newWarehouse);
 
             return RedirectToAction("Index");
         }
 
         public ActionResult Edit(int id)
         {
-            var model = repository.Find(id);
+            var model = _warehouseRepository.Find(id);
+            model.Address = _addressRepository.Find(model.AddressId);
             return View(model);
         }
 
         [HttpPost]
-        public ActionResult Edit(Warehouse model)
+        public ActionResult Edit(Warehouse warehouseModel, Address adressModel)
         {
             if (!ModelState.IsValid)
             {
-                return View(model);
+                return View(warehouseModel);
             }
-
-            repository.Update(model);
+            adressModel.Id = warehouseModel.AddressId;
+            warehouseModel.Address = adressModel;
+            _warehouseRepository.Update(warehouseModel);
             return RedirectToAction("Index");
         }
 
         public ActionResult Details(int id)
         {
-            var model = repository.Find(id);
+            var model = _warehouseRepository.Find(id);
+            model.Address = _addressRepository.Find(model.AddressId);
+            model.Address.Country = _countryRepository.Find(model.Address.CountryId);
             return View(model);
         }
     }

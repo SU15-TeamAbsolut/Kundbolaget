@@ -1,0 +1,19 @@
+﻿@using Kundbolaget.EntityFramework.Contexts
+@using Kundbolaget.EntityFramework.Repositories
+@using Kundbolaget.Models.EntityModels
+@using Kundbolaget.Models.ViewModels
+@{
+    IRepository<Country> countryRepository = new DataRepository<Country>();
+
+    var countryModel = new CountryViewModel()
+    {
+        Countries = countryRepository.GetAll()
+    };
+
+}
+
+
+<Div class="form-group" style="width: 10%; padding-bottom: 10px">
+    @Html.DropDownListFor(m => countryModel.Address.Country.Id, new SelectList(countryModel.Countries, "Id", "Name"), "Välj land",new {@class = "form-control" })
+    @Html.HiddenFor(m => countryModel.Address.Id)
+</Div>
