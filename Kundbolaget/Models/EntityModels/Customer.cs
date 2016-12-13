@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Kundbolaget.Models.EntityModels
@@ -14,8 +15,8 @@ namespace Kundbolaget.Models.EntityModels
         public int AccountingCode { get; set; }
         public long OrganizationNumber { get; set; }
 
-        [Required]
-        public int InvoiceAddressId { get; set; }
+      
+        public int? InvoiceAddressId { get; set; }
         [ForeignKey("InvoiceAddressId")]
         public virtual Address InvoiceAddress { get; set; }
 
@@ -24,9 +25,11 @@ namespace Kundbolaget.Models.EntityModels
         [ForeignKey("VisitingAddressId")]
         public virtual Address VisitingAddress { get; set; }
 
-        [Required]
-        public int AlcoholLicenseId { get; set; }
+      
+        public int? AlcoholLicenseId { get; set; }
         [ForeignKey("AlcoholLicenseId")]
         public virtual AlcoholLicense AlcoholLicense { get; set; }
+
+        public virtual IList<Address> ShippingAddresses { get; set; }
     }
 }

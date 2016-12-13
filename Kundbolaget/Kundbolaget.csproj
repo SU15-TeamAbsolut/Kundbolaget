@@ -152,9 +152,9 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
-    <Content Include="packages.config" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="packages.config" />
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.1.1.js" />
     <Content Include="Scripts\jquery-3.1.1.min.js" />
@@ -177,6 +177,7 @@
     <Compile Include="EntityFramework\Repositories\DataRepository.cs" />
     <Compile Include="EntityFramework\Repositories\IRepository.cs" />
     <Compile Include="EntityFramework\Repositories\ProductRepository.cs" />
+    <Compile Include="EntityFramework\Repositories\WarehouseRepository.cs" />
     <Compile Include="Enums\OrderStatus.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -213,6 +214,14 @@
     <Compile Include="Migrations\201612091424264_UpdatedAlcholLicenseRelations.Designer.cs">
       <DependentUpon>201612091424264_UpdatedAlcholLicenseRelations.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201612131125135_addedDeliveryAddressToCustomer.cs" />
+    <Compile Include="Migrations\201612131125135_addedDeliveryAddressToCustomer.Designer.cs">
+      <DependentUpon>201612131125135_addedDeliveryAddressToCustomer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201612131210058_SetPropertyToNullableInCustomerAndOrderRow.cs" />
+    <Compile Include="Migrations\201612131210058_SetPropertyToNullableInCustomerAndOrderRow.Designer.cs">
+      <DependentUpon>201612131210058_SetPropertyToNullableInCustomerAndOrderRow.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\EntityModels\Address.cs" />
     <Compile Include="Models\EntityModels\Contact.cs" />
@@ -225,6 +234,7 @@
     <Compile Include="Models\EntityModels\Product.cs" />
     <Compile Include="Models\EntityModels\Supplier.cs" />
     <Compile Include="Models\EntityModels\Warehouse.cs" />
+    <Compile Include="Models\ViewModels\CountryViewModel.cs" />
     <Compile Include="Models\JsonModels\JsonOrder.cs" />
     <Compile Include="Models\JsonModels\JsonOrderRow.cs" />
     <Compile Include="Models\ViewModels\JsonOrderViewModel.cs" />
@@ -270,6 +280,8 @@
     <Content Include="Views\Category\Details.cshtml" />
     <Content Include="Views\Product\Search.cshtml" />
     <Content Include="Views\Shared\_CategoryDropDownList.cshtml" />
+    <Content Include="Views\Shared\_Adress.cshtml" />
+    <Content Include="Views\Shared\_CountryDropDownList.cshtml" />
     <Content Include="Views\OrderValidation\Index.cshtml" />
     <Content Include="Views\OrderValidation\InvalidOrder.cshtml" />
     <Content Include="Views\OrderValidation\PlaceOrder.cshtml" />
@@ -308,6 +320,12 @@
     <EmbeddedResource Include="Migrations\201612091424264_UpdatedAlcholLicenseRelations.resx">
       <DependentUpon>201612091424264_UpdatedAlcholLicenseRelations.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201612131125135_addedDeliveryAddressToCustomer.resx">
+      <DependentUpon>201612131125135_addedDeliveryAddressToCustomer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201612131210058_SetPropertyToNullableInCustomerAndOrderRow.resx">
+      <DependentUpon>201612131210058_SetPropertyToNullableInCustomerAndOrderRow.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -320,7 +338,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>17164</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>

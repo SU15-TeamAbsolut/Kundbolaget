@@ -15,7 +15,14 @@ namespace Kundbolaget.Controllers
     public class CustomerController : Controller
     {
         private DataContext db = new DataContext();
-        private CustomerRepository customerRepository = new CustomerRepository();
+        private CustomerRepository _customerRepository;
+        private DataRepository<Address> _addressRepository;
+
+        public CustomerController()
+        {
+            _customerRepository = new CustomerRepository();
+            _addressRepository = new DataRepository<Address>();
+        }
 
         // GET: Customers
         public ActionResult Index()
@@ -41,20 +48,26 @@ namespace Kundbolaget.Controllers
         // GET: Customers/Create
         public ActionResult Create()
         {
-            return View();
+            var customer = new Customer()
+            {
+                VisitingAddress = new Address()
+            };
+
+            return View(customer);
         }
 
         // POST: Customers/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Name,Password,CreditLine,PaymentTerm,AccountingCode,OrganizationNumber")] Customer customer)
+        //[ValidateAntiForgeryToken]
+        public ActionResult Create([Bind(Include = "Id,Name,Password,CreditLine,PaymentTerm,AccountingCode,OrganizationNumber")] Customer customer, Address address)
         {
             if (ModelState.IsValid)
             {
-                db.Customers.Add(customer);
-                db.SaveChanges();
+                customer.VisitingAddress = address;
+                _customerRepository.Create(customer);
+
                 return RedirectToAction("Index");
             }
 
@@ -64,7 +77,11 @@ namespace Kundbolaget.Controllers
         // GET: Customers/Edit/5
         public ActionResult Edit(int id)
         {
-            Customer customer = customerRepository.Find(id);
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Customer customer = _customerRepository.FindCustomer(id);
             if (customer == null)
             {
                 return HttpNotFound();
@@ -76,14 +93,17 @@ namespace Kundbolaget.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(Customer customer)
+        //[ValidateAntiForgeryToken]
+        public ActionResult Edit(Customer customer, Address adress)
         {
             if (ModelState.IsValid)
             {
-                customerRepository.Update(customer);
-                //db.Entry(customer).State = EntityState.Modified;
-                //db.SaveChanges();
+                adress.Id = customer.VisitingAddressId;
+               
+                customer.VisitingAddress = adress;
+                _addressRepository.Update(adress);
+                _customerRepository.Update(customer);
+               
                 return RedirectToAction("Index");
             }
             return View(customer);

@@ -17,6 +17,6 @@ namespace Kundbolaget.Models.EntityModels
         [ForeignKey("ProductId")]
         public virtual Product Product { get; set; }
         public decimal Price {get; set;}
-        public int AmountShipped { get; set; }
+        public int? AmountShipped { get; set; }
     }
 }

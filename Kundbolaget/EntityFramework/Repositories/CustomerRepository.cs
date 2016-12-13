@@ -16,5 +16,19 @@ namespace Kundbolaget.EntityFramework.Repositories
                     .SingleOrDefault(c => c.Id == id);
             }
         }
+        public Customer FindCustomer(int? id)
+        {
+
+            using (var db = new DataContext())
+            {
+                var model = db.Customers
+                    .Include(w => w.VisitingAddress)
+                    .SingleOrDefault(w => w.Id == id);
+
+                return model;
+            }
+
+        }
+
     }
 }

@@ -19,13 +19,18 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.AddressId)
+            @Html.DisplayNameFor(model => model.Address)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.AddressId)
+            @Html.Partial("_Adress", Model.Address)
         </dd>
-
+        <dt>
+            @Html.DisplayNameFor(model => model.Address.Country)
+        </dt>
+        <dd>
+           @Html.DisplayFor(model => model.Address.Country.Name)
+        </dd>
         <dt>
             @Html.DisplayNameFor(model => model.ContactId)
         </dt>
