@@ -10,9 +10,12 @@ namespace Kundbolaget.EntityFramework.Repositories
         {
             using (var db = new DataContext())
             {
+                // Attach entities so they don't get duplicated as new entities
                 db.Customers.Attach(order.Customer);
-                var entry = db.Entry(order.Customer);
-                entry.State = EntityState.Unchanged;
+                db.Entry(order.Customer).State = EntityState.Unchanged;
+
+                db.Addresses.Attach(order.ShippingAddress);
+                db.Entry(order.ShippingAddress).State = EntityState.Unchanged;
 
                 db.Orders.Add(order);
                 db.SaveChanges();
