@@ -1,0 +1,24 @@
+﻿@model Kundbolaget.Models.ViewModels.JsonFileUploadViewModel
+
+@{
+    ViewBag.Title = "Ladda upp orderfil";
+}
+
+<h2>Ladda upp orderfil från kund</h2>
+
+@using (Html.BeginForm("Upload", "OrderValidation",
+              FormMethod.Post,
+              new { enctype = "multipart/form-data" }
+              ))
+{
+    <div class="form-horizontal">
+      @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+      <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+          @Html.TextBoxFor(model => model.File, new { type = "file" })
+          @Html.ValidationMessageFor(model => model.File)
+          <input type="submit" value="Ladda upp orderfil" class="btn btn-primary" />
+        </div>
+      </div>
+    </div>
+}
