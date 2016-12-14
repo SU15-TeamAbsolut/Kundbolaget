@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Text;
 using System.Web.Mvc;
 using Kundbolaget.EntityFramework.Repositories;
 using Kundbolaget.Enums;
@@ -26,12 +28,22 @@ namespace Kundbolaget.Controllers
             string fileName = @"C:\order.json";
             string orderJson = System.IO.File.ReadAllText(fileName);
 
-            var schema = JsonSchema4.FromType<JsonOrder>();
-            ICollection<ValidationError> errors = schema.Validate(orderJson);
-
             // Validate order file data
-            var orderData = JsonConvert.DeserializeObject<JsonOrder>(orderJson);
-            var viewModel = new JsonOrderViewModel
+            JsonOrder orderData;
+            JsonOrderViewModel viewModel;
+            ICollection<ValidationError> errors;
+            ValidateJsonOrder(orderJson, out errors, out orderData, out viewModel);
+
+            return View(viewModel);
+        }
+
+        private void ValidateJsonOrder(string orderJson, out ICollection<ValidationError> errors, out JsonOrder orderData, out JsonOrderViewModel viewModel)
+        {
+            var schema = JsonSchema4.FromType<JsonOrder>();
+            errors = schema.Validate(orderJson);
+
+            orderData = JsonConvert.DeserializeObject<JsonOrder>(orderJson);
+            viewModel = new JsonOrderViewModel
             {
                 Json = orderJson,
                 ValidationErrors = errors,
@@ -52,7 +64,6 @@ namespace Kundbolaget.Controllers
             {
                 viewModel.OrderIsValid = false;
                 viewModel.ErrorMessage += $"Kund-id {orderData.CustomerId} existerar inte";
-                return View("InvalidOrder", viewModel);
             }
 
             // Check if products exist
@@ -77,14 +88,10 @@ namespace Kundbolaget.Controllers
                 }
             }
 
-            return View(viewModel);
         }
 
-        [HttpPost]
-        public ActionResult PlaceOrder(JsonOrderViewModel orderModel)
+        private void CreateNewOrder(Order order)
         {
-            var order = orderModel.Order;
-
             // fetch customer data for the view
             if (order.Customer == null)
             {
@@ -104,8 +111,40 @@ namespace Kundbolaget.Controllers
 
             // shipit.jpg
             orderRepository.Create(order);
+        }
 
-            return View(order);
+        [HttpPost]
+        public ActionResult PlaceOrder(JsonOrderViewModel orderModel)
+        {
+            CreateNewOrder(orderModel.Order);
+            return View(orderModel.Order);
+        }
+
+        public ActionResult Upload()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Upload(JsonFileUploadViewModel model)
+        {
+            byte[] data;
+
+            using (var ms = new MemoryStream())
+            {
+                model.File.InputStream.CopyTo(ms);
+                data = ms.ToArray();
+            }
+            var json = Encoding.Default.GetString(data);
+
+            // Validate order file data
+            JsonOrder orderData;
+            JsonOrderViewModel viewModel;
+            ICollection<ValidationError> errors;
+            ValidateJsonOrder(json, out errors, out orderData, out viewModel);
+
+            CreateNewOrder(viewModel.Order);
+            return View("PlaceOrder", viewModel.Order);
         }
     }
 }

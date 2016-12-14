@@ -33,7 +33,7 @@ namespace Kundbolaget.EntityFramework.Repositories
             }
         }
 
-        public void Update(T item)
+        public virtual void Update(T item)
         {
             using (var db = new DataContext())
             {
@@ -44,7 +44,7 @@ namespace Kundbolaget.EntityFramework.Repositories
             }
         }
 
-        public void Delete(int id)
+        public virtual void Delete(int id)
         {
             throw new NotImplementedException();
         }
