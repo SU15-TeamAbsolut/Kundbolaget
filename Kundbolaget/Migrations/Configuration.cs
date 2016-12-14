@@ -29,6 +29,8 @@ namespace Kundbolaget.Migrations
             SeedProductCategories(context);
             SeedProducts(context);
             SeedContacts(context);
+            SeedOrders(context);
+            SeedOrderRows(context);
 
         }
 
@@ -141,21 +143,91 @@ namespace Kundbolaget.Migrations
                     Id = 1, Name = "Ica", OrganizationNumber = 5560210261,
                     CreditLine = 150000, PaymentTerm = 30,
                     InvoiceAddressId = 9, VisitingAddressId = 6,
-                    AlcoholLicenseId = 1 
+                    AlcoholLicenseId = 1, ShippingAddresses = new List<Address>()
+                    {
+                        new Address
+                        {
+                            Id = 22,
+                            Street = "Borgaregatan 52",
+                            City = "Arboga",
+                            ZipNumber = "73247",
+                            CountryId = 1
+                        },
+                        new Address
+                        {
+                            Id = 23,
+                            Street = "Nygatan 12",
+                            City = "Västerås",
+                            ZipNumber = "62154",
+                            CountryId = 1
+                        },
+                        new Address
+                        {
+                            Id = 24,
+                            Street = "Rådhusgatan 112",
+                            City = "Stockholm",
+                            ZipNumber = "45999",
+                            CountryId = 1
+                        },
+                    }
                 },
                 new Customer
                 {
                     Id = 2, Name = "Coop",
                     CreditLine = 250000, PaymentTerm = 90,
                     InvoiceAddressId = 10, VisitingAddressId = 7,
-                    AlcoholLicenseId = 2
+                    AlcoholLicenseId = 2, ShippingAddresses = new List<Address>()
+                    {
+                        new Address
+                        {
+                            Id = 25,
+                            Street = "Klarinettvägen 6",
+                            City = "Göteborg",
+                            ZipNumber = "34579",
+                            CountryId = 1
+                        },
+                        new Address
+                        {
+                            Id = 26,
+                            Street = "Hällbacksvägen 4",
+                            City = "Kiruna",
+                            ZipNumber = "45012",
+                            CountryId = 1
+                        },
+                        new Address
+                        {
+                            Id = 27,
+                            Street = "Valthornsgatan 56",
+                            City = "Stockholm",
+                            ZipNumber = "48145",
+                            CountryId = 1
+                        },
+                    }
                 },
                 new Customer
                 {
                     Id= 3, Name = "Systembolaget",
                     CreditLine = 50000, PaymentTerm = 30,
                     InvoiceAddressId = 11, VisitingAddressId = 8,
-                    AlcoholLicenseId = 3
+                    AlcoholLicenseId = 3, ShippingAddresses = new List<Address>()
+                    {
+                        new Address
+                        {
+                            Id = 28,
+                            Street = "Studentvägen 13",
+                            City = "Uppsala",
+                            ZipNumber = "45977",
+                            CountryId = 1
+                        },
+                        new Address
+                        {
+                            Id = 29,
+                            Street = "Hågavägen 7",
+                            City = "Arboga",
+                            ZipNumber = "78915",
+                            CountryId = 1
+                        },
+                    }
                 }
             };
 
@@ -449,5 +521,48 @@ namespace Kundbolaget.Migrations
             };
             context.Warehouses.AddOrUpdate(warehouises);
         }
+        private void SeedOrders(DataContext context)
+        {
+            Order[] orders =
+            {
+                new Order
+                {
+                    Id = 1,
+                    CustomerId = 3,
+                    OrderPlaced = DateTime.Now,
+                    DesiredDeliveryDate = DateTime.Now.AddDays(5),
+                    OrderStatus = 0,
+                    ShippingAddressId = 11,
+                    OrderRows = new List<OrderRow>()
+                },
+                new Order
+                {
+                    Id = 2,
+                    CustomerId = 1,
+                    OrderPlaced = DateTime.Now,
+                    DesiredDeliveryDate = DateTime.Now.AddDays(5),
+                    OrderStatus = 0,
+                    ShippingAddressId = 9,
+                    OrderRows = new List<OrderRow>()
+                }
+            };
+            context.Orders.AddOrUpdate(orders);
+        }
+
+        private void SeedOrderRows(DataContext context)
+        {
+            OrderRow[] orderRows =
+            {
+                new OrderRow {OrderId = 1, ProductId = 1, AmountOrdered = 30},
+                new OrderRow {OrderId = 1, ProductId = 7, AmountOrdered = 8},
+                new OrderRow {OrderId = 1, ProductId = 10, AmountOrdered = 14},
+                new OrderRow {OrderId = 2, ProductId = 15, AmountOrdered = 40},
+                new OrderRow {OrderId = 2, ProductId = 17, AmountOrdered = 18},
+                new OrderRow {OrderId = 2, ProductId = 10, AmountOrdered = 14}
+
+            };
+            context.OrderRows.AddOrUpdate(orderRows);
+        }
+
     }
 }

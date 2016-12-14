@@ -16,7 +16,7 @@ namespace Kundbolaget.EntityFramework.Repositories
             }
         }
 
-        public IList<T> GetAll()
+        public virtual IList<T> GetAll()
         {
             using (var db = new DataContext())
             {

@@ -1,0 +1,49 @@
+﻿@model IEnumerable<Kundbolaget.Models.EntityModels.OrderRow>
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Orderdetaljer</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Product.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AmountOrdered)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Price)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AmountShipped)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <
+        <td>
+            @Html.DisplayFor(modelItem => item.Product.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AmountOrdered)
+        </td>
+        <td>
+            @{ var price = item.Product.Price*(item.AmountOrdered*item.Product.PackageAmount);}
+
+            @Html.DisplayFor(modelItem => price)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AmountShipped)
+        </td>
+        <td>
+            @Html.ActionLink("Ändra", "Edit", null, new { @class = "btn btn-primary" }) | @Html.ActionLink("Tillbaka", "Index", null, new { @class = "btn btn-primary" })
+        </td>
+    </tr>
+}
+
+</table>

@@ -168,6 +168,7 @@
     <Compile Include="Controllers\AlcoholLicenseController.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\OrderController.cs" />
     <Compile Include="Controllers\OrderValidationController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\SupplierController.cs" />
@@ -177,6 +178,7 @@
     <Compile Include="EntityFramework\Repositories\DataRepository.cs" />
     <Compile Include="EntityFramework\Repositories\IRepository.cs" />
     <Compile Include="EntityFramework\Repositories\OrderRepository.cs" />
+    <Compile Include="EntityFramework\Repositories\OrderRowRepository.cs" />
     <Compile Include="EntityFramework\Repositories\ProductRepository.cs" />
     <Compile Include="EntityFramework\Repositories\WarehouseRepository.cs" />
     <Compile Include="Enums\OrderStatus.cs" />
@@ -286,6 +288,9 @@
     <Content Include="Views\OrderValidation\Index.cshtml" />
     <Content Include="Views\OrderValidation\InvalidOrder.cshtml" />
     <Content Include="Views\OrderValidation\PlaceOrder.cshtml" />
+    <Content Include="Views\Order\Index.cshtml" />
+    <Content Include="Views\Order\Details.cshtml" />
+    <Content Include="Views\Order\Edit.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
