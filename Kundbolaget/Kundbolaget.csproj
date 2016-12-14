@@ -228,6 +228,7 @@
     <Compile Include="Models\EntityModels\Warehouse.cs" />
     <Compile Include="Models\JsonModels\JsonOrder.cs" />
     <Compile Include="Models\JsonModels\JsonOrderRow.cs" />
+    <Compile Include="Models\ViewModels\JsonFileUploadViewModel.cs" />
     <Compile Include="Models\ViewModels\JsonOrderViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Models\ViewModels\CreateSupplierViewModel.cs" />
@@ -274,6 +275,7 @@
     <Content Include="Views\OrderValidation\Index.cshtml" />
     <Content Include="Views\OrderValidation\InvalidOrder.cshtml" />
     <Content Include="Views\OrderValidation\PlaceOrder.cshtml" />
+    <Content Include="Views\OrderValidation\Upload.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
