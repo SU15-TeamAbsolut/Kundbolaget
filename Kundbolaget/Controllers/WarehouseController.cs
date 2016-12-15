@@ -13,20 +13,19 @@ namespace Kundbolaget.Controllers
 {
     public class WarehouseController : Controller
     {
-        private readonly WarehouseRepository _warehouseRepository;
-        private readonly IRepository<Address> _addressRepository;
-        private readonly IRepository<Country> _countryRepository;
+        private readonly IRepository<Warehouse> _warehouseRepository;
+        private readonly AddressRepository _warehouseAddressRepository;
 
         public WarehouseController()
         {
-            _warehouseRepository = new WarehouseRepository();
-            _addressRepository = new DataRepository<Address>();
-            _countryRepository = new DataRepository<Country>();
+            _warehouseRepository = new DataRepository<Warehouse>();
+            _warehouseAddressRepository = new AddressRepository();
+           
         }
 
         public ActionResult Index()
         {
-            var warehouses = _warehouseRepository.GetAll();
+            var warehouses = _warehouseAddressRepository.GetWarehousesWithAddress();
 
             return View(warehouses);
         }
@@ -70,7 +69,7 @@ namespace Kundbolaget.Controllers
         public ActionResult Edit(int id)
         {
 
-            var model = _warehouseRepository.Find(id);
+            var model = _warehouseAddressRepository.GetWarehouseWithAddress(id);
 
             return View(model);
         }
@@ -85,14 +84,14 @@ namespace Kundbolaget.Controllers
             adressModel.Id = warehouseModel.AddressId;
             warehouseModel.Address = adressModel;
             _warehouseRepository.Update(warehouseModel);
-            _addressRepository.Update(adressModel);
+            _warehouseAddressRepository.Update(adressModel);
             return RedirectToAction("Index");
         }
 
         public ActionResult Details(int id)
         {
-            var model = _warehouseRepository.Find(id);
-            model.Address.Country = _countryRepository.Find(model.Address.CountryId);
+            var model = _warehouseAddressRepository.GetWarehouseWithAddress(id);
+           
             return View(model);
         }
     }
