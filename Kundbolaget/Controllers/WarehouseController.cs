@@ -46,8 +46,12 @@ namespace Kundbolaget.Controllers
         {
 
             if (!ModelState.IsValid)
+            {
                 warehouse.Address = address;
                 return View(warehouse);
+
+            }
+                
 
             var newWarehouse = new Warehouse()
             {
