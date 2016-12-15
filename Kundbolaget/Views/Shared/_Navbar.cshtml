@@ -20,11 +20,12 @@
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Nisses meny <span class="caret"></span></a>
           <ul class="dropdown-menu">
               <li>@Html.ActionLink("Artiklar", "Index", "Product")</li>
-            <li>@Html.ActionLink("Leverantörer", "Index", "Supplier")</li>
+              <li>@Html.ActionLink("Leverantörer", "Index", "Supplier")</li>
               <li>@Html.ActionLink("Lagerlokaler", "Index", "Warehouse")</li>
               <li>@Html.ActionLink("Kunder", "Index", "Customer")</li>
               <li>@Html.ActionLink("Ordrar", "Index", "Order")</li>
-              <li>@Html.ActionLink("Kundorder", "Index", "OrderValidation")</li>
+              <li role="separator" class="divider"></li>
+            <li>@Html.ActionLink("Ladda upp orderfil", "Upload", "OrderValidation")</li>
           </ul>
         </li>
       </ul>
