@@ -16,11 +16,13 @@ namespace Kundbolaget.Controllers
     {
         private readonly CustomerRepository _customerRepository;
         private readonly DataRepository<Address> _addressRepository;
+        private readonly DataRepository<Country> _countryRepository;
 
         public CustomerController()
         {
             _customerRepository = new CustomerRepository();
             _addressRepository = new DataRepository<Address>();
+            _countryRepository = new DataRepository<Country>();
         }
 
         // GET: Customers
@@ -37,6 +39,7 @@ namespace Kundbolaget.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Customer customer = _customerRepository.Find((int) id);
+            customer.VisitingAddress.Country = _countryRepository.Find(customer.VisitingAddress.CountryId);
             if (customer == null)
             {
                 return HttpNotFound();
