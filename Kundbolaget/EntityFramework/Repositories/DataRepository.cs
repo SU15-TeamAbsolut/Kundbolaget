@@ -23,7 +23,13 @@ namespace Kundbolaget.EntityFramework.Repositories
                 return db.Set<T>().ToList();
             }
         }
-
+        public virtual IList<T> GetAll(int id)
+        {
+            using (var db = new DataContext())
+            {
+                return db.Set<T>().ToList();
+            }
+        }
         public virtual void Create(T item)
         {
             using (var db = new DataContext())

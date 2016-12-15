@@ -28,8 +28,6 @@ namespace Kundbolaget.Controllers
         {
             var warehouses = _warehouseRepository.GetAll();
 
-           
-
             return View(warehouses);
         }
 
@@ -47,10 +45,9 @@ namespace Kundbolaget.Controllers
         public ActionResult Create(Warehouse warehouse, Address address)
         {
 
-
-            //if (!ModelState.IsValid)
-            //    return View(warehouse);
-
+            if (!ModelState.IsValid)
+                warehouse.Address = address;
+                return View(warehouse);
 
             var newWarehouse = new Warehouse()
             {

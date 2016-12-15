@@ -10,9 +10,9 @@ namespace Kundbolaget.Controllers
 {
     public class OrderController : Controller
     {
-        private IRepository<Order> _orderRepository;
-        private OrderRowRepository _orderRowRepository;
-        private CustomerRepository _customerRepository;
+        private readonly IRepository<Order> _orderRepository;
+        private readonly OrderRowRepository _orderRowRepository;
+        private readonly CustomerRepository _customerRepository;
 
         public OrderController()
         {
@@ -31,7 +31,7 @@ namespace Kundbolaget.Controllers
 
         public ActionResult Details(int id)
         {
-            var orderRows = _orderRowRepository.FindAll(id);
+            var orderRows = _orderRowRepository.GetAll(id);
 
             return View(orderRows);
         }
@@ -46,6 +46,9 @@ namespace Kundbolaget.Controllers
         [HttpPost]
         public ActionResult Edit(Order model)
         {
+            if(model.ShippingAddress == null)
+
+
             _orderRepository.Update(model);
 
             return  RedirectToAction("Index");

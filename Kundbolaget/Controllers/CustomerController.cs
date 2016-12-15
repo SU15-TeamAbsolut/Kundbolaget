@@ -14,9 +14,8 @@ namespace Kundbolaget.Controllers
 {
     public class CustomerController : Controller
     {
-        private DataContext db = new DataContext();
-        private CustomerRepository _customerRepository;
-        private DataRepository<Address> _addressRepository;
+        private readonly CustomerRepository _customerRepository;
+        private readonly DataRepository<Address> _addressRepository;
 
         public CustomerController()
         {
@@ -27,17 +26,17 @@ namespace Kundbolaget.Controllers
         // GET: Customers
         public ActionResult Index()
         {
-            return View(db.Customers.ToList());
+            return View(_customerRepository.GetAll());
         }
 
         // GET: Customers/Details/5
         public ActionResult Details(int? id)
         {
-            if (id == null)
+            if (!id.HasValue)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Customer customer = db.Customers.Find(id);
+            Customer customer = _customerRepository.Find((int) id);
             if (customer == null)
             {
                 return HttpNotFound();
@@ -56,11 +55,8 @@ namespace Kundbolaget.Controllers
             return View(customer);
         }
 
-        // POST: Customers/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+      
         [HttpPost]
-        //[ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Id,Name,Password,CreditLine,PaymentTerm,AccountingCode,OrganizationNumber")] Customer customer, Address address)
         {
             if (ModelState.IsValid)
@@ -75,13 +71,13 @@ namespace Kundbolaget.Controllers
         }
 
         // GET: Customers/Edit/5
-        public ActionResult Edit(int id)
+        public ActionResult Edit(int? id)
         {
-            if (id == null)
+            if (!id.HasValue)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Customer customer = _customerRepository.Find(id);
+            Customer customer = _customerRepository.Find((int)id);
             if (customer == null)
             {
                 return HttpNotFound();
@@ -112,11 +108,11 @@ namespace Kundbolaget.Controllers
         // GET: Customers/Delete/5
         public ActionResult Delete(int? id)
         {
-            if (id == null)
+            if (!id.HasValue)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Customer customer = db.Customers.Find(id);
+            Customer customer = _customerRepository.Find((int)id);
             if (customer == null)
             {
                 return HttpNotFound();
@@ -129,19 +125,9 @@ namespace Kundbolaget.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Customer customer = db.Customers.Find(id);
-            db.Customers.Remove(customer);
-            db.SaveChanges();
+            _customerRepository.Delete(id);
             return RedirectToAction("Index");
         }
 
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
-        }
     }
 }

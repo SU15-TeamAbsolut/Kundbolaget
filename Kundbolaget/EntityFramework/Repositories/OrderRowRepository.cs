@@ -10,7 +10,7 @@ namespace Kundbolaget.EntityFramework.Repositories
 {
     public class OrderRowRepository : DataRepository<OrderRow>
     {
-        public  IList<OrderRow> FindAll(int id)
+        public override IList<OrderRow> GetAll(int id)
         {
             using (var db = new DataContext())
             {
