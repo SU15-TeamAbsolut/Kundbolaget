@@ -76,6 +76,7 @@ namespace Kundbolaget.Controllers
         {
             if (!ModelState.IsValid)
             {
+                viewModel.ProductCategories = _productCategoryRepository.GetAll();
                 return View(viewModel);
             }
             var model =_productRepository.CreateModel(viewModel);

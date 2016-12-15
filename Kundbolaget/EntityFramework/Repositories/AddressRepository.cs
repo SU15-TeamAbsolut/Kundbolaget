@@ -34,7 +34,7 @@ namespace Kundbolaget.EntityFramework.Repositories
                 return supplier;
             }
         }
-        public  Warehouse FindWarehouseWithAddress(int id)
+        public  Warehouse GetWarehouseWithAddress(int id)
         {
 
             using (var db = new DataContext())
@@ -45,6 +45,20 @@ namespace Kundbolaget.EntityFramework.Repositories
                     .SingleOrDefault(w => w.Id == id);
 
                 return model;
+            }
+
+        }
+        public List<Warehouse> GetWarehousesWithAddress()
+        {
+
+            using (var db = new DataContext())
+            {
+                var warehouses = db.Warehouses
+                    .Include(w => w.Address)
+                    .Include(c => c.Address.Country).ToList();
+                  
+
+                return warehouses;
             }
 
         }
