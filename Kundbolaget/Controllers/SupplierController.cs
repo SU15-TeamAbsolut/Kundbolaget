@@ -11,49 +11,45 @@ namespace Kundbolaget.Controllers
 {
     public class SupplierController : Controller
     {
-        private IRepository<Supplier> repository;
-        private IRepository<Address> addressRepository;
+        private readonly IRepository<Supplier> _repository;
+        private readonly IRepository<Address> _addressRepository;
+        private readonly AddressRepository _supplierAddressRepository;
 
         public SupplierController()
         {
-            repository = new DataRepository<Supplier>();
-            addressRepository = new DataRepository<Address>();
+            _repository = new DataRepository<Supplier>();
+            _addressRepository = new DataRepository<Address>();
+            _supplierAddressRepository = new AddressRepository();
         }
 
         // GET: Supplier
         public ActionResult Index()
         {
-            var model = repository.GetAll();
+            var model = _supplierAddressRepository.GetSuppliersWithAddresses();
+            
             return View(model);
         }
 
         // GET: Supplier/Create
         public ActionResult Create()
         {
-            IEnumerable<SelectListItem> addressList = addressRepository.GetAll()
-                .Select(a => new SelectListItem
-                {
-                    Value = a.Id.ToString(),
-                    Text = a.Street
-
-                });
-
-            var viewModel = new CreateSupplierViewModel
+            var model = new Supplier()
             {
-                AddressList = addressList
+                Address = new Address()
             };
 
-            return View(viewModel);
+            return View(model);
         }
 
         // POST: Supplier/Create/
         [HttpPost]
-        public ActionResult Create(Supplier model)
+        public ActionResult Create(Supplier model, Address address)
         {
             if (!ModelState.IsValid)
                 return View(model);
 
-            repository.Create(model);
+            model.Address = address;
+            _repository.Create(model);
 
             return RedirectToAction("Index");
         }
@@ -61,27 +57,31 @@ namespace Kundbolaget.Controllers
         // GET: Supplier/Edit/{id}
         public ActionResult Edit(int id)
         {
-            var model = repository.Find(id);
+            var model = _supplierAddressRepository.GetSupplierWithAddresses(id);
             return View(model);
         }
 
         // POST: Supplier/Edit/{id}
         [HttpPost]
-        public ActionResult Edit(Supplier model)
+        public ActionResult Edit(Supplier model, Address address)
         {
+            address.Id = model.AddressId;
+            model.Address = address;
+
             if (!ModelState.IsValid)
             {
                 return View(model);
             }
-
-            repository.Update(model);
+            _repository.Update(model);
+            _addressRepository.Update(address);
+            
             return RedirectToAction("Index");
         }
 
         // GET: Supplier/Details/{id}
         public ActionResult Details(int id)
         {
-            var model = repository.Find(id);
+            var model = _supplierAddressRepository.GetSupplierWithAddresses(id);
             return View(model);
         }
     }

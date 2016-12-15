@@ -12,19 +12,7 @@ namespace Kundbolaget.EntityFramework.Repositories
 {
     public class WarehouseRepository : DataRepository<Warehouse> 
     {
-        public override Warehouse Find(int id)
-        {
-
-            using (var db = new DataContext())
-            {
-                var model = db.Warehouses
-                    .Include(w => w.Address)
-                    .SingleOrDefault(w => w.Id == id);
-
-                return model;
-            }
-
-        }
+        
 
     }
 }
