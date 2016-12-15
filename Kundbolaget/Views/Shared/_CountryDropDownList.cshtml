@@ -16,6 +16,7 @@
 
 
 <Div class="form-group" style="width: 25%; padding-left: 360px;">
-    @Html.DropDownListFor(m => m.CountryId, new SelectList(countryModel.Countries, "Id", "Name"), "Välj land",new {@class = "form-control" })
+    @Html.DropDownListFor(m => m.CountryId, new SelectList(countryModel.Countries, "Id", "Name"), "Välj land", new { @class = "form-control" })
+    @Html.ValidationMessageFor(m => m.Country.Id, "", new { @class = "text-danger" })
     @Html.HiddenFor(m => m.CountryId)
 </Div>

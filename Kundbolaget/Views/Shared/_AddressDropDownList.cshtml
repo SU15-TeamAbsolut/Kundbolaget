@@ -1,0 +1,19 @@
+﻿@using Kundbolaget.EntityFramework.Repositories
+@using Kundbolaget.Models.EntityModels
+@using Kundbolaget.Models.ViewModels
+
+  
+
+
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ShippingAddress, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+
+                @Html.DropDownListFor(m => m.ShippingAddressId, new SelectList(Model.Customer.ShippingAddresses, "Id", "Street"), @Model.ShippingAddress.Street, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.ShippingAddress.Id, "", new { @class = "text-danger" })
+                @Html.HiddenFor(model => model.ShippingAddressId);
+            </div>
+        </div>
+
