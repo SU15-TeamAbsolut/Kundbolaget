@@ -189,6 +189,10 @@
     <Compile Include="Migrations\201612191229110_InitialDb.Designer.cs">
       <DependentUpon>201612191229110_InitialDb.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201612191446591_ReseedTablesTo10K.cs" />
+    <Compile Include="Migrations\201612191446591_ReseedTablesTo10K.Designer.cs">
+      <DependentUpon>201612191446591_ReseedTablesTo10K.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\EntityModels\Address.cs" />
     <Compile Include="Models\EntityModels\Contact.cs" />
@@ -271,6 +275,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201612191229110_InitialDb.resx">
       <DependentUpon>201612191229110_InitialDb.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201612191446591_ReseedTablesTo10K.resx">
+      <DependentUpon>201612191446591_ReseedTablesTo10K.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
