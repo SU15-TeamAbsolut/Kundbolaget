@@ -22,7 +22,9 @@ namespace Kundbolaget.Models.EntityModels
         [ForeignKey("ShippingAddressId")]
         public virtual Address ShippingAddress { get; set; }
 
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}")]
         public DateTime OrderPlaced { get; set; }
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}")]
         public DateTime DesiredDeliveryDate { get; set;}
         public OrderStatus OrderStatus { get; set; }
 
