@@ -4,7 +4,7 @@ using Newtonsoft.Json;
 
 namespace Kundbolaget.Models.JsonModels
 {
-    class JsonOrder
+    public class JsonOrder
     {
         [JsonProperty(Required = Required.Always)]
         public int CustomerId { get; set; }
