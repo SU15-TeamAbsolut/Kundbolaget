@@ -17,6 +17,9 @@ namespace Kundbolaget.EntityFramework.Contexts
         public DbSet<Contact> Contacts { get; set; }
         public DbSet<Order> Orders { get; set; }
         public DbSet<OrderRow> OrderRows { get; set; }
+        public DbSet<Shelf> Shelves { get; set; }
+        public DbSet<ProductShelf> ProductsShelves { get; set; }
+        public DbSet<ProductShelfChangeLog> ProductShelfChangeLogs { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
