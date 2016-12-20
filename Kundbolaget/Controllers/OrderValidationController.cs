@@ -124,6 +124,10 @@ namespace Kundbolaget.Controllers
         public ActionResult ConfirmOrder(Order order)
         {
             CreateNewOrder(order);
+
+            // Fetch fresh data
+            order = orderRepository.Find(order.Id);
+
             return View("OrderPlaced", order);
         }
 
