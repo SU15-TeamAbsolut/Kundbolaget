@@ -269,6 +269,7 @@
     <Content Include="Views\Order\Details.cshtml" />
     <Content Include="Views\Order\Edit.cshtml" />
     <Content Include="Views\Shared\_AddressDropDownList.cshtml" />
+    <Content Include="Views\OrderValidation\OrderNotPlaced.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

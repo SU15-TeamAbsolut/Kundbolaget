@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using System.Web.Mvc;
+using System.Web.UI.WebControls;
 using Kundbolaget.EntityFramework.Repositories;
 using Kundbolaget.Enums;
 using Kundbolaget.Models.EntityModels;
@@ -52,6 +53,7 @@ namespace Kundbolaget.Controllers
                 {
                     Customer = customerRepository.Find(orderData.CustomerId),
                     CustomerId = orderData.CustomerId,
+                    CustomerOrderRef = orderData.CustomerOrderRef,
                     ShippingAddress = addressRepository.Find(orderData.DeliveryAddressId),
                     ShippingAddressId = orderData.DeliveryAddressId,
                     DesiredDeliveryDate = orderData.DeliveryDate,
@@ -65,7 +67,21 @@ namespace Kundbolaget.Controllers
                 viewModel.OrderIsValid = false;
                 viewModel.ErrorMessage += $"Kund-id {orderData.CustomerId} existerar inte";
             }
-
+            //Check if customer order reference exist
+            if (viewModel.Order.CustomerOrderRef != null)
+            {
+                var orders = orderRepository.GetAll();
+                foreach (var order in orders)
+                {
+                    var orderRef = order.CustomerOrderRef;
+                    if (viewModel.Order.CustomerOrderRef == orderRef)
+                    {
+                        viewModel.OrderIsValid = false;
+                        viewModel.ErrorMessage += $"Orderreferensen: {orderRef}, är redan registrerad.";
+                    }
+                }
+            }
+            
             // Check if products exist
             foreach (var fileOrderRow in orderData.OrderRows)
             {
@@ -120,6 +136,11 @@ namespace Kundbolaget.Controllers
             return View(orderModel.Order);
         }
 
+        [HttpPost]
+        public ActionResult OrderNotPlaced(JsonOrderViewModel orderModel)
+        {
+            return View(orderModel.Order);
+        }
         public ActionResult Upload()
         {
             return View();
@@ -142,6 +163,11 @@ namespace Kundbolaget.Controllers
             JsonOrderViewModel viewModel;
             ICollection<ValidationError> errors;
             ValidateJsonOrder(json, out errors, out orderData, out viewModel);
+
+            if (!viewModel.OrderIsValid)
+            {
+                return View("OrderNotPlaced", viewModel.Order);
+            }
 
             CreateNewOrder(viewModel.Order);
             return View("PlaceOrder", viewModel.Order);

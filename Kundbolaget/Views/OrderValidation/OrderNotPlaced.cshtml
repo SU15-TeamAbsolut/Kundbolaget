@@ -1,0 +1,13 @@
+﻿@model Kundbolaget.Models.EntityModels.Order
+
+@{
+    ViewBag.Title = "OrderNotPlaced";
+}
+
+<h2>Fel vid orderregistrering</h2>
+
+<div>Orden kunde inte läggas, orderreferensen #@Model.CustomerOrderRef finns redan registrerad.</div>
+
+<div>
+    @Html.ActionLink("Tillbaka", "Upload", null, new { @class = "btn btn-primary" })
+</div>
