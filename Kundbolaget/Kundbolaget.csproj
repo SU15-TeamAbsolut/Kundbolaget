@@ -197,6 +197,10 @@
     <Compile Include="Migrations\201612191859484_ShelvesProductsShelvesProductShelfChangeLogs.Designer.cs">
       <DependentUpon>201612191859484_ShelvesProductsShelvesProductShelfChangeLogs.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201612201551355_CustomerOrderRef.cs" />
+    <Compile Include="Migrations\201612201551355_CustomerOrderRef.Designer.cs">
+      <DependentUpon>201612201551355_CustomerOrderRef.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\EntityModels\Address.cs" />
     <Compile Include="Models\EntityModels\Contact.cs" />
@@ -289,6 +293,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201612191859484_ShelvesProductsShelvesProductShelfChangeLogs.resx">
       <DependentUpon>201612191859484_ShelvesProductsShelvesProductShelfChangeLogs.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201612201551355_CustomerOrderRef.resx">
+      <DependentUpon>201612201551355_CustomerOrderRef.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
