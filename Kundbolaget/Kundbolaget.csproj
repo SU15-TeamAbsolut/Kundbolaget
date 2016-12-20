@@ -193,6 +193,14 @@
     <Compile Include="Migrations\201612191446591_ReseedTablesTo10K.Designer.cs">
       <DependentUpon>201612191446591_ReseedTablesTo10K.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201612191859484_ShelvesProductsShelvesProductShelfChangeLogs.cs" />
+    <Compile Include="Migrations\201612191859484_ShelvesProductsShelvesProductShelfChangeLogs.Designer.cs">
+      <DependentUpon>201612191859484_ShelvesProductsShelvesProductShelfChangeLogs.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201612201551355_CustomerOrderRef.cs" />
+    <Compile Include="Migrations\201612201551355_CustomerOrderRef.Designer.cs">
+      <DependentUpon>201612201551355_CustomerOrderRef.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\EntityModels\Address.cs" />
     <Compile Include="Models\EntityModels\Contact.cs" />
@@ -203,6 +211,9 @@
     <Compile Include="Models\EntityModels\OrderRow.cs" />
     <Compile Include="Models\EntityModels\ProductCategory.cs" />
     <Compile Include="Models\EntityModels\Product.cs" />
+    <Compile Include="Models\EntityModels\ProductShelf.cs" />
+    <Compile Include="Models\EntityModels\ProductShelfChangeLog.cs" />
+    <Compile Include="Models\EntityModels\Shelf.cs" />
     <Compile Include="Models\EntityModels\Supplier.cs" />
     <Compile Include="Models\EntityModels\Warehouse.cs" />
     <Compile Include="Models\ViewModels\CountryViewModel.cs" />
@@ -265,6 +276,7 @@
     <Content Include="Views\OrderValidation\InvalidOrderFile.cshtml" />
     <Content Include="Views\Shared\_ShowOrder.cshtml" />
     <Content Include="Views\OrderValidation\OrderPlaced.cshtml" />
+    <Content Include="Views\OrderValidation\OrderNotPlaced.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -281,6 +293,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201612191446591_ReseedTablesTo10K.resx">
       <DependentUpon>201612191446591_ReseedTablesTo10K.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201612191859484_ShelvesProductsShelvesProductShelfChangeLogs.resx">
+      <DependentUpon>201612191859484_ShelvesProductsShelvesProductShelfChangeLogs.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201612201551355_CustomerOrderRef.resx">
+      <DependentUpon>201612201551355_CustomerOrderRef.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

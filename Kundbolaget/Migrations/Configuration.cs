@@ -32,6 +32,66 @@ namespace Kundbolaget.Migrations
             SeedOrders(context);
             SeedOrderRows(context);
 
+            SeedShelves(context);
+            SeedProductsShelves(context);
+        }
+
+        private void SeedProductsShelves(DataContext context)
+        {
+            ProductShelf[] productsShelves =
+            {
+                new ProductShelf { Id = 1, CurrentAmount = 10, MinimumAmount = 5, ProductId = 1, ShelfId = 1 },
+                new ProductShelf { Id = 2, CurrentAmount = 10, MinimumAmount = 5, ProductId = 2, ShelfId = 1 },
+                new ProductShelf { Id = 3, CurrentAmount = 10, MinimumAmount = 5, ProductId = 3, ShelfId = 1 },
+                new ProductShelf { Id = 4, CurrentAmount = 10, MinimumAmount = 5, ProductId = 4, ShelfId = 1 },
+                new ProductShelf { Id = 5, CurrentAmount = 10, MinimumAmount = 5, ProductId = 5, ShelfId = 1 },
+                new ProductShelf { Id = 6, CurrentAmount = 10, MinimumAmount = 5, ProductId = 6, ShelfId = 1 },
+                new ProductShelf { Id = 7, CurrentAmount = 10, MinimumAmount = 5, ProductId = 7, ShelfId = 1 },
+                new ProductShelf { Id = 8, CurrentAmount = 10, MinimumAmount = 5, ProductId = 8, ShelfId = 2 },
+                new ProductShelf { Id = 9, CurrentAmount = 10, MinimumAmount = 5, ProductId = 9, ShelfId = 2 },
+                new ProductShelf { Id = 10, CurrentAmount = 10, MinimumAmount = 5, ProductId = 10, ShelfId = 2 },
+                new ProductShelf { Id = 11, CurrentAmount = 10, MinimumAmount = 5, ProductId = 11, ShelfId = 2 },
+                new ProductShelf { Id = 12, CurrentAmount = 10, MinimumAmount = 5, ProductId = 12, ShelfId = 2 },
+                new ProductShelf { Id = 13, CurrentAmount = 10, MinimumAmount = 5, ProductId = 13, ShelfId = 2 },
+                new ProductShelf { Id = 14, CurrentAmount = 10, MinimumAmount = 5, ProductId = 14, ShelfId = 2 },
+                new ProductShelf { Id = 15, CurrentAmount = 10, MinimumAmount = 5, ProductId = 15, ShelfId = 2 },
+                new ProductShelf { Id = 16, CurrentAmount = 10, MinimumAmount = 5, ProductId = 16, ShelfId = 2 },
+                new ProductShelf { Id = 17, CurrentAmount = 10, MinimumAmount = 5, ProductId = 17, ShelfId = 2 },
+                new ProductShelf { Id = 18, CurrentAmount = 10, MinimumAmount = 5, ProductId = 18, ShelfId = 3 },
+                new ProductShelf { Id = 19, CurrentAmount = 10, MinimumAmount = 5, ProductId = 19, ShelfId = 3 },
+                new ProductShelf { Id = 20, CurrentAmount = 10, MinimumAmount = 5, ProductId = 20, ShelfId = 3 },
+                new ProductShelf { Id = 21, CurrentAmount = 10, MinimumAmount = 5, ProductId = 21, ShelfId = 3 },
+                new ProductShelf { Id = 22, CurrentAmount = 10, MinimumAmount = 5, ProductId = 22, ShelfId = 3 },
+                new ProductShelf { Id = 23, CurrentAmount = 10, MinimumAmount = 5, ProductId = 23, ShelfId = 4 },
+                new ProductShelf { Id = 24, CurrentAmount = 10, MinimumAmount = 5, ProductId = 24, ShelfId = 4 },
+                new ProductShelf { Id = 25, CurrentAmount = 10, MinimumAmount = 5, ProductId = 25, ShelfId = 4 },
+                new ProductShelf { Id = 26, CurrentAmount = 10, MinimumAmount = 5, ProductId = 26, ShelfId = 5 },
+                new ProductShelf { Id = 27, CurrentAmount = 10, MinimumAmount = 5, ProductId = 27, ShelfId = 5 },
+                new ProductShelf { Id = 28, CurrentAmount = 10, MinimumAmount = 5, ProductId = 28, ShelfId = 5 },
+                new ProductShelf { Id = 29, CurrentAmount = 10, MinimumAmount = 5, ProductId = 29, ShelfId = 6 },
+                new ProductShelf { Id = 30, CurrentAmount = 10, MinimumAmount = 5, ProductId = 30, ShelfId = 6 },
+                new ProductShelf { Id = 31, CurrentAmount = 10, MinimumAmount = 5, ProductId = 31, ShelfId = 7 },
+                new ProductShelf { Id = 32, CurrentAmount = 10, MinimumAmount = 5, ProductId = 32, ShelfId = 7 },
+                new ProductShelf { Id = 33, CurrentAmount = 10, MinimumAmount = 5, ProductId = 33, ShelfId = 8 },
+                new ProductShelf { Id = 34, CurrentAmount = 10, MinimumAmount = 5, ProductId = 34, ShelfId = 8 }
+            };
+            context.ProductsShelves.AddOrUpdate(productsShelves);
+        }
+
+        private void SeedShelves(DataContext context)
+        {
+            Shelf[] shelves =
+            {
+                new Shelf { Id = 1, Name = "A", WarehouseId = 1 },
+                new Shelf { Id = 2, Name = "B", WarehouseId = 1 },
+                new Shelf { Id = 3, Name = "C", WarehouseId = 1 },
+                new Shelf { Id = 4, Name = "D", WarehouseId = 1 },
+                new Shelf { Id = 5, Name = "E", WarehouseId = 1 },
+                new Shelf { Id = 6, Name = "F", WarehouseId = 1 },
+                new Shelf { Id = 7, Name = "G", WarehouseId = 1 },
+                new Shelf { Id = 8, Name = "H", WarehouseId = 1 }
+            };
+            context.Shelves.AddOrUpdate(shelves);
         }
 
         private void SeedCountries(DataContext context)
@@ -267,6 +327,7 @@ namespace Kundbolaget.Migrations
             };
             context.ProductCategories.AddOrUpdate(productCategories);
         }
+
         private void SeedProducts(DataContext context)
         {
             Product[] products =

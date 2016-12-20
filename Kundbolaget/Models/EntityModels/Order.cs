@@ -16,7 +16,7 @@ namespace Kundbolaget.Models.EntityModels
         public int CustomerId { get; set; }
         [ForeignKey("CustomerId")]
         public virtual Customer Customer { get; set; }
-        
+        public int? CustomerOrderRef { get; set; }
         [Required]
         public int ShippingAddressId { get; set; }
         [ForeignKey("ShippingAddressId")]
@@ -26,6 +26,7 @@ namespace Kundbolaget.Models.EntityModels
         public DateTime OrderPlaced { get; set; }
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}")]
         public DateTime DesiredDeliveryDate { get; set;}
+        
         public OrderStatus OrderStatus { get; set; }
 
         public virtual IList<OrderRow> OrderRows { get; set; }
