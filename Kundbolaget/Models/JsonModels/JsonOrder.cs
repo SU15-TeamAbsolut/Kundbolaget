@@ -8,7 +8,7 @@ namespace Kundbolaget.Models.JsonModels
     {
         [JsonProperty(Required = Required.Always)]
         public int CustomerId { get; set; }
-        [JsonProperty(Required = Required.AllowNull)]
+        [JsonProperty(Required = Required.DisallowNull)]
         public int? CustomerOrderRef { get; set; }
         [JsonProperty(Required = Required.Always)]
         public DateTime DeliveryDate { get; set; }
