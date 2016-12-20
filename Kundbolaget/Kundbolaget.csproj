@@ -193,6 +193,10 @@
     <Compile Include="Migrations\201612191446591_ReseedTablesTo10K.Designer.cs">
       <DependentUpon>201612191446591_ReseedTablesTo10K.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201612201131564_AddedCustOrderRef.cs" />
+    <Compile Include="Migrations\201612201131564_AddedCustOrderRef.Designer.cs">
+      <DependentUpon>201612201131564_AddedCustOrderRef.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\EntityModels\Address.cs" />
     <Compile Include="Models\EntityModels\Contact.cs" />
@@ -278,6 +282,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201612191446591_ReseedTablesTo10K.resx">
       <DependentUpon>201612191446591_ReseedTablesTo10K.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201612201131564_AddedCustOrderRef.resx">
+      <DependentUpon>201612201131564_AddedCustOrderRef.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
