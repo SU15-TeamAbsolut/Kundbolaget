@@ -1,0 +1,18 @@
+﻿@model Kundbolaget.Models.ViewModels.JsonOrderViewModel
+
+@{
+    ViewBag.Title = "InvalidOrderFile";
+}
+
+<h2>Ogiltig orderfil</h2>
+
+<p>Kundens orderfil passerade inte validering.</p>
+
+<p>@Model.ErrorMessage</p>
+
+<ul>
+  @foreach (var error in Model.ValidationErrors)
+  {
+    <li>@error.Path: @error.Kind</li>
+  }
+</ul>

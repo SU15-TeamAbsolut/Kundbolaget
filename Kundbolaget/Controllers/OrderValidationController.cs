@@ -35,7 +35,14 @@ namespace Kundbolaget.Controllers
             ICollection<ValidationError> errors;
             ValidateJsonOrder(orderJson, out errors, out orderData, out viewModel);
 
-            return View(viewModel);
+            if (viewModel.OrderIsValid)
+            {
+                return View(viewModel);
+            }
+            else
+            {
+                return View("InvalidOrderFile", viewModel);
+            }
         }
 
         private void ValidateJsonOrder(string orderJson, out ICollection<ValidationError> errors, out JsonOrder orderData, out JsonOrderViewModel viewModel)
@@ -130,10 +137,14 @@ namespace Kundbolaget.Controllers
         }
 
         [HttpPost]
-        public ActionResult PlaceOrder(JsonOrderViewModel orderModel)
+        public ActionResult ConfirmOrder(Order order)
         {
-            CreateNewOrder(orderModel.Order);
-            return View(orderModel.Order);
+            CreateNewOrder(order);
+
+            // Fetch fresh data
+            order = orderRepository.Find(order.Id);
+
+            return View("OrderPlaced", order);
         }
 
         [HttpPost]
@@ -164,13 +175,19 @@ namespace Kundbolaget.Controllers
             ICollection<ValidationError> errors;
             ValidateJsonOrder(json, out errors, out orderData, out viewModel);
 
-            if (!viewModel.OrderIsValid)
-            {
-                return View("OrderNotPlaced", viewModel.Order);
-            }
+            //CreateNewOrder(viewModel.Order);
+            //return View("ConfirmOrder", viewModel.Order);
 
-            CreateNewOrder(viewModel.Order);
-            return View("PlaceOrder", viewModel.Order);
+            if (viewModel.OrderIsValid)
+            {
+                // Order file passed validation
+                return View("ConfirmOrder", viewModel.Order);
+            }
+            else
+            {
+                // Order file failed validation
+                return View("InvalidOrderFile", viewModel);
+            }
         }
     }
 }

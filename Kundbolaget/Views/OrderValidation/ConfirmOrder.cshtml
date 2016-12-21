@@ -1,0 +1,29 @@
+﻿@model Kundbolaget.Models.EntityModels.Order
+
+@{
+    ViewBag.Title = "ConfirmOrder";
+}
+
+<h2>Bekräfta order</h2>
+
+@if (Model.CustomerOrderRef != null)
+{
+  <p>Kundens referens: @Model.CustomerOrderRef</p>
+}
+
+@Html.Partial("_ShowOrder")
+
+@using (Html.BeginForm("ConfirmOrder", "OrderValidation"))
+{
+    @Html.HiddenFor(model => model.CustomerId)
+    @Html.HiddenFor(model => model.CustomerOrderRef)
+    @Html.HiddenFor(model => model.ShippingAddressId)
+    @Html.HiddenFor(model => model.DesiredDeliveryDate)
+  for (int i = 0; i < Model.OrderRows.Count; i++)
+  {
+        @Html.HiddenFor(o => o.OrderRows[i].ProductId)
+        @Html.HiddenFor(o => o.OrderRows[i].AmountOrdered)
+  }
+    @Html.ActionLink("Avbryt order", "Index", "Home", null, new { @class = "btn btn-default" })
+    <input type="submit" value="Lägg order" class="btn btn-primary" />
+}

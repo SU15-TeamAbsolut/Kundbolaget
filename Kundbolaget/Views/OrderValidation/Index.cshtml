@@ -47,7 +47,7 @@ Antal valideringsfel i JSON: @Model.ValidationErrors.Count
   <p>Fel i ordern: @Model.ErrorMessage</p>
 }
 
-@using (Html.BeginForm("PlaceOrder", "OrderValidation"))
+@using (Html.BeginForm("ConfirmOrder", "OrderValidation"))
 {
   @Html.HiddenFor(model => model.Order.CustomerId)
   @Html.HiddenFor(model => model.Order.ShippingAddressId)

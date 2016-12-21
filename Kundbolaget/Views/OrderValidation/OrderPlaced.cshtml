@@ -1,0 +1,14 @@
+﻿@model Kundbolaget.Models.EntityModels.Order
+@{
+    ViewBag.Title = "OrderPlaced";
+}
+
+<h2>Order registrerad</h2>
+
+<ul>
+  <li><strong>Kund:</strong> @Model.Customer.Name, #@Model.CustomerId</li>
+  <li><strong>Leveransadress:</strong> @Model.ShippingAddress</li>
+  <li><strong>Ordernummer:</strong> #@Model.Id</li>
+  <li><strong>Antal orderrader:</strong> @Model.OrderRows.Count</li>
+  <li><strong>Önskat leveransdatum:</strong> @Model.DesiredDeliveryDate</li>
+</ul>

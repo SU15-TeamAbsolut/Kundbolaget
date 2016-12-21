@@ -267,12 +267,15 @@
     <Content Include="Views\Shared\_CountryDropDownList.cshtml" />
     <Content Include="Views\OrderValidation\Index.cshtml" />
     <Content Include="Views\OrderValidation\InvalidOrder.cshtml" />
-    <Content Include="Views\OrderValidation\PlaceOrder.cshtml" />
+    <Content Include="Views\OrderValidation\ConfirmOrder.cshtml" />
     <Content Include="Views\OrderValidation\Upload.cshtml" />
     <Content Include="Views\Order\Index.cshtml" />
     <Content Include="Views\Order\Details.cshtml" />
     <Content Include="Views\Order\Edit.cshtml" />
     <Content Include="Views\Shared\_AddressDropDownList.cshtml" />
+    <Content Include="Views\OrderValidation\InvalidOrderFile.cshtml" />
+    <Content Include="Views\Shared\_ShowOrder.cshtml" />
+    <Content Include="Views\OrderValidation\OrderPlaced.cshtml" />
     <Content Include="Views\OrderValidation\OrderNotPlaced.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

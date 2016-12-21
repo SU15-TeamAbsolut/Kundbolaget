@@ -1,0 +1,24 @@
+﻿@model Kundbolaget.Models.EntityModels.Order
+
+<table class="table table-striped table-condensed">
+  <tr>
+    <th colspan="2">Artikel</th>
+    <th>Antal</th>
+    <th>Pris styck</th>
+    <th>Totalt</th>
+  </tr>
+  @foreach (var orderRow in Model.OrderRows)
+  {
+  <tr>
+    <td>@orderRow.Product.Id</td>
+    <td>@orderRow.Product.Name</td>
+    <td>@orderRow.AmountOrdered</td>
+    <td>@orderRow.Product.Price</td>
+    <td>@(orderRow.Product.Price * orderRow.AmountOrdered)</td>
+  </tr>
+  }
+  <tr>
+    <td colspan="4" style="text-align: right"><strong>Summa order:</strong></td>
+    <td><strong>15000,00</strong></td>    
+  </tr>
+</table>
