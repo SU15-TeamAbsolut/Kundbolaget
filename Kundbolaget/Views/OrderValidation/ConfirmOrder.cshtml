@@ -6,11 +6,17 @@
 
 <h2>Bekräfta order</h2>
 
+@if (Model.CustomerOrderRef != null)
+{
+  <p>Kundens referens: @Model.CustomerOrderRef</p>
+}
+
 @Html.Partial("_ShowOrder")
 
 @using (Html.BeginForm("ConfirmOrder", "OrderValidation"))
 {
     @Html.HiddenFor(model => model.CustomerId)
+    @Html.HiddenFor(model => model.CustomerOrderRef)
     @Html.HiddenFor(model => model.ShippingAddressId)
     @Html.HiddenFor(model => model.DesiredDeliveryDate)
   for (int i = 0; i < Model.OrderRows.Count; i++)
