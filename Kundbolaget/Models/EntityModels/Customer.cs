@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Kundbolaget.Models.CustomValidation;
 
 namespace Kundbolaget.Models.EntityModels
 {
@@ -13,6 +14,8 @@ namespace Kundbolaget.Models.EntityModels
         public int CreditLine { get; set; }
         public int PaymentTerm { get; set; }
         public int AccountingCode { get; set; }
+
+        [CorporateIdentityNumber]
         public long OrganizationNumber { get; set; }
 
       

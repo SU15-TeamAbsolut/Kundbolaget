@@ -202,6 +202,7 @@
       <DependentUpon>201612201551355_CustomerOrderRef.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\CustomValidation\CorporateIdentityNumber.cs" />
     <Compile Include="Models\EntityModels\Address.cs" />
     <Compile Include="Models\EntityModels\Contact.cs" />
     <Compile Include="Models\EntityModels\Country.cs" />
