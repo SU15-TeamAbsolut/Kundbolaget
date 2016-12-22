@@ -40,10 +40,7 @@ namespace Kundbolaget.Controllers
             }
             Customer customer = _customerRepository.Find((int) id);
             customer.VisitingAddress.Country = _countryRepository.Find(customer.VisitingAddress.CountryId);
-            if (customer == null)
-            {
-                return HttpNotFound();
-            }
+           
             return View(customer);
         }
 
@@ -60,11 +57,12 @@ namespace Kundbolaget.Controllers
 
       
         [HttpPost]
-        public ActionResult Create([Bind(Include = "Id,Name,Password,CreditLine,PaymentTerm,AccountingCode,OrganizationNumber")] Customer customer, Address address)
+        public ActionResult Create(Customer customer, Address address)
         {
+            customer.VisitingAddress = address;
+
             if (ModelState.IsValid)
             {
-                customer.VisitingAddress = address;
                 _customerRepository.Create(customer);
 
                 return RedirectToAction("Index");
@@ -73,7 +71,6 @@ namespace Kundbolaget.Controllers
             return View(customer);
         }
 
-        // GET: Customers/Edit/5
         public ActionResult Edit(int? id)
         {
             if (!id.HasValue)
@@ -88,27 +85,23 @@ namespace Kundbolaget.Controllers
             return View(customer);
         }
 
-        // POST: Customers/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+       
         [HttpPost]
-        //[ValidateAntiForgeryToken]
         public ActionResult Edit(Customer customer, Address adress)
         {
+            customer.VisitingAddress = adress;
+
             if (ModelState.IsValid)
             {
                 adress.Id = customer.VisitingAddressId;
-               
-                customer.VisitingAddress = adress;
                 _addressRepository.Update(adress);
                 _customerRepository.Update(customer);
-               
+
                 return RedirectToAction("Index");
             }
             return View(customer);
         }
 
-        // GET: Customers/Delete/5
         public ActionResult Delete(int? id)
         {
             if (!id.HasValue)
