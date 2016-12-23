@@ -45,10 +45,11 @@ namespace Kundbolaget.Controllers
         [HttpPost]
         public ActionResult Create(Supplier model, Address address)
         {
+            model.Address = address;
+
             if (!ModelState.IsValid)
                 return View(model);
 
-            model.Address = address;
             _repository.Create(model);
 
             return RedirectToAction("Index");
