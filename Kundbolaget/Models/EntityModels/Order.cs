@@ -29,7 +29,7 @@ namespace Kundbolaget.Models.EntityModels
         
         public OrderStatus OrderStatus { get; set; }
 
-        public virtual IList<OrderRow> OrderRows { get; set; }
+        public virtual IList<OrderRow> OrderRows { get; set; } = new List<OrderRow>();
     }
 
     

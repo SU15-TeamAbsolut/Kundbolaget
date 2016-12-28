@@ -1,0 +1,19 @@
+{
+  "CustomerId":10000,
+  "DeliveryDate":"2018-03-18T22:31:21.7282317+01:00",
+  "DeliveryAddressId":2,
+  "OrderRows":[
+    {
+      "ArticleId":10046,
+      "Amount":5
+    },
+    {
+      "ArticleId":10050,
+      "Amount":8
+    },
+    {
+      "ArticleId":10051,
+      "Amount":3
+    }
+  ]
+}

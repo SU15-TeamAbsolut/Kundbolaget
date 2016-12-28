@@ -1,14 +1,26 @@
-﻿@model Kundbolaget.Models.EntityModels.Order
+﻿@model Kundbolaget.Models.ViewModels.OrderConfirmationViewModel
 @{
     ViewBag.Title = "OrderPlaced";
 }
 
-<h2>Order registrerad</h2>
+<h2>Order #@Model.Order.Id</h2>
 
 <ul>
-  <li><strong>Kund:</strong> @Model.Customer.Name, #@Model.CustomerId</li>
-  <li><strong>Leveransadress:</strong> @Model.ShippingAddress</li>
-  <li><strong>Ordernummer:</strong> #@Model.Id</li>
-  <li><strong>Antal orderrader:</strong> @Model.OrderRows.Count</li>
-  <li><strong>Önskat leveransdatum:</strong> @Model.DesiredDeliveryDate</li>
+  <li><strong>Kund:</strong> @Model.Order.Customer.Name, #@Model.Order.CustomerId</li>
+  <li><strong>Leveransadress:</strong> @Model.Order.ShippingAddress</li>
+  <li><strong>Antal orderrader:</strong> @Model.Order.OrderRows.Count</li>
+  <li><strong>Önskat leveransdatum:</strong> @Model.Order.DesiredDeliveryDate.ToLongDateString()</li>
 </ul>
+
+@if (Model.BackOrder != null)
+{
+<h2>Restorder #@Model.BackOrder.Id</h2>
+
+<ul>
+  <li><strong>Kund:</strong> @Model.BackOrder.Customer.Name, #@Model.BackOrder.CustomerId</li>
+  <li><strong>Leveransadress:</strong> @Model.BackOrder.ShippingAddress</li>
+  <li><strong>Ordernummer:</strong> #@Model.BackOrder.Id</li>
+  <li><strong>Antal orderrader:</strong> @Model.BackOrder.OrderRows.Count</li>
+  <li><strong>Önskat leveransdatum:</strong> @Model.BackOrder.DesiredDeliveryDate.ToLongDateString()</li>
+</ul>
+}

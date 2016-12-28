@@ -21,7 +21,11 @@ namespace Kundbolaget.Models.EntityModels
 
         public int AmountOrdered { get; set; }
         public int? AmountShipped { get; set; }
-        [NotMapped]  // Used for order rows when fulfilling an order
+
+        // Used for order rows when fulfilling an order
+        [NotMapped]
         public int AmountInStock { get; set; }
+        [NotMapped]
+        public bool IsInStock => (AmountInStock >= AmountOrdered);
     }
 }
