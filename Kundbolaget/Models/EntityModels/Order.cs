@@ -30,6 +30,13 @@ namespace Kundbolaget.Models.EntityModels
         public OrderStatus OrderStatus { get; set; }
 
         public virtual IList<OrderRow> OrderRows { get; set; } = new List<OrderRow>();
+
+        public decimal Total => GetOrderTotal();
+
+        private decimal GetOrderTotal()
+        {
+            return OrderRows.Sum(r => r.Price * r.AmountOrdered);
+        }
     }
 
     

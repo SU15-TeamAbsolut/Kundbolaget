@@ -101,6 +101,7 @@ namespace Kundbolaget.Controllers
                     {
                         Product = product,
                         ProductId = product.Id,
+                        Price = product.Price,
                         AmountOrdered = fileOrderRow.Amount
                     };
 
