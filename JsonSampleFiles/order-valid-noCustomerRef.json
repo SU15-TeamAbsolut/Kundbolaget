@@ -14,6 +14,22 @@
     {
       "ArticleId":10031,
       "Amount":150
+    },
+    {
+      "ArticleId":10019,
+      "Amount":30
+    },
+    {
+      "ArticleId":10021,
+      "Amount":19
+    },
+    {
+      "ArticleId":10028,
+      "Amount":60
+    },
+    {
+      "ArticleId":10029,
+      "Amount":180
     }
   ]
 }
