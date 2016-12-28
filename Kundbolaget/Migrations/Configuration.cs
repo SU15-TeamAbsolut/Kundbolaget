@@ -233,7 +233,7 @@ namespace Kundbolaget.Migrations
                 },
                 new Customer
                 {
-                    Id = 2, Name = "Coop",
+                    Id = 2, Name = "Coop", OrganizationNumber = 5567105480,
                     CreditLine = 250000, PaymentTerm = 90,
                     InvoiceAddressId = 10, VisitingAddressId = 7,
                     AlcoholLicenseId = 2, ShippingAddresses = new List<Address>()
@@ -266,7 +266,7 @@ namespace Kundbolaget.Migrations
                 },
                 new Customer
                 {
-                    Id= 3, Name = "Systembolaget",
+                    Id= 3, Name = "Systembolaget", OrganizationNumber = 5560599473,
                     CreditLine = 50000, PaymentTerm = 30,
                     InvoiceAddressId = 11, VisitingAddressId = 8,
                     AlcoholLicenseId = 3, ShippingAddresses = new List<Address>()
