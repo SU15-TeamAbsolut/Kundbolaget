@@ -1,4 +1,4 @@
-﻿@model Kundbolaget.Models.EntityModels.Order
+﻿@model Kundbolaget.Models.ViewModels.OrderConfirmationViewModel
 
 @{
     ViewBag.Title = "ConfirmOrder";
@@ -6,24 +6,46 @@
 
 <h2>Bekräfta order</h2>
 
-@if (Model.CustomerOrderRef != null)
+@if (Model.Order.CustomerOrderRef != null)
 {
-  <p>Kundens referens: @Model.CustomerOrderRef</p>
+  <p>Kundens referens: @Model.Order.CustomerOrderRef</p>
 }
 
-@Html.Partial("_ShowOrder")
+@Html.Partial("_ShowOrder", Model.Order)
+
+@if (Model.BackOrder != null)
+{
+  <h2>Restorder</h2>
+  <div class="alert alert-warning"><span class="glyphicon glyphicon-alert"></span> <strong>Restnotering:</strong> Följande produkter finns inte i lager och placeras i en separat order.</div>
+
+  @Html.Partial("_ShowOrder", Model.BackOrder)
+}
 
 @using (Html.BeginForm("ConfirmOrder", "OrderValidation"))
 {
-    @Html.HiddenFor(model => model.CustomerId)
-    @Html.HiddenFor(model => model.CustomerOrderRef)
-    @Html.HiddenFor(model => model.ShippingAddressId)
-    @Html.HiddenFor(model => model.DesiredDeliveryDate)
-  for (int i = 0; i < Model.OrderRows.Count; i++)
+  @Html.HiddenFor(model => model.Order.CustomerId)
+  @Html.HiddenFor(model => model.Order.CustomerOrderRef)
+  @Html.HiddenFor(model => model.Order.ShippingAddressId)
+  @Html.HiddenFor(model => model.Order.DesiredDeliveryDate)
+  for (int i = 0; i < Model.Order.OrderRows.Count; i++)
   {
-        @Html.HiddenFor(o => o.OrderRows[i].ProductId)
-        @Html.HiddenFor(o => o.OrderRows[i].AmountOrdered)
+    @Html.HiddenFor(o => o.Order.OrderRows[i].ProductId)
+    @Html.HiddenFor(o => o.Order.OrderRows[i].AmountOrdered)
   }
-    @Html.ActionLink("Avbryt order", "Index", "Home", null, new { @class = "btn btn-default" })
-    <input type="submit" value="Lägg order" class="btn btn-primary" />
+
+  if (Model.BackOrder != null)
+  {
+    @Html.HiddenFor(model => model.BackOrder.CustomerId)
+    @Html.HiddenFor(model => model.BackOrder.CustomerOrderRef)
+    @Html.HiddenFor(model => model.BackOrder.ShippingAddressId)
+    @Html.HiddenFor(model => model.BackOrder.DesiredDeliveryDate)
+    for (int i = 0; i < Model.BackOrder.OrderRows.Count; i++)
+    {
+      @Html.HiddenFor(o => o.BackOrder.OrderRows[i].ProductId)
+      @Html.HiddenFor(o => o.BackOrder.OrderRows[i].AmountOrdered)
+    }
+  }
+
+  @Html.ActionLink("Avbryt order", "Index", "Home", null, new { @class = "btn btn-default" })
+  <input type="submit" value="Lägg order" class="btn btn-primary" />
 }

@@ -4,8 +4,8 @@
   "DeliveryAddressId":2,
   "OrderRows":[
     {
-      "ArticleId":10004,
-      "Amount":28
+      "ArticleId":10046,
+      "Amount":5
     },
     {
       "ArticleId":10050,
@@ -13,7 +13,7 @@
     },
     {
       "ArticleId":10051,
-      "Amount":150
+      "Amount":3
     }
   ]
 }

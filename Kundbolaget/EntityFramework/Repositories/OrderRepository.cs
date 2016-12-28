@@ -37,6 +37,7 @@ namespace Kundbolaget.EntityFramework.Repositories
             {
                 return db.Orders
                     .Include(o => o.OrderRows)
+                    .Include(e => e.OrderRows.Select(r => r.Product))
                     .Include(c => c.Customer)
                     .Include(a => a.ShippingAddress)
                     .SingleOrDefault(x => x.Id == id);

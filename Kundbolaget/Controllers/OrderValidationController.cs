@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
+using System.Net;
 using System.Text;
 using System.Web.Mvc;
 using System.Web.UI.WebControls;
@@ -21,6 +23,7 @@ namespace Kundbolaget.Controllers
         private readonly IRepository<Address> addressRepository = new DataRepository<Address>();
         private readonly IRepository<Product> productRepository = new ProductRepository();
         private readonly IRepository<Order> orderRepository = new OrderRepository();
+        private readonly SupplyRepository supplyRepository = new SupplyRepository();
 
         // GET: OrderValidation
         public ActionResult Index()
@@ -63,8 +66,7 @@ namespace Kundbolaget.Controllers
                     CustomerOrderRef = orderData.CustomerOrderRef,
                     ShippingAddress = addressRepository.Find(orderData.DeliveryAddressId),
                     ShippingAddressId = orderData.DeliveryAddressId,
-                    DesiredDeliveryDate = orderData.DeliveryDate,
-                    OrderRows = new List<OrderRow>()
+                    DesiredDeliveryDate = orderData.DeliveryDate
                 },
             };
 
@@ -137,14 +139,18 @@ namespace Kundbolaget.Controllers
         }
 
         [HttpPost]
-        public ActionResult ConfirmOrder(Order order)
+        public ActionResult ConfirmOrder(OrderConfirmationViewModel orderVM)
         {
-            CreateNewOrder(order);
+            CreateNewOrder(orderVM.Order);
+            orderVM.Order = orderRepository.Find(orderVM.Order.Id);
 
-            // Fetch fresh data
-            order = orderRepository.Find(order.Id);
+            if (orderVM.BackOrder != null)
+            {
+                CreateNewOrder(orderVM.BackOrder);
+                orderVM.BackOrder = orderRepository.Find(orderVM.BackOrder.Id);
+            }
 
-            return View("OrderPlaced", order);
+            return View("OrderPlaced", orderVM);
         }
 
         [HttpPost]
@@ -152,6 +158,7 @@ namespace Kundbolaget.Controllers
         {
             return View(orderModel.Order);
         }
+
         public ActionResult Upload()
         {
             return View();
@@ -171,23 +178,52 @@ namespace Kundbolaget.Controllers
 
             // Validate order file data
             JsonOrder orderData;
-            JsonOrderViewModel viewModel;
+            JsonOrderViewModel jsonOrderViewModel;
             ICollection<ValidationError> errors;
-            ValidateJsonOrder(json, out errors, out orderData, out viewModel);
+            ValidateJsonOrder(json, out errors, out orderData, out jsonOrderViewModel);
 
-            //CreateNewOrder(viewModel.Order);
-            //return View("ConfirmOrder", viewModel.Order);
-
-            if (viewModel.OrderIsValid)
-            {
-                // Order file passed validation
-                return View("ConfirmOrder", viewModel.Order);
-            }
-            else
+            if (!jsonOrderViewModel.OrderIsValid)
             {
                 // Order file failed validation
-                return View("InvalidOrderFile", viewModel);
+                return View("InvalidOrderFile", jsonOrderViewModel);
             }
+
+            var order = jsonOrderViewModel.Order;
+            Order backOrder = null;
+
+            // Fetch stock from inventory
+            foreach (var row in order.OrderRows)
+            {
+                row.AmountInStock = supplyRepository.GetAmountInStock(row.ProductId);
+            }
+
+            // Products out of stock?
+            bool outOfStock = order.OrderRows.Count(r => !r.IsInStock) > 0;
+            if (outOfStock)
+            {
+                backOrder = new Order
+                {
+                    Customer = order.Customer,
+                    CustomerId = order.CustomerId,
+                    CustomerOrderRef = order.CustomerOrderRef,
+                    OrderStatus = order.OrderStatus,
+                    ShippingAddress = order.ShippingAddress,
+                    ShippingAddressId = order.ShippingAddressId,
+                    OrderRows = order.OrderRows.Where(r => !r.IsInStock).ToList(),
+                    DesiredDeliveryDate = order.DesiredDeliveryDate.AddDays(7)
+                };
+
+                // Remove out of stock rows from main order
+                order.OrderRows = order.OrderRows.Where(r => r.IsInStock).ToList();
+            }
+
+            var confirmationViewModel = new OrderConfirmationViewModel
+            {
+                Order = order,
+                BackOrder = backOrder
+            };
+
+            return View("ConfirmOrder", confirmationViewModel);
         }
     }
 }
