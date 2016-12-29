@@ -33,10 +33,10 @@ namespace Kundbolaget.Controllers
             string orderJson = System.IO.File.ReadAllText(fileName);
 
             // Validate order file data
-            JsonOrder orderData;
+            JsonCustomerOrder customerOrderData;
             JsonOrderViewModel viewModel;
             ICollection<ValidationError> errors;
-            ValidateJsonOrder(orderJson, out errors, out orderData, out viewModel);
+            ValidateJsonOrder(orderJson, out errors, out customerOrderData, out viewModel);
 
             if (viewModel.OrderIsValid)
             {
@@ -48,12 +48,12 @@ namespace Kundbolaget.Controllers
             }
         }
 
-        private void ValidateJsonOrder(string orderJson, out ICollection<ValidationError> errors, out JsonOrder orderData, out JsonOrderViewModel viewModel)
+        private void ValidateJsonOrder(string orderJson, out ICollection<ValidationError> errors, out JsonCustomerOrder customerOrderData, out JsonOrderViewModel viewModel)
         {
-            var schema = JsonSchema4.FromType<JsonOrder>();
+            var schema = JsonSchema4.FromType<JsonCustomerOrder>();
             errors = schema.Validate(orderJson);
 
-            orderData = JsonConvert.DeserializeObject<JsonOrder>(orderJson);
+            customerOrderData = JsonConvert.DeserializeObject<JsonCustomerOrder>(orderJson);
             viewModel = new JsonOrderViewModel
             {
                 Json = orderJson,
@@ -61,12 +61,12 @@ namespace Kundbolaget.Controllers
                 OrderIsValid = true,
                 Order = new Order
                 {
-                    Customer = customerRepository.Find(orderData.CustomerId),
-                    CustomerId = orderData.CustomerId,
-                    CustomerOrderRef = orderData.CustomerOrderRef,
-                    ShippingAddress = addressRepository.Find(orderData.DeliveryAddressId),
-                    ShippingAddressId = orderData.DeliveryAddressId,
-                    DesiredDeliveryDate = orderData.DeliveryDate
+                    Customer = customerRepository.Find(customerOrderData.CustomerId),
+                    CustomerId = customerOrderData.CustomerId,
+                    CustomerOrderRef = customerOrderData.CustomerOrderRef,
+                    ShippingAddress = addressRepository.Find(customerOrderData.DeliveryAddressId),
+                    ShippingAddressId = customerOrderData.DeliveryAddressId,
+                    DesiredDeliveryDate = customerOrderData.DeliveryDate
                 },
             };
 
@@ -74,7 +74,7 @@ namespace Kundbolaget.Controllers
             if (viewModel.Order.Customer == null)
             {
                 viewModel.OrderIsValid = false;
-                viewModel.ErrorMessage += $"Kund-id {orderData.CustomerId} existerar inte";
+                viewModel.ErrorMessage += $"Kund-id {customerOrderData.CustomerId} existerar inte";
             }
             //Check if customer order reference exist
             if (viewModel.Order.CustomerOrderRef != null)
@@ -92,7 +92,7 @@ namespace Kundbolaget.Controllers
             }
             
             // Check if products exist
-            foreach (var fileOrderRow in orderData.OrderRows)
+            foreach (var fileOrderRow in customerOrderData.OrderRows)
             {
                 var product = productRepository.Find(fileOrderRow.ArticleId);
                 if (product != null)
@@ -151,6 +151,9 @@ namespace Kundbolaget.Controllers
                 orderVM.BackOrder = orderRepository.Find(orderVM.BackOrder.Id);
             }
 
+            // Write return file
+            CreateReturnFile(orderVM.Order, orderVM.BackOrder);
+
             return View("OrderPlaced", orderVM);
         }
 
@@ -178,10 +181,10 @@ namespace Kundbolaget.Controllers
             var json = Encoding.Default.GetString(data);
 
             // Validate order file data
-            JsonOrder orderData;
+            JsonCustomerOrder customerOrderData;
             JsonOrderViewModel jsonOrderViewModel;
             ICollection<ValidationError> errors;
-            ValidateJsonOrder(json, out errors, out orderData, out jsonOrderViewModel);
+            ValidateJsonOrder(json, out errors, out customerOrderData, out jsonOrderViewModel);
 
             if (!jsonOrderViewModel.OrderIsValid)
             {
@@ -225,6 +228,38 @@ namespace Kundbolaget.Controllers
             };
 
             return View("ConfirmOrder", confirmationViewModel);
+        }
+
+        private void CreateReturnFile(Order order, Order backOrder)
+        {
+            string dir = @"C:\OrderFiles";
+            Directory.CreateDirectory(dir);
+
+            var json = new JsonReturnFile
+            {
+                CustomerId = order?.CustomerId ?? backOrder?.CustomerId,
+                Orders = new List<JsonCustomerOrder>()
+            };
+
+            string fileName = "";
+            if (order != null)
+            {
+                json.Orders.Add(new JsonCustomerOrder(order));
+                fileName += $"o{order.Id}";
+            }
+
+            if (backOrder != null)
+            {
+                json.Orders.Add(new JsonCustomerOrder(backOrder));
+                fileName += $"o{backOrder.Id}";
+            }
+
+            // Add customer id to filename
+            fileName += 'c' + (order?.CustomerId.ToString() ?? backOrder?.CustomerId.ToString());
+
+            string file = JsonConvert.SerializeObject(json);
+            System.IO.File.WriteAllText($@"C:\OrderFiles\{fileName}.json", file);
+
         }
     }
 }
