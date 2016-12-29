@@ -5,11 +5,11 @@
   "OrderRows":[
     {
       "ArticleId":10018,
-      "Amount":5
+      "Amount":5000
     },
     {
       "ArticleId":10007,
-      "Amount":8
+      "Amount":800000
     }
   ]
 }
