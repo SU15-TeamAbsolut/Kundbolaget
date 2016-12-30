@@ -16,6 +16,8 @@ namespace Kundbolaget.EntityFramework.Repositories
             {
                 return db.ProductsShelves
                     .Include(e => e.Product)
+                    .Include(e => e.Shelf)
+                    .Where(e => e.ProductId == productId)
                     .SingleOrDefault();
             }
         }
