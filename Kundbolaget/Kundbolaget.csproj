@@ -232,6 +232,7 @@
     <Compile Include="Controllers\WarehouseController.cs" />
     <Compile Include="EntityFramework\Contexts\DataContext.cs" />
     <Compile Include="EntityFramework\Repositories\AddressRepository.cs" />
+    <Compile Include="EntityFramework\Repositories\ContactRepository.cs" />
     <Compile Include="EntityFramework\Repositories\CustomerRepository.cs" />
     <Compile Include="EntityFramework\Repositories\DataRepository.cs" />
     <Compile Include="EntityFramework\Repositories\IRepository.cs" />

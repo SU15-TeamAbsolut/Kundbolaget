@@ -1,4 +1,5 @@
-﻿@model Kundbolaget.Models.EntityModels.Customer
+﻿@using Kundbolaget.Models.EntityModels
+@model Kundbolaget.Models.EntityModels.Customer
 
 @{
     ViewBag.Title = "Details";
@@ -70,7 +71,9 @@
         <dd>
             @Html.Partial("_Address", Model.VisitingAddress)
         </dd>
-
+        <dd>
+            @Html.Partial("_Contact", Model.VisitingAddress)
+        </dd>
     </dl>
 </div>
 <p>
