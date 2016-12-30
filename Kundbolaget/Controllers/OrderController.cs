@@ -67,14 +67,15 @@ namespace Kundbolaget.Controllers
 
             foreach (var row in orderRow)
             {
+                var productShelves = _supplyRepository.FindByProduct(row.ProductId);
                 var pickingListViewModel = new PickingListViewModel
                 {
                     ProductId = row.ProductId,
                     ProductName = row.Product.Name,
                     AmountOrdered = row.AmountOrdered,
-                    ShelfName = _supplyRepository.FindByProduct(row.ProductId).Shelf.Name,
-                    ShelfSpace = _supplyRepository.FindByProduct(row.ProductId).Id,
-                    Balance = _supplyRepository.FindByProduct(row.ProductId).CurrentAmount
+                    ShelfName = productShelves.Shelf.Name,
+                    ShelfSpace = productShelves.Id,
+                    Balance = productShelves.CurrentAmount
                     
                 };
                 viewModels.Add(pickingListViewModel);
