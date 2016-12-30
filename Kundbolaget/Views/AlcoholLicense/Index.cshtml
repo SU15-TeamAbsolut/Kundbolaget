@@ -7,7 +7,7 @@
 <h2>Alcohol licenses</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Skapa ny licens", "Create")
 </p>
 <table class="table">
     <tr>
@@ -29,8 +29,7 @@
             @Html.DisplayFor(modelItem => item.EndDate)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Ändra", "Edit", new { id=item.Id }) |
         </td>
     </tr>
 }
