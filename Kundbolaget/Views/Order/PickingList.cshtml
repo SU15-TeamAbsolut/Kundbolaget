@@ -1,0 +1,63 @@
+﻿@model IEnumerable<Kundbolaget.Models.ViewModels.PickingListViewModel>
+
+@{
+    ViewBag.Title = "PickingList";
+}
+
+<h2>Plocksedel</h2>
+
+<p>
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Produkt Id
+        </th>
+        <th>
+            Produktnamn
+        </th>
+        <th>
+            Antal beställt
+        </th>
+        <th>
+            Hylla
+        </th>
+        <th>
+            Plats
+        </th>
+        <th>
+            Lagersaldo
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProductId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProductName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AmountOrdered)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ShelfName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ShelfSpace)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Balance)
+        </td>
+        <td>
+            
+        </td>
+    </tr>
+}
+
+</table>
+
+@Html.ActionLink("Tillbaka", "Index", null, new { @class = "btn btn-primary"})
+@Html.ActionLink("Skriv ut", "Index", null, new { @class = "btn btn-primary"})
