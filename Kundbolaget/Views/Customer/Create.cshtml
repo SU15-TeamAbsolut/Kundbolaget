@@ -61,6 +61,9 @@
                 @Html.ValidationMessageFor(model => model.OrganizationNumber, "", new {@class = "text-danger"})
             </div>
         </div>
+        <br/>
+        @Html.Partial("_Contact")
+        <br/>
         @Html.Partial("_CountryDropDownList", Model.VisitingAddress)
         @Html.Partial("_Address", Model.VisitingAddress)
         <div class="form-group">

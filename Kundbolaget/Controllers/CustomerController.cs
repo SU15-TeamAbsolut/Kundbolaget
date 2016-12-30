@@ -17,12 +17,14 @@ namespace Kundbolaget.Controllers
         private readonly CustomerRepository _customerRepository;
         private readonly DataRepository<Address> _addressRepository;
         private readonly DataRepository<Country> _countryRepository;
+        private readonly DataRepository<Contact> _contactRepository;
 
         public CustomerController()
         {
             _customerRepository = new CustomerRepository();
             _addressRepository = new DataRepository<Address>();
             _countryRepository = new DataRepository<Country>();
+            _contactRepository = new DataRepository<Contact>();
         }
 
         // GET: Customers
@@ -47,9 +49,11 @@ namespace Kundbolaget.Controllers
         // GET: Customers/Create
         public ActionResult Create()
         {
+            
             var customer = new Customer()
             {
                 VisitingAddress = new Address()
+
             };
 
             return View(customer);
@@ -57,14 +61,17 @@ namespace Kundbolaget.Controllers
 
       
         [HttpPost]
-        public ActionResult Create(Customer customer, Address address)
+        public ActionResult Create(Customer customer, Address address, Contact contact)
         {
+            
             customer.VisitingAddress = address;
 
             if (ModelState.IsValid)
             {
                 _customerRepository.Create(customer);
-
+                var c = _customerRepository.Find(customer.Id);
+                contact.AdressId = c.VisitingAddressId;
+                _contactRepository.Create(contact);
                 return RedirectToAction("Index");
             }
 
