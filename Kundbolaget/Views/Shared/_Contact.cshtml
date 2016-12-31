@@ -1,49 +1,40 @@
 ﻿@using Kundbolaget.EntityFramework.Repositories
 @using Kundbolaget.Models.EntityModels
-@model Kundbolaget.Models.EntityModels.Address
+@model Kundbolaget.Models.EntityModels.Customer
+
 
 @{
-    var contactAdress = new ContactRepository();
-    Contact contactInfo = contactAdress.FindbyAddressId(Model.Id);
-    DataRepository<Contact> contactRepository = new DataRepository<Contact>();
-    var contact = new Contact();
+  
+    
+    
 
 }
 
-
-
-
-
-
-  
-
-   
-
     <div class="form-horizontal">
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.HiddenFor(model => contact.Id)
+        @Html.HiddenFor(model => Model.Contact.Id)
 
         <div class="form-group">
             @Html.Label("Kontaktperson", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => contactInfo.Name, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => contactInfo.Name, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => Model.Contact.Name, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => Model.Contact.Name, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
             @Html.Label("Telefonnummer", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => contactInfo.PhoneNumber, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => contactInfo.PhoneNumber, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => Model.Contact.PhoneNumber, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => Model.Contact.PhoneNumber, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
             @Html.Label("E-post", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => contactInfo.Email, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => contactInfo.Email, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => Model.Contact.Email, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => Model.Contact.Email, "", new { @class = "text-danger" })
             </div>
         </div>
     </div>

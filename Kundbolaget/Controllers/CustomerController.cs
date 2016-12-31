@@ -52,7 +52,8 @@ namespace Kundbolaget.Controllers
             
             var customer = new Customer()
             {
-                VisitingAddress = new Address()
+                VisitingAddress = new Address(),
+                Contact = new Contact()
 
             };
 
@@ -69,9 +70,8 @@ namespace Kundbolaget.Controllers
             if (ModelState.IsValid)
             {
                 _customerRepository.Create(customer);
-                var c = _customerRepository.Find(customer.Id);
-                contact.AdressId = c.VisitingAddressId;
-                _contactRepository.Create(contact);
+               
+               
                 return RedirectToAction("Index");
             }
 
@@ -94,15 +94,20 @@ namespace Kundbolaget.Controllers
 
        
         [HttpPost]
-        public ActionResult Edit(Customer customer, Address adress)
+        public ActionResult Edit(Customer customer, Address adress, Contact contact)
         {
             customer.VisitingAddress = adress;
 
             if (ModelState.IsValid)
             {
                 adress.Id = customer.VisitingAddressId;
+                customer.ContactId = contact.Id;
+                contact.AdressId = customer.VisitingAddressId;
                 _addressRepository.Update(adress);
                 _customerRepository.Update(customer);
+                _contactRepository.Update(contact);
+               
+                
 
                 return RedirectToAction("Index");
             }
