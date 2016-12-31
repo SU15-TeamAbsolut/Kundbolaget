@@ -1,64 +1,72 @@
-﻿@using System.Diagnostics.Eventing.Reader
-@model IEnumerable<Kundbolaget.Models.ViewModels.PickingListViewModel>
+﻿@model Kundbolaget.Models.ViewModels.PickListViewModel
 
 @{
-    ViewBag.Title = "PickingList";
+  ViewBag.Title = "PickingList";
+  bool orderPickable = Model.OrderRows.All(r => r.IsPickable);
 }
 
 <h2>Plocksedel</h2>
 
-<p>
-</p>
-<table class="table">
+<table class="table table-condensed table-striped">
     <tr>
-        <th>
-            Produkt Id
-        </th>
-        <th>
-            Produktnamn
-        </th>
-        <th>
-            Antal beställt
-        </th>
-        <th>
-            Hylla
-        </th>
-        <th>
-            Plats
-        </th>
-        <th>
-            Lagersaldo
-        </th>
-        <th></th>
+        <th colspan="2">Artikel</th>
+        <th>Antal beställt</th>
+        <th>Hylla</th>
+        <th>Plats</th>
+        <th>Lagersaldo</th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
+@foreach (var orderRow in Model.OrderRows) {
+    string className = orderRow.IsPickable ? "" : "alert alert-warning";
+    <tr class="@className">
         <td>
-            @Html.DisplayFor(modelItem => item.ProductId)
+            @Html.DisplayFor(modelItem => orderRow.ProductId)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.ProductName)
-        </td>
-        <td style="@(item.AmountOrdered > item.Balance ? "color: Red" : "")">
-            @Html.DisplayFor(modelItem => item.AmountOrdered)
+            @Html.DisplayFor(modelItem => orderRow.ProductName)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.ShelfName)
+            @Html.DisplayFor(modelItem => orderRow.AmountOrdered)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.ShelfSpace)
+            @Html.DisplayFor(modelItem => orderRow.ShelfName)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Balance)
+            @Html.DisplayFor(modelItem => orderRow.ShelfSpace)
         </td>
         <td>
-            
+            @Html.DisplayFor(modelItem => orderRow.Balance)
         </td>
     </tr>
 }
-
 </table>
 
-@Html.ActionLink("Tillbaka", "Index", null, new { @class = "btn btn-primary"})
-@Html.ActionLink("Skriv ut", "Index", null, new { @class = "btn btn-primary"})
+@if (!orderPickable)
+{
+  <div class="alert alert-danger"><span class="glyphicon glyphicon-warning-sign"></span> Ordern har artiklar ej i lager och kan ej plockas.</div>
+}
+
+@Html.ActionLink("Tillbaka", "Index", null, new { @class = "btn btn-default"})
+<button @(orderPickable ? "" : "disabled") class="btn btn-primary" data-toggle="modal" data-target=".confirmation-modal">Skriv ut</button>
+
+
+<div class="modal fade confirmation-modal" tabindex="-1" role="dialog" aria-labelledby="confirmationModal">
+  <div class="modal-dialog modal-sm" role="document">
+    <div class="modal-content">
+      <div class="modal-header alert alert-info">
+        <h4 class="modal-title">Skriv ut plocklista</h4>
+      </div>
+      <div class="modal-body">
+        <p>Skriv ut plocklista, markera ordern som plockad och minska lagersaldot?</p>
+      </div>
+      <div class="modal-footer">
+       @using (Html.BeginForm("ConfirmPick", "Order"))
+       {
+           @Html.HiddenFor(model => model.OrderId)
+           <button type="button" class="btn btn-default" onClick="$('.confirmation-modal').modal('toggle')">Avbryt</button>
+           <button type="submit" class="btn btn-warning">Skriv ut</button>
+       }
+      </div>
+    </div>
+  </div>
+</div>

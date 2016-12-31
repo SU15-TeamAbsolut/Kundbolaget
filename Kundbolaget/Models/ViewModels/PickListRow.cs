@@ -6,7 +6,7 @@ using Kundbolaget.Models.EntityModels;
 
 namespace Kundbolaget.Models.ViewModels
 {
-    public class PickingListViewModel
+    public class PickListRow
     {
         public int ProductId { get; set; }
         public string ProductName { get; set; }
@@ -14,6 +14,7 @@ namespace Kundbolaget.Models.ViewModels
         public string ShelfName { get; set; }
         public int ShelfSpace { get; set; }
         public int Balance { get; set; }
-        
+        public bool IsPickable => (Balance >= AmountOrdered);
+
     }
 }
