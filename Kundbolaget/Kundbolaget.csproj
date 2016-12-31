@@ -341,6 +341,7 @@
     <Content Include="Views\OrderValidation\OrderNotPlaced.cshtml" />
     <Content Include="Views\Order\PickingList.cshtml" />
     <Content Include="Views\Shared\_Contact.cshtml" />
+    <Content Include="Views\Order\ConfirmPick.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

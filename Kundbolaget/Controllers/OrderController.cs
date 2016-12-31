@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Kundbolaget.EntityFramework.Repositories;
+using Kundbolaget.Enums;
 using Kundbolaget.Models.EntityModels;
 using Kundbolaget.Models.ViewModels;
 
@@ -66,18 +67,16 @@ namespace Kundbolaget.Controllers
             
             foreach (var orderRow in orderRows)
             {
-                var productShelves = _supplyRepository.FindByProduct(row.ProductId);
-                var pickingListViewModel = new PickingListViewModel
+                var shelf = _supplyRepository.FindByProduct(orderRow.ProductId);
+                pickRows.Add(new PickListRow
                 {
-                    ProductId = row.ProductId,
-                    ProductName = row.Product.Name,
-                    AmountOrdered = row.AmountOrdered,
-                    ShelfName = productShelves.Shelf.Name,
-                    ShelfSpace = productShelves.Id,
-                    Balance = productShelves.CurrentAmount
-                    
-                };
-                pickRows.Add(pickRow);
+                    ProductId = orderRow.ProductId,
+                    ProductName = orderRow.Product.Name,
+                    AmountOrdered = orderRow.AmountOrdered,
+                    ShelfName = shelf.Shelf.Name,
+                    ShelfSpace = shelf.Id,
+                    Balance = shelf.CurrentAmount
+                });
             }
 
             var viewModel = new PickListViewModel
@@ -86,9 +85,28 @@ namespace Kundbolaget.Controllers
                 OrderRows = pickRows
             };
 
-
             return View(viewModel);
         }
 
+        // POST: Order/ConfirmPick
+        [HttpPost]
+        public ActionResult ConfirmPick(FormCollection form)
+        {
+            int orderId = int.Parse(form["OrderId"]);
+            var order = _orderRepository.Find(orderId);
+
+            order.OrderStatus = OrderStatus.Packed;
+            _orderRepository.Update(order);
+
+            // Remove from stock
+            foreach (var row in order.OrderRows)
+            {
+                var shelf = _supplyRepository.FindByProduct(row.ProductId);
+                shelf.CurrentAmount -= row.AmountOrdered;
+                _supplyRepository.Update(shelf);
+            }
+
+            return View(order);
+        }
     }
 }

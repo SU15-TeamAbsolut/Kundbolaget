@@ -62,8 +62,9 @@
       <div class="modal-footer">
        @using (Html.BeginForm("ConfirmPick", "Order"))
        {
-          <button type="button" class="btn btn-default" onClick="$('.confirmation-modal').modal('toggle')">Avbryt</button>
-          <button type="submit" class="btn btn-warning">Skriv ut</button>
+           @Html.HiddenFor(model => model.OrderId)
+           <button type="button" class="btn btn-default" onClick="$('.confirmation-modal').modal('toggle')">Avbryt</button>
+           <button type="submit" class="btn btn-warning">Skriv ut</button>
        }
       </div>
     </div>
