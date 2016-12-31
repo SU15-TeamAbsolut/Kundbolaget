@@ -61,26 +61,32 @@ namespace Kundbolaget.Controllers
 
         public ActionResult PickingList(int id)
         {
-            var orderRow = _orderRowRepository.GetAll(id);
-            IList<PickingListViewModel> viewModels = new List<PickingListViewModel>();
+            IList<OrderRow> orderRows = _orderRowRepository.GetAll(id);
+            var pickRows = new List<PickListRow>();
             
-
-            foreach (var row in orderRow)
+            foreach (var orderRow in orderRows)
             {
-                var pickingListViewModel = new PickingListViewModel
+                var pickRow = new PickListRow
                 {
-                    ProductId = row.ProductId,
-                    ProductName = row.Product.Name,
-                    AmountOrdered = row.AmountOrdered,
-                    ShelfName = _supplyRepository.FindByProduct(row.ProductId).Shelf.Name,
-                    ShelfSpace = _supplyRepository.FindByProduct(row.ProductId).Id,
-                    Balance = _supplyRepository.FindByProduct(row.ProductId).CurrentAmount
+                    ProductId = orderRow.ProductId,
+                    ProductName = orderRow.Product.Name,
+                    AmountOrdered = orderRow.AmountOrdered,
+                    ShelfName = _supplyRepository.FindByProduct(orderRow.ProductId).Shelf.Name,
+                    ShelfSpace = _supplyRepository.FindByProduct(orderRow.ProductId).Id,
+                    Balance = _supplyRepository.FindByProduct(orderRow.ProductId).CurrentAmount
                     
                 };
-                viewModels.Add(pickingListViewModel);
+                pickRows.Add(pickRow);
             }
-            
-            return View(viewModels);
+
+            var viewModel = new PickListViewModel
+            {
+                OrderId = id,
+                OrderRows = pickRows
+            };
+
+
+            return View(viewModel);
         }
 
     }
