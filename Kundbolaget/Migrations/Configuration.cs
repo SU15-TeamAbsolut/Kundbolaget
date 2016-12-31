@@ -72,8 +72,10 @@ namespace Kundbolaget.Migrations
                 new ProductShelf { Id = 30, CurrentAmount = 61, MinimumAmount = 5, ProductId = 10029, ShelfId = 6 },
                 new ProductShelf { Id = 31, CurrentAmount = 1, MinimumAmount = 5, ProductId = 10030, ShelfId = 7 },
                 new ProductShelf { Id = 32, CurrentAmount = 72, MinimumAmount = 5, ProductId = 10031, ShelfId = 7 },
-                new ProductShelf { Id = 33, CurrentAmount = 16, MinimumAmount = 5, ProductId = 10032, ShelfId = 8 },
-                new ProductShelf { Id = 34, CurrentAmount = 17, MinimumAmount = 5, ProductId = 10033, ShelfId = 8 }
+                new ProductShelf { Id = 33, CurrentAmount = 16, MinimumAmount = 5, ProductId = 10032, ShelfId = 7 },
+                new ProductShelf { Id = 34, CurrentAmount = 50, MinimumAmount = 5, ProductId = 10033, ShelfId = 8 },
+                new ProductShelf { Id = 35, CurrentAmount = 50, MinimumAmount = 5, ProductId = 10034, ShelfId = 8 },
+                new ProductShelf { Id = 36, CurrentAmount = 50, MinimumAmount = 5, ProductId = 10035, ShelfId = 8 }
             };
             context.ProductsShelves.AddOrUpdate(productsShelves);
         }
