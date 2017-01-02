@@ -27,6 +27,9 @@ namespace Kundbolaget.EntityFramework.Contexts
         {
             modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
             modelBuilder.Conventions.Remove<ManyToManyCascadeDeleteConvention>();
+
+            // Add support for DATE column
+            modelBuilder.Conventions.Add(new DataTypePropertyAttributeConvention());
         }
 
         public override int SaveChanges()

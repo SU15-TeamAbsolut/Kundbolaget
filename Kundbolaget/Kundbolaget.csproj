@@ -231,6 +231,7 @@
     <Compile Include="Controllers\SupplierController.cs" />
     <Compile Include="Controllers\WarehouseController.cs" />
     <Compile Include="EntityFramework\Contexts\DataContext.cs" />
+    <Compile Include="EntityFramework\Contexts\DataTypePropertyAttributeConvention.cs" />
     <Compile Include="EntityFramework\Repositories\AddressRepository.cs" />
     <Compile Include="EntityFramework\Repositories\CustomerRepository.cs" />
     <Compile Include="EntityFramework\Repositories\DataRepository.cs" />
