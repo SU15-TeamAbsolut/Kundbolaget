@@ -8,3 +8,5 @@
  - `Shipping` -- ordern är ute för leverans
  - `Delivered` -- ordern är mottagen av kunden
  - `Cancelled` -- ordern är makulerad
+
+När ordern är `Registered` eller `Processing` betraktas antalet beställda artiklar som reserverade och ej tillgängliga för andra ordrar -- reserverade artiklar ska ej ingå i lagersaldot.
