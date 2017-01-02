@@ -95,7 +95,7 @@ namespace Kundbolaget.Controllers
             int orderId = int.Parse(form["OrderId"]);
             var order = _orderRepository.Find(orderId);
 
-            order.OrderStatus = OrderStatus.Packed;
+            order.OrderStatus = OrderStatus.ReadyToShip;
             _orderRepository.Update(order);
 
             // Remove from stock
