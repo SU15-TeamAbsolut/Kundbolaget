@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Web;
 
@@ -17,9 +18,11 @@ namespace Kundbolaget.Models.EntityModels
         public int ProductId { get; set; }
         [ForeignKey("ProductId")]
         public virtual Product Product { get; set; }
+        [DisplayName("Pris")]
         public decimal Price {get; set;}
-
+        [DisplayName("Antal beställt")]
         public int AmountOrdered { get; set; }
+        [DisplayName("Antal skickat")]
         public int? AmountShipped { get; set; }
 
         // Used for order rows when fulfilling an order
