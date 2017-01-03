@@ -512,7 +512,7 @@ namespace Kundbolaget.Migrations
                 },
                 new Product()
                 {
-                    Id = 30, ProductCategoryId = 8, Name = "Lustau Solera Reserva", AlcoholPercentage = 18.5m,
+                    Id = 30, ProductCategoryId = 8, Name = "Lustau Solera Reserva Dublett", AlcoholPercentage = 18.5m,
                     Price = 99, Description = "Nyanserad smak med inslag av torkad frukt, hasselnötter, choklad, farinsocker och apelsinskal. Serveras vid cirka 14°C som aperitif eller till kallskuret.",
                     ProductNumber = 8227, AccountingCode = 00200, VatCode = 01, Volume = 375, PackageAmount = 10
                 },
@@ -555,7 +555,7 @@ namespace Kundbolaget.Migrations
                 #endregion
             };
 
-            context.Products.AddOrUpdate(products);
+            context.Products.AddOrUpdate(p => p.Name, products);
         }
 
         private void SeedContacts(DataContext context)
