@@ -11,6 +11,27 @@ namespace Kundbolaget.EntityFramework.Repositories
 {
     public class ProductRepository : DataRepository<Product>
     {
+        public override Product Find(int id)
+        {
+            using (var db = new DataContext())
+            {
+                return db.Products
+                    .Include(p => p.PriceList)
+                    .SingleOrDefault(p => p.Id == id);
+            }
+        }
+
+        public override IList<Product> GetAll()
+        {
+            using (var db = new DataContext())
+            {
+                return db.Products
+                    .Include(p => p.PriceList)
+                    .ToList();
+            }
+        }
+
+
         public IList<Product> SearchByName(string searchString)
         {
             using (var db = new DataContext())
@@ -18,6 +39,7 @@ namespace Kundbolaget.EntityFramework.Repositories
                 return db.Products
                     .Where(p => p.Name.Contains(searchString))
                     .Include(p => p.ProductCategory)
+                    .Include(p => p.PriceList)
                     .ToList();
             }
         }
