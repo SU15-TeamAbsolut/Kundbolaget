@@ -1,6 +1,7 @@
 
 using System.Collections.Generic;
 using Kundbolaget.EntityFramework.Contexts;
+using Kundbolaget.Enums;
 
 namespace Kundbolaget.Migrations
 {
@@ -593,7 +594,7 @@ namespace Kundbolaget.Migrations
                     CustomerId = 3,
                     OrderPlaced = DateTime.Now,
                     DesiredDeliveryDate = DateTime.Now.AddDays(5),
-                    OrderStatus = 0,
+                    OrderStatus = OrderStatus.Registered,
                     ShippingAddressId = 11,
                     OrderRows = new List<OrderRow>()
                 },
@@ -603,7 +604,7 @@ namespace Kundbolaget.Migrations
                     CustomerId = 1,
                     OrderPlaced = DateTime.Now,
                     DesiredDeliveryDate = DateTime.Now.AddDays(5),
-                    OrderStatus = 0,
+                    OrderStatus = OrderStatus.Registered,
                     ShippingAddressId = 9,
                     OrderRows = new List<OrderRow>()
                 }

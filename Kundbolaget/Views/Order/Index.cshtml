@@ -58,10 +58,10 @@
             @Html.DisplayFor(modelItem => item.OrderStatus)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new {id = item.Id})
-            @if (item.OrderStatus == OrderStatus.ReadyToShip)
+            @Html.ActionLink("Redigera", "Edit", new {id = item.Id})
+            @if (item.OrderStatus == OrderStatus.Registered)
             {
-                @Html.ActionLink("Plocksedel", "PickingList", new { id = item.Id }, null)
+               @Html.ActionLink("Plocksedel", "PickingList", new { id = item.Id }, null)
             }
         </td>
     </tr>

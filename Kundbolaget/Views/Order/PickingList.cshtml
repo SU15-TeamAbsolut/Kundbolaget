@@ -46,7 +46,7 @@
   <div class="alert alert-danger"><span class="glyphicon glyphicon-warning-sign"></span> Ordern har artiklar ej i lager och kan ej plockas.</div>
 }
 
-@Html.ActionLink("Tillbaka", "Index", null, new { @class = "btn btn-default"})
+@Html.ActionLink("Tillbaka", "Index", null, new { @class = "btn btn-primary"})
 <button @(orderPickable ? "" : "disabled") class="btn btn-primary" data-toggle="modal" data-target=".confirmation-modal">Skriv ut</button>
 
 
