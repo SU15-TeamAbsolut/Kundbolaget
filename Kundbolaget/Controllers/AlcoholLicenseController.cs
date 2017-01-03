@@ -11,16 +11,18 @@ namespace Kundbolaget.Controllers
     public class AlcoholLicenseController : Controller
     {
         private IRepository<AlcoholLicense> repository;
+        private readonly CustomerRepository _customerRepository;
 
         public AlcoholLicenseController()
         {
             repository = new DataRepository<AlcoholLicense>();
+            _customerRepository = new CustomerRepository();
         } 
 
         // GET: AlcoholLicense
         public ActionResult Index()
         {
-            var model = repository.GetAll();
+            var model = _customerRepository.GetCustomersAlcoLicenses();
             return View(model);
         }
 

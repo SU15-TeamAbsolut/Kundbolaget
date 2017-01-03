@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
@@ -13,6 +14,7 @@ namespace Kundbolaget.Models.EntityModels
         public int Id { get; set; }
 
         [Required]
+        [DisplayName("Kontaktperson")]
         public string Name { get; set; }
 
         [Required]
@@ -21,8 +23,10 @@ namespace Kundbolaget.Models.EntityModels
         public virtual Address Address { get; set; }
 
         [Required]
+        [DisplayName("Telefonnummer")]
         public string PhoneNumber { get; set; }
         [Required]
+        [DisplayName("E-post")]
         public string Email { get; set; }
 
     }
