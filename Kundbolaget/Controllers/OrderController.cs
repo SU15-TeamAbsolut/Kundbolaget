@@ -52,7 +52,11 @@ namespace Kundbolaget.Controllers
         [HttpPost]
         public ActionResult Edit(Order model)
         {
-            if(model.ShippingAddress == null)
+            if (model.ShippingAddressId == 0)
+            {
+                var o = _orderRepository.Find(model.Id);
+                model.ShippingAddressId = o.ShippingAddressId;
+            }
 
 
             _orderRepository.Update(model);
