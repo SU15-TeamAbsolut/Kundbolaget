@@ -19,7 +19,7 @@
 
         <div class="form-group">
             @Html.LabelFor(model => model.Name, htmlAttributes: new {@class = "control-label col-md-1"})
-            <div class="col-md-5">
+            <div class="col-md-3">
                 @Html.EditorFor(model => model.Name, new {htmlAttributes = new {@class = "form-control"}})
                 @Html.ValidationMessageFor(model => model.Name, "", new {@class = "text-danger"})
             </div>
@@ -27,7 +27,7 @@
 
         <div class="form-group">
             @Html.LabelFor(model => model.Password, htmlAttributes: new {@class = "control-label col-md-1"})
-            <div class="col-md-5">
+            <div class="col-md-3">
                 @Html.EditorFor(model => model.Password, new {htmlAttributes = new {@class = "form-control"}})
                 @Html.ValidationMessageFor(model => model.Password, "", new {@class = "text-danger"})
             </div>
@@ -35,7 +35,7 @@
 
         <div class="form-group">
             @Html.LabelFor(model => model.CreditLine, htmlAttributes: new {@class = "control-label col-md-1"})
-            <div class="col-md-5">
+            <div class="col-md-3">
                 @Html.EditorFor(model => model.CreditLine, new {htmlAttributes = new {@class = "form-control"}})
                 @Html.ValidationMessageFor(model => model.CreditLine, "", new {@class = "text-danger"})
             </div>
@@ -43,7 +43,7 @@
 
         <div class="form-group">
             @Html.LabelFor(model => model.PaymentTerm, htmlAttributes: new {@class = "control-label col-md-1"})
-            <div class="col-md-5">
+            <div class="col-md-3">
                 @Html.EditorFor(model => model.PaymentTerm, new {htmlAttributes = new {@class = "form-control"}})
                 @Html.ValidationMessageFor(model => model.PaymentTerm, "", new {@class = "text-danger"})
             </div>
@@ -51,7 +51,7 @@
 
         <div class="form-group">
             @Html.LabelFor(model => model.AccountingCode, htmlAttributes: new {@class = "control-label col-md-1"})
-            <div class="col-md-5">
+            <div class="col-md-3">
                 @Html.EditorFor(model => model.AccountingCode, new {htmlAttributes = new {@class = "form-control"}})
                 @Html.ValidationMessageFor(model => model.AccountingCode, "", new {@class = "text-danger"})
             </div>
@@ -59,7 +59,7 @@
 
         <div class="form-group">
             @Html.LabelFor(model => model.OrganizationNumber, htmlAttributes: new {@class = "control-label col-md-1"})
-            <div class="col-md-5">
+            <div class="col-md-3">
                 @Html.EditorFor(model => model.OrganizationNumber, new {htmlAttributes = new {@class = "form-control"}})
                 @Html.ValidationMessageFor(model => model.OrganizationNumber, "", new {@class = "text-danger"})
             </div>
@@ -70,11 +70,11 @@
         </div>
 
             @Html.Partial("_Address", Model.VisitingAddress)
+            @Html.Partial("_Contact")
         <hr />
             <div class="form-group col-md-10">
                 @Html.ActionLink("Tillbaka", "Index", null, new { @class="btn btn-primary"}) |
                 <input type="submit" value="Spara" class="btn btn-primary" />
-            @Html.Partial("_Contact")
             </div>
         </div>
 }

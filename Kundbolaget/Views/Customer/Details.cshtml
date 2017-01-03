@@ -73,8 +73,24 @@
             @Html.DisplayFor(model => model.VisitingAddress.ZipNumber), 
             @Html.DisplayFor(model => model.VisitingAddress.City) 
         </dd>
+        <dt>
+            @*@Html.Partial("_Contact")*@
+            @Html.DisplayNameFor(model => model.Contact.Name)
+        </dt>
         <dd>
-            @Html.Partial("_Contact")
+            @Html.DisplayFor(model => model.Contact.Name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Contact.PhoneNumber)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Contact.PhoneNumber)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Contact.Email)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Contact.Email)
         </dd>
     </dl>
 </div>

@@ -86,7 +86,8 @@
 
     </dl>
 </div>
+<hr/>
 <p>
-    @Html.ActionLink("Ändra produkt", "Edit", new { id = Model.Id }, new { @class = "btn btn-primary" }) |
-    @Html.ActionLink("Avbryt", "Index", null, new { @class = "btn btn-primary" })
+    @Html.ActionLink("Tillbaka", "Index", null, new { @class = "btn btn-primary" }) |
+    @Html.ActionLink("Redigera", "Edit", new {id = Model.Id}, new {@class = "btn btn-primary"})
 </p>
