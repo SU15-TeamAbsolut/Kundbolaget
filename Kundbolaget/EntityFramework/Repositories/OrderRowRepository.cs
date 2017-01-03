@@ -16,6 +16,7 @@ namespace Kundbolaget.EntityFramework.Repositories
             {
                 var orderRows = db.OrderRows
                     .Include(p => p.Product)
+                    .Include(p => p.Product.PriceList)
                     .Where(x => x.OrderId == id);
                 return orderRows.ToList();
             }
