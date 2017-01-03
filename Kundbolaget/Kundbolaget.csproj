@@ -260,6 +260,10 @@
     <Compile Include="Migrations\201612201551355_CustomerOrderRef.Designer.cs">
       <DependentUpon>201612201551355_CustomerOrderRef.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201612311135175_AddedContactForeignKeyToCustomer.cs" />
+    <Compile Include="Migrations\201612311135175_AddedContactForeignKeyToCustomer.Designer.cs">
+      <DependentUpon>201612311135175_AddedContactForeignKeyToCustomer.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\CustomValidation\CorporateIdentityNumber.cs" />
     <Compile Include="Models\EntityModels\Address.cs" />
@@ -365,6 +369,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201612201551355_CustomerOrderRef.resx">
       <DependentUpon>201612201551355_CustomerOrderRef.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201612311135175_AddedContactForeignKeyToCustomer.resx">
+      <DependentUpon>201612311135175_AddedContactForeignKeyToCustomer.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

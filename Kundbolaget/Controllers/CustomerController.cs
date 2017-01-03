@@ -17,12 +17,14 @@ namespace Kundbolaget.Controllers
         private readonly CustomerRepository _customerRepository;
         private readonly DataRepository<Address> _addressRepository;
         private readonly DataRepository<Country> _countryRepository;
+        private readonly DataRepository<Contact> _contactRepository;
 
         public CustomerController()
         {
             _customerRepository = new CustomerRepository();
             _addressRepository = new DataRepository<Address>();
             _countryRepository = new DataRepository<Country>();
+            _contactRepository = new DataRepository<Contact>();
         }
 
         // GET: Customers
@@ -47,9 +49,12 @@ namespace Kundbolaget.Controllers
         // GET: Customers/Create
         public ActionResult Create()
         {
+            
             var customer = new Customer()
             {
-                VisitingAddress = new Address()
+                VisitingAddress = new Address(),
+                Contact = new Contact()
+
             };
 
             return View(customer);
@@ -57,14 +62,16 @@ namespace Kundbolaget.Controllers
 
       
         [HttpPost]
-        public ActionResult Create(Customer customer, Address address)
+        public ActionResult Create(Customer customer, Address address, Contact contact)
         {
+            
             customer.VisitingAddress = address;
 
             if (ModelState.IsValid)
             {
                 _customerRepository.Create(customer);
-
+               
+               
                 return RedirectToAction("Index");
             }
 
@@ -87,15 +94,20 @@ namespace Kundbolaget.Controllers
 
        
         [HttpPost]
-        public ActionResult Edit(Customer customer, Address adress)
+        public ActionResult Edit(Customer customer, Address adress, Contact contact)
         {
             customer.VisitingAddress = adress;
 
             if (ModelState.IsValid)
             {
                 adress.Id = customer.VisitingAddressId;
+                customer.ContactId = contact.Id;
+                contact.AdressId = customer.VisitingAddressId;
                 _addressRepository.Update(adress);
                 _customerRepository.Update(customer);
+                _contactRepository.Update(contact);
+               
+                
 
                 return RedirectToAction("Index");
             }

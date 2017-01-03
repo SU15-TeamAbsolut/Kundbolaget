@@ -33,6 +33,10 @@ namespace Kundbolaget.Models.EntityModels
         [ForeignKey("AlcoholLicenseId")]
         public virtual AlcoholLicense AlcoholLicense { get; set; }
 
+        public int? ContactId { get; set;}
+        [ForeignKey("ContactId")]
+        public virtual Contact Contact { get; set; }
+
         public virtual IList<Address> ShippingAddresses { get; set; }
     }
 }

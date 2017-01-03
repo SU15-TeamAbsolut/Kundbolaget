@@ -238,7 +238,7 @@ namespace Kundbolaget.Migrations
                     Id = 2, Name = "Coop", OrganizationNumber = 5567105480,
                     CreditLine = 250000, PaymentTerm = 90,
                     InvoiceAddressId = 10, VisitingAddressId = 7,
-                    AlcoholLicenseId = 2, ShippingAddresses = new List<Address>()
+                    AlcoholLicenseId = 2,ShippingAddresses = new List<Address>()
                     {
                         new Address
                         {
@@ -246,7 +246,7 @@ namespace Kundbolaget.Migrations
                             Street = "Klarinettvägen 6",
                             City = "Göteborg",
                             ZipNumber = "34579",
-                            CountryId = 1
+                            CountryId = 1,
                         },
                         new Address
                         {
@@ -265,6 +265,7 @@ namespace Kundbolaget.Migrations
                             CountryId = 1
                         },
                     }
+                    
                 },
                 new Customer
                 {
