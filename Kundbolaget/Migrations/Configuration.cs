@@ -24,16 +24,36 @@ namespace Kundbolaget.Migrations
 
             SeedWarehouses(context);
             SeedSuppliers(context);
+
             SeedCustomers(context);
             SeedAlcoholLicenses(context);
+
             SeedProductCategories(context);
             SeedProducts(context);
+            SeedProductPrices(context);
+
             SeedContacts(context);
-            SeedOrders(context);
-            SeedOrderRows(context);
+
+            //SeedOrders(context);
+            //SeedOrderRows(context);
 
             SeedShelves(context);
             SeedProductsShelves(context);
+        }
+
+        private void SeedProductPrices(DataContext context)
+        {
+            ProductPrice[] prices =
+            {
+                new ProductPrice { Id = 1, ProductId = 10000, Price = 18, StartDate = DateTime.Now.AddDays(-90) },
+                new ProductPrice { Id = 2, ProductId = 10000, Price = 29, StartDate = DateTime.Now.AddDays(-60) },
+                new ProductPrice { Id = 3, ProductId = 10000, Price = 27, StartDate = DateTime.Now.AddDays(-30) },
+                new ProductPrice { Id = 4, ProductId = 10000, Price = 35, StartDate = DateTime.Now.AddDays(-7) },
+                new ProductPrice { Id = 5, ProductId = 10000, Price = 9, StartDate = DateTime.Now.AddDays(7) },
+                new ProductPrice { Id = 6, ProductId = 10000, Price = 22, StartDate = DateTime.Now.AddDays(30) },
+            };
+
+            context.ProductPrices.AddOrUpdate(prices);
         }
 
         private void SeedProductsShelves(DataContext context)
@@ -75,7 +95,6 @@ namespace Kundbolaget.Migrations
                 new ProductShelf { Id = 33, CurrentAmount = 16, MinimumAmount = 5, ProductId = 10032, ShelfId = 7 },
                 new ProductShelf { Id = 34, CurrentAmount = 50, MinimumAmount = 5, ProductId = 10033, ShelfId = 8 },
                 new ProductShelf { Id = 35, CurrentAmount = 50, MinimumAmount = 5, ProductId = 10034, ShelfId = 8 },
-                new ProductShelf { Id = 36, CurrentAmount = 50, MinimumAmount = 5, ProductId = 10035, ShelfId = 8 }
             };
             context.ProductsShelves.AddOrUpdate(productsShelves);
         }

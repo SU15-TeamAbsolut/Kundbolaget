@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
-using System.Web;
 
 namespace Kundbolaget.Models.EntityModels
 {
@@ -13,8 +13,14 @@ namespace Kundbolaget.Models.EntityModels
         public string Name { get; set; }
         public string Description { get; set; }
 
-        [Required]
-        public decimal Price { get; set; }
+        [NotMapped]
+        public decimal Price
+        {
+            get { return GetPrice(); }
+            set { SetPrice(value); }
+        }
+
+        public virtual IList<ProductPrice> PriceList { get; set; } = new List<ProductPrice>();
 
         [Required]
         public int ProductNumber { get; set; }
@@ -39,6 +45,23 @@ namespace Kundbolaget.Models.EntityModels
         public int ProductCategoryId { get; set; }
 
         public virtual ProductCategory ProductCategory { get; set; }
-        
+
+        private decimal GetPrice()
+        {
+            return PriceList
+                .OrderByDescending(p => p.StartDate)
+                .First(p => p.StartDate <= DateTime.Today)
+                .Price;
+        }
+
+        private void SetPrice(decimal value)
+        {
+            PriceList.Add(new ProductPrice
+            {
+                Price = value,
+                ProductId = this.Id,
+                StartDate = DateTime.Now
+            });
+        }
     }
 }

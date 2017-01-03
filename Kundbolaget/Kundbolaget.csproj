@@ -264,6 +264,10 @@
     <Compile Include="Migrations\201612311135175_AddedContactForeignKeyToCustomer.Designer.cs">
       <DependentUpon>201612311135175_AddedContactForeignKeyToCustomer.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201701031116331_CreatePriceList.cs" />
+    <Compile Include="Migrations\201701031116331_CreatePriceList.Designer.cs">
+      <DependentUpon>201701031116331_CreatePriceList.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\CustomValidation\CorporateIdentityNumber.cs" />
     <Compile Include="Models\EntityModels\Address.cs" />
@@ -273,6 +277,7 @@
     <Compile Include="Models\EntityModels\AlcoholLicense.cs" />
     <Compile Include="Models\EntityModels\Order.cs" />
     <Compile Include="Models\EntityModels\OrderRow.cs" />
+    <Compile Include="Models\EntityModels\ProductPrice.cs" />
     <Compile Include="Models\EntityModels\ProductCategory.cs" />
     <Compile Include="Models\EntityModels\Product.cs" />
     <Compile Include="Models\EntityModels\ProductShelf.cs" />
@@ -372,6 +377,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201612311135175_AddedContactForeignKeyToCustomer.resx">
       <DependentUpon>201612311135175_AddedContactForeignKeyToCustomer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201701031116331_CreatePriceList.resx">
+      <DependentUpon>201701031116331_CreatePriceList.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

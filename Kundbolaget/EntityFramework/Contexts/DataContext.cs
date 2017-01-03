@@ -10,6 +10,7 @@ namespace Kundbolaget.EntityFramework.Contexts
     {
         public DbSet<Supplier> Suppliers { get; set; }
         public DbSet<Product> Products { get; set; }
+        public DbSet<ProductPrice> ProductPrices { get; set; }
         public DbSet<ProductCategory> ProductCategories { get; set; }
         public DbSet<Warehouse> Warehouses { get; set; }
         public DbSet<Customer> Customers { get; set; }
