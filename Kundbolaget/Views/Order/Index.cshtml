@@ -61,7 +61,7 @@
             @Html.ActionLink("Edit", "Edit", new {id = item.Id})
             @if (item.OrderStatus == OrderStatus.ReadyToShip)
             {
-                @Html.ActionLink("Plocksedel", "PickingList", new { id = item.Id }, null)
+               @Html.ActionLink("Plocksedel", "PickingList", new { id = item.Id }, null)
             }
         </td>
     </tr>

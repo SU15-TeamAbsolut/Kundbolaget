@@ -7,11 +7,11 @@
 
          <div class="form-group">
             @Html.LabelFor(model => model.ShippingAddress, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
+            <div class="col-md-5">
 
                 @Html.DropDownListFor(model => model.ShippingAddressId , new SelectList(Model.Customer.ShippingAddresses, "Id", "Street"), Model.ShippingAddress.Street, new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.ShippingAddress, "", new { @class = "text-danger" })
-                @Html.HiddenFor(model => model.ShippingAddressId);
+                @Html.HiddenFor(model => model.ShippingAddressId)
             </div>
         </div>
 

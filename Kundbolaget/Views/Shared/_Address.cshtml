@@ -4,9 +4,9 @@
 
     @Html.AntiForgeryToken()
 
-    <div class="form-horizontal" style="width: 30%">
+    <div class="form-horizontal" style="width: 49%">
 
-        <hr />
+        
         @Html.HiddenFor(m => m.Id)
         <div class="form-group">
             @Html.LabelFor(model => model.Street, htmlAttributes: new {@class = "control-label col-md-2"})
@@ -16,19 +16,19 @@
             </div>
         </div>
         <div class="form-group">
+            @Html.LabelFor(model => model.ZipNumber, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ZipNumber, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => Model.ZipNumber, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
             @Html.LabelFor(model => model.City, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.City, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => Model.City, "", new { @class = "text-danger" })
             </div>
         </div>
-        <div class="form-group">
-            @Html.LabelFor(model => model.ZipNumber, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.ZipNumber, new {htmlAttributes = new {@class = "form-control"}})
-                @Html.ValidationMessageFor(model => Model.ZipNumber, "", new {@class = "text-danger"})
-
-            </div>
-        </div>
+        
     </div>
 

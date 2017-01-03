@@ -9,16 +9,16 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Product.Name)
+            @Html.DisplayNameFor(item => item.Product.Name)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.AmountOrdered)
+            @Html.DisplayNameFor(item => item.AmountOrdered)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Price)
+            @Html.DisplayNameFor(item => item.Price)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.AmountShipped)
+            @Html.DisplayNameFor(item => item.AmountShipped)
         </th>
         <th></th>
     </tr>
@@ -40,7 +40,7 @@
             @Html.DisplayFor(modelItem => item.AmountShipped)
         </td>
         <td>
-            @Html.ActionLink("Ändra", "Edit", null, new { @class = "btn btn-primary" })
+            @Html.ActionLink("Redigera", "Edit", new { id = item.Id})
         </td>
     </tr>
 }
