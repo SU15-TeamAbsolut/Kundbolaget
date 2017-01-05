@@ -58,10 +58,16 @@ namespace Kundbolaget.Models.EntityModels
 
         private decimal GetPrice()
         {
-            return PriceList
+            ProductPrice productPrice = PriceList
                 .OrderByDescending(p => p.StartDate)
-                .First(p => p.StartDate <= DateTime.Today)
-                .Price;
+                .FirstOrDefault(p => p.StartDate <= DateTime.Today);
+
+            if (productPrice == null)
+            {
+                return 0;
+            }
+
+            return productPrice.Price;
         }
 
         private void SetPrice(decimal value)
