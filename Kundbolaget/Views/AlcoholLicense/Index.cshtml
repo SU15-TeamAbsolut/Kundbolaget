@@ -6,9 +6,6 @@
 
 <h2>Alkohollicenser</h2>
 
-<p>
-    @Html.ActionLink("Lägg till licens", "Create", null, new { @class=" btn btn-primary"})
-</p>
 <table class="table">
     <tr>
         <th>
@@ -19,6 +16,9 @@
         </th>
         <th>
             @Html.DisplayNameFor(model => model.AlcoholLicense.EndDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AlcoholLicense.IsValid)
         </th>
         <th>
             
@@ -36,9 +36,42 @@
         <td>
             @Html.DisplayFor(modelItem => item.AlcoholLicense.EndDate)
         </td>
-        <td>
-            @Html.ActionLink("Redigera", "Edit", new {id = item.Id})
-        </td>
+        @if (item.AlcoholLicense == null)
+        {
+            <td>
+                Licens saknas
+            </td>
+        }
+        else
+        {
+            if (item.AlcoholLicense.EndDate < DateTime.Now)
+            {
+                <td>
+                    Ogiltig
+                </td>
+            }
+            else
+            {
+                <td>
+                    Giltig
+                </td>
+                
+            }
+        }
+        
+
+        @if (item.AlcoholLicense == null)
+        {
+            <td>
+                @Html.ActionLink("Lägg till", "Create", new {id = item.Id})
+            </td>
+        }
+        else
+        {
+            <td>
+                @Html.ActionLink("Redigera", "Edit", new { id = item.AlcoholLicense.Id })
+            </td>
+        }
     </tr>
 }
 
