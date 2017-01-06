@@ -17,6 +17,7 @@ namespace Kundbolaget.EntityFramework.Repositories
                     .Include(v => v.VisitingAddress)
                     .Include(s => s.ShippingAddresses)
                     .Include(c => c.Contact)
+                    .Include(l => l.AlcoholLicense)
                     .SingleOrDefault(c => c.Id == id);
             }
         }

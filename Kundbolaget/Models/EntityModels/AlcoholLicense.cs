@@ -24,6 +24,7 @@ namespace Kundbolaget.Models.EntityModels
         public DateTime EndDate { get; set; }
 
         [Required]
+        [DisplayName("Status")]
         public bool IsValid { get; set; }
     }
 }
