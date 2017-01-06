@@ -76,6 +76,13 @@ namespace Kundbolaget.Controllers
                 viewModel.OrderIsValid = false;
                 viewModel.ErrorMessage += $"Kund-id {customerOrderData.CustomerId} existerar inte";
             }
+
+            // Check date - change date if it's in the past
+            if (viewModel.Order.DesiredDeliveryDate < DateTime.Today)
+            {
+                viewModel.Order.DesiredDeliveryDate = DateTime.Today;
+            }
+
             //Check if customer order reference exist
             if (viewModel.Order.CustomerOrderRef != null)
             {
