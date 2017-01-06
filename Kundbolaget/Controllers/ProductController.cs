@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
+using System.Net;
 using System.Web.Mvc;
 using Kundbolaget.EntityFramework.Repositories;
 using Kundbolaget.Models.EntityModels;
@@ -142,6 +142,46 @@ namespace Kundbolaget.Controllers
             IList<Product> model = _productRepository.SearchByName(searchString);
 
             return View(model);
+        }
+
+        // GET: Product/AddPrice/{id}
+        public ActionResult AddPrice(int id)
+        {
+            Product product = _productRepository.Find(id);
+
+            if (product == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.NotFound);
+            }
+
+            var model = new ProductPrice
+            {
+                Product = product,
+                ProductId = product.Id,
+                StartDate = DateTime.Now
+            };
+
+            return View(model);
+        }
+
+        // POST: Product/SavePrice/{ProductPrice}
+        [HttpPost]
+        public ActionResult SavePrice(ProductPrice item)
+        {
+            Product product = _productRepository.Find(item.ProductId);
+
+            if (product == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            // TODO: Workaround, new price gets the product's id from the form for some reason
+            item.Id = 0;
+
+            product.PriceList.Add(item);
+            _productRepository.Update(product);
+
+            return new EmptyResult();
         }
     }
 }
