@@ -11,10 +11,12 @@
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>Address</h4>
+        <h4>Leveransadresser</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.Partial("_Address", Model)
+        
+            @Html.Partial("_Address", Model)
+      
         <div class="form-group">
             <label class="control-label col-md-2">Land</label>
             @Html.Partial("_CountryDropDownList")
