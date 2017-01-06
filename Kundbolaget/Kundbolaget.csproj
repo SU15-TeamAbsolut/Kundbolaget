@@ -228,6 +228,7 @@
     <Compile Include="Controllers\OrderController.cs" />
     <Compile Include="Controllers\OrderValidationController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
+    <Compile Include="Controllers\ShippingAddressController.cs" />
     <Compile Include="Controllers\SupplierController.cs" />
     <Compile Include="Controllers\WarehouseController.cs" />
     <Compile Include="EntityFramework\Contexts\DataContext.cs" />
@@ -352,6 +353,9 @@
     <Content Include="Views\Order\ConfirmPick.cshtml" />
     <Content Include="Scripts\jquery-3.1.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.1.1.min.map" />
+    <Content Include="Views\ShippingAddress\Index.cshtml" />
+    <Content Include="Views\ShippingAddress\Details.cshtml" />
+    <Content Include="Views\ShippingAddress\Create.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
