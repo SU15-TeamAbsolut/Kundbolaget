@@ -45,7 +45,9 @@
             @Html.DisplayFor(modelItem => item.CustomerOrderRef)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.ShippingAddress.Street)
+            @Html.DisplayFor(modelItem => item.ShippingAddress.Street),
+            @Html.DisplayFor(modelItem => item.ShippingAddress.ZipNumber),
+            @Html.DisplayFor(modelItem => item.ShippingAddress.City)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.OrderPlaced)

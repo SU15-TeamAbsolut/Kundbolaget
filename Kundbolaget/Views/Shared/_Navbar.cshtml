@@ -25,16 +25,16 @@
                   <li>@Html.ActionLink("Lagerlokaler", "Index", "Warehouse")</li>
                   <li>@Html.ActionLink("Kunder", "Index", "Customer")</li>
                   <li>@Html.ActionLink("Leveransadresser", "Index", "ShippingAddress")</li>
-                  <li role="separator" class="divider"></li>
-                  <li>@Html.ActionLink("Ladda upp orderfil", "Upload", "OrderValidation")</li>
               </ul>
           </li>
           <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Ordermeny <span class="caret"></span></a>
               <ul class="dropdown-menu">
-                  <li>@Html.ActionLink("Registrerade", "ReceivedOrders", "Order")</li>
-                  <li>@Html.ActionLink("Ej plockade", "UnpickedOrders", "Order")</li>
-                  <li>@Html.ActionLink("Plockade", "PickedOrders", "Order")</li>
+                  <li>@Html.ActionLink("Registrerade ordrar", "ReceivedOrders", "Order")</li>
+                  <li>@Html.ActionLink("Oplockade ordrar", "UnpickedOrders", "Order")</li>
+                  <li>@Html.ActionLink("Plockade ordrar", "PickedOrders", "Order")</li>
+                  <li role="separator" class="divider"></li>
+                  <li>@Html.ActionLink("Ladda upp orderfil", "Upload", "OrderValidation")</li>
               </ul>
           </li>
       </ul>
