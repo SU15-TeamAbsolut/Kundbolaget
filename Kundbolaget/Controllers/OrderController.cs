@@ -55,7 +55,7 @@ namespace Kundbolaget.Controllers
             order.OrderStatus = OrderStatus.Processing;
             _orderRepository.Update(order);
 
-            return View("Index");
+            return RedirectToAction("ReceivedOrders");
 
         }
         public ActionResult UnpickedOrders()
