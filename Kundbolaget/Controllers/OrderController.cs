@@ -13,7 +13,7 @@ namespace Kundbolaget.Controllers
 {
     public class OrderController : Controller
     {
-        private readonly IRepository<Order> _orderRepository;
+        private readonly OrderRepository _orderRepository;
         private readonly OrderRowRepository _orderRowRepository;
         private readonly CustomerRepository _customerRepository;
         private readonly SupplyRepository _supplyRepository;
@@ -30,8 +30,56 @@ namespace Kundbolaget.Controllers
         // GET: Order
         public ActionResult Index()
         {
-            var model = _orderRepository.GetAll();
+            //var model = _orderRepository.GetAll();
 
+            return View();
+        }
+
+        public ActionResult ReceivedOrders()
+        {
+            var orders = _orderRepository.GetAll();
+            List<Order> model = new List<Order>();
+
+            foreach (var order in orders)
+            {
+                if(order.OrderStatus == OrderStatus.Registered)
+                    model.Add(order);
+            }   
+            return View(model);
+        }
+
+        public ActionResult ReadyForPicking(int id)
+        {
+            var order = _orderRepository.Find(id);
+            order.OrderStatus = OrderStatus.Processing;
+            _orderRepository.Update(order);
+
+            return View("Index");
+
+        }
+        public ActionResult UnpickedOrders()
+        {
+            var orders = _orderRepository.GetAll();
+            List<Order> model = new List<Order>();
+
+            foreach (var order in orders)
+            {
+                if (order.OrderStatus == OrderStatus.Processing)
+                    model.Add(order);
+            }
+            return View(model);
+        }
+
+        public ActionResult PickedOrders()
+        {
+            var orders = _orderRepository.GetAll();
+            List<Order> model = new List<Order>();
+
+            foreach (var order in orders)
+            {
+                if (order.OrderStatus == OrderStatus.ReadyToShip)
+                    model.Add(order);
+            }
             return View(model);
         }
 
@@ -109,6 +157,16 @@ namespace Kundbolaget.Controllers
                 shelf.CurrentAmount -= row.AmountOrdered;
                 _supplyRepository.Update(shelf);
             }
+
+            return View(order);
+        }
+        [HttpPost]
+        public ActionResult ConfirmSend(int id)
+        {
+            var order = _orderRepository.Find(id);
+
+            order.OrderStatus = OrderStatus.Shipping;
+            _orderRepository.Update(order);
 
             return View(order);
         }

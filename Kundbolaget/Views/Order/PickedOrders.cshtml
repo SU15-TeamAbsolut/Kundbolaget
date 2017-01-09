@@ -1,0 +1,66 @@
+﻿@model IEnumerable<Kundbolaget.Models.EntityModels.Order>
+
+@{
+    ViewBag.Title = "PickedOrders";
+}
+
+<h2>Ordrar</h2>
+<h4>Färdiga ordrar</h4>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Customer.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CustomerOrderRef)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ShippingAddress)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OrderPlaced)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DesiredDeliveryDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OrderStatus)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Customer.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CustomerOrderRef)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ShippingAddress.Street)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OrderPlaced)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DesiredDeliveryDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OrderStatus)
+        </td>
+        <td>
+            @Html.ActionLink("Avvikelse", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Fraktsedel", "Edit", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>

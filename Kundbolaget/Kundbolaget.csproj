@@ -366,6 +366,10 @@
     <Content Include="Views\ShippingAddress\Edit.cshtml" />
     <Content Include="Views\ShippingAddress\Details.cshtml" />
     <Content Include="Views\Product\AddPrice.cshtml" />
+    <Content Include="Views\Order\ReceivedOrders.cshtml" />
+    <Content Include="Views\Order\UnpickedOrders.cshtml" />
+    <Content Include="Views\Order\ConfirmSend.cshtml" />
+    <Content Include="Views\Order\PickedOrders.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -44,7 +44,7 @@
         }
         else
         {
-            if (item.AlcoholLicense.EndDate < DateTime.Now)
+            if (item.AlcoholLicense.EndDate < DateTime.Now || item.AlcoholLicense.StartDate > DateTime.Now)
             {
                 <td>
                     Ogiltig

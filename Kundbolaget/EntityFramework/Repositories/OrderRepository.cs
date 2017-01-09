@@ -3,6 +3,7 @@ using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Linq;
 using Kundbolaget.EntityFramework.Contexts;
+using Kundbolaget.Enums;
 using Kundbolaget.Models.EntityModels;
 
 namespace Kundbolaget.EntityFramework.Repositories
@@ -56,7 +57,6 @@ namespace Kundbolaget.EntityFramework.Repositories
 
                 return orders.ToList();
             }
-
         }
     }
 }
