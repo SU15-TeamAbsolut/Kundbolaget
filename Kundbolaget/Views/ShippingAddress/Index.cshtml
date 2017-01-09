@@ -1,0 +1,65 @@
+﻿@model Kundbolaget.Models.ViewModels.ShippingAdressViewModel
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Kunders leveransadresser</h2>
+
+<br/>
+<table class="table">
+
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Customer.Id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Customer.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Customer.OrganizationNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Customer.ShippingAddresses)
+        </th>
+
+        <th></th>
+    </tr>
+
+    @foreach (var customer in Model.Customers)
+    {
+        <tr>
+           
+            <td>
+                @Html.DisplayFor(modelItem => customer.Id)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => customer.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => customer.OrganizationNumber)
+            </td>
+
+            @if (customer.ShippingAddresses.Count > 0)
+            {
+                using (Html.BeginForm("Index","ShippingAddress", FormMethod.Post))
+                {
+                    <td>
+                        @Html.DropDownList("selectedAddressId", new SelectList(customer.ShippingAddresses, "Id", "Street"), "Välj adress", new {@class = "form-control"})
+                    </td>
+                    <td>
+                        <input class ="btn btn-primary" name="command" type="submit" value= "Visa adress"/>
+                    </td>
+                    <td>
+                        <input class="btn btn-primary" name="command" type="submit" value="Ändra adress"/>
+                    </td>
+                }
+            }    <td>
+                        @Html.ActionLink("Lägg till adress", "Create", new { id = customer.Id }, new { @class = "btn btn-primary", onclick = @"form-submit();" })
+                    </td>
+                </tr>
+            }
+
+</table>

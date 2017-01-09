@@ -8,6 +8,7 @@ namespace Kundbolaget.Models.EntityModels
 {
     public class Customer
     {
+
         public int Id { get; set; }
         [Required]
         [DisplayName("Namn")]
@@ -45,6 +46,7 @@ namespace Kundbolaget.Models.EntityModels
         [ForeignKey("ContactId")]
         public virtual Contact Contact { get; set; }
 
-        public virtual IList<Address> ShippingAddresses { get; set; }
+        [DisplayName("Leveransadresser")]
+        public virtual IList<Address> ShippingAddresses { get; set; } = new List<Address>();
     }
 }
