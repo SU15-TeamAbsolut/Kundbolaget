@@ -352,6 +352,10 @@
     <Content Include="Views\Order\ConfirmPick.cshtml" />
     <Content Include="Scripts\jquery-3.1.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.1.1.min.map" />
+    <Content Include="Views\Order\ReceivedOrders.cshtml" />
+    <Content Include="Views\Order\UnpickedOrders.cshtml" />
+    <Content Include="Views\Order\ConfirmSend.cshtml" />
+    <Content Include="Views\Order\PickedOrders.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
