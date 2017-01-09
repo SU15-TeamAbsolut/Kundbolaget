@@ -7,7 +7,7 @@
 <h2>Lägg till daterat pris</h2>
 
 
-<form class="form-horizontal" action="/Product/SavePrice" method="POST">
+<form class="form-horizontal" action="/Product/AddPrice" method="POST">
   <div class="formgroup">
     <label for="Price">Pris</label>
     @Html.EditorFor(model => model.Price, new { htmlAttributes = new { @class = "form-control" } })

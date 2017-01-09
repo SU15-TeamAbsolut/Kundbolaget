@@ -13,11 +13,13 @@ namespace Kundbolaget.Controllers
     {
         private readonly IRepository<ProductCategory> _productCategoryRepository;
         private readonly ProductRepository _productRepository;
-        // GET: Product
+        private readonly IRepository<ProductPrice> priceRepository;
+
         public ProductController()
         {
             _productRepository = new ProductRepository();
             _productCategoryRepository = new DataRepository<ProductCategory>();
+            priceRepository = new DataRepository<ProductPrice>();
         }
 
         // GET: Product/Index
@@ -164,9 +166,9 @@ namespace Kundbolaget.Controllers
             return View(model);
         }
 
-        // POST: Product/SavePrice/{ProductPrice}
+        // POST: Product/AddPrice/
         [HttpPost]
-        public ActionResult SavePrice(ProductPrice item)
+        public ActionResult AddPrice(ProductPrice item)
         {
             Product product = _productRepository.Find(item.ProductId);
 
@@ -178,10 +180,9 @@ namespace Kundbolaget.Controllers
             // TODO: Workaround, new price gets the product's id from the form for some reason
             item.Id = 0;
 
-            product.PriceList.Add(item);
-            _productRepository.Update(product);
+            priceRepository.Create(item);
 
-            return new EmptyResult();
+            return new RedirectResult($"/Product/{item.ProductId}");
         }
     }
 }
