@@ -34,8 +34,29 @@
             @Html.Partial("_Address", Model.Address)
         </div>
         <hr/>
+        <h4>Hyllor</h4>
+
+        <p>
+            @Html.ActionLink("Lägg till hylla", "CreateShelf", null, new { @class = "btn btn-primary" })
+        </p>
+
+        <table class="table">
+            @*<tr>
+                <th>
+                    Namn
+                </th>
+            </tr>*@
+            @foreach (var item in Model.Shelfs)
+            {
+                <tr>
+                    <td>
+                        @Html.ActionLink(item.Name, "EditShelf", new { id = item.Id })
+                    </td>
+                </tr>
+            }
+        </table>
             <div class="form-group col-md-10">
-                @Html.ActionLink("Tillbaka", "Index", null, new { @class="btn btn-primary"}) |
+                @Html.ActionLink("Tillbaka", "Index", null, new { @class="btn btn-primary"})
                 <input type="submit" value="Spara" class="btn btn-primary"/>
             </div>
         </div>

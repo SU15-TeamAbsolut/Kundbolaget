@@ -240,6 +240,7 @@
     <Compile Include="EntityFramework\Repositories\OrderRepository.cs" />
     <Compile Include="EntityFramework\Repositories\OrderRowRepository.cs" />
     <Compile Include="EntityFramework\Repositories\ProductRepository.cs" />
+    <Compile Include="EntityFramework\Repositories\ProductShelfRepository.cs" />
     <Compile Include="EntityFramework\Repositories\SupplyRepository.cs" />
     <Compile Include="Enums\OrderStatus.cs" />
     <Compile Include="Global.asax.cs">
@@ -291,6 +292,7 @@
     <Compile Include="Models\ViewModels\CountryViewModel.cs" />
     <Compile Include="Models\JsonModels\JsonCustomerOrder.cs" />
     <Compile Include="Models\JsonModels\JsonOrderRow.cs" />
+    <Compile Include="Models\ViewModels\ShelfWithProducts.cs" />
     <Compile Include="Models\ViewModels\ShippingAdressViewModel.cs" />
     <Compile Include="Models\ViewModels\JsonFileUploadViewModel.cs" />
     <Compile Include="Models\ViewModels\JsonOrderViewModel.cs" />
@@ -355,6 +357,11 @@
     <Content Include="Views\Order\ConfirmPick.cshtml" />
     <Content Include="Scripts\jquery-3.1.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.1.1.min.map" />
+    <Content Include="Views\Warehouse\CreateShelf.cshtml" />
+    <Content Include="Views\Warehouse\EditShelf.cshtml" />
+    <Content Include="Views\Warehouse\ShelfDetails.cshtml" />
+    <Content Include="Views\Warehouse\EditProductShelf.cshtml" />
+    <Content Include="Views\Warehouse\CreateProductShelf.cshtml" />
     <Content Include="Views\ShippingAddress\Index.cshtml" />
     <Content Include="Views\ShippingAddress\Create.cshtml" />
     <Content Include="Views\ShippingAddress\Edit.cshtml" />

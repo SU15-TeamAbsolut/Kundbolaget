@@ -40,6 +40,7 @@ namespace Kundbolaget.EntityFramework.Repositories
             using (var db = new DataContext())
             {
                 var model = db.Warehouses
+                    .Include(x => x.Shelfs)
                     .Include(w => w.Address)
                     .Include(c => c.Address.Country)
                     .SingleOrDefault(w => w.Id == id);
@@ -54,6 +55,7 @@ namespace Kundbolaget.EntityFramework.Repositories
             using (var db = new DataContext())
             {
                 var warehouses = db.Warehouses
+                    .Include(x => x.Shelfs)
                     .Include(w => w.Address)
                     .Include(c => c.Address.Country).ToList();
                   

@@ -20,5 +20,11 @@ namespace Kundbolaget.Models.EntityModels
         [DisplayName("Kontakt Id")]
         public int ContactId { get; set; }
         public bool IsActive { get; set; }
+        public virtual IList<Shelf> Shelfs { get; set; }
+
+        public Warehouse()
+        {
+            Shelfs = new List<Shelf>();
+        }
     }
 }
