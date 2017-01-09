@@ -7,6 +7,7 @@ using System.Web.Mvc;
 using Kundbolaget.EntityFramework.Contexts;
 using Kundbolaget.EntityFramework.Repositories;
 using Kundbolaget.Models.EntityModels;
+using Kundbolaget.Models.ViewModels;
 
 namespace Kundbolaget.Controllers
 {
@@ -27,16 +28,21 @@ namespace Kundbolaget.Controllers
         // GET: ShippingAddress
         public ActionResult Index()
         {
-            var customers = _customerRepository.GetAll();
+            
 
-            return View(customers);
+            var viewModel = new CreateShippingAdressViewModel()
+            {
+                Customer = new Customer(),
+                Customers = _customerRepository.GetAll(),
+                Address = new Address(),
+            };
+
+          
+            return View(viewModel);
         }
 
         public ActionResult Create(int id)
         {
-            
-            
-
             return View();
         }
         [HttpPost]
@@ -60,9 +66,45 @@ namespace Kundbolaget.Controllers
 
         public ActionResult Details(int id)
         {
-            var customer = _customerRepository.Find(id);
-            return View(customer);
+            var viewModel = new CreateShippingAdressViewModel()
+            {
+                Customer = _customerRepository.Find(id),
+                Address = new Address()
+            };
+        
+            return View(viewModel);
+        }
+        [HttpPost]
+        public ActionResult Details(CreateShippingAdressViewModel model,int customerId)
+        {
+            var adress = _addressRepository.Find(model.Address.Id);
+            model.Customer = _customerRepository.Find(customerId);
+            model.Address = adress;
+           
+
+            return View(model);
         }
 
+        [HttpGet]
+        public ActionResult Edit(int? selectedAddressId)
+        {
+            if (!selectedAddressId.HasValue)
+            {
+                return RedirectToAction("Index");
+            }
+            var address = _addressRepository.Find((int)selectedAddressId);
+
+            return View(address);
+        }
+        [HttpPost]
+        public ActionResult Edit(Address adress)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(adress);
+            }
+            _addressRepository.Update(adress);
+            return RedirectToAction("Index");
+        }
     }
 }

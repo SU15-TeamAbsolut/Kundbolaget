@@ -290,6 +290,7 @@
     <Compile Include="Models\ViewModels\CountryViewModel.cs" />
     <Compile Include="Models\JsonModels\JsonCustomerOrder.cs" />
     <Compile Include="Models\JsonModels\JsonOrderRow.cs" />
+    <Compile Include="Models\ViewModels\CreateShippingAdressViewModel.cs" />
     <Compile Include="Models\ViewModels\JsonFileUploadViewModel.cs" />
     <Compile Include="Models\ViewModels\JsonOrderViewModel.cs" />
     <Compile Include="Models\ViewModels\OrderConfirmationViewModel.cs" />
@@ -356,6 +357,7 @@
     <Content Include="Views\ShippingAddress\Index.cshtml" />
     <Content Include="Views\ShippingAddress\Details.cshtml" />
     <Content Include="Views\ShippingAddress\Create.cshtml" />
+    <Content Include="Views\ShippingAddress\Edit.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
