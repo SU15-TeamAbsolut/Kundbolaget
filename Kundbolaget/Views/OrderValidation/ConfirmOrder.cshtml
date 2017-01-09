@@ -11,7 +11,14 @@
   <p>Kundens referens: @Model.Order.CustomerOrderRef</p>
 }
 
-@Html.Partial("_ShowOrder", Model.Order)
+@if (Model.Order.OrderRows.Count == 0)
+{
+    <div class="alert alert-warning"><span class="glyphicon glyphicon-alert"></span> Huvudordern innehåller inga orderrader och kommer inte att skapas.</div>
+}
+else
+{
+  @Html.Partial("_ShowOrder", Model.Order)
+}
 
 @if (Model.BackOrder != null)
 {

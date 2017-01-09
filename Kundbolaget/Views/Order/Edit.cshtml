@@ -9,13 +9,13 @@
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+    <h4>Order</h4>
+    <hr />
+
     <div class="form-horizontal" style="width: 50%; padding-left: 35px;">
-        <h4>Order</h4>
-        <hr/>
         
-            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-            @Html.HiddenFor(model => model.Id)
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.Id)
         
         <div class="form-group">
             @Html.LabelFor(model => model.CustomerId, "CustomerId", htmlAttributes: new { @class = "control-label col-md-2" })
@@ -24,7 +24,7 @@
                 @Html.ValidationMessageFor(model => model.CustomerId, "", new {@class = "text-danger"})
             </div>
         </div>
-       @Html.Partial("_AddressDropDownList", Model)
+        @Html.Partial("_AddressDropDownList", Model)
         <div class="form-group">
             @Html.LabelFor(model => model.OrderPlaced, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-5">
@@ -49,10 +49,11 @@
                 @Html.HiddenFor(m => m.OrderStatus)
             </div>
         </div>
-        <hr />
-        <div class="form-group col-md-10">
-            @Html.ActionLink("Tillbaka", "Index", null, new { @class = "btn btn-primary" })
-            <input type="submit" value="Spara" class="btn btn-primary"/>
-        </div>
+    </div>
+
+    <hr />
+    <div class="form-group col-md-10">
+        @Html.ActionLink("Tillbaka", "Index", null, new { @class = "btn btn-primary" }) |
+        <input type="submit" value="Spara" class="btn btn-primary" />
     </div>
 }

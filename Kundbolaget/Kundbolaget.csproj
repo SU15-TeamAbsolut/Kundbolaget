@@ -228,6 +228,7 @@
     <Compile Include="Controllers\OrderController.cs" />
     <Compile Include="Controllers\OrderValidationController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
+    <Compile Include="Controllers\ShippingAddressController.cs" />
     <Compile Include="Controllers\SupplierController.cs" />
     <Compile Include="Controllers\WarehouseController.cs" />
     <Compile Include="EntityFramework\Contexts\DataContext.cs" />
@@ -291,6 +292,7 @@
     <Compile Include="Models\JsonModels\JsonCustomerOrder.cs" />
     <Compile Include="Models\JsonModels\JsonOrderRow.cs" />
     <Compile Include="Models\ViewModels\ShelfWithProducts.cs" />
+    <Compile Include="Models\ViewModels\ShippingAdressViewModel.cs" />
     <Compile Include="Models\ViewModels\JsonFileUploadViewModel.cs" />
     <Compile Include="Models\ViewModels\JsonOrderViewModel.cs" />
     <Compile Include="Models\ViewModels\OrderConfirmationViewModel.cs" />
@@ -359,6 +361,11 @@
     <Content Include="Views\Warehouse\ShelfDetails.cshtml" />
     <Content Include="Views\Warehouse\EditProductShelf.cshtml" />
     <Content Include="Views\Warehouse\CreateProductShelf.cshtml" />
+    <Content Include="Views\ShippingAddress\Index.cshtml" />
+    <Content Include="Views\ShippingAddress\Create.cshtml" />
+    <Content Include="Views\ShippingAddress\Edit.cshtml" />
+    <Content Include="Views\ShippingAddress\Details.cshtml" />
+    <Content Include="Views\Product\AddPrice.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

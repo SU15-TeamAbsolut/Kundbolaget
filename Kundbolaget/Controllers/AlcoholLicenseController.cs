@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using Kundbolaget.EntityFramework.Repositories;
 using Kundbolaget.Models.EntityModels;
+using Portable.Licensing.Validation;
 
 namespace Kundbolaget.Controllers
 {
@@ -27,9 +28,10 @@ namespace Kundbolaget.Controllers
         }
 
         //GET: AlcoholLicense/Create
-        public ActionResult Create()
+        public ActionResult Create(int id)
         {
-            return View();
+            var customer = _customerRepository.Find(id);
+            return View(customer.AlcoholLicense);
         }
 
 
@@ -37,10 +39,23 @@ namespace Kundbolaget.Controllers
         [HttpPost]
         public ActionResult Create(AlcoholLicense model)
         {
-            if (!ModelState.IsValid)
+            DateTime now = DateTime.Now;
+            bool isValid = now < model.EndDate;
+
+            AlcoholLicense alcoModel = new AlcoholLicense()
+            {
+                StartDate = model.StartDate,
+                EndDate = model.EndDate,
+                IsValid = isValid
+            };
+
+            if (!alcoModel.IsValid)
                 return View(model);
 
-            repository.Create(model);
+            repository.Create(alcoModel);
+            var customer = _customerRepository.Find(model.Id);
+            customer.AlcoholLicenseId = alcoModel.Id;
+            _customerRepository.Update(customer);
             return RedirectToAction("Index");
         }
 

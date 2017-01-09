@@ -2,10 +2,8 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Net;
 using System.Text;
 using System.Web.Mvc;
-using System.Web.UI.WebControls;
 using Kundbolaget.EntityFramework.Repositories;
 using Kundbolaget.Enums;
 using Kundbolaget.Models.EntityModels;
@@ -76,6 +74,13 @@ namespace Kundbolaget.Controllers
                 viewModel.OrderIsValid = false;
                 viewModel.ErrorMessage += $"Kund-id {customerOrderData.CustomerId} existerar inte";
             }
+
+            // Check date - change date if it's in the past
+            if (viewModel.Order.DesiredDeliveryDate < DateTime.Today)
+            {
+                viewModel.Order.DesiredDeliveryDate = DateTime.Today;
+            }
+
             //Check if customer order reference exist
             if (viewModel.Order.CustomerOrderRef != null)
             {
@@ -118,6 +123,12 @@ namespace Kundbolaget.Controllers
 
         private void CreateNewOrder(Order order)
         {
+            // Don't create orders with zero rows
+            if (order.OrderRows.Count == 0)
+            {
+                return;
+            }
+
             // fetch customer data for the view
             if (order.Customer == null)
             {

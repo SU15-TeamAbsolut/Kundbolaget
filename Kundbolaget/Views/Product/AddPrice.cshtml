@@ -1,0 +1,28 @@
+﻿@model Kundbolaget.Models.EntityModels.ProductPrice
+
+@{
+    ViewBag.Title = "AddPrice";
+}
+
+<h2>Lägg till daterat pris</h2>
+
+
+<form class="form-horizontal" action="/Product/AddPrice" method="POST">
+  <div class="formgroup">
+    <label for="Price">Pris</label>
+    @Html.EditorFor(model => model.Price, new { htmlAttributes = new { @class = "form-control" } })
+    @Html.ValidationMessageFor(model => model.Price, "", new { @class = "text-danger" })
+  </div>
+
+  <div class="formgroup">
+    <label for="StartDate">Startdatum</label>
+    @Html.EditorFor(model => model.StartDate, new { htmlAttributes = new { @class = "form-control" } })
+    @Html.ValidationMessageFor(model => model.StartDate, "", new { @class = "text-danger", @placeholder = "Startdatum" })
+  </div>
+
+  <div class="formgroup">
+    @Html.HiddenFor(model => model.Id)
+    @Html.HiddenFor(model => model.ProductId)
+    <input type="submit" value="Spara" class="btn btn-primary" />
+  </div>
+</form>
