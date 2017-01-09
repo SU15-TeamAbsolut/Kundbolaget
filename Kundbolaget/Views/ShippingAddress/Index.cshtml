@@ -49,10 +49,10 @@
                     <td>
                         @Html.DropDownList("selectedAddressId", new SelectList(customer.ShippingAddresses, "Id", "Street"), "Välj adress", new {@class = "form-control"})
                     </td>
-                    <td>
+                    <td class="col-md-1">
                         <input class ="btn btn-primary" name="command" type="submit" value= "Visa adress"/>
                     </td>
-                    <td>
+                    <td class="col-md-1">
                         <input class="btn btn-primary" name="command" type="submit" value="Ändra adress"/>
                     </td>
                 }
