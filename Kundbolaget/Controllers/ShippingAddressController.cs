@@ -25,19 +25,14 @@ namespace Kundbolaget.Controllers
 
         }
 
-        // GET: ShippingAddress
         public ActionResult Index()
         {
-            
-
-            var viewModel = new CreateShippingAdressViewModel()
+            var viewModel = new ShippingAdressViewModel()
             {
                 Customer = new Customer(),
                 Customers = _customerRepository.GetAll(),
                 Address = new Address(),
             };
-
-          
             return View(viewModel);
         }
 
@@ -46,13 +41,15 @@ namespace Kundbolaget.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult Create(Address address, int id)
+        public ActionResult Create(Address address, int? id)
         {
+            if (!id.HasValue)
+            {
+                return RedirectToAction("Index");
+            }
+
             address.Id = 0;
-            var customer = _customerRepository.Find(id);
-
-            
-
+            var customer = _customerRepository.Find((int)id);
 
             using (var db = new DataContext())
             {
@@ -66,7 +63,7 @@ namespace Kundbolaget.Controllers
 
         public ActionResult Details(int id)
         {
-            var viewModel = new CreateShippingAdressViewModel()
+            var viewModel = new ShippingAdressViewModel()
             {
                 Customer = _customerRepository.Find(id),
                 Address = new Address()
@@ -75,12 +72,11 @@ namespace Kundbolaget.Controllers
             return View(viewModel);
         }
         [HttpPost]
-        public ActionResult Details(CreateShippingAdressViewModel model,int customerId)
+        public ActionResult Details(ShippingAdressViewModel model,int customerId)
         {
             var adress = _addressRepository.Find(model.Address.Id);
             model.Customer = _customerRepository.Find(customerId);
             model.Address = adress;
-           
 
             return View(model);
         }

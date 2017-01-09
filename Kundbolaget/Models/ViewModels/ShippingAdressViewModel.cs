@@ -7,7 +7,7 @@ using Kundbolaget.Models.EntityModels;
 
 namespace Kundbolaget.Models.ViewModels
 {
-    public class CreateShippingAdressViewModel
+    public class ShippingAdressViewModel
     {
         public Customer Customer { get; set; }
         public Address Address { get; set; }

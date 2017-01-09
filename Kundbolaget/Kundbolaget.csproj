@@ -290,7 +290,7 @@
     <Compile Include="Models\ViewModels\CountryViewModel.cs" />
     <Compile Include="Models\JsonModels\JsonCustomerOrder.cs" />
     <Compile Include="Models\JsonModels\JsonOrderRow.cs" />
-    <Compile Include="Models\ViewModels\CreateShippingAdressViewModel.cs" />
+    <Compile Include="Models\ViewModels\ShippingAdressViewModel.cs" />
     <Compile Include="Models\ViewModels\JsonFileUploadViewModel.cs" />
     <Compile Include="Models\ViewModels\JsonOrderViewModel.cs" />
     <Compile Include="Models\ViewModels\OrderConfirmationViewModel.cs" />

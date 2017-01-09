@@ -1,4 +1,4 @@
-﻿@model Kundbolaget.Models.ViewModels.CreateShippingAdressViewModel
+﻿@model Kundbolaget.Models.ViewModels.ShippingAdressViewModel
 
 @{
     ViewBag.Title = "Index";
@@ -32,7 +32,7 @@
         <tr>
            
             <td>
-                @Html.ActionLink(customer.Id.ToString(), "Details", new { id = Model.Customer.Id })
+                @Html.ActionLink(customer.Id.ToString(), "Details", new { id = customer.Id })
             </td>
 
             <td>
@@ -42,18 +42,19 @@
                 @Html.DisplayFor(modelItem => customer.OrganizationNumber)
             </td>
 
-
-            @using (Html.BeginForm("Edit", "ShippingAddress", FormMethod.Get))
+            @if (customer.ShippingAddresses.Count > 0)
             {
-                <td>
-                    @Html.DropDownList("selectedAddressId", new SelectList(customer.ShippingAddresses, "Id", "Street"), "Välj adress", new {@class = "form-control"})
-
-                </td>
-                <td>
-                    <input class="btn btn-primary" type="submit" value="Ändra adress"/>
-                </td>
-            }
+                using (Html.BeginForm("Edit", "ShippingAddress", FormMethod.Get))
+                {
                     <td>
+                        @Html.DropDownList("selectedAddressId", new SelectList(customer.ShippingAddresses, "Id", "Street"), "Välj adress", new {@class = "form-control"})
+
+                    </td>
+                    <td>
+                        <input class="btn btn-primary" type="submit" value="Ändra adress"/>
+                    </td>
+                }
+            }    <td>
                         @Html.ActionLink("Lägg till adress", "Create", new { id = customer.Id }, new { @class = "btn btn-primary", onclick = @"form-submit();" })
                     </td>
                 </tr>
