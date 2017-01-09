@@ -27,10 +27,6 @@ namespace Kundbolaget.Models.EntityModels
         public virtual IList<ProductPrice> PriceList { get; set; } = new List<ProductPrice>();
 
         [Required]
-        [DisplayName("Produktnummer")]
-        public int ProductNumber { get; set; }
-
-        [Required]
         [DisplayName("Volym(ml)")]
         public int Volume { get; set; }
 
