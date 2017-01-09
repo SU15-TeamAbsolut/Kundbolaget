@@ -17,7 +17,7 @@ namespace Kundbolaget.Controllers
         private readonly OrderRowRepository _orderRowRepository;
         private readonly CustomerRepository _customerRepository;
         private readonly SupplyRepository _supplyRepository;
-        
+        private readonly IRepository<Address> _addressRepository;
 
         public OrderController()
         {
@@ -25,6 +25,7 @@ namespace Kundbolaget.Controllers
             _orderRowRepository = new OrderRowRepository();
             _customerRepository = new CustomerRepository();
             _supplyRepository = new SupplyRepository();
+            _addressRepository = new AddressRepository();
         }
 
         // GET: Order
@@ -52,12 +53,14 @@ namespace Kundbolaget.Controllers
         [HttpPost]
         public ActionResult Edit(Order model)
         {
-            if (model.ShippingAddressId == 0)
+            if (!ModelState.IsValid )
             {
-                var o = _orderRepository.Find(model.Id);
-                model.ShippingAddressId = o.ShippingAddressId;
+                model.Customer = _customerRepository.Find(model.CustomerId);
+                model.ShippingAddress = _addressRepository.Find(model.ShippingAddressId);
+                return View(model);
             }
-
+            
+          
 
             _orderRepository.Update(model);
 

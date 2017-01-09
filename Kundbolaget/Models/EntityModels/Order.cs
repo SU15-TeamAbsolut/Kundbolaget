@@ -6,6 +6,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 using Kundbolaget.Enums;
+using Kundbolaget.Models.CustomValidation;
 
 namespace Kundbolaget.Models.EntityModels
 {
@@ -28,9 +29,13 @@ namespace Kundbolaget.Models.EntityModels
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}")]
         [DisplayName("Order mottagen")]
         public DateTime OrderPlaced { get; set; }
+
+
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}")]
         [DisplayName("Önskat leveransdatum")]
+        [ValidateRestOrderDate]
         public DateTime DesiredDeliveryDate { get; set;}
+
         [DisplayName("Status")]
         public OrderStatus OrderStatus { get; set; }
 

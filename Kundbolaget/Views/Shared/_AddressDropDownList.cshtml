@@ -1,4 +1,5 @@
-﻿@using Kundbolaget.EntityFramework.Repositories
+﻿@using System.Web.UI.WebControls
+@using Kundbolaget.EntityFramework.Repositories
 @using Kundbolaget.Models.EntityModels
 @using Kundbolaget.Models.ViewModels
 @model Kundbolaget.Models.EntityModels.Order
@@ -9,9 +10,8 @@
             @Html.LabelFor(model => model.ShippingAddress, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-5">
 
-                @Html.DropDownListFor(model => model.ShippingAddressId , new SelectList(Model.Customer.ShippingAddresses, "Id", "Street"), Model.ShippingAddress.Street, new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.ShippingAddress, "", new { @class = "text-danger" })
-                @Html.HiddenFor(model => model.ShippingAddressId)
+                @Html.DropDownListFor(model => Model.ShippingAddressId , new SelectList(Model.Customer.ShippingAddresses, "Id", "Street", Model.ShippingAddress.Id),Model.ShippingAddress.Street, new { @class = "form-control" })
+                @Html.HiddenFor(model => Model.ShippingAddressId)
             </div>
         </div>
 
