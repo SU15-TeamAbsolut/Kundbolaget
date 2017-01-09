@@ -32,7 +32,7 @@
         <tr>
            
             <td>
-                @Html.ActionLink(customer.Id.ToString(), "Details", new { id = customer.Id })
+                @Html.DisplayFor(modelItem => customer.Id)
             </td>
 
             <td>
@@ -44,14 +44,16 @@
 
             @if (customer.ShippingAddresses.Count > 0)
             {
-                using (Html.BeginForm("Edit", "ShippingAddress", FormMethod.Get))
+                using (Html.BeginForm("Index","ShippingAddress", FormMethod.Post))
                 {
                     <td>
                         @Html.DropDownList("selectedAddressId", new SelectList(customer.ShippingAddresses, "Id", "Street"), "Välj adress", new {@class = "form-control"})
-
                     </td>
                     <td>
-                        <input class="btn btn-primary" type="submit" value="Ändra adress"/>
+                        <input class ="btn btn-primary" name="command" type="submit" value= "Visa adress"/>
+                    </td>
+                    <td>
+                        <input class="btn btn-primary" name="command" type="submit" value="Ändra adress"/>
                     </td>
                 }
             }    <td>

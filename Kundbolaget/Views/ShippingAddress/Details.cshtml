@@ -1,43 +1,51 @@
-﻿@model Kundbolaget.Models.ViewModels.ShippingAdressViewModel
+﻿@model Kundbolaget.Models.EntityModels.Address
 
 @{
     ViewBag.Title = "Details";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-@Html.HiddenFor(m => m.Address.Id)
-@Html.HiddenFor(m => m.Customer.Id)
+
 <h2>Details</h2>
 
 <div>
     <h4>Address</h4>
-    <hr/>
-  
+    <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.Customer.Name)
+            @Html.DisplayNameFor(model => model.Country.Name)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Customer.Name)
+            @Html.DisplayFor(model => model.Country.Name)
         </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Street)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Street)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ZipNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ZipNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.City)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.City)
+        </dd>
+
     </dl>
-
-
-    @using (Html.BeginForm("Details", "ShippingAddress", new {customerId = Model.Customer.Id}))
-    {
-        <div style="display: inline-block; min-width: 20%; padding-bottom: 10px;">
-            @Html.DropDownListFor(m => Model.Address.Id, new SelectList(Model.Customer.ShippingAddresses, "Id", "Street"), "Välj adress", new {onchange = @"form-submit();", @class = "form-control"})
-        </div>
-        <div>
-            @Html.Partial("_Address", Model.Address)
-        </div>
-        
-    }
-
 </div>
-
 <p>
-   
-   
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Ändra", "Edit", new { id = Model.Id }, new {@class = "btn btn-primary"}) |
+    @Html.ActionLink("Tillbaka", "Index", null, new {@class = "btn btn-primary"})
 </p>

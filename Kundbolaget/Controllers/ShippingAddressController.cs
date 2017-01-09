@@ -17,11 +17,13 @@ namespace Kundbolaget.Controllers
     {
         private readonly DataRepository<Customer> _customerRepository;
         private readonly IRepository<Address> _addressRepository;
+        private readonly IRepository<Country> _countryRepository;
 
         public ShippingAddressController()
         {
             _customerRepository = new CustomerRepository();
             _addressRepository = new DataRepository<Address>();
+            _countryRepository = new DataRepository<Country>();
 
         }
 
@@ -34,6 +36,22 @@ namespace Kundbolaget.Controllers
                 Address = new Address(),
             };
             return View(viewModel);
+        }
+
+        [HttpPost]
+        public ActionResult Index(string command, int? selectedAddressId)
+        {
+            if (command.Equals("Visa adress"))
+            {
+                return RedirectToAction("Details", "ShippingAddress", new { id = selectedAddressId });
+            }
+
+            if (command.Equals("Ändra adress"))
+            {
+                return RedirectToAction("Edit", "ShippingAddress", new {id = selectedAddressId});
+            }
+
+            return RedirectToAction("Index");
         }
 
         public ActionResult Create(int id)
@@ -60,35 +78,27 @@ namespace Kundbolaget.Controllers
 
             return RedirectToAction("Index");
         }
-
-        public ActionResult Details(int id)
+       
+        public ActionResult Details(int? id)
         {
-            var viewModel = new ShippingAdressViewModel()
-            {
-                Customer = _customerRepository.Find(id),
-                Address = new Address()
-            };
-        
-            return View(viewModel);
-        }
-        [HttpPost]
-        public ActionResult Details(ShippingAdressViewModel model,int customerId)
-        {
-            var adress = _addressRepository.Find(model.Address.Id);
-            model.Customer = _customerRepository.Find(customerId);
-            model.Address = adress;
-
-            return View(model);
-        }
-
-        [HttpGet]
-        public ActionResult Edit(int? selectedAddressId)
-        {
-            if (!selectedAddressId.HasValue)
+            if (!id.HasValue)
             {
                 return RedirectToAction("Index");
             }
-            var address = _addressRepository.Find((int)selectedAddressId);
+
+            var address = _addressRepository.Find((int)id);
+            address.Country = _countryRepository.Find(address.CountryId);
+
+            return View(address);
+        }
+
+        public ActionResult Edit(int? id)
+        {
+            if (!id.HasValue)
+            {
+                return RedirectToAction("Index");
+            }
+            var address = _addressRepository.Find((int)id);
 
             return View(address);
         }
