@@ -44,6 +44,22 @@
         </dd>
     </dl>
 </div>
+<h4>Hyllor</h4>
+<table class="table">
+    <tr>
+        <th>
+            Namn
+        </th>
+    </tr>
+    @foreach (var item in Model.Shelfs)
+    {
+        <tr>
+            <td>
+                @Html.DisplayName(item.Name)
+            </td>
+        </tr>
+    }
+</table>
 <hr/>
 <p>
     @Html.ActionLink("Tillbaka", "Index", null, new { @class = "btn btn-primary" }) |

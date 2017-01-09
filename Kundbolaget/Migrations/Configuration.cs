@@ -35,8 +35,8 @@ namespace Kundbolaget.Migrations
 
             SeedContacts(context);
 
-            //SeedOrders(context);
-            //SeedOrderRows(context);
+            SeedOrders(context);
+            SeedOrderRows(context);
 
             SeedShelves(context);
             SeedProductsShelves(context);

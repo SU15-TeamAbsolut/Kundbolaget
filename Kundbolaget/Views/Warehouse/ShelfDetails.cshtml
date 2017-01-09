@@ -1,0 +1,44 @@
+﻿@model Kundbolaget.Models.ViewModels.ShelfWithProducts
+
+@{
+    ViewBag.Title = "ShelfDetails";
+}
+
+<h2>Detaljer</h2>
+
+<div>
+    <h4>Hylla @Model.Name</h4>
+    <hr />
+    <h4>Produkter</h4>
+    <table class="table">
+        <tr>
+            <th>
+                Produkt
+            </th>
+            <th>
+                Antal
+            </th>
+            <th>
+                Minimum antal
+            </th>
+        </tr>
+        @foreach (var item in Model.Products)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayName(item.Product.Name)
+                </td>
+                <td>
+                    @Html.DisplayName(item.CurrentAmount.ToString())
+                </td>
+                <td>
+                    @Html.DisplayName(item.MinimumAmount.ToString())
+                </td>
+            </tr>
+        }
+    </table>
+</div>
+<p>
+    @Html.ActionLink("Tillbaka", "Edit/" + Model.Id, null, new { @class = "btn btn-primary" })
+    @Html.ActionLink("Redigera", "EditShelf", new { id = Model.Id }, new { @class = "btn btn-primary" })
+</p>

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
@@ -11,6 +12,7 @@ namespace Kundbolaget.Models.EntityModels
     {
         public int Id { get; set; }
         [Required]
+        [DisplayName("Namn")]
         public string Name { get; set; }
         [Required]
         public int WarehouseId { get; set; }

@@ -15,12 +15,17 @@ namespace Kundbolaget.Controllers
     {
         private readonly IRepository<Warehouse> _warehouseRepository;
         private readonly AddressRepository _warehouseAddressRepository;
+        private readonly IRepository<Shelf> shelfRepository;
+        private readonly ProductShelfRepository productShelfRepository;
+        public static int currentWarehouseId = 0;
+        public static int currentShelfId = 0;
 
         public WarehouseController()
         {
             _warehouseRepository = new DataRepository<Warehouse>();
             _warehouseAddressRepository = new AddressRepository();
-           
+            shelfRepository = new DataRepository<Shelf>();
+            productShelfRepository = new ProductShelfRepository();
         }
 
         public ActionResult Index()
@@ -71,6 +76,8 @@ namespace Kundbolaget.Controllers
 
             var model = _warehouseAddressRepository.GetWarehouseWithAddress(id);
 
+            currentWarehouseId = id;
+
             return View(model);
         }
 
@@ -93,6 +100,113 @@ namespace Kundbolaget.Controllers
             var model = _warehouseAddressRepository.GetWarehouseWithAddress(id);
            
             return View(model);
+        }
+
+
+
+
+
+
+
+
+        //--------------SHELFS----------------------
+
+
+
+
+
+
+
+        public ActionResult CreateShelf()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult CreateShelf(Shelf model)
+        {
+            if (!ModelState.IsValid) return View(model);
+            model.WarehouseId = currentWarehouseId;
+            shelfRepository.Create(model);
+            return RedirectToAction("Edit/" + currentWarehouseId);
+        }
+
+        public ActionResult EditShelf(int id)
+        {
+            currentShelfId = id;
+            var shelf = shelfRepository.Find(id);
+            var model = new ShelfWithProducts
+            {
+                Id = shelf.Id,
+                Name = shelf.Name,
+                Products = productShelfRepository.GetProductsShelvesByShelfId(id)
+            };
+            return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult EditShelf(ShelfWithProducts shelf)
+        {
+            if (!ModelState.IsValid) return View(shelf);
+            var model = shelfRepository.Find(shelf.Id);
+            model.Name = shelf.Name;
+            shelfRepository.Update(model);
+            return RedirectToAction("Edit/" + currentWarehouseId);
+        }
+
+        public ActionResult ShelfDetails(int id)
+        {
+            //var model = shelfRepository.Find(id);
+            //return View(model);
+            var shelf = shelfRepository.Find(id);
+            var model = new ShelfWithProducts
+            {
+                Id = shelf.Id,
+                Name = shelf.Name,
+                Products = productShelfRepository.GetProductsShelvesByShelfId(id)
+            };
+            return View(model);
+        }
+
+
+
+
+
+        //----------------------PRODUCTSHELF---------------------------
+
+
+
+
+
+
+
+        public ActionResult CreateProductShelf()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult CreateProductShelf(ProductShelf model)
+        {
+            if (!ModelState.IsValid) return View(model);
+            model.ShelfId = currentShelfId;
+            productShelfRepository.Create(model);
+            return RedirectToAction("EditShelf/" + currentShelfId);
+        }
+
+        public ActionResult EditProductShelf(int id)
+        {
+            var model = productShelfRepository.Find(id);
+            return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult EditProductShelf(ProductShelf model)
+        {
+            if (!ModelState.IsValid) return View(model);
+            model.ShelfId = currentShelfId;
+            productShelfRepository.Update(model);
+            return RedirectToAction("EditShelf/" + currentShelfId);
         }
     }
 }
