@@ -10,7 +10,7 @@
             @Html.LabelFor(model => model.ShippingAddress, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-5">
 
-                @Html.DropDownListFor(model => Model.ShippingAddressId , new SelectList(Model.Customer.ShippingAddresses, "Id", "Street", Model.ShippingAddress.Id),Model.ShippingAddress.Street, new { @class = "form-control" })
+                @Html.DropDownListFor(model => Model.ShippingAddressId , new SelectList(Model.Customer.ShippingAddresses, "Id", "Street", Model.ShippingAddress.Id), new { @class = "form-control" })
                 @Html.HiddenFor(model => Model.ShippingAddressId)
             </div>
         </div>

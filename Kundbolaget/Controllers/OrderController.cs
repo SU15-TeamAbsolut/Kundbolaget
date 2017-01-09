@@ -108,8 +108,6 @@ namespace Kundbolaget.Controllers
                 return View(model);
             }
             
-          
-
             _orderRepository.Update(model);
 
             return  RedirectToAction("Index");
