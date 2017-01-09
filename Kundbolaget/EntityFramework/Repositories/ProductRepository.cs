@@ -51,7 +51,6 @@ namespace Kundbolaget.EntityFramework.Repositories
                     Name = viewModel.Product.Name,
                     ProductCategoryId = viewModel.Product.ProductCategoryId,
                     Description = viewModel.Product.Description,
-                    ProductNumber = viewModel.Product.ProductNumber,
                     PriceList = viewModel.Product.PriceList,
                     Volume = viewModel.Product.Volume,
                     PackageAmount = viewModel.Product.PackageAmount,
