@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
+using System.Net;
 using System.Web.Mvc;
 using Kundbolaget.EntityFramework.Repositories;
 using Kundbolaget.Models.EntityModels;
@@ -13,11 +13,13 @@ namespace Kundbolaget.Controllers
     {
         private readonly IRepository<ProductCategory> _productCategoryRepository;
         private readonly ProductRepository _productRepository;
-        // GET: Product
+        private readonly IRepository<ProductPrice> priceRepository;
+
         public ProductController()
         {
             _productRepository = new ProductRepository();
             _productCategoryRepository = new DataRepository<ProductCategory>();
+            priceRepository = new DataRepository<ProductPrice>();
         }
 
         // GET: Product/Index
@@ -142,6 +144,45 @@ namespace Kundbolaget.Controllers
             IList<Product> model = _productRepository.SearchByName(searchString);
 
             return View(model);
+        }
+
+        // GET: Product/AddPrice/{id}
+        public ActionResult AddPrice(int id)
+        {
+            Product product = _productRepository.Find(id);
+
+            if (product == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.NotFound);
+            }
+
+            var model = new ProductPrice
+            {
+                Product = product,
+                ProductId = product.Id,
+                StartDate = DateTime.Now
+            };
+
+            return View(model);
+        }
+
+        // POST: Product/AddPrice/
+        [HttpPost]
+        public ActionResult AddPrice(ProductPrice item)
+        {
+            Product product = _productRepository.Find(item.ProductId);
+
+            if (product == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            // TODO: Workaround, new price gets the product's id from the form for some reason
+            item.Id = 0;
+
+            priceRepository.Create(item);
+
+            return new RedirectResult($"/Product/{item.ProductId}");
         }
     }
 }
