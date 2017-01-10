@@ -45,7 +45,7 @@ namespace Kundbolaget.Models.EntityModels
 
         private decimal GetOrderTotal()
         {
-            return OrderRows.Sum(r => r.Price * r.AmountOrdered);
+            return OrderRows.Sum(r => r.DiscountedPrice * r.AmountOrdered);
         }
     }
 
