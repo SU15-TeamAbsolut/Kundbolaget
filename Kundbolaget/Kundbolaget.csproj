@@ -248,6 +248,7 @@
     <Compile Include="EntityFramework\Repositories\ProductRepository.cs" />
     <Compile Include="EntityFramework\Repositories\ProductShelfRepository.cs" />
     <Compile Include="EntityFramework\Repositories\SupplyRepository.cs" />
+    <Compile Include="Enums\InvoiceStatus.cs" />
     <Compile Include="Enums\OrderStatus.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -280,6 +281,10 @@
     <Compile Include="Migrations\201701091945006_RemovedProductNumber.Designer.cs">
       <DependentUpon>201701091945006_RemovedProductNumber.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201701101628275_AddedModelInvoice.cs" />
+    <Compile Include="Migrations\201701101628275_AddedModelInvoice.Designer.cs">
+      <DependentUpon>201701101628275_AddedModelInvoice.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\CustomValidation\CorporateIdentityNumber.cs" />
     <Compile Include="Models\CustomValidation\ValidateRestOrderDate.cs" />
@@ -288,6 +293,7 @@
     <Compile Include="Models\EntityModels\Country.cs" />
     <Compile Include="Models\EntityModels\Customer.cs" />
     <Compile Include="Models\EntityModels\AlcoholLicense.cs" />
+    <Compile Include="Models\EntityModels\Invoice.cs" />
     <Compile Include="Models\EntityModels\Order.cs" />
     <Compile Include="Models\EntityModels\OrderRow.cs" />
     <Compile Include="Models\EntityModels\ProductPrice.cs" />
@@ -412,6 +418,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201701091945006_RemovedProductNumber.resx">
       <DependentUpon>201701091945006_RemovedProductNumber.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201701101628275_AddedModelInvoice.resx">
+      <DependentUpon>201701101628275_AddedModelInvoice.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

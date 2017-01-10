@@ -23,6 +23,7 @@ namespace Kundbolaget.EntityFramework.Contexts
         public DbSet<Shelf> Shelves { get; set; }
         public DbSet<ProductShelf> ProductsShelves { get; set; }
         public DbSet<ProductShelfChangeLog> ProductShelfChangeLogs { get; set; }
+        public DbSet<Invoice> Invoices { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
