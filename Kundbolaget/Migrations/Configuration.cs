@@ -96,6 +96,7 @@ namespace Kundbolaget.Migrations
                 new ProductShelf { Id = 33, CurrentAmount = 16, MinimumAmount = 5, ProductId = 10032, ShelfId = 7 },
                 new ProductShelf { Id = 34, CurrentAmount = 50, MinimumAmount = 5, ProductId = 10033, ShelfId = 8 },
                 new ProductShelf { Id = 35, CurrentAmount = 50, MinimumAmount = 5, ProductId = 10034, ShelfId = 8 },
+
             };
             context.ProductsShelves.AddOrUpdate(productsShelves);
         }
@@ -559,10 +560,10 @@ namespace Kundbolaget.Migrations
         {
             Warehouse[] warehouises =
             {
-                new Warehouse { Id = 1, Name = "Stockholms lager", AddressId = 17, ContactId = 1, IsActive = true},
-                new Warehouse { Id = 2, Name = "Göteborgs lager", AddressId = 18, ContactId = 2, IsActive = true},
-                new Warehouse { Id = 3, Name = "Malmös lager", AddressId = 19, ContactId = 3, IsActive = true},
-                new Warehouse { Id = 4, Name = "Faluns lager", AddressId = 20, ContactId = 4, IsActive = true},
+                new Warehouse { Id = 1, Name = "Stockholms lager", AddressId = 3, ContactId = 1, IsActive = true},
+                new Warehouse { Id = 2, Name = "Göteborgs lager", AddressId = 13, ContactId = 2, IsActive = true},
+                new Warehouse { Id = 3, Name = "Malmös lager", AddressId = 10, ContactId = 3, IsActive = true},
+                new Warehouse { Id = 4, Name = "Sundsvall lager", AddressId = 20, ContactId = 4, IsActive = true},
                 new Warehouse { Id = 5, Name = "Uppsalas lager", AddressId = 21, ContactId = 5, IsActive = true}
             };
             context.Warehouses.AddOrUpdate(warehouises);
