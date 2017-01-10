@@ -40,6 +40,8 @@ namespace Kundbolaget.EntityFramework.Repositories
                     .Include(o => o.OrderRows)
                     .Include(e => e.OrderRows.Select(r => r.Product))
                     .Include(c => c.Customer)
+                    .Include(c => c.Customer.Contact)
+                    .Include(a => a.Customer.VisitingAddress)
                     .Include(a => a.ShippingAddress)
                     .SingleOrDefault(x => x.Id == id);
             }
