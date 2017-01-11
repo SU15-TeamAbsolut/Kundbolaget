@@ -52,6 +52,9 @@ namespace Kundbolaget.Models.EntityModels
         [DisplayName("Produktkategori")]
         public virtual ProductCategory ProductCategory { get; set; }
 
+        [NotMapped]
+        public int? QuantiyInWarehouse { get; set; }
+
         private decimal GetPrice()
         {
             ProductPrice productPrice = PriceList

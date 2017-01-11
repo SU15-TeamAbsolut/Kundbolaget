@@ -18,6 +18,7 @@ namespace Kundbolaget.Controllers
         private readonly CustomerRepository _customerRepository;
         private readonly SupplyRepository _supplyRepository;
         private readonly IRepository<Address> _addressRepository;
+        private readonly ProductRepository _productRepository;
 
         public OrderController()
         {
@@ -26,6 +27,7 @@ namespace Kundbolaget.Controllers
             _customerRepository = new CustomerRepository();
             _supplyRepository = new SupplyRepository();
             _addressRepository = new AddressRepository();
+            _productRepository = new ProductRepository();
         }
 
         // GET: Order
@@ -115,11 +117,36 @@ namespace Kundbolaget.Controllers
 
         public ActionResult IndexCustomer()
         {
-            var customers = _customerRepository.GetAll();
-
+            var customers = _customerRepository.GetAll()
+                .Where(x => x.AlcoholLicense.IsValid);
 
             return View(customers);
 
+        }
+
+        public ActionResult CreateOrderManually(int id)
+        {
+            var order = new Order();
+
+            return View(order);
+        }
+
+        public ActionResult CreateOrderRowManually()
+        {
+            var products = _productRepository.GetAll();
+
+            var viewModel = new ManualOrderViewModel()
+            {
+                Products = _productRepository.GetAll(),
+                QuantityOrdered = 0,
+            };
+
+            foreach (var product in viewModel.Products)
+            {
+                product.QuantiyInWarehouse = _productRepository.GetQuantityInWarehouse(product.Id);
+            }
+
+            return View(viewModel);
         }
 
         public ActionResult PickingList(int id)
