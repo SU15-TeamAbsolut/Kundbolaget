@@ -5,10 +5,10 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Skapa order</h2>
+<h2></h2>
 
 <p>
-    @Html.ActionLink("Lägg till ny orderrad", "CreateOrderManually",new {customerId = Model.Customer.Id}, new {@class="btn btn-primary"})
+    @Html.ActionLink("Lägg till orderrader", "CreateOrderRowManually",new {customerId = Model.Order.CustomerId, orderId = Model.Order.Id}, new {@class="btn btn-primary"})
 </p>
 <table class="table">
     <tr>
@@ -27,36 +27,26 @@
         <th>
           @Html.DisplayName("Antal")
         </th>
-        <th>
-           @Html.DisplayName("Antal order")
-        </th>
+        
         <th></th>
     </tr>
 
-@foreach (var item in Model.Order.OrderRows) {
+@for (int i = 0; i < Model.Order.OrderRows.Count; i++) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.Order.Id)
+            @Html.DisplayFor(modelItem => Model.Order.OrderRows[i].Id)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Product.Name)
+            @Html.DisplayFor(modelItem => Model.Order.OrderRows[i].Product.Name)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Price)
+            @Html.DisplayFor(modelItem => Model.Order.OrderRows[i].Price)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Discount)
+            @Html.DisplayFor(modelItem => Model.Order.OrderRows[i].Discount)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.AmountOrdered)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.AmountShipped)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+            @Html.DisplayFor(modelItem => Model.Order.OrderRows[i].AmountOrdered)
         </td>
     </tr>
 }

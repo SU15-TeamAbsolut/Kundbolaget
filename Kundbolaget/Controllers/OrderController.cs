@@ -131,7 +131,8 @@ namespace Kundbolaget.Controllers
             var order = new Order()
             {
                 Customer = customer,
-                OrderPlaced = DateTime.Now
+                OrderPlaced = DateTime.Now,
+                DesiredDeliveryDate = DateTime.Now
 
             };
 
@@ -141,20 +142,26 @@ namespace Kundbolaget.Controllers
         [HttpPost]
         public ActionResult CreateOrderManually(Order order)
         {
+            order.Id = 0;
+            order.CustomerId = order.Customer.Id;
+            _orderRepository.Create(order);
+
             var viewModel = new ManualOrderViewModel()
             {
-                
+                Order = order,
+                Products = new List<Product>()
             };
 
             return View(viewModel);
         }
 
-        public ActionResult CreateOrderRowManually(int customerId)
+        public ActionResult CreateOrderRowManually(int customerId, int orderId)
         {
             var viewModel = new ManualOrderViewModel()
             {
                 Customer = _customerRepository.Find(customerId),
-                Products = _productRepository.GetAll().ToArray(),
+                Products = _productRepository.GetAll(),
+                Order = _orderRepository.Find(orderId)
             };
 
             foreach (var product in viewModel.Products)
@@ -167,30 +174,26 @@ namespace Kundbolaget.Controllers
         }
 
         [HttpPost]
-        public ActionResult CreateOrderRowManually(ManualOrderViewModel viewModel, int customerId)
+        public ActionResult CreateOrderRowManually(ManualOrderViewModel viewModel, int customerId, int orderId)
         {
-            var order = new Order()
-            {
-                CustomerId = customerId,
+            viewModel.Order = _orderRepository.Find(orderId);
 
-            };
-            _orderRepository.Create(order);
-
-            for(int i = 0; i < viewModel.Products.Length; i++)
+            for(int i = 0; i < viewModel.Products.Count; i++)
             {
                 if (viewModel.Products[i].QuantiyOrdered != 0)
                 {
-                    order.OrderRows.Add(new OrderRow()
+                    viewModel.Order.OrderRows.Add(new OrderRow()
                     {
                         AmountOrdered = (int)viewModel.Products[i].QuantiyOrdered,
-                        OrderId = order.Id,
-                        ProductId = viewModel.Products[i].Id
+                        OrderId = viewModel.Order.Id,
+                        ProductId = viewModel.Products[i].Id,
+                        
                     });
                 }
                 
             }
 
-            return View("CreateOrderManually", order);
+            return View("CreateOrderManually",viewModel);
         }
 
         public ActionResult PickingList(int id)

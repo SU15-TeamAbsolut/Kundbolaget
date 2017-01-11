@@ -8,10 +8,8 @@ namespace Kundbolaget.Models.ViewModels
 {
     public class ManualOrderViewModel
     {
-        public Product[] Products { get; set; } 
+        public IList<Product> Products { get; set; } = new List<Product>();
         public Customer Customer { get; set; }
-        public int ShippingAddressId { get; set; }
-        public int InvoiceAddressId { get; set; }
         public Order Order { get; set; }
     }
 }
