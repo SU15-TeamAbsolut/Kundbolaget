@@ -4,10 +4,13 @@
     ViewBag.Title = "ConfirmSend";
 }
 
-<h2>Plocklista #@Model.Id skickad</h2>
+<h2>Fraksedel #@Model.Id utskriven</h2>
 
 <p>
-    Skriver ut ordern är registrerad som skickad
-    Skapar en följesedel för ordern.
+    Fraksedeln skrivs ut och skall skickas med expeditör vid utleverans
 </p>
+
+<div>
+    @Html.ActionLink("Tillbaka", "PickedOrders", null, new { @class = "btn btn-primary" })
+</div>
 

@@ -5,7 +5,7 @@
 }
 
 <h2>Ordrar</h2>
-<h4>Skriv ut plocksedel</h4>
+<h4>Ordrar att plocka</h4>
 <table class="table">
     <tr>
         <th>
@@ -60,7 +60,7 @@
                 @Html.DisplayFor(modelItem => item.OrderStatus)
             </td>
             <td>
-                @Html.ActionLink("Plocksedel", "PickingList", new {id = item.Id}, new {@class = "btn btn-primary"})
+                @Html.ActionLink("Plocksedel", "PickingList", new {id = item.Id})
             </td>
         </tr>
     }
