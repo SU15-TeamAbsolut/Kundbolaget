@@ -62,7 +62,16 @@ Datum: @DateTime.Today.ToShortDateString()<br/>
                 int count = 0;
                 foreach (var item in Model.OrderRows)
                 {
+                    //if (item.AmountShipped == null)
+                    //{
+                    //    count += item.AmountOrdered;
+                    //}
+                    //else
+                    //{
+                    //    count += item.AmountShipped;
+                    //}
                     count += item.AmountOrdered;
+
                 }
             }
             @count
@@ -78,7 +87,7 @@ Datum: @DateTime.Today.ToShortDateString()<br/>
                 }
                 else
                 {
-                    value = count/20m;
+                    value = (decimal)count/20m;
                     amount = Math.Ceiling(value);
                 }
             }

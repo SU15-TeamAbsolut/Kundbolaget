@@ -23,6 +23,18 @@ namespace Kundbolaget.EntityFramework.Repositories
            
         }
 
+        public OrderRow GetOrderRow(int id)
+        {
+            using (var db = new DataContext())
+            {
+                return db.OrderRows
+                    .Include(o => o.Order)
+                    .Include(o => o.Order.Customer)
+                    .Include(p => p.Product)
+                    .SingleOrDefault(o => o.Id == id);
+            }
+        }
+
 
     }
 }
