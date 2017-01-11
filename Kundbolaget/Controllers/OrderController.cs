@@ -140,7 +140,7 @@ namespace Kundbolaget.Controllers
                     ProductName = orderRow.Product.Name,
                     AmountOrdered = orderRow.AmountOrdered,
                     ShelfName = shelf.Shelf.Name,
-                    ShelfSpace = shelf.Id,
+                    ShelfSpace = shelf.Position,
                     Balance = shelf.CurrentAmount
                 });
             }
