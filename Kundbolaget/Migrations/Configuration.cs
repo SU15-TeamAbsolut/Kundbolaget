@@ -322,12 +322,9 @@ namespace Kundbolaget.Migrations
         {
             AlcoholLicense[] alcoholLicenses =
             {
-                new AlcoholLicense {Id = 1, StartDate = DateTime.Today, EndDate = new DateTime(2020,12,24),
-                    IsValid = true},
-                new AlcoholLicense {Id = 2, StartDate = DateTime.Today, EndDate = new DateTime(2021,12,24),
-                    IsValid = true},
-                new AlcoholLicense {Id = 3, StartDate = DateTime.Today, EndDate = new DateTime(2022,12,24),
-                    IsValid = true},
+                new AlcoholLicense {Id = 1, StartDate = DateTime.Today, EndDate = new DateTime(2020,12,24)},
+                new AlcoholLicense {Id = 2, StartDate = DateTime.Today, EndDate = new DateTime(2021,12,24)},
+                new AlcoholLicense {Id = 3, StartDate = DateTime.Today, EndDate = new DateTime(2022,12,24), IsActive = false},
             };
 
             context.AlcoholLicenses.AddOrUpdate(alcoholLicenses);
