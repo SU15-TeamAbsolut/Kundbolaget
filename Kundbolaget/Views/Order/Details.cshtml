@@ -23,15 +23,6 @@
     <tr>
       <td>@Html.DisplayFor(modelItem => item.Product.Name)</td>
       <td>@Html.DisplayFor(modelItem => item.AmountOrdered)</td>
-        @*<td>
-            @if(item.AmountShipped == null)
-            {
-                int amount = item.AmountOrdered;
-                item.AmountShipped = amount;
-            }
-
-            @Html.DisplayFor(modelItem => item.AmountShipped)
-        </td>*@
       <td>@Html.DisplayFor(modelItem => item.Price)</td>
       <td>@if (item.Discount > 0)
           {
