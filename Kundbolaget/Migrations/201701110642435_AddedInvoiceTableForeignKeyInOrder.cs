@@ -3,7 +3,7 @@ namespace Kundbolaget.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class AddedInvoiceTable : DbMigration
+    public partial class AddedInvoiceTableForeignKeyInOrder : DbMigration
     {
         public override void Up()
         {

@@ -14,12 +14,12 @@ namespace Kundbolaget.Models.EntityModels
         public int Id { get; set; }
 
         [Required]
-        public IList<Order> Orders { get; set; } = new List<Order>();
+        public virtual IList<Order> Orders { get; set; } = new List<Order>();
 
         [Required]
         public int InvoiceAdressId { get; set; }
         [ForeignKey("InvoiceAdressId")]
-        public Address InvoiceAddress { get; set; }
+        public virtual Address InvoiceAddress { get; set; }
 
         [Required]
         public DateTime DueDate { get; set; }

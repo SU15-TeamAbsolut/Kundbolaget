@@ -285,9 +285,9 @@
     <Compile Include="Migrations\201701101429550_AddOrderRowDiscount.Designer.cs">
       <DependentUpon>201701101429550_AddOrderRowDiscount.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201701110632046_AddedInvoiceTable.cs" />
-    <Compile Include="Migrations\201701110632046_AddedInvoiceTable.Designer.cs">
-      <DependentUpon>201701110632046_AddedInvoiceTable.cs</DependentUpon>
+    <Compile Include="Migrations\201701110642435_AddedInvoiceTableForeignKeyInOrder.cs" />
+    <Compile Include="Migrations\201701110642435_AddedInvoiceTableForeignKeyInOrder.Designer.cs">
+      <DependentUpon>201701110642435_AddedInvoiceTableForeignKeyInOrder.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\CustomValidation\CorporateIdentityNumber.cs" />
@@ -427,8 +427,8 @@
     <EmbeddedResource Include="Migrations\201701101429550_AddOrderRowDiscount.resx">
       <DependentUpon>201701101429550_AddOrderRowDiscount.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201701110632046_AddedInvoiceTable.resx">
-      <DependentUpon>201701110632046_AddedInvoiceTable.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201701110642435_AddedInvoiceTableForeignKeyInOrder.resx">
+      <DependentUpon>201701110642435_AddedInvoiceTableForeignKeyInOrder.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

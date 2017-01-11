@@ -28,7 +28,7 @@ namespace Kundbolaget.Models.EntityModels
 
         public int? InvoiceId { get; set; }
         [ForeignKey("InvoiceId")]
-        public Invoice Invoice { get; set; }
+        public virtual Invoice Invoice { get; set; }
 
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}")]
         [DisplayName("Order mottagen")]
