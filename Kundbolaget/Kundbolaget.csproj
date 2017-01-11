@@ -289,13 +289,9 @@
     <Compile Include="Migrations\201701110642435_AddedInvoiceTableForeignKeyInOrder.Designer.cs">
       <DependentUpon>201701110642435_AddedInvoiceTableForeignKeyInOrder.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201701110918535_PropertyPositionToModelProductShelf.cs" />
-    <Compile Include="Migrations\201701110918535_PropertyPositionToModelProductShelf.Designer.cs">
-      <DependentUpon>201701110918535_PropertyPositionToModelProductShelf.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201701110920236_RenameIsValidToIsActive.cs" />
-    <Compile Include="Migrations\201701110920236_RenameIsValidToIsActive.Designer.cs">
-      <DependentUpon>201701110920236_RenameIsValidToIsActive.cs</DependentUpon>
+    <Compile Include="Migrations\201701111020255_MergeMigration.cs" />
+    <Compile Include="Migrations\201701111020255_MergeMigration.Designer.cs">
+      <DependentUpon>201701111020255_MergeMigration.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\CustomValidation\CorporateIdentityNumber.cs" />
@@ -438,11 +434,8 @@
     <EmbeddedResource Include="Migrations\201701110642435_AddedInvoiceTableForeignKeyInOrder.resx">
       <DependentUpon>201701110642435_AddedInvoiceTableForeignKeyInOrder.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201701110918535_PropertyPositionToModelProductShelf.resx">
-      <DependentUpon>201701110918535_PropertyPositionToModelProductShelf.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201701110920236_RenameIsValidToIsActive.resx">
-      <DependentUpon>201701110920236_RenameIsValidToIsActive.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201701111020255_MergeMigration.resx">
+      <DependentUpon>201701111020255_MergeMigration.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

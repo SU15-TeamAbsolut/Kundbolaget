@@ -3,16 +3,20 @@ namespace Kundbolaget.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class PropertyPositionToModelProductShelf : DbMigration
+    public partial class MergeMigration : DbMigration
     {
         public override void Up()
         {
+            AddColumn("dbo.AlcoholLicenses", "IsActive", c => c.Boolean(nullable: false));
             AddColumn("dbo.ProductShelves", "Position", c => c.String(nullable: false));
+            DropColumn("dbo.AlcoholLicenses", "IsValid");
         }
         
         public override void Down()
         {
+            AddColumn("dbo.AlcoholLicenses", "IsValid", c => c.Boolean(nullable: false));
             DropColumn("dbo.ProductShelves", "Position");
+            DropColumn("dbo.AlcoholLicenses", "IsActive");
         }
     }
 }
