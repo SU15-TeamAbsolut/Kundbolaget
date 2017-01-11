@@ -14,41 +14,57 @@ namespace Kundbolaget.Controllers
         private readonly IRepository<ProductCategory> _productCategoryRepository;
         private readonly ProductRepository _productRepository;
         private readonly IRepository<ProductPrice> priceRepository;
+        private readonly ProductShelfRepository shelfRepository;
 
         public ProductController()
         {
             _productRepository = new ProductRepository();
             _productCategoryRepository = new DataRepository<ProductCategory>();
             priceRepository = new DataRepository<ProductPrice>();
+            shelfRepository = new ProductShelfRepository();
         }
 
         // GET: Product/Index
         public ActionResult Index()
         {
+            IList<Product> products = _productRepository.GetAll();
+            var productVmList = new List<ProductListItemViewModel>();
 
-            var viewModel = new ProductCategoryViewModel()
+            // Turn products into view model items
+            foreach (var product in products)
             {
-                Products = _productRepository.GetAll(),
+                productVmList.Add(ProductListItemViewModel.FromProduct(product));
+            }
+
+            var viewModel = new ProductCategoryViewModel
+            {
                 ProductCategories = _productCategoryRepository.GetAll(),
-                
+                Products = productVmList
             };
+
+            // Fetch product stock
+            foreach (var product in viewModel.Products)
+            {
+                product.CurrentStock = shelfRepository.GetProductStock(product.Id);
+            }
             
             return View(viewModel);
         }
+
         [HttpPost]
         public ActionResult Index(ProductCategoryViewModel categoryModel)
         {
             int id = categoryModel.ProductCategory.Id;
-            List<Product> productList;
+            List<ProductListItemViewModel> productList;
 
             if (id == 0)
             {
-                productList = _productRepository.GetAll().ToList();
+                productList = (List<ProductListItemViewModel>) _productRepository.GetAll();
             }
             else
             {
-                productList = _productRepository.GetAll()
-                   .Where(x => x.ProductCategoryId == id).ToList();
+                productList = (List<ProductListItemViewModel>) _productRepository.GetAll()
+                   .Where(x => x.ProductCategoryId == id);
             }
                 
             var viewModel = new ProductCategoryViewModel()

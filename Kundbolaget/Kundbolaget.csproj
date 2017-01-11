@@ -316,6 +316,7 @@
     <Compile Include="Models\ViewModels\CountryViewModel.cs" />
     <Compile Include="Models\JsonModels\JsonCustomerOrder.cs" />
     <Compile Include="Models\JsonModels\JsonOrderRow.cs" />
+    <Compile Include="Models\ViewModels\ProductListItemViewModel.cs" />
     <Compile Include="Models\ViewModels\ShelfWithProducts.cs" />
     <Compile Include="Models\ViewModels\ShippingAdressViewModel.cs" />
     <Compile Include="Models\ViewModels\JsonFileUploadViewModel.cs" />
