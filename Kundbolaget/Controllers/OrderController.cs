@@ -83,6 +83,19 @@ namespace Kundbolaget.Controllers
             }
             return View(model);
         }
+
+        public ActionResult CanceledOrders()
+        {
+            var orders = _orderRepository.GetAll();
+            List<Order> model = new List<Order>();
+
+            foreach (var order in orders)
+            {
+                if (order.OrderStatus == OrderStatus.Cancelled)
+                    model.Add(order);
+            }
+            return View(model);
+        }
         
         public ActionResult Details(int id)
         {
@@ -161,7 +174,6 @@ namespace Kundbolaget.Controllers
 
             return View(order);
         }
-        [HttpPost]
         public ActionResult ConfirmSend(int id)
         {
             var order = _orderRepository.Find(id);
@@ -175,6 +187,15 @@ namespace Kundbolaget.Controllers
         {
             var order = _orderRepository.Find(id);
             return View(order);
+        }
+
+        public ActionResult Delete(int id)
+        {
+            var order = _orderRepository.Find(id);
+            order.OrderStatus = OrderStatus.Cancelled;
+            _orderRepository.Update(order);
+           
+            return RedirectToAction("ReceivedOrders");
         }
     }
 }
