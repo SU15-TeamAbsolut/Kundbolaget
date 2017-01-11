@@ -26,7 +26,7 @@ namespace Kundbolaget.Models.EntityModels
         [DisplayName("Leveransadress")]
         public virtual Address ShippingAddress { get; set; }
 
-        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}")]
+        //[DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}")]
         [DisplayName("Order mottagen")]
         public DateTime OrderPlaced { get; set; }
 
