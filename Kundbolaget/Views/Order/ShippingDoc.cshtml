@@ -1,0 +1,90 @@
+﻿@model Kundbolaget.Models.EntityModels.Order
+
+@{
+    ViewBag.Title = "ShippingDoc";
+}
+
+<h2>Fraktsedel</h2>
+Fraksedels nr: <br/>
+Datum: @DateTime.Today.ToShortDateString()<br/>
+<hr />
+<td></td>
+<div>
+    <div style="font-size: 15px; font-weight: bold">
+        Avsändare:
+    </div>
+    KUNDBOLAGET AB<br />
+    Västraskogsvägen 65, 25630, Stockholm<br />
+    Tel: 08 123 123<br /><br />
+    
+    <div style="font-size: 15px; font-weight: bold">
+        Kund:
+    </div>
+    @Model.Customer.Name.ToUpper()<br />
+    @Model.Customer.VisitingAddress<br/>
+    @if (Model.Customer.Contact != null)
+    {
+        @Model.Customer.Contact
+    }
+    else
+    {
+
+    }
+    Kund nr: @Model.CustomerId<br/><br/>
+    
+    <div style="font-size: 15px; font-weight: bold">
+        Leveransadress:
+    </div>
+    @Model.Customer.Name.ToUpper()<br/>
+    @Model.ShippingAddress
+
+</div>
+<br />
+
+<table class="table" style="width: 500px">
+    <tr>
+        <th>
+            |  Order Id
+        </th>
+        <th>
+            |  Antal Kolli
+        </th>
+        <th>
+            |  Antal pallar
+        </th>
+    </tr>
+        <tr>
+            <td>
+                @Model.Id
+            </td>
+            <td>
+                @{
+                    int count = 0;
+                    foreach (var item in Model.OrderRows)
+                    {
+                        count += item.AmountOrdered;
+                    }
+                }
+                @count
+
+            </td>
+            <td>
+                @{
+                    decimal value = 0m;
+                    decimal amount = 0m;
+                    if (count <= 20)
+                    {
+                        amount = 1m;
+                    }
+                    else
+                    {
+                        value = count/20m;
+                        amount = Math.Ceiling(value);
+                    }
+                }
+                @amount EU-pall
+            </td>
+        </tr>
+
+</table>
+

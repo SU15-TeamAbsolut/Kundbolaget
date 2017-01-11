@@ -16,7 +16,7 @@
       <div class="form-group">
         <div class="col-md-10">
           @Html.TextBoxFor(model => model.File, new { type = "file" })
-          @Html.ValidationMessageFor(model => model.File)
+          @Html.ValidationMessageFor(model => model.File)<br/>
           <input type="submit" value="Ladda upp orderfil" class="btn btn-primary" />
         </div>
       </div>

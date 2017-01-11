@@ -83,7 +83,7 @@ namespace Kundbolaget.Controllers
             }
             return View(model);
         }
-
+        
         public ActionResult Details(int id)
         {
             var orderRows = _orderRowRepository.GetAll(id);
@@ -110,7 +110,7 @@ namespace Kundbolaget.Controllers
             
             _orderRepository.Update(model);
 
-            return  RedirectToAction("Index");
+            return  RedirectToAction("ReceivedOrders");
         }
 
         public ActionResult PickingList(int id)
@@ -169,6 +169,11 @@ namespace Kundbolaget.Controllers
             order.OrderStatus = OrderStatus.Shipping;
             _orderRepository.Update(order);
 
+            return View(order);
+        }
+        public ActionResult ShippingDoc(int id)
+        {
+            var order = _orderRepository.Find(id);
             return View(order);
         }
     }

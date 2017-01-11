@@ -11,8 +11,12 @@
 <p>@Model.ErrorMessage</p>
 
 <ul>
-  @foreach (var error in Model.ValidationErrors)
-  {
-    <li>@error.Path: @error.Kind</li>
-  }
+    @foreach (var error in Model.ValidationErrors)
+    {
+        <li>@error.Path: @error.Kind</li>
+    }
 </ul>
+
+<div>
+    @Html.ActionLink("Tillbaka", "Upload", null, new { @class="btn btn-primary"})
+</div>

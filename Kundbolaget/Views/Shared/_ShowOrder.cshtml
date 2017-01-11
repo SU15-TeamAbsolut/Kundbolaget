@@ -6,6 +6,7 @@
     <th>Beställt</th>
     <th>I lager</th>
     <th>Pris styck</th>
+    <th>Rabatt</th>
     <th>Totalt</th>
   </tr>
   @foreach (var orderRow in Model.OrderRows)
@@ -16,11 +17,20 @@
     <td>@orderRow.AmountOrdered</td>
     <td>@orderRow.AmountInStock</td>
     <td>@orderRow.Price</td>
-    <td>@(orderRow.Price * orderRow.AmountOrdered)</td>
+    <td>@if (orderRow.Discount > 0)
+        {
+          <text>@($"{orderRow.Discount*100:0.##}%")</text>
+              }
+              else
+              {
+          <text></text>
+	      }
+    </td>
+    <td>@($"{orderRow.DiscountedPrice * orderRow.AmountOrdered:0.00}")</td>
   </tr>
   }
   <tr>
-    <td colspan="5" style="text-align: right"><strong>Summa order:</strong></td>
-    <td><strong>@Model.Total</strong></td>    
+    <td colspan="6" style="text-align: right"><strong>Summa order:</strong></td>
+    <td><strong>@($"{Model.Total:0.00}")</strong></td>    
   </tr>
 </table>

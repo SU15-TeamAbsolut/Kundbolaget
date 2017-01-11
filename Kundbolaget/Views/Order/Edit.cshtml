@@ -16,6 +16,7 @@
         
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.Id)
+        @Html.HiddenFor(model => model.OrderStatus)
 
         <div class="form-group">
             @Html.LabelFor(model => model.CustomerId, "CustomerId", htmlAttributes: new { @class = "control-label col-md-2" })
@@ -40,20 +41,12 @@
                 @Html.ValidationMessageFor(model => model.DesiredDeliveryDate, "", new { @class = "text-danger" })
             </div>
         </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.OrderStatus, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-5">
-                @Html.EnumDropDownListFor(model => model.OrderStatus, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.OrderStatus, "", new { @class = "text-danger" })
-                @Html.HiddenFor(m => m.OrderStatus)
-            </div>
-        </div>
+        
     </div>
 
     <hr />
     <div class="form-group col-md-10">
-        @Html.ActionLink("Tillbaka", "Index", null, new { @class = "btn btn-primary" }) |
+        @Html.ActionLink("Tillbaka", "ReceivedOrders", null, new { @class = "btn btn-primary" }) |
         <input type="submit" value="Spara" class="btn btn-primary" />
     </div>
 }

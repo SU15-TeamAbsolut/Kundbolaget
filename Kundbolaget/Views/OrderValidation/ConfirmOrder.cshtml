@@ -38,6 +38,7 @@ else
   {
     @Html.HiddenFor(o => o.Order.OrderRows[i].ProductId)
     @Html.HiddenFor(o => o.Order.OrderRows[i].AmountOrdered)
+    @Html.HiddenFor(o => o.Order.OrderRows[i].Discount)
   }
 
   if (Model.BackOrder != null)
@@ -50,9 +51,10 @@ else
     {
       @Html.HiddenFor(o => o.BackOrder.OrderRows[i].ProductId)
       @Html.HiddenFor(o => o.BackOrder.OrderRows[i].AmountOrdered)
+      @Html.HiddenFor(o => o.BackOrder.OrderRows[i].Discount)
     }
   }
 
-  @Html.ActionLink("Avbryt order", "Index", "Home", null, new { @class = "btn btn-default" })
+  @Html.ActionLink("Avbryt order", "Upload", "OrderValidation", null, new { @class = "btn btn-default" })
   <input type="submit" value="Lägg order" class="btn btn-primary" />
 }

@@ -206,11 +206,18 @@ namespace Kundbolaget.Controllers
             var order = jsonOrderViewModel.Order;
             Order backOrder = null;
 
-            // Fetch stock from inventory
+            // Fetch stock from inventory, calculate discount
             foreach (var row in order.OrderRows)
             {
                 row.AmountInStock = supplyRepository.GetAmountInStock(row.ProductId);
+
+                if (row.AmountOrdered >= 20)
+                {
+                    // TODO: Edit global discount somewhere
+                    row.Discount = (decimal) 0.08;
+                }
             }
+
 
             // Products out of stock?
             bool outOfStock = order.OrderRows.Count(r => !r.IsInStock) > 0;

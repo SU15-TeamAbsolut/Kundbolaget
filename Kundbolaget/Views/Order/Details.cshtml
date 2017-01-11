@@ -8,37 +8,45 @@
 
 <table class="table">
     <tr>
-        <th>
-            @Html.DisplayNameFor(item => item.Product.Name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(item => item.AmountOrdered)
-        </th>
-        <th>
-            @Html.DisplayNameFor(item => item.Price)
-        </th>
-        <th></th>
+      <th>@Html.DisplayNameFor(item => item.Product.Name)</th>
+      <th>@Html.DisplayNameFor(item => item.AmountOrdered)</th>
+      <th>@Html.DisplayNameFor(item => item.Price)</th>
+      <th>@Html.DisplayNameFor(item => item.Discount)</th>
+      <th>@Html.DisplayNameFor(item => item.DiscountedPrice)</th>
+      <th>Totalt pris</th>
+      <th></th>
     </tr>
 
 @foreach (var item in Model) {
     <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Product.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.AmountOrdered)
-        </td>
-        <td>
-            @{ var price = item.Product.Price*(item.AmountOrdered*item.Product.PackageAmount);}
-
-            @Html.DisplayFor(modelItem => price)
-        </td>
-        <td>
-            @Html.ActionLink("Ändra", "Edit", new { id = item.Id})
-        </td>
+      <td>@Html.DisplayFor(modelItem => item.Product.Name)</td>
+      <td>@Html.DisplayFor(modelItem => item.AmountOrdered)</td>
+      <td>@Html.DisplayFor(modelItem => item.Price)</td>
+      <td>@if (item.Discount > 0)
+          {
+            @($"{item.Discount*100:0.##}%")
+          }
+          else
+          {
+            <text>&mdash;</text>
+          }
+      </td>
+      <td>@if (item.Discount > 0)
+      {
+          @($"{item.DiscountedPrice:0.00}")
+      }
+      else
+      {
+          <text>&mdash;</text>
+      }
+      </td>
+      <td>@($"{item.DiscountedPrice*item.AmountOrdered:0.00}")</td>
+      <td>
+          @Html.ActionLink("Ändra", "Edit", new { id = item.Id})
+      </td>
     </tr>
 }
 
 </table>
 
-@Html.ActionLink("Tillbaka", "Index", null, new { @class = "btn btn-primary" })
+@Html.ActionLink("Tillbaka", "ReceivedOrders", null, new { @class = "btn btn-primary" })
