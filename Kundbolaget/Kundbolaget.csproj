@@ -248,6 +248,7 @@
     <Compile Include="EntityFramework\Repositories\ProductRepository.cs" />
     <Compile Include="EntityFramework\Repositories\ProductShelfRepository.cs" />
     <Compile Include="EntityFramework\Repositories\SupplyRepository.cs" />
+    <Compile Include="Enums\InvoiceStatus.cs" />
     <Compile Include="Enums\OrderStatus.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -284,6 +285,10 @@
     <Compile Include="Migrations\201701101429550_AddOrderRowDiscount.Designer.cs">
       <DependentUpon>201701101429550_AddOrderRowDiscount.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201701110642435_AddedInvoiceTableForeignKeyInOrder.cs" />
+    <Compile Include="Migrations\201701110642435_AddedInvoiceTableForeignKeyInOrder.Designer.cs">
+      <DependentUpon>201701110642435_AddedInvoiceTableForeignKeyInOrder.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\CustomValidation\CorporateIdentityNumber.cs" />
     <Compile Include="Models\CustomValidation\ValidateRestOrderDate.cs" />
@@ -292,6 +297,7 @@
     <Compile Include="Models\EntityModels\Country.cs" />
     <Compile Include="Models\EntityModels\Customer.cs" />
     <Compile Include="Models\EntityModels\AlcoholLicense.cs" />
+    <Compile Include="Models\EntityModels\Invoice.cs" />
     <Compile Include="Models\EntityModels\Order.cs" />
     <Compile Include="Models\EntityModels\OrderRow.cs" />
     <Compile Include="Models\EntityModels\ProductPrice.cs" />
@@ -420,6 +426,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201701101429550_AddOrderRowDiscount.resx">
       <DependentUpon>201701101429550_AddOrderRowDiscount.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201701110642435_AddedInvoiceTableForeignKeyInOrder.resx">
+      <DependentUpon>201701110642435_AddedInvoiceTableForeignKeyInOrder.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
