@@ -7,13 +7,13 @@ namespace Kundbolaget.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class AddedModelInvoice : IMigrationMetadata
+    public sealed partial class AddedInvoiceTable : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(AddedModelInvoice));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(AddedInvoiceTable));
         
         string IMigrationMetadata.Id
         {
-            get { return "201701101628275_AddedModelInvoice"; }
+            get { return "201701110632046_AddedInvoiceTable"; }
         }
         
         string IMigrationMetadata.Source
