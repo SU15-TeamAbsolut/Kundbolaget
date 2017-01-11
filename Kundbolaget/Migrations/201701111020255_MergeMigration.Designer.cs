@@ -7,13 +7,13 @@ namespace Kundbolaget.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class PropertyPositionToModelProductShelf : IMigrationMetadata
+    public sealed partial class MergeMigration : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(PropertyPositionToModelProductShelf));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(MergeMigration));
         
         string IMigrationMetadata.Id
         {
-            get { return "201701110918535_PropertyPositionToModelProductShelf"; }
+            get { return "201701111020255_MergeMigration"; }
         }
         
         string IMigrationMetadata.Source

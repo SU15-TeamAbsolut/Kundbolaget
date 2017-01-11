@@ -26,7 +26,9 @@
             @Html.DisplayFor(modelItem => item.Name)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Address.Street)
+            @Html.DisplayFor(modelItem => item.Address.Street),
+            @Html.DisplayFor(modelItem => item.Address.ZipNumber),
+            @Html.DisplayFor(modelItem => item.Address.City)
         </td>
         <td>
             @Html.ActionLink("Redigera", "Edit", new { id=item.Id }) |

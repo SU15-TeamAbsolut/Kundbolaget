@@ -39,14 +39,11 @@ namespace Kundbolaget.Controllers
         [HttpPost]
         public ActionResult Create(AlcoholLicense model)
         {
-            DateTime now = DateTime.Now;
-            bool isValid = now < model.EndDate;
-
-            AlcoholLicense alcoModel = new AlcoholLicense()
+            var alcoModel = new AlcoholLicense
             {
                 StartDate = model.StartDate,
                 EndDate = model.EndDate,
-                IsValid = isValid
+                IsActive = true
             };
 
             if (!alcoModel.IsValid)

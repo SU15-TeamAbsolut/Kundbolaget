@@ -12,7 +12,7 @@ namespace Kundbolaget.Models.ViewModels
         public string ProductName { get; set; }
         public int AmountOrdered { get; set; }
         public string ShelfName { get; set; }
-        public int ShelfSpace { get; set; }
+        public string ShelfSpace { get; set; }
         public int Balance { get; set; }
         public bool IsPickable => (Balance >= AmountOrdered);
 

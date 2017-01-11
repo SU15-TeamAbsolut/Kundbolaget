@@ -6,6 +6,7 @@ using System.Linq;
 using System.Web;
 using System.Data.Entity;
 
+
 namespace Kundbolaget.EntityFramework.Repositories
 {
     public class ProductShelfRepository : DataRepository<ProductShelf>
@@ -25,6 +26,18 @@ namespace Kundbolaget.EntityFramework.Repositories
             {
                 var productShelf = db.ProductsShelves.Where(x => x.ProductId == productId && x.ShelfId == shelfId).FirstOrDefault();
                 return productShelf;
+            }
+        }
+
+        public int GetProductStock(int productId, int warehouse = 0)
+        {
+            using (var db = new DataContext())
+            {
+                return db.ProductsShelves
+                    .Where(p => p.ProductId == productId)
+                    .Select(p => p.CurrentAmount)
+                    .DefaultIfEmpty()
+                    .Sum();
             }
         }
     }
