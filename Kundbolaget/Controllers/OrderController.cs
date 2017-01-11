@@ -103,6 +103,12 @@ namespace Kundbolaget.Controllers
 
             return View(orderRows);
         }
+        public ActionResult ViewOrderRows(int id)
+        {
+            var orderRows = _orderRowRepository.GetAll(id);
+
+            return View(orderRows);
+        }
 
         public ActionResult Edit(int id)
         {
@@ -124,6 +130,19 @@ namespace Kundbolaget.Controllers
             _orderRepository.Update(model);
 
             return  RedirectToAction("ReceivedOrders");
+        }
+        public ActionResult EditOrderRow(int id)
+        {
+            var orderRow = _orderRowRepository.GetOrderRow(id);
+            //orderRow.Customer = _customerRepository.Find(order.CustomerId);
+            return View(orderRow);
+        }
+
+        [HttpPost]
+        public ActionResult EditOrderRow(OrderRow model)
+        {
+            _orderRowRepository.Update(model);
+            return RedirectToAction("UnpickedOrders");
         }
 
         public ActionResult PickingList(int id)

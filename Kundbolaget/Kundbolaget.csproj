@@ -397,6 +397,8 @@
     <Content Include="Views\Order\Index.cshtml" />
     <Content Include="Views\Order\ShippingDoc.cshtml" />
     <Content Include="Views\Order\CanceledOrders.cshtml" />
+    <Content Include="Views\Order\EditOrderRow.cshtml" />
+    <Content Include="Views\Order\ViewOrderRows.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
