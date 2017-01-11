@@ -105,14 +105,14 @@ namespace Kundbolaget.Migrations
         {
             Shelf[] shelves =
             {
-                new Shelf { Id = 1, Name = "A", WarehouseId = 1 },
-                new Shelf { Id = 2, Name = "B", WarehouseId = 1 },
-                new Shelf { Id = 3, Name = "C", WarehouseId = 1 },
-                new Shelf { Id = 4, Name = "D", WarehouseId = 1 },
-                new Shelf { Id = 5, Name = "E", WarehouseId = 1 },
-                new Shelf { Id = 6, Name = "F", WarehouseId = 1 },
-                new Shelf { Id = 7, Name = "G", WarehouseId = 1 },
-                new Shelf { Id = 8, Name = "H", WarehouseId = 1 }
+                new Shelf { Id = 1, Name = "A", WarehouseId = 0 },
+                new Shelf { Id = 2, Name = "B", WarehouseId = 0 },
+                new Shelf { Id = 3, Name = "C", WarehouseId = 0 },
+                new Shelf { Id = 4, Name = "D", WarehouseId = 0 },
+                new Shelf { Id = 5, Name = "E", WarehouseId = 0 },
+                new Shelf { Id = 6, Name = "F", WarehouseId = 0 },
+                new Shelf { Id = 7, Name = "G", WarehouseId = 0 },
+                new Shelf { Id = 8, Name = "H", WarehouseId = 0 }
             };
             context.Shelves.AddOrUpdate(shelves);
         }
