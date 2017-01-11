@@ -289,6 +289,10 @@
     <Compile Include="Migrations\201701110642435_AddedInvoiceTableForeignKeyInOrder.Designer.cs">
       <DependentUpon>201701110642435_AddedInvoiceTableForeignKeyInOrder.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201701110918535_PropertyPositionToModelProductShelf.cs" />
+    <Compile Include="Migrations\201701110918535_PropertyPositionToModelProductShelf.Designer.cs">
+      <DependentUpon>201701110918535_PropertyPositionToModelProductShelf.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\CustomValidation\CorporateIdentityNumber.cs" />
     <Compile Include="Models\CustomValidation\ValidateRestOrderDate.cs" />
@@ -429,6 +433,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201701110642435_AddedInvoiceTableForeignKeyInOrder.resx">
       <DependentUpon>201701110642435_AddedInvoiceTableForeignKeyInOrder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201701110918535_PropertyPositionToModelProductShelf.resx">
+      <DependentUpon>201701110918535_PropertyPositionToModelProductShelf.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
