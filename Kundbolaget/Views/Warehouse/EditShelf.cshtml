@@ -24,9 +24,9 @@
             </div>
         </div>
         <h4>Produkter</h4>
-        <p>
+        <div class="form-group col-md-10">
             @Html.ActionLink("Lägg till produkt", "CreateProductShelf", null, new { @class = "btn btn-primary" })
-        </p>
+        </div>
         <table class="table">
             <tr>
                 <th>
@@ -37,6 +37,9 @@
                 </th>
                 <th>
                     Minimum antal
+                </th>
+                <th>
+                    Placering
                 </th>
             </tr>
             @foreach (var item in Model.Products)
@@ -50,6 +53,9 @@
                     </td>
                     <td>
                         @Html.DisplayName(item.MinimumAmount.ToString())
+                    </td>
+                    <td>
+                        @Html.DisplayName(item.Position)
                     </td>
                 </tr>
             }

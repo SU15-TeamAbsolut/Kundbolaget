@@ -12,9 +12,20 @@ namespace Kundbolaget.EntityFramework.Repositories
     {
         public List<ProductShelf> GetProductsShelvesByShelfId(int shelfId)
         {
-            var db = new DataContext();
-            var productsShelves = db.ProductsShelves.Where(x => x.ShelfId == shelfId).Include(x => x.Product).ToList();
-            return productsShelves;
+            using (var db = new DataContext())
+            {
+                var productsShelves = db.ProductsShelves.Where(x => x.ShelfId == shelfId).Include(x => x.Product).ToList();
+                return productsShelves;
+            }
+        }
+
+        public ProductShelf FindByProductIdAndShelfId(int productId, int shelfId)
+        {
+            using (var db = new DataContext())
+            {
+                var productShelf = db.ProductsShelves.Where(x => x.ProductId == productId && x.ShelfId == shelfId).FirstOrDefault();
+                return productShelf;
+            }
         }
     }
 }
