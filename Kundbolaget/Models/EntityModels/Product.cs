@@ -55,6 +55,9 @@ namespace Kundbolaget.Models.EntityModels
         [NotMapped]
         public int? QuantiyInWarehouse { get; set; }
 
+        [NotMapped]
+        public int? QuantiyOrdered { get; set; }
+
         private decimal GetPrice()
         {
             ProductPrice productPrice = PriceList

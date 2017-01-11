@@ -1,4 +1,4 @@
-﻿@model Kundbolaget.Models.EntityModels.Order
+﻿@model Kundbolaget.Models.ViewModels.ManualOrderViewModel
 
 @{
     ViewBag.Title = "CreateOrderManually";
@@ -8,7 +8,7 @@
 <h2>Skapa order</h2>
 
 <p>
-    @Html.ActionLink("Lägg till ny orderrad", "CreateOrderRowManually",null, new {@class="btn btn-primary"})
+    @Html.ActionLink("Lägg till ny orderrad", "CreateOrderManually",new {customerId = Model.Customer.Id}, new {@class="btn btn-primary"})
 </p>
 <table class="table">
     <tr>
@@ -33,7 +33,7 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model.OrderRows) {
+@foreach (var item in Model.Order.OrderRows) {
     <tr>
         <td>
             @Html.DisplayFor(modelItem => item.Order.Id)
