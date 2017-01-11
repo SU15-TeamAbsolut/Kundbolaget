@@ -5,7 +5,7 @@
 }
 
 <h2>Fraktsedel</h2>
-Fraksedels nr: <br/>
+Fraksedels nr: @Model.Id <br/>
 Datum: @DateTime.Today.ToShortDateString()<br/>
 <hr />
 <td></td>
@@ -53,38 +53,41 @@ Datum: @DateTime.Today.ToShortDateString()<br/>
             |  Antal pallar
         </th>
     </tr>
-        <tr>
-            <td>
-                @Model.Id
-            </td>
-            <td>
-                @{
-                    int count = 0;
-                    foreach (var item in Model.OrderRows)
-                    {
-                        count += item.AmountOrdered;
-                    }
+    <tr>
+        <td>
+            @Model.Id
+        </td>
+        <td>
+            @{
+                int count = 0;
+                foreach (var item in Model.OrderRows)
+                {
+                    count += item.AmountOrdered;
                 }
-                @count
+            }
+            @count
 
-            </td>
-            <td>
-                @{
-                    decimal value = 0m;
-                    decimal amount = 0m;
-                    if (count <= 20)
-                    {
-                        amount = 1m;
-                    }
-                    else
-                    {
-                        value = count/20m;
-                        amount = Math.Ceiling(value);
-                    }
+        </td>
+        <td>
+            @{
+                decimal value = 0m;
+                decimal amount = 0m;
+                if (count <= 20)
+                {
+                    amount = 1m;
                 }
-                @amount EU-pall
-            </td>
-        </tr>
+                else
+                {
+                    value = count/20m;
+                    amount = Math.Ceiling(value);
+                }
+            }
+            @amount EU-pall
+        </td>
+    </tr>
 
 </table>
+<div>
+    @Html.ActionLink("Skriv ut fraktsedel", "ConfirmSend", new { id = @Model.Id }, new { @class = "btn btn-primary" })
+</div>
 
