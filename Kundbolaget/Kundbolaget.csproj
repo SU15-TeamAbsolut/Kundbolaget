@@ -293,6 +293,10 @@
     <Compile Include="Migrations\201701110918535_PropertyPositionToModelProductShelf.Designer.cs">
       <DependentUpon>201701110918535_PropertyPositionToModelProductShelf.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201701110920236_RenameIsValidToIsActive.cs" />
+    <Compile Include="Migrations\201701110920236_RenameIsValidToIsActive.Designer.cs">
+      <DependentUpon>201701110920236_RenameIsValidToIsActive.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\CustomValidation\CorporateIdentityNumber.cs" />
     <Compile Include="Models\CustomValidation\ValidateRestOrderDate.cs" />
@@ -436,6 +440,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201701110918535_PropertyPositionToModelProductShelf.resx">
       <DependentUpon>201701110918535_PropertyPositionToModelProductShelf.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201701110920236_RenameIsValidToIsActive.resx">
+      <DependentUpon>201701110920236_RenameIsValidToIsActive.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -25,6 +25,16 @@ namespace Kundbolaget.Models.EntityModels
 
         [Required]
         [DisplayName("Status")]
-        public bool IsValid { get; set; }
+        [Column("IsActive")]
+        public bool IsActive { get; set; } = true;
+
+        [DisplayName("Giltighet")]
+        public bool IsValid => CheckValidLicense();
+
+        private bool CheckValidLicense()
+        {
+            return IsActive
+                && DateTime.Today <= EndDate;
+        }
     }
 }

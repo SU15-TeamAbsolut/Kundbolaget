@@ -38,27 +38,19 @@
         </td>
         @if (item.AlcoholLicense == null)
         {
-            <td>
-                Licens saknas
-            </td>
+            <td>Licens saknas</td>
         }
         else
         {
-            if (item.AlcoholLicense.EndDate < DateTime.Now || item.AlcoholLicense.StartDate > DateTime.Now)
+            if (item.AlcoholLicense.IsValid)
             {
-                <td>
-                    Ogiltig
-                </td>
+                <td>Giltig</td>
             }
             else
             {
-                <td>
-                    Giltig
-                </td>
-                
+                <td>Ej giltig</td>
             }
         }
-        
 
         @if (item.AlcoholLicense == null)
         {
