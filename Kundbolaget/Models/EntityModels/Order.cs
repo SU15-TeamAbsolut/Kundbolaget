@@ -31,6 +31,7 @@ namespace Kundbolaget.Models.EntityModels
         public virtual Invoice Invoice { get; set; }
 
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}")]
+        //[DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}")]
         [DisplayName("Order mottagen")]
         public DateTime OrderPlaced { get; set; }
 
