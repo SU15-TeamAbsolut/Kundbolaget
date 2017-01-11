@@ -113,6 +113,15 @@ namespace Kundbolaget.Controllers
             return  RedirectToAction("ReceivedOrders");
         }
 
+        public ActionResult IndexCustomer()
+        {
+            var customers = _customerRepository.GetAll();
+
+
+            return View(customers);
+
+        }
+
         public ActionResult PickingList(int id)
         {
             IList<OrderRow> orderRows = _orderRowRepository.GetAll(id);
