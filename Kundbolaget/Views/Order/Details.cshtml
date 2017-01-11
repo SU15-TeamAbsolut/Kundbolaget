@@ -1,10 +1,12 @@
-﻿@model IEnumerable<Kundbolaget.Models.EntityModels.OrderRow>
+﻿@using System.Web.UI.WebControls.Expressions
+@model IEnumerable<Kundbolaget.Models.EntityModels.OrderRow>
 
 @{
     ViewBag.Title = "Details";
 }
 
 <h2>Orderdetaljer</h2>
+<h4>Orderrader</h4>
 
 <table class="table">
     <tr>
@@ -21,6 +23,15 @@
     <tr>
       <td>@Html.DisplayFor(modelItem => item.Product.Name)</td>
       <td>@Html.DisplayFor(modelItem => item.AmountOrdered)</td>
+        @*<td>
+            @if(item.AmountShipped == null)
+            {
+                int amount = item.AmountOrdered;
+                item.AmountShipped = amount;
+            }
+
+            @Html.DisplayFor(modelItem => item.AmountShipped)
+        </td>*@
       <td>@Html.DisplayFor(modelItem => item.Price)</td>
       <td>@if (item.Discount > 0)
           {
@@ -42,11 +53,11 @@
       </td>
       <td>@($"{item.DiscountedPrice*item.AmountOrdered:0.00}")</td>
       <td>
-          @Html.ActionLink("Ändra", "Edit", new { id = item.Id})
+          @Html.ActionLink("Ändra", "EditOrderRow", new { id = item.Id})
       </td>
     </tr>
 }
 
 </table>
 
-@Html.ActionLink("Tillbaka", "ReceivedOrders", null, new { @class = "btn btn-primary" })
+@Html.ActionLink("Tillbaka", "UnpickedOrders", null, new { @class = "btn btn-primary" })
