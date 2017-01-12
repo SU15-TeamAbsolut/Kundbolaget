@@ -8,16 +8,21 @@ using Kundbolaget.EntityFramework.Repositories;
 using Kundbolaget.Enums;
 using Kundbolaget.Models.EntityModels;
 using Kundbolaget.Models.ViewModels.Invoice;
+using Customer = Portable.Licensing.Customer;
 
 namespace Kundbolaget.Controllers
 {
     public class InvoiceController : Controller
     {
         private readonly CustomerRepository customerRepository;
+        private readonly OrderRepository orderRepository;
+        private readonly InvoiceRepository invoiceRepository;
 
         public InvoiceController()
         {
             customerRepository = new CustomerRepository();
+            orderRepository = new OrderRepository();
+            invoiceRepository = new InvoiceRepository();
         }
 
         // GET: Invoice
@@ -61,14 +66,35 @@ namespace Kundbolaget.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpPost]
-        public ActionResult Save(CreateInvoiceViewModel model)
+        public ActionResult Save(FormCollection form)
         {
+            int customerId = int.Parse(form["Customer.Id"]);
+            var customer = customerRepository.Find(customerId);
+            var date = form["DueDate"];
+
+            DateTime dueDate = DateTime.Parse(date);
+
             var invoice = new Invoice
             {
-                
+                Customer = customer,
+                CustomerId = customer.Id,
+                DueDate = dueDate,
+                InvoiceAddress = customer.VisitingAddress
             };
 
-            return View();
+            // Chosen orders is a CSV of order id:s
+            string[] orderIdStrings = form["SelectedOrders"].Split(',');
+
+            foreach (var s in orderIdStrings)
+            {
+                var orderId = int.Parse(s);
+                var order = orderRepository.Find(orderId);
+                invoice.Orders.Add(order);
+            }
+
+            invoiceRepository.Create(invoice);
+
+            return View(invoice);
         }
     }
 }

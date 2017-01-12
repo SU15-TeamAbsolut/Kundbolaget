@@ -20,7 +20,7 @@
     @for (int i = 0; i < Model.InvoicableOrders.Count; i++)
     {
       <tr>
-        <td><input type="checkbox" name="Model.InvoicableOrders[@i]" /></td>
+        <td><input type="checkbox" name="SelectedOrders" value="@Model.InvoicableOrders[i].Id"/></td>
         <td>@Model.InvoicableOrders[i].Id</td>
         <td>@Model.InvoicableOrders[i].OrderRows.Count</td>
         <td>@($"{Model.InvoicableOrders[i].Total:C}")</td>
@@ -30,7 +30,7 @@
 
   <div class="form-group">
     <label for="DueDate">Förfallodatum</label>
-    <input type="date" class="form-control" id="DueDate" value="@($"{DateTime.Today.AddDays(Model.Customer.PaymentTerm):yyyy-MM-dd}")" />
+    <input type="date" class="form-control" id="DueDate" name="DueDate" value="@($"{DateTime.Today.AddDays(Model.Customer.PaymentTerm):yyyy-MM-dd}")" />
     <p>Kunden har @Model.Customer.PaymentTerm dagars betalningsvillkor.</p>
   </div>
 
