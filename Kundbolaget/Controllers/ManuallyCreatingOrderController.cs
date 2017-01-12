@@ -69,49 +69,58 @@ namespace Kundbolaget.Controllers
         }
         public ActionResult CreateOrderRowManually(Order order)
         {
+            _orderRepository.Create(order);
+
             var viewModel = new ManualOrderViewModel()
             {
                 Order = order,
                 Products = _productRepository.GetAll(),
             };
-            
+
+            //viewModel.Order = new Order()
+            //{
+
+            //    CustomerOrderRef = viewModel.Order.CustomerOrderRef,
+            //    OrderPlaced = DateTime.Now,
+            //    DesiredDeliveryDate = viewModel.Order.DesiredDeliveryDate,
+            //    OrderRows = new List<OrderRow>(),
+            //    OrderStatus = OrderStatus.Registered
+            //};
+
+
+
             foreach (var product in viewModel.Products)
             {
                 product.QuantiyInWarehouse = _productRepository.GetQuantityInWarehouse(product.Id);
                 product.QuantiyOrdered = 0;
             }
 
-            return View("CreateOrderRowManually", viewModel);
+            return View(viewModel);
         }
 
         [HttpPost]
-        public ActionResult CreateOrderRowManually(ManualOrderViewModel viewModel, Order order)
+        public ActionResult CreateOrderRowManually(ManualOrderViewModel viewModel, int? orderId)
         {
 
-            viewModel.Order = new Order()
-            {
-                
-                CustomerOrderRef = viewModel.Order.CustomerOrderRef,
-                OrderPlaced = DateTime.Now,
-                DesiredDeliveryDate = viewModel.Order.DesiredDeliveryDate,
-                OrderRows = new List<OrderRow>(),
-                OrderStatus = OrderStatus.Registered
-            };
+            var newOrder = _orderRepository.Find((int) orderId);
 
             for (int i = 0; i < viewModel.Products.Count; i++)
             {
                 if (viewModel.Products[i].QuantiyOrdered != 0)
                 {
-                    viewModel.Order.OrderRows.Add(new OrderRow()
+                    newOrder.OrderRows.Add(new OrderRow()
                     {
                         AmountOrdered = (int)viewModel.Products[i].QuantiyOrdered,
-                        OrderId = viewModel.Order.Id,
+                        OrderId = newOrder.Id,
                         ProductId = viewModel.Products[i].Id,
                         Price = (decimal)(viewModel.Products[i].Price * viewModel.Products[i].QuantiyOrdered)
                     });
+                    
                 }
 
             }
+            _orderRepository.Update(newOrder);
+            
 
             return View("CreateOrderManually", viewModel);
         }
