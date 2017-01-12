@@ -130,7 +130,7 @@ namespace Kundbolaget.Controllers
 
         }
 
-        private void CreateNewOrder(Order order)
+        public void CreateNewOrder(Order order)
         {
             // Don't create orders with zero rows
             if (order.OrderRows.Count == 0)

@@ -98,7 +98,7 @@ namespace Kundbolaget.Controllers
                         AmountOrdered = (int)viewModel.Products[i].QuantiyOrdered,
                         OrderId = newOrder.Id,
                         ProductId = viewModel.Products[i].Id,
-                        
+                        Price = _productRepository.Find(viewModel.Products[i].Id).Price * (int)viewModel.Products[i].QuantiyOrdered
                     });
                     
                 }
@@ -108,6 +108,11 @@ namespace Kundbolaget.Controllers
             {
                 _orderRowRepository.Create(row);
             }
+            foreach(var row in newOrder.OrderRows)
+            {
+                row.Price = _productRepository.Find(row.ProductId).Price;
+            }
+            
 
             
             
