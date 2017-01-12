@@ -18,6 +18,7 @@ namespace Kundbolaget.Controllers
         private readonly CustomerRepository _customerRepository;
         private readonly SupplyRepository _supplyRepository;
         private readonly IRepository<Address> _addressRepository;
+        private readonly ProductRepository _productRepository;
 
         public OrderController()
         {
@@ -26,6 +27,7 @@ namespace Kundbolaget.Controllers
             _customerRepository = new CustomerRepository();
             _supplyRepository = new SupplyRepository();
             _addressRepository = new AddressRepository();
+            _productRepository = new ProductRepository();
         }
 
         // GET: Order
@@ -144,6 +146,10 @@ namespace Kundbolaget.Controllers
             _orderRowRepository.Update(model);
             return RedirectToAction("UnpickedOrders");
         }
+
+     
+
+       
 
         public ActionResult PickingList(int id)
         {
