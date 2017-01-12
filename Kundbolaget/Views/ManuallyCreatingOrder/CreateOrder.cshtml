@@ -7,12 +7,12 @@
 
 <h2>Skapa ny order</h2>
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
-       
+
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
@@ -32,7 +32,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.ShippingAddressId, "Leveransadress", htmlAttributes: new {@class = "control-label col-md-2"})
+            @Html.LabelFor(model => model.ShippingAddressId, "Leveransadress", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DropDownListFor(m => m.ShippingAddressId, new SelectList(Model.Customer.ShippingAddresses, "Id", "Street"), "Välj adress", new { @class = "form-control" })
             </div>
@@ -52,7 +52,7 @@
                 @Html.ValidationMessageFor(model => model.DesiredDeliveryDate, "", new { @class = "text-danger" })
             </div>
         </div>
-        
+
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <input type="submit" value="Spara order" class="btn btn-primary" />
@@ -62,5 +62,7 @@
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Back to List", "CustomerIndex",null, new {@class = "btn btn-primary"})
 </div>
+
+

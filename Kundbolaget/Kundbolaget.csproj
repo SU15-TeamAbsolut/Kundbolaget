@@ -231,6 +231,7 @@
     <Compile Include="Controllers\AlcoholLicenseController.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ManuallyCreatingOrderController.cs" />
     <Compile Include="Controllers\OrderController.cs" />
     <Compile Include="Controllers\OrderValidationController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
@@ -393,10 +394,10 @@
     <Content Include="Views\Order\PickedOrders.cshtml" />
     <Content Include="Views\Order\Index.cshtml" />
     <Content Include="Views\Order\ShippingDoc.cshtml" />
-    <Content Include="Views\Order\IndexCustomer.cshtml" />
-    <Content Include="Views\Order\CreateOrderManually.cshtml" />
-    <Content Include="Views\Order\CreateOrderRowManually.cshtml" />
-    <Content Include="Views\Order\CreateOrder.cshtml" />
+    <Content Include="Views\ManuallyCreatingOrder\CustomerIndex.cshtml" />
+    <Content Include="Views\ManuallyCreatingOrder\CreateOrder.cshtml" />
+    <Content Include="Views\ManuallyCreatingOrder\CreateOrderManually.cshtml" />
+    <Content Include="Views\ManuallyCreatingOrder\CreateOrderRowManually.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
