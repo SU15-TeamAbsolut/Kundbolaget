@@ -7,13 +7,13 @@ namespace Kundbolaget.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class MergeMigration : IMigrationMetadata
+    public sealed partial class MergeMigrationAgain : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(MergeMigration));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(MergeMigrationAgain));
         
         string IMigrationMetadata.Id
         {
-            get { return "201701111020255_MergeMigration"; }
+            get { return "201701121000275_MergeMigrationAgain"; }
         }
         
         string IMigrationMetadata.Source
