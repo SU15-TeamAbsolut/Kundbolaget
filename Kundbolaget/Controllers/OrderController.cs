@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Kundbolaget.EntityFramework.Contexts;
 using Kundbolaget.EntityFramework.Repositories;
 using Kundbolaget.Enums;
 using Kundbolaget.Models.EntityModels;
@@ -14,20 +15,25 @@ namespace Kundbolaget.Controllers
     public class OrderController : Controller
     {
         private readonly OrderRepository _orderRepository;
+        private readonly ProductRepository _productRepository;
+        private readonly IRepository<ProductCategory> _productCategoryRepository;
         private readonly OrderRowRepository _orderRowRepository;
         private readonly CustomerRepository _customerRepository;
         private readonly SupplyRepository _supplyRepository;
         private readonly IRepository<Address> _addressRepository;
-        private readonly ProductRepository _productRepository;
+        private readonly ProductShelfRepository shelfRepository;
 
         public OrderController()
         {
             _orderRepository = new OrderRepository();
+            _productRepository = new ProductRepository();
+            _productCategoryRepository = new DataRepository<ProductCategory>();
             _orderRowRepository = new OrderRowRepository();
             _customerRepository = new CustomerRepository();
             _supplyRepository = new SupplyRepository();
             _addressRepository = new AddressRepository();
             _productRepository = new ProductRepository();
+            shelfRepository = new ProductShelfRepository();
         }
 
         // GET: Order
@@ -102,7 +108,17 @@ namespace Kundbolaget.Controllers
         public ActionResult Details(int id)
         {
             var orderRows = _orderRowRepository.GetAll(id);
-
+            foreach (var row in orderRows)
+            {
+                if (row.AmountOrdered >= 20)
+                {
+                    row.Discount = 0.08m;
+                }
+                else
+                {
+                    row.Discount = 0;
+                }
+            }
             return View(orderRows);
         }
         public ActionResult ViewOrderRows(int id)
@@ -136,7 +152,7 @@ namespace Kundbolaget.Controllers
         public ActionResult EditOrderRow(int id)
         {
             var orderRow = _orderRowRepository.GetOrderRow(id);
-            //orderRow.Customer = _customerRepository.Find(order.CustomerId);
+            
             return View(orderRow);
         }
 
@@ -147,9 +163,108 @@ namespace Kundbolaget.Controllers
             return RedirectToAction("UnpickedOrders");
         }
 
-     
+        public ActionResult AddOrderRow(int? id)
+        {
+            IList<Product> products = _productRepository.GetAll();
+            var productVmList = new List<ProductListItemViewModel>();
 
-       
+            // Turn products into view model items
+            foreach (var product in products)
+            {
+                productVmList.Add(ProductListItemViewModel.FromProduct(product));
+            }
+
+            var viewModel = new ProductCategoryViewModel
+            {
+                ProductCategories = _productCategoryRepository.GetAll(),
+                Products = productVmList,
+                OrderId = id
+            };
+
+            // Fetch product stock
+            foreach (var product in viewModel.Products)
+            {
+                product.CurrentStock = shelfRepository.GetProductStock(product.Id);
+            }
+
+            return View(viewModel);
+        }
+
+        [HttpPost]
+        public ActionResult AddOrderRow(ProductCategoryViewModel categoryModel, int? orderId)
+        {
+            int id = categoryModel.ProductCategory.Id;
+            List<ProductListItemViewModel> productList;
+
+            if (id == 0)
+            {
+                productList = _productRepository.GetAll()
+                   .Select(ProductListItemViewModel.FromProduct)
+                   .ToList();
+            }
+            else
+            {
+                productList = _productRepository.GetAll()
+                   .Where(x => x.ProductCategoryId == id)
+                   .Select(ProductListItemViewModel.FromProduct)
+                   .ToList();
+            }
+
+            var viewModel = new ProductCategoryViewModel()
+            {
+                Products = productList,
+                ProductCategories = _productCategoryRepository.GetAll(),
+                ProductCategory = new ProductCategory(),
+                OrderId = orderId
+                
+            };
+            foreach (var product in viewModel.Products)
+            {
+                product.CurrentStock = shelfRepository.GetProductStock(product.Id);
+            }
+
+            return View(viewModel);
+        }
+
+        public ActionResult PickAmount(int productId, int orderId)
+        {
+            var product = _productRepository.Find(productId);
+
+            var viewModel = new AddOrderRowViewModel()
+            {
+                OrderId = orderId,
+                ProductId = productId,
+                ProductName = product.Name,
+                Price = product.Price,
+            };
+
+            return View(viewModel);
+        }
+
+        [HttpPost]
+        public ActionResult PickAmount(AddOrderRowViewModel model)
+        {
+            decimal discount = 0;
+            if (model.Amount >= 20)
+                discount = (decimal)0.08;
+            var order = _orderRepository.Find(model.OrderId);
+            OrderRow orderRow = new OrderRow()
+            {
+                OrderId = model.OrderId,
+                ProductId = model.ProductId,
+                AmountOrdered = model.Amount,
+                Price = model.Price,
+                Discount = discount
+                
+            };
+            using (var db = new DataContext())
+            {
+                db.Orders.Attach(order);
+                order.OrderRows.Add(orderRow);
+                db.SaveChanges();
+            }
+            return RedirectToAction("UnpickedOrders");
+        }
 
         public ActionResult PickingList(int id)
         {
@@ -217,10 +332,19 @@ namespace Kundbolaget.Controllers
         public ActionResult Delete(int id)
         {
             var order = _orderRepository.Find(id);
+            if (order.OrderStatus == OrderStatus.Processing)
+            {
+                order.OrderStatus = OrderStatus.Cancelled;
+                _orderRepository.Update(order);
+
+                return RedirectToAction("UnpickedOrders");
+            }
+
             order.OrderStatus = OrderStatus.Cancelled;
             _orderRepository.Update(order);
            
             return RedirectToAction("ReceivedOrders");
         }
+        
     }
 }

@@ -62,16 +62,8 @@ Datum: @DateTime.Today.ToShortDateString()<br/>
                 int count = 0;
                 foreach (var item in Model.OrderRows)
                 {
-                    //if (item.AmountShipped == null)
-                    //{
-                    //    count += item.AmountOrdered;
-                    //}
-                    //else
-                    //{
-                    //    count += item.AmountShipped;
-                    //}
+                    
                     count += item.AmountOrdered;
-
                 }
             }
             @count
@@ -97,6 +89,7 @@ Datum: @DateTime.Today.ToShortDateString()<br/>
 
 </table>
 <div>
+    @Html.ActionLink("Tillbaka", "PickedOrders",null, new { @class = "btn btn-primary" })
     @Html.ActionLink("Skriv ut fraktsedel", "ConfirmSend", new { id = @Model.Id }, new { @class = "btn btn-primary" })
 </div>
 

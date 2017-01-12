@@ -11,6 +11,7 @@ namespace Kundbolaget.Models.ViewModels
         [DisplayName("Produktkategori")]
         public ProductCategory ProductCategory { get; set; }
         public Product Product { get; set; }
+        public int? OrderId { get; set; }
         
     }
 }
