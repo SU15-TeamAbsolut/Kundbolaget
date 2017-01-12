@@ -21,6 +21,7 @@ namespace Kundbolaget.Controllers
         private readonly CustomerRepository _customerRepository;
         private readonly SupplyRepository _supplyRepository;
         private readonly IRepository<Address> _addressRepository;
+        private readonly ProductRepository _productRepository;
         private readonly ProductShelfRepository shelfRepository;
 
         public OrderController()
@@ -32,6 +33,7 @@ namespace Kundbolaget.Controllers
             _customerRepository = new CustomerRepository();
             _supplyRepository = new SupplyRepository();
             _addressRepository = new AddressRepository();
+            _productRepository = new ProductRepository();
             shelfRepository = new ProductShelfRepository();
         }
 
