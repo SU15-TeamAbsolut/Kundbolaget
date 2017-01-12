@@ -52,6 +52,7 @@ namespace Kundbolaget.Controllers
             
             var customer = new Customer()
             {
+                InvoiceAddress = new Address(),
                 VisitingAddress = new Address(),
                 Contact = new Contact()
 
@@ -62,10 +63,12 @@ namespace Kundbolaget.Controllers
 
       
         [HttpPost]
-        public ActionResult Create(Customer customer, Address address, Contact contact)
+        public ActionResult Create(Customer customer, Address invoiceAddress,Address visistingAddress, Contact contact)
         {
             
-            customer.VisitingAddress = address;
+            customer.VisitingAddress = visistingAddress;
+            customer.InvoiceAddress = invoiceAddress;
+            customer.Contact = contact;
 
             if (ModelState.IsValid)
             {

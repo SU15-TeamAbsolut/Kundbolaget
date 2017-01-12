@@ -29,15 +29,15 @@
         <!-- Order dropdown -->
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Orderhantering <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a href="@Url.Action("ReceivedOrders", "Order")"><span class="glyphicon glyphicon-earphone"></span> Registrerade</a></li>
-            <li><a href="@Url.Action("UnpickedOrders", "Order")"><span class="glyphicon glyphicon-unchecked"></span> Ej plockade</a></li>
-              <li><a href="@Url.Action("PickedOrders", "Order")"><span class="glyphicon glyphicon-check"></span> Leveransklara</a></li>
-              <li role="separator" class="divider"></li>
-            <li><a href="@Url.Action("CanceledOrders", "Order")"><span class="glyphicon glyphicon-trash"></span> Makulerade</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="@Url.Action("Upload", "OrderValidation")"><span class="glyphicon glyphicon-upload"></span> Ladda upp orderfil</a></li>
-          </ul>
+            <ul class="dropdown-menu">
+                <li><a href="@Url.Action("CustomerIndex", "ManuallyCreatingOrder")"><span class="glyphicon glyphicon-earphone"></span> Skapa ny order</a></li>
+                <li><a href="@Url.Action("ReceivedOrders", "Order")"><span class="glyphicon glyphicon-earphone"></span> Registrerade</a></li>
+                <li><a href="@Url.Action("UnpickedOrders", "Order")"><span class="glyphicon glyphicon-unchecked"></span> Oplockade</a></li>
+                <li><a href="@Url.Action("PickedOrders", "Order")"><span class="glyphicon glyphicon-check"></span> Plockade</a></li>
+                <li><a href="@Url.Action("CanceledOrders", "Order")"><span class="glyphicon glyphicon-trash"></span> Makulerade</a></li>
+                <li role="separator" class="divider"></li>
+                <li><a href="@Url.Action("Upload", "OrderValidation")"><span class="glyphicon glyphicon-upload"></span> Ladda upp orderfil</a></li>
+            </ul>
         </li>
         
         <!-- Invoice dropdown -->

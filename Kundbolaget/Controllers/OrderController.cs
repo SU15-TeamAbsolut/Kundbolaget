@@ -32,6 +32,7 @@ namespace Kundbolaget.Controllers
             _customerRepository = new CustomerRepository();
             _supplyRepository = new SupplyRepository();
             _addressRepository = new AddressRepository();
+            _productRepository = new ProductRepository();
             shelfRepository = new ProductShelfRepository();
         }
 
