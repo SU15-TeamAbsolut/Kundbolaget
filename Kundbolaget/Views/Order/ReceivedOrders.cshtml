@@ -6,7 +6,7 @@
 
 <h2>Ordrar</h2>
 <h4>Registrerade</h4>
-<table class="table">
+<table class="table table-striped">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.Id)
@@ -32,39 +32,38 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @*@Html.ActionLink(item.Id.ToString(), "ViewOrderRows", new { id = item.Id })*@
-            @Html.DisplayFor(modelItem => item.Id)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Customer.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CustomerOrderRef)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ShippingAddress.Street), 
-            @Html.DisplayFor(modelItem => item.ShippingAddress.ZipNumber),  
-            @Html.DisplayFor(modelItem => item.ShippingAddress.City)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.OrderPlaced)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DesiredDeliveryDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.OrderStatus)
-        </td>
-        <td>
-            @Html.ActionLink("Radera", "Delete", new { id = item.Id }) |
-            @Html.ActionLink("Ändra", "Edit", new {id = item.Id}) |
-            @Html.ActionLink("Detaljer", "ViewOrderRows", new {id = item.Id}) |
-            @Html.ActionLink("Godkänn", "ReadyForPicking", new {id = item.Id}, null)
-        </td>
-    </tr>
-}
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+               @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Customer.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CustomerOrderRef)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ShippingAddress.Street), 
+                @Html.DisplayFor(modelItem => item.ShippingAddress.ZipNumber),  
+                @Html.DisplayFor(modelItem => item.ShippingAddress.City)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OrderPlaced)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DesiredDeliveryDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OrderStatus)
+            </td>
+            <td>
+                @Html.ActionLink("Radera", "Delete", new { id = item.Id }) |
+                @Html.ActionLink("Ändra", "Edit", new {id = item.Id}) |
+                @Html.ActionLink("Visa", "ViewOrderRows", new {id = item.Id}) |
+                @Html.ActionLink("Godkänn", "ReadyForPicking", new {id = item.Id}, null)
+            </td>
+        </tr>
+    }
 
 </table>

@@ -1,0 +1,39 @@
+﻿@model Kundbolaget.Models.ViewModels.AddOrderRowViewModel
+
+@{
+    ViewBag.Title = "PickAmount";
+}
+
+<h2>Orderrad</h2>
+<h4>Välj antal av:</h4>
+<h4 style="font-weight: bold; font-size: 30px">@Model.ProductName</h4>
+
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <hr />
+        @Html.HiddenFor(m => m.OrderId)
+        @Html.HiddenFor(m => m.ProductId)
+        @Html.HiddenFor(m => m.ProductName)
+        @Html.HiddenFor(m => m.Price)
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        
+        <div class="form-group">
+            @Html.LabelFor(model => model.Amount, htmlAttributes: new { @class = "control-label col-md-1" })
+            <div class="col-md-1">
+                @Html.EditorFor(model => model.Amount, new { htmlAttributes = new { @class = "form-control" }})
+                @Html.ValidationMessageFor(model => model.ProductId, "", new { @class = "text-danger" })
+                
+            </div>
+        </div>
+        <br/>
+        <div class="form-group col-md-10">
+                @Html.ActionLink("Tillbaka", "UnpickedOrders",null, new { @class="btn btn-primary" })
+                <input type="submit" value="Lägg till" class="btn btn-primary"/>
+        </div>
+    </div>
+}
