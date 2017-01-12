@@ -20,6 +20,8 @@
             <div class="col-md-10">
                 @Html.DisplayFor(model => Model.Customer.Id)
                 @Html.HiddenFor(m => Model.Customer.Id)
+                @Html.HiddenFor(m => Model.Customer.Name)
+                @Html.HiddenFor(m => Model.Customer.OrganizationNumber)
             </div>
         </div>
 

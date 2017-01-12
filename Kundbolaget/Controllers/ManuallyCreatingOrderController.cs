@@ -15,8 +15,6 @@ namespace Kundbolaget.Controllers
         private readonly OrderRepository _orderRepository;
         private readonly OrderRowRepository _orderRowRepository;
         private readonly CustomerRepository _customerRepository;
-        private readonly SupplyRepository _supplyRepository;
-        private readonly IRepository<Address> _addressRepository;
         private readonly ProductRepository _productRepository;
 
         public ManuallyCreatingOrderController()
@@ -24,8 +22,6 @@ namespace Kundbolaget.Controllers
             _orderRepository = new OrderRepository();
             _orderRowRepository = new OrderRowRepository();
             _customerRepository = new CustomerRepository();
-            _supplyRepository = new SupplyRepository();
-            _addressRepository = new AddressRepository();
             _productRepository = new ProductRepository();
         }
 
@@ -54,11 +50,11 @@ namespace Kundbolaget.Controllers
         [HttpPost]
         public ActionResult CreateOrder(Order order)
         {
-
-            //if (!ModelState.IsValid)
-            //{   
-            //    return View(order);
-            //}
+            if (!ModelState.IsValid)
+            {
+                order.Customer = _customerRepository.Find(order.Customer.Id);
+                return View(order);
+            }
 
             order.Id = 0;
             order.CustomerId = order.Customer.Id;

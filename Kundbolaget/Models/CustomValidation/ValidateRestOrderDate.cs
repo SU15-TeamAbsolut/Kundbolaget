@@ -15,7 +15,7 @@ namespace Kundbolaget.Models.CustomValidation
 
                 if (order.DesiredDeliveryDate < order.OrderPlaced)
                 {
-                    return new ValidationResult("Önskat leveransdatum kan inte vara tidigare än orderns mottagna dataum");
+                    return new ValidationResult("Önskat leveransdatum kan inte vara tidigare än orderns mottagna datum");
                 }
 
                 return ValidationResult.Success;
