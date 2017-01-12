@@ -232,6 +232,7 @@
     <Compile Include="Controllers\AlcoholLicenseController.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\InvoiceController.cs" />
     <Compile Include="Controllers\OrderController.cs" />
     <Compile Include="Controllers\OrderValidationController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
@@ -243,6 +244,7 @@
     <Compile Include="EntityFramework\Repositories\AddressRepository.cs" />
     <Compile Include="EntityFramework\Repositories\CustomerRepository.cs" />
     <Compile Include="EntityFramework\Repositories\DataRepository.cs" />
+    <Compile Include="EntityFramework\Repositories\InvoiceRepository.cs" />
     <Compile Include="EntityFramework\Repositories\IRepository.cs" />
     <Compile Include="EntityFramework\Repositories\OrderRepository.cs" />
     <Compile Include="EntityFramework\Repositories\OrderRowRepository.cs" />
@@ -319,6 +321,7 @@
     <Compile Include="Models\ViewModels\CountryViewModel.cs" />
     <Compile Include="Models\JsonModels\JsonCustomerOrder.cs" />
     <Compile Include="Models\JsonModels\JsonOrderRow.cs" />
+    <Compile Include="Models\ViewModels\Invoice\InvoicableCustomerViewModel.cs" />
     <Compile Include="Models\ViewModels\ProductListItemViewModel.cs" />
     <Compile Include="Models\ViewModels\ShelfWithProducts.cs" />
     <Compile Include="Models\ViewModels\ShippingAdressViewModel.cs" />
@@ -406,6 +409,7 @@
     <Content Include="Views\Order\CanceledOrders.cshtml" />
     <Content Include="Views\Order\EditOrderRow.cshtml" />
     <Content Include="Views\Order\ViewOrderRows.cshtml" />
+    <Content Include="Views\Invoice\Create_SelectCustomer.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

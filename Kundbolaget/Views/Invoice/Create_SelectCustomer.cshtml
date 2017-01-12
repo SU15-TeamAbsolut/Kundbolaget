@@ -1,0 +1,27 @@
+﻿@model IList<Kundbolaget.Models.ViewModels.Invoice.InvoicableCustomerViewModel>
+
+@{
+    ViewBag.Title = "Ny faktura: välj kund";
+}
+
+<h2>Ny faktura: välj kund</h2>
+
+<div class="alert alert-info">Följande kunder har ofakturerade ordrar.</div>
+
+<table class="table table-striped">
+  <tr>
+    <th>Kundnummer</th>
+    <th>Kund</th>
+    <th>Ofakturerade ordrar</th>
+    <th></th>
+  </tr>
+@foreach (var row in Model)
+{
+  <tr>
+    <td>@row.Customer.Id</td>
+    <td>@row.Customer.Name</td>
+    <td>@row.InvoicableOrders</td>
+    <td><a @(row.InvoicableOrders > 0 ? "" : "disabled")  href="@Url.Action("Create", "Invoice", new {id = row.Customer.Id})" class="btn btn-primary">Fakturera</a></td>
+  </tr>
+}
+</table>
