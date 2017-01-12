@@ -23,6 +23,7 @@ namespace Kundbolaget.Models.EntityModels
         public decimal Price {get; set;}
         [DisplayName("Rabatt")]
         public decimal Discount { get; set; }
+        [DisplayName("Rabattpris")]
         public decimal DiscountedPrice => Price*(1 - Discount);
         [DisplayName("Antal beställt")]
         public int AmountOrdered { get; set; }
