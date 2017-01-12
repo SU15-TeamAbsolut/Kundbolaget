@@ -74,36 +74,24 @@ namespace Kundbolaget.Controllers
                 Products = _productRepository.GetAll(),
             };
 
-            //viewModel.Order = new Order()
-            //{
-
-            //    CustomerOrderRef = viewModel.Order.CustomerOrderRef,
-            //    OrderPlaced = DateTime.Now,
-            //    DesiredDeliveryDate = viewModel.Order.DesiredDeliveryDate,
-            //    OrderRows = new List<OrderRow>(),
-            //    OrderStatus = OrderStatus.Registered
-            //};
-
-
-
             foreach (var product in viewModel.Products)
             {
                 product.QuantiyInWarehouse = _productRepository.GetQuantityInWarehouse(product.Id);
-                product.QuantiyOrdered = 0;
+                product.QuantiyOrdered = null;
             }
 
             return View(viewModel);
         }
 
         [HttpPost]
-        public ActionResult CreateOrderRowManually(ManualOrderViewModel viewModel, int? orderId)
+        public ActionResult CreateOrderRowManually(ManualOrderViewModel viewModel, int orderId)
         {
 
-            var newOrder = _orderRepository.Find((int) orderId);
+            var newOrder = _orderRepository.Find(orderId);
 
             for (int i = 0; i < viewModel.Products.Count; i++)
             {
-                if (viewModel.Products[i].QuantiyOrdered != 0)
+                if (viewModel.Products[i].QuantiyOrdered != 0 && viewModel.Products[i].QuantiyOrdered != null)
                 {
                     newOrder.OrderRows.Add(new OrderRow()
                     {
@@ -124,7 +112,7 @@ namespace Kundbolaget.Controllers
             
             
 
-            return View("CustomerIndex");
+                return RedirectToAction("ReceivedOrders","Order");
         }
 
     }

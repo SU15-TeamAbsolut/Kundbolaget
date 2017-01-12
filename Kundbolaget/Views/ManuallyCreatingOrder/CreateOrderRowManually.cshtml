@@ -33,12 +33,6 @@
                 @Html.DisplayName("Alkoholhalt(%)")
             </th>
             <th>
-                @Html.DisplayName("Faktureringskod")
-            </th>
-            <th>
-                @Html.DisplayName("Momskod")
-            </th>
-            <th>
                 @Html.DisplayName("Antal")
             </th>
             <th>
@@ -74,24 +68,26 @@
                 <td>
                     @Html.DisplayFor(modelItem => Model.Products[i].AlcoholPercentage)
                 </td>
-                <td>
+                @*<td>
                     @Html.DisplayFor(modelItem => Model.Products[i].AccountingCode)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => Model.Products[i].VatCode)
-                </td>
+                </td>*@
                 <td>
                     @Html.EditorFor(modelItem => Model.Products[i].QuantiyOrdered, additionalViewData: new
-                    {
-                        htmlAttributes = new
-                        {
+               {
+                   htmlAttributes = new
+                   {
 
-                            min = 0,
-                            max = Model.Products[i].QuantiyInWarehouse.Value
-                        }})
+                       min = 0,
+                       max = Model.Products[i].QuantiyInWarehouse.Value,
+                       @class = "form-control"
+                        }
+                    })
                 </td>
                 <td>
-                    @Html.EditorFor(modelItem => Model.Products[i].QuantiyInWarehouse)
+                    @Html.DisplayFor(modelItem => Model.Products[i].QuantiyInWarehouse)
                 </td>
             </tr>
         }
