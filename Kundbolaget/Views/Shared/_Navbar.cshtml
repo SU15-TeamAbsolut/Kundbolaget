@@ -22,21 +22,21 @@
                   <li>@Html.ActionLink("Produkter", "Index", "Product")</li>
                   <li>@Html.ActionLink("Leverantörer", "Index", "Supplier")</li>
                   <li>@Html.ActionLink("Licenser", "Index", "AlcoholLicense")</li>
-                  <li>@Html.ActionLink("Lagerhantering", "Index", "Warehouse")</li>
+                  <li>@Html.ActionLink("Lagerlokaler", "Index", "Warehouse")</li>
                   <li>@Html.ActionLink("Kunder", "Index", "Customer")</li>
                   <li>@Html.ActionLink("Leveransadresser", "Index", "ShippingAddress")</li>
               </ul>
           </li>
           <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Ordermeny <span class="caret"></span></a>
-              <ul class="dropdown-menu">
-                  <li>@Html.ActionLink("Registrerade", "ReceivedOrders", "Order")</li>
-                  <li>@Html.ActionLink("Oplockade", "UnpickedOrders", "Order")</li>
-                  <li>@Html.ActionLink("Plockade", "PickedOrders", "Order")</li>
-                  <li>@Html.ActionLink("Makulerarade", "CanceledOrders", "Order")</li>
-                  <li role="separator" class="divider"></li>
-                  <li>@Html.ActionLink("Ladda upp orderfil", "Upload", "OrderValidation")</li>
-              </ul>
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-list-alt"></span> Orderhantering <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a href="@Url.Action("ReceivedOrders", "Order")"><span class="glyphicon glyphicon-earphone"></span> Registrerade</a></li>
+              <li><a href="@Url.Action("UnpickedOrders", "Order")"><span class="glyphicon glyphicon-unchecked"></span> Oplockade</a></li>
+              <li><a href="@Url.Action("PickedOrders", "Order")"><span class="glyphicon glyphicon-check"></span> Plockade</a></li>
+              <li><a href="@Url.Action("CanceledOrders", "Order")"><span class="glyphicon glyphicon-trash"></span> Makulerade</a></li>
+              <li role="separator" class="divider"></li>
+              <li><a href="@Url.Action("Upload", "OrderValidation")"><span class="glyphicon glyphicon-upload"></span> Ladda upp orderfil</a></li>
+            </ul>
           </li>
       </ul>
       <form action="@Url.Action("Search", "Product")" method="post" class="navbar-form navbar-left">
