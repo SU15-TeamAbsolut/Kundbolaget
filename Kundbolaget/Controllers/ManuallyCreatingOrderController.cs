@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Kundbolaget.EntityFramework.Repositories;
+using Kundbolaget.Enums;
 using Kundbolaget.Models.EntityModels;
 using Kundbolaget.Models.ViewModels;
 
@@ -41,10 +42,10 @@ namespace Kundbolaget.Controllers
 
             var order = new Order()
             {
+                CustomerOrderRef = null,
                 Customer = customer,
                 OrderPlaced = DateTime.Now,
-                DesiredDeliveryDate = DateTime.Now
-
+                DesiredDeliveryDate = DateTime.Now,
             };
 
             return View("CreateOrder", order);
@@ -61,40 +62,41 @@ namespace Kundbolaget.Controllers
 
             order.Id = 0;
             order.CustomerId = order.Customer.Id;
-            _orderRepository.Create(order);
+            
+            
 
-            var viewModel = new ManualOrderViewModel()
-            {
-                Order = order,
-                Products = new List<Product>()
-            };
-
-            return View("CreateOrderManually", viewModel);
+            return RedirectToAction("CreateOrderRowManually", order);
         }
-
-        public ActionResult CreateOrderRowManually(int customerId, int orderId)
+        public ActionResult CreateOrderRowManually(Order order)
         {
             var viewModel = new ManualOrderViewModel()
             {
-                Customer = _customerRepository.Find(customerId),
+                Order = order,
                 Products = _productRepository.GetAll(),
-                Order = _orderRepository.Find(orderId)
             };
-
+            
             foreach (var product in viewModel.Products)
             {
                 product.QuantiyInWarehouse = _productRepository.GetQuantityInWarehouse(product.Id);
                 product.QuantiyOrdered = 0;
             }
 
-            return View(viewModel);
+            return View("CreateOrderRowManually", viewModel);
         }
 
         [HttpPost]
-        public ActionResult CreateOrderRowManually(ManualOrderViewModel viewModel, int customerId, int orderId)
+        public ActionResult CreateOrderRowManually(ManualOrderViewModel viewModel, Order order)
         {
 
-            viewModel.Order = _orderRepository.Find(orderId);
+            viewModel.Order = new Order()
+            {
+                
+                CustomerOrderRef = viewModel.Order.CustomerOrderRef,
+                OrderPlaced = DateTime.Now,
+                DesiredDeliveryDate = viewModel.Order.DesiredDeliveryDate,
+                OrderRows = new List<OrderRow>(),
+                OrderStatus = OrderStatus.Registered
+            };
 
             for (int i = 0; i < viewModel.Products.Count; i++)
             {
@@ -105,7 +107,7 @@ namespace Kundbolaget.Controllers
                         AmountOrdered = (int)viewModel.Products[i].QuantiyOrdered,
                         OrderId = viewModel.Order.Id,
                         ProductId = viewModel.Products[i].Id,
-
+                        Price = (decimal)(viewModel.Products[i].Price * viewModel.Products[i].QuantiyOrdered)
                     });
                 }
 

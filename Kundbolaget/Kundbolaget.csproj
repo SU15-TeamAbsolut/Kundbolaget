@@ -397,7 +397,6 @@
     <Content Include="Views\Order\ShippingDoc.cshtml" />
     <Content Include="Views\ManuallyCreatingOrder\CustomerIndex.cshtml" />
     <Content Include="Views\ManuallyCreatingOrder\CreateOrder.cshtml" />
-    <Content Include="Views\ManuallyCreatingOrder\CreateOrderManually.cshtml" />
     <Content Include="Views\ManuallyCreatingOrder\CreateOrderRowManually.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

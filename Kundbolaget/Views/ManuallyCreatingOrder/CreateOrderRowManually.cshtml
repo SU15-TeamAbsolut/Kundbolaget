@@ -6,7 +6,7 @@
 }
 
 <h2>Produkter</h2>
-@using (Html.BeginForm(null, null, new { customerId = Model.Customer.Id, orderId = Model.Order.Id }, FormMethod.Post))
+@using (Html.BeginForm(null, null, new {order = Model.Order}, FormMethod.Post))
 {
     <p>
         <input class="btn btn-primary" type="submit" value="Spara order" />
@@ -15,6 +15,7 @@
         <tr>
             @Html.HiddenFor(m => Model.Customer.Id)
             @Html.HiddenFor(m => Model.Order.Id)
+           
             <th>
                 @Html.DisplayName("Produktnamn")
             </th>
