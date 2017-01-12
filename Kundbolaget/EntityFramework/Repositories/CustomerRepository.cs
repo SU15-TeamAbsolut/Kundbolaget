@@ -31,6 +31,7 @@ namespace Kundbolaget.EntityFramework.Repositories
                     .Include(s => s.ShippingAddresses)
                     .Include(c => c.Contact)
                     .Include(c => c.AlcoholLicense)
+                    .Include(e => e.Orders)
                     .ToList();
 
 

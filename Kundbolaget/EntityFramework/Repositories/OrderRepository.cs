@@ -60,5 +60,21 @@ namespace Kundbolaget.EntityFramework.Repositories
                 return orders.ToList();
             }
         }
+
+        /// <summary>
+        /// Retreive a list of invoicable orders
+        /// </summary>
+        /// <returns></returns>
+        public IList<Order> GetAllInvoicable()
+        {
+            using (var db = new DataContext())
+            {
+                return db.Orders
+                    .Include(e => e.Customer)
+                    .Include(e => e.OrderRows)
+                    .Where(o => o.OrderStatus == OrderStatus.Delivered)
+                    .ToList();
+            }
+        }
     }
 }

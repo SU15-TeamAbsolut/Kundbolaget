@@ -7,6 +7,7 @@
         ReadyToShip = 300,
         Shipping = 400,
         Delivered = 500,
+        Invoiced = 600,
         Cancelled = 1000
     }
 }
