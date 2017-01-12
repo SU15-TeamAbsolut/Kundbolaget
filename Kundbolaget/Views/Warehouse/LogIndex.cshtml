@@ -1,0 +1,74 @@
+﻿@model IEnumerable<Kundbolaget.Models.EntityModels.ProductShelfChangeLog>
+
+@using Kundbolaget.EntityFramework.Contexts
+@using Kundbolaget.EntityFramework.Repositories
+@using Kundbolaget.Models.EntityModels
+@using Kundbolaget.Models.ViewModels
+
+@{
+    var repository = new DataRepository<Warehouse>();
+    var warehouse = repository.Find(Kundbolaget.Controllers.WarehouseController.currentWarehouseId);
+    ViewBag.Title = "LogIndex";
+}
+
+<h2>Hantera svinn</h2>
+<h4>@warehouse.Name</h4>
+<p>
+    @Html.ActionLink("Registrera svinn", "CreateLog", null, new { @class = "btn btn-primary" })
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayName("Produkt")
+        </th>
+        <th>
+            @Html.DisplayName("Hylla")
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Amount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Initials)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Date)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Product.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Shelf.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Amount)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Initials)
+        </td>
+        @if (item.Description.Length < 30)
+        {
+            <td>@Html.DisplayName(item.Description)</td>
+        }
+        @if (item.Description.Length >= 30)
+        {
+            <td>@Html.DisplayName(item.Description.Remove(30))...</td>
+        }
+        <td>@Html.DisplayName(item.Date.ToString().Remove(16))</td>
+        <td>
+            @Html.ActionLink("Detaljer", "LogDetails", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>
+<p>
+    @Html.ActionLink("Tillbaka", "Edit/" + warehouse.Id, null, new { @class = "btn btn-primary" })
+</p>

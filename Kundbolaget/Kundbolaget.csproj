@@ -217,6 +217,7 @@
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <None Include="Scripts\jquery-1.10.2-vsdoc.js" />
     <Content Include="Scripts\jquery-3.1.1.js" />
     <Content Include="Scripts\jquery-3.1.1.min.js" />
     <Content Include="Scripts\jquery-3.1.1.slim.js" />
@@ -246,7 +247,9 @@
     <Compile Include="EntityFramework\Repositories\OrderRepository.cs" />
     <Compile Include="EntityFramework\Repositories\OrderRowRepository.cs" />
     <Compile Include="EntityFramework\Repositories\ProductRepository.cs" />
+    <Compile Include="EntityFramework\Repositories\ProductShelfChangeLogRepository.cs" />
     <Compile Include="EntityFramework\Repositories\ProductShelfRepository.cs" />
+    <Compile Include="EntityFramework\Repositories\ShelfRepository.cs" />
     <Compile Include="EntityFramework\Repositories\SupplyRepository.cs" />
     <Compile Include="Enums\InvoiceStatus.cs" />
     <Compile Include="Enums\OrderStatus.cs" />
@@ -289,9 +292,9 @@
     <Compile Include="Migrations\201701110642435_AddedInvoiceTableForeignKeyInOrder.Designer.cs">
       <DependentUpon>201701110642435_AddedInvoiceTableForeignKeyInOrder.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201701111020255_MergeMigration.cs" />
-    <Compile Include="Migrations\201701111020255_MergeMigration.Designer.cs">
-      <DependentUpon>201701111020255_MergeMigration.cs</DependentUpon>
+    <Compile Include="Migrations\201701121000275_MergeMigrationAgain.cs" />
+    <Compile Include="Migrations\201701121000275_MergeMigrationAgain.Designer.cs">
+      <DependentUpon>201701121000275_MergeMigrationAgain.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\CustomValidation\CorporateIdentityNumber.cs" />
@@ -397,6 +400,9 @@
     <Content Include="Views\Order\PickedOrders.cshtml" />
     <Content Include="Views\Order\Index.cshtml" />
     <Content Include="Views\Order\ShippingDoc.cshtml" />
+    <Content Include="Views\Warehouse\LogIndex.cshtml" />
+    <Content Include="Views\Warehouse\CreateLog.cshtml" />
+    <Content Include="Views\Warehouse\LogDetails.cshtml" />
     <Content Include="Views\Order\CanceledOrders.cshtml" />
     <Content Include="Views\Order\EditOrderRow.cshtml" />
     <Content Include="Views\Order\ViewOrderRows.cshtml" />
@@ -438,8 +444,8 @@
     <EmbeddedResource Include="Migrations\201701110642435_AddedInvoiceTableForeignKeyInOrder.resx">
       <DependentUpon>201701110642435_AddedInvoiceTableForeignKeyInOrder.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201701111020255_MergeMigration.resx">
-      <DependentUpon>201701111020255_MergeMigration.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201701121000275_MergeMigrationAgain.resx">
+      <DependentUpon>201701121000275_MergeMigrationAgain.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

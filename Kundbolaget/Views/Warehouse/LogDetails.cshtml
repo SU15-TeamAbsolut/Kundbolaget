@@ -1,0 +1,63 @@
+﻿@model Kundbolaget.Models.EntityModels.ProductShelfChangeLog
+
+@{
+    ViewBag.Title = "LogDetails";
+}
+
+<h2>Detaljer</h2>
+
+<div>
+    <h4>Svinn</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Produkt
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Product.Name)
+        </dd>
+
+        <dt>
+            Hylla
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Shelf.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Amount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Amount)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Initials)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Initials)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Date)
+        </dt>
+
+        <dd>@Html.DisplayName(Model.Date.ToString().Remove(16))</dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Tillbaka", "LogIndex", null, new { @class = "btn btn-primary" })
+</p>

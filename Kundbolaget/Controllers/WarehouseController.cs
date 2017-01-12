@@ -17,6 +17,7 @@ namespace Kundbolaget.Controllers
         private readonly AddressRepository _warehouseAddressRepository;
         private readonly IRepository<Shelf> shelfRepository;
         private readonly ProductShelfRepository productShelfRepository;
+        private readonly ProductShelfChangeLogRepository logRepository;
         public static int currentWarehouseId = 0;
         public static int currentShelfId = 0;
 
@@ -26,6 +27,7 @@ namespace Kundbolaget.Controllers
             _warehouseAddressRepository = new AddressRepository();
             shelfRepository = new DataRepository<Shelf>();
             productShelfRepository = new ProductShelfRepository();
+            logRepository = new ProductShelfChangeLogRepository();
         }
 
         public ActionResult Index()
@@ -207,6 +209,49 @@ namespace Kundbolaget.Controllers
             model.ShelfId = currentShelfId;
             productShelfRepository.Update(model);
             return RedirectToAction("EditShelf/" + currentShelfId);
+        }
+
+
+
+
+
+
+
+        //------------------ProductShelfChangeLog--------------
+
+
+
+        public ActionResult LogIndex()
+        {
+            var logs = logRepository.GetLogsByWarehouseId(currentWarehouseId);
+            return View(logs);
+        }
+
+        public ActionResult CreateLog()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult CreateLog(ProductShelfChangeLog model)
+        {
+            if (!ModelState.IsValid) return View(model);
+            model.Date = DateTime.Now;
+            var productShelf = productShelfRepository.FindByProductIdAndShelfId(model.ProductId, model.ShelfId);
+            if (productShelf != null)
+            {
+                productShelf.CurrentAmount -= model.Amount;
+                productShelfRepository.Update(productShelf);
+                logRepository.Create(model);
+                return RedirectToAction("LogIndex");
+            }
+            else return View(model);
+        }
+
+        public ActionResult LogDetails(int id)
+        {
+            var model = logRepository.FindAndInclude(id);
+            return View(model);
         }
     }
 }

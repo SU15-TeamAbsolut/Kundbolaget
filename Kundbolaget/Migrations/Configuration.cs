@@ -557,8 +557,7 @@ namespace Kundbolaget.Migrations
         {
             Warehouse[] warehouses =
             {
-                new Warehouse { Id = 0, Name = "Stockholms lager", AddressId = 3, ContactId = 1, IsActive = true},
-
+                new Warehouse { Id = 1, Name = "Stockholms lager", AddressId = 3, ContactId = 1, IsActive = true}
             };
             context.Warehouses.AddOrUpdate(warehouses);
         }

@@ -25,7 +25,6 @@ namespace Kundbolaget.Models.EntityModels
 
         [Required]
         [DisplayName("Status")]
-        [Column("IsActive")]
         public bool IsActive { get; set; } = true;
 
         [DisplayName("Giltighet")]
