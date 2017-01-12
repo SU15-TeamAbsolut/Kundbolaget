@@ -48,5 +48,8 @@ namespace Kundbolaget.Models.EntityModels
 
         [DisplayName("Leveransadresser")]
         public virtual IList<Address> ShippingAddresses { get; set; } = new List<Address>();
+
+        [DisplayName("Ordrar")]
+        public virtual IList<Order> Orders { get; set; } = new List<Order>();
     }
 }

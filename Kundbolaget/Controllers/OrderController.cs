@@ -85,8 +85,27 @@ namespace Kundbolaget.Controllers
             }
             return View(model);
         }
+
+        public ActionResult CanceledOrders()
+        {
+            var orders = _orderRepository.GetAll();
+            List<Order> model = new List<Order>();
+
+            foreach (var order in orders)
+            {
+                if (order.OrderStatus == OrderStatus.Cancelled)
+                    model.Add(order);
+            }
+            return View(model);
+        }
         
         public ActionResult Details(int id)
+        {
+            var orderRows = _orderRowRepository.GetAll(id);
+
+            return View(orderRows);
+        }
+        public ActionResult ViewOrderRows(int id)
         {
             var orderRows = _orderRowRepository.GetAll(id);
 
@@ -114,6 +133,19 @@ namespace Kundbolaget.Controllers
 
             return  RedirectToAction("ReceivedOrders");
         }
+        public ActionResult EditOrderRow(int id)
+        {
+            var orderRow = _orderRowRepository.GetOrderRow(id);
+            //orderRow.Customer = _customerRepository.Find(order.CustomerId);
+            return View(orderRow);
+        }
+
+        [HttpPost]
+        public ActionResult EditOrderRow(OrderRow model)
+        {
+            _orderRowRepository.Update(model);
+            return RedirectToAction("UnpickedOrders");
+        }
 
      
 
@@ -133,7 +165,7 @@ namespace Kundbolaget.Controllers
                     ProductName = orderRow.Product.Name,
                     AmountOrdered = orderRow.AmountOrdered,
                     ShelfName = shelf.Shelf.Name,
-                    ShelfSpace = shelf.Id,
+                    ShelfSpace = shelf.Position,
                     Balance = shelf.CurrentAmount
                 });
             }
@@ -167,7 +199,6 @@ namespace Kundbolaget.Controllers
 
             return View(order);
         }
-        [HttpPost]
         public ActionResult ConfirmSend(int id)
         {
             var order = _orderRepository.Find(id);
@@ -181,6 +212,15 @@ namespace Kundbolaget.Controllers
         {
             var order = _orderRepository.Find(id);
             return View(order);
+        }
+
+        public ActionResult Delete(int id)
+        {
+            var order = _orderRepository.Find(id);
+            order.OrderStatus = OrderStatus.Cancelled;
+            _orderRepository.Update(order);
+           
+            return RedirectToAction("ReceivedOrders");
         }
     }
 }

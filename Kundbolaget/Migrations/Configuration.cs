@@ -61,41 +61,41 @@ namespace Kundbolaget.Migrations
         {
             ProductShelf[] productsShelves =
             {
-                new ProductShelf { Id = 1, CurrentAmount = 18, MinimumAmount = 5, ProductId = 10000, ShelfId = 1 },
-                new ProductShelf { Id = 2, CurrentAmount = 3, MinimumAmount = 5, ProductId = 10001, ShelfId = 1 },
-                new ProductShelf { Id = 3, CurrentAmount = 95, MinimumAmount = 5, ProductId = 10002, ShelfId = 1 },
-                new ProductShelf { Id = 4, CurrentAmount = 65, MinimumAmount = 5, ProductId = 10003, ShelfId = 1 },
-                new ProductShelf { Id = 5, CurrentAmount = 436, MinimumAmount = 5, ProductId = 10004, ShelfId = 1 },
-                new ProductShelf { Id = 6, CurrentAmount = 63, MinimumAmount = 5, ProductId = 10005, ShelfId = 1 },
-                new ProductShelf { Id = 7, CurrentAmount = 72, MinimumAmount = 5, ProductId = 10006, ShelfId = 1 },
-                new ProductShelf { Id = 8, CurrentAmount = 73, MinimumAmount = 5, ProductId = 10007, ShelfId = 2 },
-                new ProductShelf { Id = 9, CurrentAmount = 117, MinimumAmount = 5, ProductId = 10008, ShelfId = 2 },
-                new ProductShelf { Id = 10, CurrentAmount = 19, MinimumAmount = 5, ProductId = 10009, ShelfId = 2 },
-                new ProductShelf { Id = 11, CurrentAmount = 91, MinimumAmount = 5, ProductId = 10010, ShelfId = 2 },
-                new ProductShelf { Id = 12, CurrentAmount = 81, MinimumAmount = 5, ProductId = 10011, ShelfId = 2 },
-                new ProductShelf { Id = 13, CurrentAmount = 71, MinimumAmount = 5, ProductId = 10012, ShelfId = 2 },
-                new ProductShelf { Id = 14, CurrentAmount = 85, MinimumAmount = 5, ProductId = 10013, ShelfId = 2 },
-                new ProductShelf { Id = 15, CurrentAmount = 58, MinimumAmount = 5, ProductId = 10014, ShelfId = 2 },
-                new ProductShelf { Id = 16, CurrentAmount = 51, MinimumAmount = 5, ProductId = 10015, ShelfId = 2 },
-                new ProductShelf { Id = 17, CurrentAmount = 47, MinimumAmount = 5, ProductId = 10016, ShelfId = 2 },
-                new ProductShelf { Id = 18, CurrentAmount = 15, MinimumAmount = 5, ProductId = 10017, ShelfId = 3 },
-                new ProductShelf { Id = 19, CurrentAmount = 61, MinimumAmount = 5, ProductId = 10018, ShelfId = 3 },
-                new ProductShelf { Id = 20, CurrentAmount = 72, MinimumAmount = 5, ProductId = 10019, ShelfId = 3 },
-                new ProductShelf { Id = 21, CurrentAmount = 82, MinimumAmount = 5, ProductId = 10020, ShelfId = 3 },
-                new ProductShelf { Id = 22, CurrentAmount = 79, MinimumAmount = 5, ProductId = 10021, ShelfId = 3 },
-                new ProductShelf { Id = 23, CurrentAmount = 41, MinimumAmount = 5, ProductId = 10022, ShelfId = 4 },
-                new ProductShelf { Id = 24, CurrentAmount = 16, MinimumAmount = 5, ProductId = 10023, ShelfId = 4 },
-                new ProductShelf { Id = 25, CurrentAmount = 17, MinimumAmount = 5, ProductId = 10024, ShelfId = 4 },
-                new ProductShelf { Id = 26, CurrentAmount = 71, MinimumAmount = 5, ProductId = 10025, ShelfId = 5 },
-                new ProductShelf { Id = 27, CurrentAmount = 79, MinimumAmount = 5, ProductId = 10026, ShelfId = 5 },
-                new ProductShelf { Id = 28, CurrentAmount = 91, MinimumAmount = 5, ProductId = 10027, ShelfId = 5 },
-                new ProductShelf { Id = 29, CurrentAmount = 107, MinimumAmount = 5, ProductId = 10028, ShelfId = 6 },
-                new ProductShelf { Id = 30, CurrentAmount = 61, MinimumAmount = 5, ProductId = 10029, ShelfId = 6 },
-                new ProductShelf { Id = 31, CurrentAmount = 1, MinimumAmount = 5, ProductId = 10030, ShelfId = 7 },
-                new ProductShelf { Id = 32, CurrentAmount = 72, MinimumAmount = 5, ProductId = 10031, ShelfId = 7 },
-                new ProductShelf { Id = 33, CurrentAmount = 16, MinimumAmount = 5, ProductId = 10032, ShelfId = 7 },
-                new ProductShelf { Id = 34, CurrentAmount = 50, MinimumAmount = 5, ProductId = 10033, ShelfId = 8 },
-                new ProductShelf { Id = 35, CurrentAmount = 50, MinimumAmount = 5, ProductId = 10034, ShelfId = 8 },
+                new ProductShelf { Id = 1, CurrentAmount = 18, MinimumAmount = 5, ProductId = 10000, ShelfId = 1, Position = "1" },
+                new ProductShelf { Id = 2, CurrentAmount = 3, MinimumAmount = 5, ProductId = 10001, ShelfId = 1, Position = "2" },
+                new ProductShelf { Id = 3, CurrentAmount = 95, MinimumAmount = 5, ProductId = 10002, ShelfId = 1, Position = "3" },
+                new ProductShelf { Id = 4, CurrentAmount = 65, MinimumAmount = 5, ProductId = 10003, ShelfId = 1, Position = "4" },
+                new ProductShelf { Id = 5, CurrentAmount = 436, MinimumAmount = 5, ProductId = 10004, ShelfId = 1, Position = "5" },
+                new ProductShelf { Id = 6, CurrentAmount = 63, MinimumAmount = 5, ProductId = 10005, ShelfId = 1, Position = "6" },
+                new ProductShelf { Id = 7, CurrentAmount = 72, MinimumAmount = 5, ProductId = 10006, ShelfId = 1, Position = "7" },
+                new ProductShelf { Id = 8, CurrentAmount = 73, MinimumAmount = 5, ProductId = 10007, ShelfId = 2, Position = "1" },
+                new ProductShelf { Id = 9, CurrentAmount = 117, MinimumAmount = 5, ProductId = 10008, ShelfId = 2, Position = "2" },
+                new ProductShelf { Id = 10, CurrentAmount = 19, MinimumAmount = 5, ProductId = 10009, ShelfId = 2, Position = "3" },
+                new ProductShelf { Id = 11, CurrentAmount = 91, MinimumAmount = 5, ProductId = 10010, ShelfId = 2, Position = "4" },
+                new ProductShelf { Id = 12, CurrentAmount = 81, MinimumAmount = 5, ProductId = 10011, ShelfId = 2, Position = "5" },
+                new ProductShelf { Id = 13, CurrentAmount = 71, MinimumAmount = 5, ProductId = 10012, ShelfId = 2, Position = "6" },
+                new ProductShelf { Id = 14, CurrentAmount = 85, MinimumAmount = 5, ProductId = 10013, ShelfId = 2, Position = "7" },
+                new ProductShelf { Id = 15, CurrentAmount = 58, MinimumAmount = 5, ProductId = 10014, ShelfId = 2, Position = "8" },
+                new ProductShelf { Id = 16, CurrentAmount = 51, MinimumAmount = 5, ProductId = 10015, ShelfId = 2, Position = "9" },
+                new ProductShelf { Id = 17, CurrentAmount = 47, MinimumAmount = 5, ProductId = 10016, ShelfId = 2, Position = "10" },
+                new ProductShelf { Id = 18, CurrentAmount = 15, MinimumAmount = 5, ProductId = 10017, ShelfId = 3, Position = "1" },
+                new ProductShelf { Id = 19, CurrentAmount = 61, MinimumAmount = 5, ProductId = 10018, ShelfId = 3, Position = "2" },
+                new ProductShelf { Id = 20, CurrentAmount = 72, MinimumAmount = 5, ProductId = 10019, ShelfId = 3, Position = "3" },
+                new ProductShelf { Id = 21, CurrentAmount = 82, MinimumAmount = 5, ProductId = 10020, ShelfId = 3, Position = "4" },
+                new ProductShelf { Id = 22, CurrentAmount = 79, MinimumAmount = 5, ProductId = 10021, ShelfId = 3, Position = "5" },
+                new ProductShelf { Id = 23, CurrentAmount = 41, MinimumAmount = 5, ProductId = 10022, ShelfId = 4, Position = "1" },
+                new ProductShelf { Id = 24, CurrentAmount = 16, MinimumAmount = 5, ProductId = 10023, ShelfId = 4, Position = "2" },
+                new ProductShelf { Id = 25, CurrentAmount = 17, MinimumAmount = 5, ProductId = 10024, ShelfId = 4, Position = "3" },
+                new ProductShelf { Id = 26, CurrentAmount = 71, MinimumAmount = 5, ProductId = 10025, ShelfId = 5, Position = "1" },
+                new ProductShelf { Id = 27, CurrentAmount = 79, MinimumAmount = 5, ProductId = 10026, ShelfId = 5, Position = "2" },
+                new ProductShelf { Id = 28, CurrentAmount = 91, MinimumAmount = 5, ProductId = 10027, ShelfId = 5, Position = "3" },
+                new ProductShelf { Id = 29, CurrentAmount = 107, MinimumAmount = 5, ProductId = 10028, ShelfId = 6, Position = "1" },
+                new ProductShelf { Id = 30, CurrentAmount = 61, MinimumAmount = 5, ProductId = 10029, ShelfId = 6, Position = "2" },
+                new ProductShelf { Id = 31, CurrentAmount = 1, MinimumAmount = 5, ProductId = 10030, ShelfId = 7, Position = "1" },
+                new ProductShelf { Id = 32, CurrentAmount = 72, MinimumAmount = 5, ProductId = 10031, ShelfId = 7, Position = "2" },
+                new ProductShelf { Id = 33, CurrentAmount = 16, MinimumAmount = 5, ProductId = 10032, ShelfId = 7, Position = "3" },
+                new ProductShelf { Id = 34, CurrentAmount = 50, MinimumAmount = 5, ProductId = 10033, ShelfId = 8, Position = "1" },
+                new ProductShelf { Id = 35, CurrentAmount = 50, MinimumAmount = 5, ProductId = 10034, ShelfId = 8, Position = "2" },
 
             };
             context.ProductsShelves.AddOrUpdate(productsShelves);
@@ -105,14 +105,14 @@ namespace Kundbolaget.Migrations
         {
             Shelf[] shelves =
             {
-                new Shelf { Id = 1, Name = "A", WarehouseId = 1 },
-                new Shelf { Id = 2, Name = "B", WarehouseId = 1 },
-                new Shelf { Id = 3, Name = "C", WarehouseId = 1 },
-                new Shelf { Id = 4, Name = "D", WarehouseId = 1 },
-                new Shelf { Id = 5, Name = "E", WarehouseId = 1 },
-                new Shelf { Id = 6, Name = "F", WarehouseId = 1 },
-                new Shelf { Id = 7, Name = "G", WarehouseId = 1 },
-                new Shelf { Id = 8, Name = "H", WarehouseId = 1 }
+                new Shelf { Id = 1, Name = "A", WarehouseId = 0 },
+                new Shelf { Id = 2, Name = "B", WarehouseId = 0 },
+                new Shelf { Id = 3, Name = "C", WarehouseId = 0 },
+                new Shelf { Id = 4, Name = "D", WarehouseId = 0 },
+                new Shelf { Id = 5, Name = "E", WarehouseId = 0 },
+                new Shelf { Id = 6, Name = "F", WarehouseId = 0 },
+                new Shelf { Id = 7, Name = "G", WarehouseId = 0 },
+                new Shelf { Id = 8, Name = "H", WarehouseId = 0 }
             };
             context.Shelves.AddOrUpdate(shelves);
         }
@@ -322,12 +322,9 @@ namespace Kundbolaget.Migrations
         {
             AlcoholLicense[] alcoholLicenses =
             {
-                new AlcoholLicense {Id = 1, StartDate = DateTime.Today, EndDate = new DateTime(2020,12,24),
-                    IsValid = true},
-                new AlcoholLicense {Id = 2, StartDate = DateTime.Today, EndDate = new DateTime(2021,12,24),
-                    IsValid = true},
-                new AlcoholLicense {Id = 3, StartDate = DateTime.Today, EndDate = new DateTime(2022,12,24),
-                    IsValid = true},
+                new AlcoholLicense {Id = 1, StartDate = DateTime.Today, EndDate = new DateTime(2020,12,24)},
+                new AlcoholLicense {Id = 2, StartDate = DateTime.Today, EndDate = new DateTime(2021,12,24)},
+                new AlcoholLicense {Id = 3, StartDate = DateTime.Today, EndDate = new DateTime(2022,12,24), IsActive = false},
             };
 
             context.AlcoholLicenses.AddOrUpdate(alcoholLicenses);
@@ -558,16 +555,13 @@ namespace Kundbolaget.Migrations
 
         private void SeedWarehouses(DataContext context)
         {
-            Warehouse[] warehouises =
+            Warehouse[] warehouses =
             {
-                new Warehouse { Id = 1, Name = "Stockholms lager", AddressId = 3, ContactId = 1, IsActive = true},
-                new Warehouse { Id = 2, Name = "Göteborgs lager", AddressId = 13, ContactId = 2, IsActive = true},
-                new Warehouse { Id = 3, Name = "Malmös lager", AddressId = 10, ContactId = 3, IsActive = true},
-                new Warehouse { Id = 4, Name = "Sundsvall lager", AddressId = 20, ContactId = 4, IsActive = true},
-                new Warehouse { Id = 5, Name = "Uppsalas lager", AddressId = 21, ContactId = 5, IsActive = true}
+                new Warehouse { Id = 0, Name = "Stockholms lager", AddressId = 3, ContactId = 1, IsActive = true}
             };
-            context.Warehouses.AddOrUpdate(warehouises);
+            context.Warehouses.AddOrUpdate(warehouses);
         }
+
         private void SeedOrders(DataContext context)
         {
             Order[] orders =

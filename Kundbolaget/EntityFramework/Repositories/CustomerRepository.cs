@@ -29,8 +29,13 @@ namespace Kundbolaget.EntityFramework.Repositories
                     .Include(c => c.InvoiceAddress)
                     .Include(v => v.VisitingAddress)
                     .Include(s => s.ShippingAddresses)
-                    .Include(l => l.AlcoholLicense)
-                    .Include(c => c.Contact).ToList();
+                    .Include(c => c.Contact)
+                    .Include(c => c.AlcoholLicense)
+                    .Include(e => e.Orders)
+                    .ToList();
+
+
+
             }
         }
 

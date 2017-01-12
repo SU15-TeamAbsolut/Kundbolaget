@@ -25,6 +25,6 @@ namespace Kundbolaget.Models.EntityModels
         public DateTime DueDate { get; set; }
 
         [Required]
-        public InvoiceStatus InvoiceStatus { get; set; }
+        public InvoiceStatus InvoiceStatus { get; set; } = InvoiceStatus.Created;
     }
 }

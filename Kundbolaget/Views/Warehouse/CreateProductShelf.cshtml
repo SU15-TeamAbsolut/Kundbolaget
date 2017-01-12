@@ -35,7 +35,7 @@
 
         <div class="form-group">
             @Html.LabelFor(model => model.CurrentAmount, htmlAttributes: new { @class = "control-label col-md-1" })
-            <div class="col-md-10">
+            <div class="col-md-10" style="max-width:100px;">
                 @Html.EditorFor(model => model.CurrentAmount, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.CurrentAmount, "", new { @class = "text-danger" })
             </div>
@@ -43,9 +43,17 @@
 
         <div class="form-group">
             @Html.LabelFor(model => model.MinimumAmount, htmlAttributes: new { @class = "control-label col-md-1" })
-            <div class="col-md-10">
+            <div class="col-md-10" style="max-width:100px;">
                 @Html.EditorFor(model => model.MinimumAmount, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.MinimumAmount, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Position, htmlAttributes: new { @class = "control-label col-md-1" })
+            <div class="col-md-10" style="max-width:100px;">
+                @Html.EditorFor(model => model.Position, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Position, "", new { @class = "text-danger" })
             </div>
         </div>
 

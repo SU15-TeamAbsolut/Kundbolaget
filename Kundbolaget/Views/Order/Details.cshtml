@@ -1,10 +1,12 @@
-﻿@model IEnumerable<Kundbolaget.Models.EntityModels.OrderRow>
+﻿@using System.Web.UI.WebControls.Expressions
+@model IEnumerable<Kundbolaget.Models.EntityModels.OrderRow>
 
 @{
     ViewBag.Title = "Details";
 }
 
 <h2>Orderdetaljer</h2>
+<h4>Orderrader</h4>
 
 <table class="table">
     <tr>
@@ -42,11 +44,11 @@
       </td>
       <td>@($"{item.DiscountedPrice*item.AmountOrdered:0.00}")</td>
       <td>
-          @Html.ActionLink("Ändra", "Edit", new { id = item.Id})
+          @Html.ActionLink("Ändra", "EditOrderRow", new { id = item.Id})
       </td>
     </tr>
 }
 
 </table>
 
-@Html.ActionLink("Tillbaka", "ReceivedOrders", null, new { @class = "btn btn-primary" })
+@Html.ActionLink("Tillbaka", "UnpickedOrders", null, new { @class = "btn btn-primary" })

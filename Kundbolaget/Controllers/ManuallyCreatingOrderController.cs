@@ -69,6 +69,7 @@ namespace Kundbolaget.Controllers
         }
         public ActionResult CreateOrderRowManually(Order order)
         {
+            order.OrderStatus = OrderStatus.Registered;
             _orderRepository.Create(order);
 
             var viewModel = new ManualOrderViewModel()
@@ -113,16 +114,21 @@ namespace Kundbolaget.Controllers
                         AmountOrdered = (int)viewModel.Products[i].QuantiyOrdered,
                         OrderId = newOrder.Id,
                         ProductId = viewModel.Products[i].Id,
-                        Price = (decimal)(viewModel.Products[i].Price * viewModel.Products[i].QuantiyOrdered)
+                        
                     });
                     
                 }
 
             }
-            _orderRepository.Update(newOrder);
+            foreach (var row in newOrder.OrderRows)
+            {
+                _orderRowRepository.Create(row);
+            }
+
+            
             
 
-            return View("CreateOrderManually", viewModel);
+            return View("CustomerIndex");
         }
 
     }

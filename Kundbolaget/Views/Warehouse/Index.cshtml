@@ -4,7 +4,7 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Lagerlokaler</h2>
+<h2>Lagerhantering</h2>
 
 <p>
     @Html.ActionLink("Lägg till lager","Create", null, new { @class="btn btn-primary"} )
@@ -17,9 +17,6 @@
         <th>
             @Html.DisplayNameFor(model => model.Address)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ContactId)
-        </th>
         <th></th>
     </tr>
 
@@ -29,10 +26,9 @@
             @Html.DisplayFor(modelItem => item.Name)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Address.Street)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ContactId)
+            @Html.DisplayFor(modelItem => item.Address.Street),
+            @Html.DisplayFor(modelItem => item.Address.ZipNumber),
+            @Html.DisplayFor(modelItem => item.Address.City)
         </td>
         <td>
             @Html.ActionLink("Redigera", "Edit", new { id=item.Id }) |

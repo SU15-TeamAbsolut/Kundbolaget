@@ -22,6 +22,9 @@ namespace Kundbolaget.Models.EntityModels
         [ForeignKey("ShelfId")]
         public virtual Shelf Shelf { get; set; }
         [Required]
+        [DisplayName("Placering")]
+        public string Position { get; set; }
+        [Required]
         [DisplayName("Antal")]
         public int CurrentAmount { get; set; }
         [Required]

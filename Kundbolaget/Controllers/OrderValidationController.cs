@@ -73,6 +73,15 @@ namespace Kundbolaget.Controllers
             {
                 viewModel.OrderIsValid = false;
                 viewModel.ErrorMessage += $"Kund-id {customerOrderData.CustomerId} existerar inte";
+                return;
+            }
+
+            // Check that alcohol license is valid
+            if (!viewModel.Order.Customer.AlcoholLicense.IsValid)
+            {
+                viewModel.OrderIsValid = false;
+                viewModel.ErrorMessage += $"Kund #{customerOrderData.CustomerId} har ingen giltig alkohollicens";
+                return;
             }
 
             // Check date - change date if it's in the past

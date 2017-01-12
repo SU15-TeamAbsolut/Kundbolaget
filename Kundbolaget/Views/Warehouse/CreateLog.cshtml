@@ -1,0 +1,81 @@
+﻿@model Kundbolaget.Models.EntityModels.ProductShelfChangeLog
+
+@using Kundbolaget.EntityFramework.Contexts
+@using Kundbolaget.EntityFramework.Repositories
+@using Kundbolaget.Models.EntityModels
+@using Kundbolaget.Models.ViewModels
+
+@{
+    var warehouseRepository = new DataRepository<Warehouse>();
+    var productRepository = new DataRepository<Product>();
+    var shelfRepository = new ShelfRepository();
+    var categoryRepository = new DataRepository<ProductCategory>();
+    var warehouse = warehouseRepository.Find(Kundbolaget.Controllers.WarehouseController.currentWarehouseId);
+    var products = productRepository.GetAll();
+    var shelfs = shelfRepository.GetShelfsByWarehouseId(warehouse.Id);
+    ViewBag.Title = "CreateLog";
+}
+
+<h2>Registrera svinn</h2>
+
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>@warehouse.Name</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.ProductId, "Produkt", htmlAttributes: new { @class = "control-label col-md-1" })
+            <div style="display:inline-block; max-width: 500px; padding-left: 1%">
+                @Html.DropDownListFor(x => x.ProductId, new SelectList(products, "Id", "Name"), "Välj produkt", new { @class = "form-control" })
+                @Html.ValidationMessageFor(x => x.ProductId, "", new { @class = "text-danger" })
+                @Html.HiddenFor(x => x.ProductId)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ShelfId, "Hylla", htmlAttributes: new { @class = "control-label col-md-1" })
+            <div style="display:inline-block; max-width: 500px; padding-left: 1%">
+                @Html.DropDownListFor(x => x.ShelfId, new SelectList(shelfs, "Id", "Name"), "Välj hylla", new { @class = "form-control" })
+                @Html.ValidationMessageFor(x => x.ShelfId, "", new { @class = "text-danger" })
+                @Html.HiddenFor(x => x.ShelfId)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Amount, htmlAttributes: new { @class = "control-label col-md-1" })
+            <div class="col-md-10" style="max-width:100px;">
+                @Html.EditorFor(model => model.Amount, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Amount, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Initials, htmlAttributes: new { @class = "control-label col-md-1" })
+            <div class="col-md-10" style="max-width:100px;">
+                @Html.EditorFor(model => model.Initials, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Initials, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-1" })
+            <div class="col-md-10" style="max-width:700px;">
+                @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group col-md-10">
+            @Html.ActionLink("Tillbaka", "LogIndex", null, new { @class = "btn btn-primary" })
+            <input type="submit" value="Registrera" class="btn btn-primary" />
+        </div>
+    </div>
+}
+
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
