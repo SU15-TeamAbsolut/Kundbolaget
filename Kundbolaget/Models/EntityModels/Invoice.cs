@@ -13,6 +13,11 @@ namespace Kundbolaget.Models.EntityModels
     {
         public int Id { get; set; }
 
+        [ForeignKey("CustomerId")]
+        public Customer Customer { get; set; }
+        [Required]
+        public int CustomerId { get; set; }
+
         [Required]
         public virtual IList<Order> Orders { get; set; } = new List<Order>();
 

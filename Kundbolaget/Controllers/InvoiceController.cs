@@ -5,6 +5,8 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Kundbolaget.EntityFramework.Repositories;
+using Kundbolaget.Enums;
+using Kundbolaget.Models.EntityModels;
 using Kundbolaget.Models.ViewModels.Invoice;
 
 namespace Kundbolaget.Controllers
@@ -42,6 +44,29 @@ namespace Kundbolaget.Controllers
             {
                 return new HttpNotFoundResult();
             }
+
+            var model = new CreateInvoiceViewModel
+            {
+                Customer = customer,
+                InvoicableOrders = customer.Orders
+                    .Where(o => o.OrderStatus == OrderStatus.Delivered)
+                    .ToList()                
+            };
+
+            return View(model);
+        }
+
+        /// <summary>
+        /// Accepts a form to create a new invoice with selected orders
+        /// </summary>
+        /// <returns></returns>
+        [HttpPost]
+        public ActionResult Save(CreateInvoiceViewModel model)
+        {
+            var invoice = new Invoice
+            {
+                
+            };
 
             return View();
         }

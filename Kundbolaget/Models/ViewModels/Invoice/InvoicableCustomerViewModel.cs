@@ -10,7 +10,7 @@ namespace Kundbolaget.Models.ViewModels.Invoice
     public class InvoicableCustomerViewModel
     {
         public Customer Customer { get; set; }
-        public int InvoicableOrders { get; set; }
+        public IEnumerable<Order> InvoicableOrders { get; set; }
 
         public static InvoicableCustomerViewModel FromCustomer(Customer customer)
         {
@@ -18,7 +18,8 @@ namespace Kundbolaget.Models.ViewModels.Invoice
             {
                 Customer = customer,
                 InvoicableOrders = customer.Orders
-                    .Count(o => o.OrderStatus == OrderStatus.Delivered)
+                    .Where(o => o.OrderStatus == OrderStatus.Delivered)
+                    .ToList()
             };
         }
     }

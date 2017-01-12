@@ -1,0 +1,42 @@
+﻿@model Kundbolaget.Models.ViewModels.Invoice.CreateInvoiceViewModel
+@{
+    ViewBag.Title = "Skapa faktura";
+}
+
+<h2>Skapa faktura</h2>
+
+<div class="alert alert-info">Välj ordrar som ska ingå i fakturan.</div>
+
+@using (Html.BeginForm("Save", "Invoice"))
+{
+  @Html.HiddenFor(e => e.Customer.Id)
+  <table class="table table-condensed">
+    <tr>
+      <th>@* Radio button column *@</th>
+      <th>Ordernummer</th>
+      <th>Orderrader</th>
+      <th>Ordersumma</th>
+    </tr>
+    @for (int i = 0; i < Model.InvoicableOrders.Count; i++)
+    {
+      <tr>
+        <td><input type="checkbox" name="Model.InvoicableOrders[@i]" /></td>
+        <td>@Model.InvoicableOrders[i].Id</td>
+        <td>@Model.InvoicableOrders[i].OrderRows.Count</td>
+        <td>@($"{Model.InvoicableOrders[i].Total:C}")</td>
+      </tr>
+    }
+  </table>
+
+  <div class="form-group">
+    <label for="DueDate">Förfallodatum</label>
+    <input type="date" class="form-control" id="DueDate" value="@($"{DateTime.Today.AddDays(Model.Customer.PaymentTerm):yyyy-MM-dd}")" />
+    <p>Kunden har @Model.Customer.PaymentTerm dagars betalningsvillkor.</p>
+  </div>
+
+  <div class="form-group">
+    <input class="btn btn-primary" type="submit" value="Skapa faktura"/>
+  </div>
+
+}
+
