@@ -15,6 +15,7 @@ namespace Kundbolaget.Models.EntityModels
         public virtual Order Order { get; set; }
 
         [Required]
+        [DisplayName("Produkt Id")]
         public int ProductId { get; set; }
         [ForeignKey("ProductId")]
         public virtual Product Product { get; set; }
