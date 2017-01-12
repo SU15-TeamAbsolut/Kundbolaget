@@ -57,7 +57,6 @@ namespace Kundbolaget.Models.EntityModels
         public int? QuantiyInWarehouse { get; set; }
 
         [NotMapped]
-        [ValidateOrderedQuantity]
         public int? QuantiyOrdered { get; set; }
 
         private decimal GetPrice()

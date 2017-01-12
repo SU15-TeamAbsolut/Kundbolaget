@@ -53,10 +53,11 @@ namespace Kundbolaget.Controllers
         [HttpPost]
         public ActionResult CreateOrder(Order order)
         {
-            if (!ModelState.IsValid)
-            {
-                return View(order);
-            }
+
+            //if (!ModelState.IsValid)
+            //{   
+            //    return View(order);
+            //}
 
             order.Id = 0;
             order.CustomerId = order.Customer.Id;
@@ -92,6 +93,7 @@ namespace Kundbolaget.Controllers
         [HttpPost]
         public ActionResult CreateOrderRowManually(ManualOrderViewModel viewModel, int customerId, int orderId)
         {
+
             viewModel.Order = _orderRepository.Find(orderId);
 
             for (int i = 0; i < viewModel.Products.Count; i++)
