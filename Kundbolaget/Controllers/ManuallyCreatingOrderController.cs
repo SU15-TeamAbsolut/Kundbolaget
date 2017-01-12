@@ -31,7 +31,7 @@ namespace Kundbolaget.Controllers
         public ActionResult CustomerIndex()
         {
             var customers = _customerRepository.GetAll()
-                .Where(x => x.AlcoholLicense.IsValid);
+                .Where(x => x.AlcoholLicense != null && x.AlcoholLicense.IsValid);
 
             return View(customers);
         }
@@ -47,12 +47,17 @@ namespace Kundbolaget.Controllers
 
             };
 
-            return View(order);
+            return View("CreateOrder", order);
 
         }
         [HttpPost]
-        public ActionResult CreateOrderManually(Order order)
+        public ActionResult CreateOrder(Order order)
         {
+            if (!ModelState.IsValid)
+            {
+                return View(order);
+            }
+
             order.Id = 0;
             order.CustomerId = order.Customer.Id;
             _orderRepository.Create(order);
@@ -63,7 +68,7 @@ namespace Kundbolaget.Controllers
                 Products = new List<Product>()
             };
 
-            return View(viewModel);
+            return View("CreateOrderManually", viewModel);
         }
 
         public ActionResult CreateOrderRowManually(int customerId, int orderId)

@@ -292,6 +292,7 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\CustomValidation\CorporateIdentityNumber.cs" />
+    <Compile Include="Models\CustomValidation\ValidateOrderedQuantity.cs" />
     <Compile Include="Models\CustomValidation\ValidateRestOrderDate.cs" />
     <Compile Include="Models\EntityModels\Address.cs" />
     <Compile Include="Models\EntityModels\Contact.cs" />

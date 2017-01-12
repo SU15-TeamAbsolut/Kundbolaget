@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
+using Kundbolaget.Models.CustomValidation;
 
 namespace Kundbolaget.Models.EntityModels
 {
@@ -56,6 +57,7 @@ namespace Kundbolaget.Models.EntityModels
         public int? QuantiyInWarehouse { get; set; }
 
         [NotMapped]
+        [ValidateOrderedQuantity]
         public int? QuantiyOrdered { get; set; }
 
         private decimal GetPrice()
