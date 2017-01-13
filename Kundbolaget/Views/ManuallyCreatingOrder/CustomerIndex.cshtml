@@ -1,4 +1,6 @@
-﻿@model IEnumerable<Kundbolaget.Models.EntityModels.Customer>
+﻿@using System.Diagnostics
+@using System.Diagnostics.Eventing.Reader
+@model IEnumerable<Kundbolaget.Models.EntityModels.Customer>
 
 @{
     ViewBag.Title = "IndexCustomer";
@@ -65,8 +67,25 @@
             </td>
 
             <td>
-                @Html.ActionLink("Skapa ny order", "CreateOrder", new { id = item.Id }, new { @class = "btn btn-primary" })
 
+
+
+                @if (item.AlcoholLicense == null)
+                {
+                    @Html.ActionLink("License krävs", "Create","AlcoholLicense", new { id = item.Id }, new { @class = "btn btn-warning" })
+                }
+                else if (!item.AlcoholLicense.IsValid)
+                {
+                    @Html.ActionLink("Ogiltig license", "Edit","AlcoholLicense", new { id = item.Id }, new { @class = "btn btn-warning" })
+                }
+                else if (item.ShippingAddresses.Count != 0)
+                {
+                    @Html.ActionLink("Skapa ny order", "CreateOrder", new { id = item.Id }, new { @class = "btn btn-primary" })
+                }
+                else
+                {
+                    @Html.ActionLink("Lägg till leveransadress", "Index", "ShippingAddress", new { id = item.Id }, new { @class = "btn btn-primary" })
+                }
             </td>
         </tr>
     }

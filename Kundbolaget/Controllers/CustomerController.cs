@@ -63,22 +63,16 @@ namespace Kundbolaget.Controllers
 
       
         [HttpPost]
-        public ActionResult Create(Customer customer, Address invoiceAddress,Address visistingAddress, Contact contact)
+        public ActionResult Create(Customer customer)
         {
             
-            customer.VisitingAddress = visistingAddress;
-            customer.InvoiceAddress = invoiceAddress;
-            customer.Contact = contact;
-
             if (ModelState.IsValid)
             {
                 _customerRepository.Create(customer);
-               
-               
                 return RedirectToAction("Index");
             }
 
-            return View(customer);
+             return View(customer);
         }
 
         public ActionResult Edit(int? id)
