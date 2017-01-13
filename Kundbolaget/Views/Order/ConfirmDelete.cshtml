@@ -5,10 +5,11 @@
 }
 
 <h2>Radera</h2>
-<h4>Order: #@Model.Id</h4>
-<h4>Kund: @Model.Customer.Name</h4>
+<h4>Är du säker på att ta bort?</h4>
 <hr/>
-<h4 style="font-weight: bold">Vill du verkligen radera ordern?</h4>
+<h4>Order: @Model.Id</h4>
+<h4>Kund: @Model.Customer.Name</h4>
+<br/>
 <div>
     @Html.ActionLink("Radera","Delete", new {id = Model.Id}, new {@class="btn btn-primary"})
 </div>

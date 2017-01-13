@@ -23,7 +23,6 @@
         </dt>
 
         <dd>
-            @*@Html.Partial("_Address", Model.Address)*@
             @Html.DisplayFor(model => model.Address.Street),
             @Html.DisplayFor(model => model.Address.ZipNumber),
             @Html.DisplayFor(model => model.Address.City)
@@ -35,17 +34,10 @@
         <dd>
             @Html.DisplayFor(model => model.Address.Country.Name)
         </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.ContactId)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ContactId)
-        </dd>
-    </dl>
+      </dl>
 </div>
 <h4>Hyllor</h4>
-<table class="table">
+<table class="table table-striped"style="width: 310px">
     <tr>
         <th>
             Namn
