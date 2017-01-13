@@ -1,0 +1,41 @@
+﻿@model Kundbolaget.Models.EntityModels.OrderRow
+
+@{
+    ViewBag.Title = "EditDeviationOrderRow";
+}
+
+<h2>Orderdetaljer</h2>
+<h4>Ändra antal</h4>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.Id)
+        @Html.HiddenFor(model => model.OrderId)
+        @Html.HiddenFor(model => model.ProductId)
+        @Html.HiddenFor(model => model.Price)
+        @Html.HiddenFor(model => model.Discount)
+        @Html.HiddenFor(model => model.AmountOrdered)
+
+
+
+        <div class="form-group">
+            @Html.Label("Mottaget antal", htmlAttributes: new { @class = "control-label col-md-1" })
+            <div class="col-md-1">
+                @Html.EditorFor(model => model.AmountShipped, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.AmountShipped, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <br />
+        <div class="form-group col-md-10">
+            @Html.ActionLink("Avbryt", "ShippedOrders", null, new { @class = "btn btn-primary" }) |
+            <input type="submit" value="Spara" class="btn btn-primary" />
+        </div>
+    </div>
+}
+

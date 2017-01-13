@@ -1,11 +1,9 @@
 ﻿@model IEnumerable<Kundbolaget.Models.EntityModels.Order>
-
 @{
-    ViewBag.Title = "UnpickedOrders";
+    ViewBag.Title = "DeliveredOrders";
 }
-
-<h2>Order</h2>
-<h4>Ej plockade</h4>
+<h2>Ordrar</h2>
+<h4>Levererade</h4>
 <table class="table table-striped">
     <tr>
         <th>
@@ -21,22 +19,17 @@
             @Html.DisplayNameFor(model => model.ShippingAddress)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.OrderPlaced)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DesiredDeliveryDate)
+            Levererat datum
         </th>
         <th>
             @Html.DisplayNameFor(model => model.OrderStatus)
         </th>
         <th></th>
     </tr>
-
     @foreach (var item in Model)
     {
         <tr>
             <td>
-
                 @Html.DisplayFor(modelItem => item.Id)
             </td>
             <td>
@@ -54,18 +47,11 @@
                 @Html.DisplayFor(modelItem => item.OrderPlaced)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.DesiredDeliveryDate)
-            </td>
-            <td>
                 @Html.DisplayFor(modelItem => item.OrderStatus)
             </td>
             <td>
-                @Html.ActionLink("Radera", "ConfirmDelete", new { id = item.Id }) |
-                @Html.ActionLink("Visa rader", "Details", new { id = item.Id }) |
-                @Html.ActionLink("Ny rad", "AddOrderRow", new { id = item.Id }) |
-                @Html.ActionLink("Plocksedel", "PickingList", new {id = item.Id})
+                @Html.ActionLink("Visa rader","ViewOrderRows", new { id = item.Id})
             </td>
         </tr>
     }
-
 </table>

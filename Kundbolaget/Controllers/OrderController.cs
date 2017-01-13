@@ -89,6 +89,15 @@ namespace Kundbolaget.Controllers
                 if (order.OrderStatus == OrderStatus.ReadyToShip)
                     model.Add(order);
             }
+            foreach (var order in model)
+            {
+                foreach (var row in order.OrderRows)
+                {
+                    row.AmountShipped = row.AmountOrdered;
+                    _orderRowRepository.Update(row);
+                }
+
+            }
             return View(model);
         }
 
@@ -159,8 +168,31 @@ namespace Kundbolaget.Controllers
         [HttpPost]
         public ActionResult EditOrderRow(OrderRow model)
         {
+            if (model.AmountOrdered >= 20)
+            {
+                model.Discount = (decimal)0.08;
+            }
+            else
+            {
+                model.Discount = 0;
+            }
             _orderRowRepository.Update(model);
             return RedirectToAction("UnpickedOrders");
+        }
+
+        //For deviation edit
+        public ActionResult EditDeviationOrderRow(int id)
+        {
+            var orderRow = _orderRowRepository.GetOrderRow(id);
+
+            return View(orderRow);
+        }
+
+        [HttpPost]
+        public ActionResult EditDeviationOrderRow(OrderRow model)
+        {
+            _orderRowRepository.Update(model);
+            return RedirectToAction("ShippedOrders");
         }
 
         public ActionResult AddOrderRow(int? id)
@@ -345,6 +377,41 @@ namespace Kundbolaget.Controllers
            
             return RedirectToAction("ReceivedOrders");
         }
-        
+
+        public ActionResult ConfirmDelete(int id)
+        {
+            var order = _orderRepository.Find(id);
+            return View(order);
+        }
+
+        public ActionResult ShippedOrders()
+        {
+            var orders = _orderRepository.GetAll();
+            var model = orders.Where(x => x.OrderStatus == OrderStatus.Shipping).ToList();
+            return View(model);
+        }
+
+        public ActionResult Delivered(int id)
+        {
+            var order = _orderRepository.Find(id);
+            order.OrderStatus = OrderStatus.Delivered;
+            order.OrderPlaced = DateTime.Now;
+            _orderRepository.Update(order);
+            return RedirectToAction("ShippedOrders");
+        }
+
+        public ActionResult DeliveredOrders()
+        {
+            var orders = _orderRepository.GetAll();
+            var model = orders.Where(x => x.OrderStatus == OrderStatus.Delivered).ToList();
+            return View(model);
+        }
+
+        public ActionResult Deviations(int id)
+        {
+            var orderRows = _orderRowRepository.GetAll(id);
+
+            return View(orderRows);
+        }
     }
 }

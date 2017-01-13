@@ -1,0 +1,47 @@
+﻿@model IEnumerable<Kundbolaget.Models.EntityModels.OrderRow>
+
+@{
+    ViewBag.Title = "Deviations";
+}
+
+<h2>Avvikelser</h2>
+<h4>Rapportering</h4>
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Product.Name)
+        </th>
+        
+        <th>
+            @Html.DisplayNameFor(model => model.AmountOrdered)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AmountShipped)
+        </th>
+        
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        
+        <td>
+            @Html.DisplayFor(modelItem => item.Product.Name)
+        </td>
+        
+        <td>
+            @Html.DisplayFor(modelItem => item.AmountOrdered)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AmountShipped)
+        </td>
+        
+        <td>
+            @Html.ActionLink("Ändra antal mottagna", "EditDeviationOrderRow", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>

@@ -59,7 +59,8 @@
             @Html.DisplayFor(modelItem => item.OrderStatus)
         </td>
         <td>
-            @Html.ActionLink("Fraktsedel", "ShippingDoc", new { id=item.Id })
+            @Html.ActionLink("Visa rader", "ViewOrderRows", new { id = item.Id }) |
+            @Html.ActionLink("Skriv ut fraktsedel", "ShippingDoc", new {id = item.Id})
         </td>
     </tr>
 }
