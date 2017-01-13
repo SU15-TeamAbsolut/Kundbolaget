@@ -13,12 +13,16 @@ namespace Kundbolaget.Models.EntityModels
         [Required]
         [DisplayName("Namn")]
         public string Name { get; set; }
+
         [DisplayName("Lösenord")]
         public string Password { get; set; }
+
         [DisplayName("Kreditgräns")]
         public int CreditLine { get; set; }
+
         [DisplayName("Betalningsvillkor")]
         public int PaymentTerm { get; set; }
+
         [DisplayName("Faktureringskod")]
         public int AccountingCode { get; set; }
 
@@ -26,13 +30,11 @@ namespace Kundbolaget.Models.EntityModels
         [DisplayName("Org.nummer")]
         public long OrganizationNumber { get; set; }
 
-        [Required]
         public int InvoiceAddressId { get; set; }
         [ForeignKey("InvoiceAddressId")]
         [DisplayName("Faktureringsadress ")]
         public virtual Address InvoiceAddress { get; set; }
-
-        [Required]
+        
         public int VisitingAddressId { get; set; }
         [ForeignKey("VisitingAddressId")]
         [DisplayName("Besöksadress")]

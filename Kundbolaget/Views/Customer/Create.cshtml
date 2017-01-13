@@ -6,7 +6,7 @@
 
 <h2>Skapa</h2>
 
-@using (Html.BeginForm(null,null, new {VisitingAddressId = 0, InvoiceAddressId = 0})) 
+@using (Html.BeginForm()) 
 {
     @Html.AntiForgeryToken()
 
@@ -65,26 +65,30 @@
         @Html.Partial("_Contact")
         <div class="form-group">
             <label class="control-label col-md-1">Land</label>
-            @Html.Partial("_CountryDropDownList", new ViewDataDictionary() { TemplateInfo = new TemplateInfo() { HtmlFieldPrefix = "CountryId" } }))
+            @Html.Partial("_CountryDropDownList", new ViewDataDictionary() { TemplateInfo = new TemplateInfo() { HtmlFieldPrefix = "VisitingAddress" } })
         </div>
         <div class="form-group">
             @Html.Label("Besöksadress", htmlAttributes: new {@class = "control-label col-md-1", style = "font-size: 20px;"})
-            
-       )
+        </div>
+         <div class="form-group">
+            <label class="control-label col-md-1">Land</label>
+            @Html.Partial("_CountryDropDownList", new ViewDataDictionary() { TemplateInfo = new TemplateInfo() { HtmlFieldPrefix = "VisitingAddress" } })
         </div>
         <div class="form-group">
-            @Html.Partial("_Address", new ViewDataDictionary(){TemplateInfo = new TemplateInfo(){ HtmlFieldPrefix = "VisitingAddress",  } }))
+            @Html.HiddenFor(m => Model.VisitingAddress.Id)
+            @Html.Partial("_Address", new ViewDataDictionary() {TemplateInfo = new TemplateInfo() {HtmlFieldPrefix = "VisitingAddress",}}))
         </div>
         <div class="form-group">
             @Html.Label("Faktureringsadress", htmlAttributes: new {@class = "control-label col-md-1", style = "font-size: 20px;"})
-          
         </div>
-
         <div class="form-group">
+            <label class="control-label col-md-1">Land</label>
+            @Html.Partial("_CountryDropDownList", new ViewDataDictionary() { TemplateInfo = new TemplateInfo() { HtmlFieldPrefix = "InvoiceAddress" } })
+        </div>
+        <div class="form-group">
+            @Html.HiddenFor(m => Model.InvoiceAddress.Id)
             @Html.Partial("_Address", new ViewDataDictionary() {TemplateInfo = new TemplateInfo() {HtmlFieldPrefix = "InvoiceAddress"}}))
         </div>
-        @Html.Hidden("VisitingAddressId")
-        @Html.HiddenFor(m => m.InvoiceAddressId)
         <hr/>
         <div class="form-group col-md-10">
             @Html.ActionLink("Tillbaka", "Index", null, new {@class = "btn btn-primary"}) |
