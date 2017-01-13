@@ -26,9 +26,10 @@ namespace Kundbolaget.Models.EntityModels
         [DisplayName("Org.nummer")]
         public long OrganizationNumber { get; set; }
 
-      
+        [Required]
         public int InvoiceAddressId { get; set; }
         [ForeignKey("InvoiceAddressId")]
+        [DisplayName("Faktureringsadress ")]
         public virtual Address InvoiceAddress { get; set; }
 
         [Required]
