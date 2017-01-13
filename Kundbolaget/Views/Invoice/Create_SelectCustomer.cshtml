@@ -13,6 +13,7 @@
     <th>Kundnummer</th>
     <th>Kund</th>
     <th>Ofakturerade ordrar</th>
+    <th>Utestående</th>
     <th></th>
   </tr>
 @foreach (var row in Model)
@@ -21,6 +22,7 @@
     <td>@row.Customer.Id</td>
     <td>@row.Customer.Name</td>
     <td>@row.InvoicableOrders.Count()</td>
+    <td>@Html.DisplayFor(m => row.OrderTotal)</td>
     <td><a @(row.InvoicableOrders.Any() ? "" : "disabled")  href="@Url.Action("Create", "Invoice", new {id = row.Customer.Id})" class="btn btn-primary">Fakturera</a></td>
   </tr>
 }
