@@ -15,7 +15,6 @@
         <hr/>
         @Html.ValidationSummary(true, "", new {@class = "text-danger"})
         @Html.HiddenFor(model => model.Id)
-        @Html.HiddenFor(model => model.VisitingAddressId)
 
         <div class="form-group">
             @Html.LabelFor(model => model.Name, htmlAttributes: new {@class = "control-label col-md-1"})
@@ -24,7 +23,6 @@
                 @Html.ValidationMessageFor(model => model.Name, "", new {@class = "text-danger"})
             </div>
         </div>
-
         <div class="form-group">
             @Html.LabelFor(model => model.Password, htmlAttributes: new {@class = "control-label col-md-1"})
             <div class="col-md-3">
@@ -32,7 +30,6 @@
                 @Html.ValidationMessageFor(model => model.Password, "", new {@class = "text-danger"})
             </div>
         </div>
-
         <div class="form-group">
             @Html.LabelFor(model => model.CreditLine, htmlAttributes: new {@class = "control-label col-md-1"})
             <div class="col-md-3">
@@ -40,7 +37,6 @@
                 @Html.ValidationMessageFor(model => model.CreditLine, "", new {@class = "text-danger"})
             </div>
         </div>
-
         <div class="form-group">
             @Html.LabelFor(model => model.PaymentTerm, htmlAttributes: new {@class = "control-label col-md-1"})
             <div class="col-md-3">
@@ -48,7 +44,6 @@
                 @Html.ValidationMessageFor(model => model.PaymentTerm, "", new {@class = "text-danger"})
             </div>
         </div>
-
         <div class="form-group">
             @Html.LabelFor(model => model.AccountingCode, htmlAttributes: new {@class = "control-label col-md-1"})
             <div class="col-md-3">
@@ -56,7 +51,6 @@
                 @Html.ValidationMessageFor(model => model.AccountingCode, "", new {@class = "text-danger"})
             </div>
         </div>
-
         <div class="form-group">
             @Html.LabelFor(model => model.OrganizationNumber, htmlAttributes: new {@class = "control-label col-md-1"})
             <div class="col-md-3">
@@ -65,16 +59,36 @@
             </div>
         </div>
         <div class="form-group">
+            @Html.Label("Besöksadress", htmlAttributes: new { @class = "control-label col-md-1", style = "font-size: 20px;" })
+        </div>
+        <div class="form-group">
             <label class="control-label col-md-1">Land</label>
-            @Html.Partial("_CountryDropDownList", Model.VisitingAddress)
+            @Html.Partial("_CountryDropDownList", Model.VisitingAddress, new ViewDataDictionary() { TemplateInfo = new TemplateInfo() { HtmlFieldPrefix = "VisitingAddress" } })
         </div>
-
-            @Html.Partial("_Address", Model.VisitingAddress)
+        <div class="form-group">
+            @Html.HiddenFor(m => Model.VisitingAddressId)
+            @Html.Partial("_Address", Model.VisitingAddress, new ViewDataDictionary() {TemplateInfo = new TemplateInfo() {HtmlFieldPrefix = "VisitingAddress"}})
+        </div>
+        <div class="form-group">
+            @Html.Label("Faktuereringsadress", htmlAttributes: new {@class = "control-label col-md-1", style = "font-size: 20px;"})
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-1">Land</label>
+            @Html.Partial("_CountryDropDownList", Model.InvoiceAddress, new ViewDataDictionary() { TemplateInfo = new TemplateInfo() { HtmlFieldPrefix = "InvoiceAddress" } })
+        </div>
+        <div class="form-group">
+            @Html.HiddenFor(m => Model.InvoiceAddressId)
+            @Html.Partial("_Address", Model.InvoiceAddress, new ViewDataDictionary() {TemplateInfo = new TemplateInfo() {HtmlFieldPrefix = "InvoiceAddress"}})
+        </div>
+        <div class="form-group">
+            @Html.HiddenFor(m => Model.ContactId)
             @Html.Partial("_Contact")
-        <hr />
-            <div class="form-group col-md-10">
-                @Html.ActionLink("Tillbaka", "Index", null, new { @class="btn btn-primary"}) |
-                <input type="submit" value="Spara" class="btn btn-primary" />
-            </div>
         </div>
+        <hr/>
+        <div class="form-group col-md-10">
+            @Html.ActionLink("Tillbaka", "Index", null, new {@class = "btn btn-primary"}) |
+            <input type="submit" value="Spara" class="btn btn-primary"/>
+        </div>
+    </div>
+
 }

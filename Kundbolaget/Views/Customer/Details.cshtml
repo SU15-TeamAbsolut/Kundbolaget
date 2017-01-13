@@ -59,22 +59,26 @@
             @Html.DisplayFor(model => model.OrganizationNumber)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.VisitingAddress.Country)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.VisitingAddress.Country.Name)
-        </dd>
-        <dt>
             @Html.DisplayNameFor(model => model.VisitingAddress)
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.VisitingAddress.Street),
-            @Html.DisplayFor(model => model.VisitingAddress.ZipNumber), 
-            @Html.DisplayFor(model => model.VisitingAddress.City) 
+            @Html.DisplayFor(model => model.VisitingAddress.ZipNumber),
+            @Html.DisplayFor(model => model.VisitingAddress.City),
+            @Html.DisplayFor(model => model.VisitingAddress.Country.Name)
         </dd>
         <dt>
-            @*@Html.Partial("_Contact")*@
+            @Html.DisplayNameFor(model => model.InvoiceAddress)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.InvoiceAddress.Street),
+            @Html.DisplayFor(model => model.InvoiceAddress.ZipNumber),
+            @Html.DisplayFor(model => model.InvoiceAddress.City),
+            @Html.DisplayFor(model => model.InvoiceAddress.Country.Name)
+        </dd>
+        <dt>
             @Html.DisplayNameFor(model => model.Contact.Name)
         </dt>
         <dd>

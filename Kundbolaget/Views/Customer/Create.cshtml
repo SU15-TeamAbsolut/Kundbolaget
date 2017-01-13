@@ -11,8 +11,7 @@
     @Html.AntiForgeryToken()
 
     <div class="form-horizontal">
-        @Html.HiddenFor(m => m.InvoiceAddress)
-        @Html.HiddenFor(m => m.VisitingAddress)
+        
         <h4>Kund</h4>
         <hr/>
         @Html.ValidationSummary(true, "", new {@class = "text-danger"})
@@ -64,26 +63,28 @@
             </div>
         </div>
         @Html.Partial("_Contact")
+        
         <div class="form-group">
             @Html.Label("Besöksadress", htmlAttributes: new {@class = "control-label col-md-1", style = "font-size: 20px;"})
         </div>
-
-        <div class="form-group">
+         <div class="form-group">
             <label class="control-label col-md-1">Land</label>
-            @Html.Partial("_CountryDropDownList", Model.VisitingAddress)
+            @Html.Partial("_CountryDropDownList", new ViewDataDictionary() { TemplateInfo = new TemplateInfo() { HtmlFieldPrefix = "VisitingAddress" } })
         </div>
         <div class="form-group">
-            @Html.Partial("_Address", Model.VisitingAddress)
+            @Html.HiddenFor(m => Model.VisitingAddress.Id)
+            @Html.Partial("_Address", Model.VisitingAddress, new ViewDataDictionary() { TemplateInfo = new TemplateInfo() { HtmlFieldPrefix = "VisitingAddress" }})
         </div>
         <div class="form-group">
             @Html.Label("Faktureringsadress", htmlAttributes: new {@class = "control-label col-md-1", style = "font-size: 20px;"})
         </div>
         <div class="form-group">
             <label class="control-label col-md-1">Land</label>
-            @Html.Partial("_CountryDropDownList", Model.InvoiceAddress)
+            @Html.Partial("_CountryDropDownList", new ViewDataDictionary() { TemplateInfo = new TemplateInfo() { HtmlFieldPrefix = "InvoiceAddress" } })
         </div>
         <div class="form-group">
-            @Html.Partial("_Address", Model.InvoiceAddress)
+            @Html.HiddenFor(m => Model.InvoiceAddress.Id)
+            @Html.Partial("_Address", Model.InvoiceAddress, new ViewDataDictionary() { TemplateInfo = new TemplateInfo() { HtmlFieldPrefix = "InvoiceAddress" } })
         </div>
         <hr/>
         <div class="form-group col-md-10">

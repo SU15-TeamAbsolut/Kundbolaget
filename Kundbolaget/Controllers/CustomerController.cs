@@ -42,7 +42,8 @@ namespace Kundbolaget.Controllers
             }
             Customer customer = _customerRepository.Find((int) id);
             customer.VisitingAddress.Country = _countryRepository.Find(customer.VisitingAddress.CountryId);
-           
+            customer.InvoiceAddress.Country = _countryRepository.Find(customer.InvoiceAddress.CountryId);
+
             return View(customer);
         }
 
@@ -63,22 +64,18 @@ namespace Kundbolaget.Controllers
 
       
         [HttpPost]
-        public ActionResult Create(Customer customer, Address invoiceAddress,Address visistingAddress, Contact contact)
+        public ActionResult Create(Customer customer)
         {
-            
-            customer.VisitingAddress = visistingAddress;
-            customer.InvoiceAddress = invoiceAddress;
-            customer.Contact = contact;
-
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
-                _customerRepository.Create(customer);
-               
-               
-                return RedirectToAction("Index");
+                return View(customer);
             }
 
-            return View(customer);
+            customer.Contact.Address = customer.VisitingAddress;
+            _customerRepository.Create(customer);
+
+            return RedirectToAction("Index");
+         
         }
 
         public ActionResult Edit(int? id)
@@ -97,20 +94,15 @@ namespace Kundbolaget.Controllers
 
        
         [HttpPost]
-        public ActionResult Edit(Customer customer, Address adress, Contact contact)
+        public ActionResult Edit(Customer customer)
         {
-            customer.VisitingAddress = adress;
+            
 
             if (ModelState.IsValid)
             {
-                adress.Id = customer.VisitingAddressId;
-                customer.ContactId = contact.Id;
-                contact.AdressId = customer.VisitingAddressId;
-                _addressRepository.Update(adress);
+                _addressRepository.Update(customer.InvoiceAddress);
+                _addressRepository.Update(customer.VisitingAddress);
                 _customerRepository.Update(customer);
-                _contactRepository.Update(contact);
-               
-                
 
                 return RedirectToAction("Index");
             }

@@ -27,8 +27,8 @@ namespace Kundbolaget.Controllers
 
         public ActionResult CustomerIndex()
         {
-            var customers = _customerRepository.GetAll()
-                .Where(x => x.AlcoholLicense != null && x.AlcoholLicense.IsValid);
+            var customers = _customerRepository.GetAll();
+                
 
             return View(customers);
         }

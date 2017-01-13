@@ -14,8 +14,7 @@
 
 }
 
-<div style="display:inline-block; min-width: 250px; padding-left: 1%">
-    @Html.DropDownListFor(m => m.CountryId, new SelectList(countryModel.Countries, "Id", "Name"), "Välj land", new { @class = "form-control" })
-    @Html.ValidationMessageFor(m => m.CountryId, "", new { @class = "text-danger" })
-    @Html.HiddenFor(m => m.CountryId)
+<div style="display:inline-block; min-width: 250px;">
+    @Html.DropDownListFor(m => Model.CountryId, new SelectList(countryModel.Countries, "Id", "Name"), new { @class = "form-control" })
+    @*@Html.HiddenFor(m => m.CountryId)*@
 </div>

@@ -26,15 +26,15 @@
         <td>
             @Html.DisplayFor(modelItem => item.Name)
         </td>
-        <td style="text-align:center">
+        @*@*<td style="text-align:center">
           @if (item.AlcoholLicense.IsValid) {
               <span class="glyphicon glyphicon-ok" style="color:green" aria-label="Giltig licens"></span>
           }
           else
           {
               <span class="glyphicon glyphicon-remove" style="color:red" aria-label="Ogiltig licens"></span>
-          }
-        </td>
+          }*@
+        @*</td>*@
         <td>@Html.DisplayFor(modelItem => item.CreditLine)</td>
         <td>@Html.DisplayFor(modelItem => item.PaymentTerm) dagar</td>
         <td>@Html.DisplayFor(modelItem => item.AccountingCode)</td>

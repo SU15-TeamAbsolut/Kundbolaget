@@ -299,6 +299,10 @@
     <Compile Include="Migrations\201701121000275_MergeMigrationAgain.Designer.cs">
       <DependentUpon>201701121000275_MergeMigrationAgain.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201701130813512_RemovedRequiredForInvoiceIdAndVisitingId.cs" />
+    <Compile Include="Migrations\201701130813512_RemovedRequiredForInvoiceIdAndVisitingId.Designer.cs">
+      <DependentUpon>201701130813512_RemovedRequiredForInvoiceIdAndVisitingId.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\CustomValidation\CorporateIdentityNumber.cs" />
     <Compile Include="Models\CustomValidation\ValidateOrderedQuantity.cs" />
@@ -464,6 +468,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201701121000275_MergeMigrationAgain.resx">
       <DependentUpon>201701121000275_MergeMigrationAgain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201701130813512_RemovedRequiredForInvoiceIdAndVisitingId.resx">
+      <DependentUpon>201701130813512_RemovedRequiredForInvoiceIdAndVisitingId.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

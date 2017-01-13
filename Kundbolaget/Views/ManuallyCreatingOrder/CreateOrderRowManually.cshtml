@@ -18,10 +18,7 @@
                 @Html.DisplayName("Produktnamn")
             </th>
             <th>
-                @Html.DisplayName("Produktkategori")
-            </th>
-            <th>
-                @Html.DisplayName("Beskrivning")
+                @Html.DisplayName("Kategori")
             </th>
             <th>
                 @Html.DisplayName("Volym(ml)")
@@ -31,6 +28,9 @@
             </th>
             <th>
                 @Html.DisplayName("Alkoholhalt(%)")
+            </th>
+            <th>
+                @Html.DisplayName("Pris/kolli")
             </th>
             <th>
                 @Html.DisplayName("Antal")
@@ -55,10 +55,6 @@
                 <td>
                     @Html.DisplayFor(modelItem => Model.Products[i].ProductCategory.Name)
                 </td>
-
-                <td>
-                    @Html.DisplayFor(modelItem => Model.Products[i].Description)
-                </td>
                 <td>
                     @Html.DisplayFor(modelItem => Model.Products[i].Volume)
                 </td>
@@ -67,6 +63,9 @@
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => Model.Products[i].AlcoholPercentage)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => Model.Products[i].Price)
                 </td>
                 <td>
                     @Html.EditorFor(modelItem => Model.Products[i].QuantiyOrdered, additionalViewData: new
