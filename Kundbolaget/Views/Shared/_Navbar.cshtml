@@ -8,45 +8,72 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="@Url.Content("~/")">Kundbolaget</a>
+      <a class="navbar-brand" href="@Url.Content("~/")">Kundbolaget AB</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav">
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Nisses meny <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li>@Html.ActionLink("Produkter", "Index", "Product")</li>
-            <li>@Html.ActionLink("Leverantörer", "Index", "Supplier")</li>
-            <li>@Html.ActionLink("Licenser", "Index", "AlcoholLicense")</li>
-            <li>@Html.ActionLink("Lagerlokaler", "Index", "Warehouse")</li>
-            <li>@Html.ActionLink("Kunder", "Index", "Customer")</li>
-            <li>@Html.ActionLink("Leveransadresser", "Index", "ShippingAddress")</li>
-          </ul>
-        </li>
+        <ul class="nav navbar-nav">
+            
+            <!-- Product dropdown -->
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Produkter <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li><a href="@Url.Action("Index", "Product")"><span class="glyphicons glyphicon glyphicon-th-list"></span> Produkter</a></li>
+                </ul>
+            </li>
+
+            <!-- Warehouse dropdown -->
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Lagerlokaler <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li><a href="@Url.Action("Index", "Warehouse")"><span class="glyphicons glyphicon glyphicon-home"></span> Lokaler</a></li>
+                </ul>
+            </li>
+            
+            <!-- Customer dropdown -->
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Kunder <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li><a href="@Url.Action("Index", "Customer")"><span class="glyphicons glyphicon glyphicon-user"></span> Kunder</a></li>
+                    <li><a href="@Url.Action("Index", "ShippingAddress")"><span class="glyphicons glyphicon glyphicon-phone-alt"></span> Leveransadresser</a></li>
+                    <li><a href="@Url.Action("Index", "AlcoholLicense")"><span class="glyphicons glyphicon glyphicon-file"></span> Alkohollicenser</a></li>
+                </ul>
+            </li>
+
+            <!-- Supplier dropdown -->
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Leverantörer <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li><a href="@Url.Action("Index", "Supplier")"><span class="glyphicons glyphicon glyphicon glyphicon-globe"></span> Leverantörer</a></li>
+                </ul>
+            </li>
         
-        <!-- Order dropdown -->
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Orderhantering <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a href="@Url.Action("ReceivedOrders", "Order")"><span class="glyphicon glyphicon-earphone"></span> Registrerade</a></li>
-            <li><a href="@Url.Action("UnpickedOrders", "Order")"><span class="glyphicon glyphicon-unchecked"></span> Oplockade</a></li>
-            <li><a href="@Url.Action("PickedOrders", "Order")"><span class="glyphicon glyphicon-check"></span> Plockade</a></li>
-            <li><a href="@Url.Action("CanceledOrders", "Order")"><span class="glyphicon glyphicon-trash"></span> Makulerade</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="@Url.Action("Upload", "OrderValidation")"><span class="glyphicon glyphicon-upload"></span> Ladda upp orderfil</a></li>
-          </ul>
-        </li>
+            <!-- Order dropdown -->
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Orderhantering <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li><a href="@Url.Action("ReceivedOrders", "Order")"><span class="glyphicon glyphicon-earphone"></span> Registrerade</a></li>
+                    <li><a href="@Url.Action("UnpickedOrders", "Order")"><span class="glyphicon glyphicon-unchecked"></span> Ej plockade</a></li>
+                    <li><a href="@Url.Action("PickedOrders", "Order")"><span class="glyphicon glyphicon-check"></span> Leveransklara</a></li>
+                    <li><a href="@Url.Action("ShippedOrders", "Order")"><span class="glyphicon glyphicon glyphicon-plane"></span> Skickade</a></li>
+                    <li><a href="@Url.Action("DeliveredOrders", "Order")"><span class="glyphicon glyphicon glyphicon-ok"></span> Levererade</a></li>
+                    <li role="separator" class="divider"></li>
+                    <li><a href="@Url.Action("CanceledOrders", "Order")"><span class="glyphicon glyphicon-trash"></span> Makulerade</a></li>
+                    <li role="separator" class="divider"></li>
+                    <li><a href="@Url.Action("Upload", "OrderValidation")"><span class="glyphicon glyphicon-upload"></span> Ladda upp orderfil</a></li>
+                </ul>
+            </li>
         
-        <!-- Invoice dropdown -->
-        <li class="dropdown">
-          <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Fakturering <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a href="@Url.Action("Create", "Invoice")">Skapa faktura</a></li>
-          </ul>
-        </li>
-      </ul>
+            <!-- Invoice dropdown -->
+            <li class="dropdown">
+                <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Fakturering <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li><a href="@Url.Action("Create", "Invoice")"><span class="glyphicon glyphicon glyphicon-usd"></span> Skapa faktura</a></li>
+                </ul>
+            </li>
+        </ul>
+
       <form action="@Url.Action("Search", "Product")" method="post" class="navbar-form navbar-right">
         <div class="form-group">
           <input type="text" name="value" class="form-control" placeholder="Sök produkt...">

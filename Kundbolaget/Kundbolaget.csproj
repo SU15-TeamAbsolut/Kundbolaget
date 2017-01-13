@@ -232,6 +232,7 @@
     <Compile Include="Controllers\AlcoholLicenseController.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ManuallyCreatingOrderController.cs" />
     <Compile Include="Controllers\InvoiceController.cs" />
     <Compile Include="Controllers\OrderController.cs" />
     <Compile Include="Controllers\OrderValidationController.cs" />
@@ -304,6 +305,7 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\CustomValidation\CorporateIdentityNumber.cs" />
+    <Compile Include="Models\CustomValidation\ValidateOrderedQuantity.cs" />
     <Compile Include="Models\CustomValidation\ValidateRestOrderDate.cs" />
     <Compile Include="Models\EntityModels\Address.cs" />
     <Compile Include="Models\EntityModels\Contact.cs" />
@@ -322,9 +324,11 @@
     <Compile Include="Models\EntityModels\Supplier.cs" />
     <Compile Include="Models\EntityModels\Warehouse.cs" />
     <Compile Include="Models\JsonModels\JsonReturnFile.cs" />
+    <Compile Include="Models\ViewModels\AddOrderRowViewModel.cs" />
     <Compile Include="Models\ViewModels\CountryViewModel.cs" />
     <Compile Include="Models\JsonModels\JsonCustomerOrder.cs" />
     <Compile Include="Models\JsonModels\JsonOrderRow.cs" />
+    <Compile Include="Models\ViewModels\ManualOrderViewModel.cs" />
     <Compile Include="Models\ViewModels\Invoice\CreateInvoiceViewModel.cs" />
     <Compile Include="Models\ViewModels\Invoice\InvoicableCustomerViewModel.cs" />
     <Compile Include="Models\ViewModels\ProductListItemViewModel.cs" />
@@ -408,6 +412,9 @@
     <Content Include="Views\Order\PickedOrders.cshtml" />
     <Content Include="Views\Order\Index.cshtml" />
     <Content Include="Views\Order\ShippingDoc.cshtml" />
+    <Content Include="Views\ManuallyCreatingOrder\CustomerIndex.cshtml" />
+    <Content Include="Views\ManuallyCreatingOrder\CreateOrder.cshtml" />
+    <Content Include="Views\ManuallyCreatingOrder\CreateOrderRowManually.cshtml" />
     <Content Include="Views\Warehouse\LogIndex.cshtml" />
     <Content Include="Views\Warehouse\CreateLog.cshtml" />
     <Content Include="Views\Warehouse\LogDetails.cshtml" />
@@ -415,6 +422,13 @@
     <Content Include="Views\Order\EditOrderRow.cshtml" />
     <Content Include="Views\Order\ViewOrderRows.cshtml" />
     <Content Include="Views\Invoice\Create_SelectCustomer.cshtml" />
+    <Content Include="Views\Order\AddOrderRow.cshtml" />
+    <Content Include="Views\Order\PickAmount.cshtml" />
+    <Content Include="Views\Order\ShippedOrders.cshtml" />
+    <Content Include="Views\Order\DeliveredOrders.cshtml" />
+    <Content Include="Views\Order\Deviations.cshtml" />
+    <Content Include="Views\Order\EditDeviationOrderRow.cshtml" />
+    <Content Include="Views\Order\ConfirmDelete.cshtml" />
     <Content Include="Views\Invoice\Create.cshtml" />
     <Content Include="Views\Invoice\Save.cshtml" />
     <None Include="Web.Debug.config">

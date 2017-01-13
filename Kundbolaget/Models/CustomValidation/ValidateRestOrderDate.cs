@@ -13,12 +13,9 @@ namespace Kundbolaget.Models.CustomValidation
             {
                 var order = (Order)validationContext.ObjectInstance;
 
-
-                DateTime desiredDeliveryDate = order.DesiredDeliveryDate;
-
                 if (order.DesiredDeliveryDate < order.OrderPlaced)
                 {
-                    return new ValidationResult("En restorders önskade datum måste vara senare än huvudorderns");
+                    return new ValidationResult("Önskat leveransdatum kan inte vara tidigare än orderns mottagna datum");
                 }
 
                 return ValidationResult.Success;

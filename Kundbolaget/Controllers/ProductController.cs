@@ -59,12 +59,16 @@ namespace Kundbolaget.Controllers
 
             if (id == 0)
             {
-                productList = (List<ProductListItemViewModel>) _productRepository.GetAll();
+                productList = _productRepository.GetAll()
+                   .Select(ProductListItemViewModel.FromProduct)
+                   .ToList();
             }
             else
             {
-                productList = (List<ProductListItemViewModel>) _productRepository.GetAll()
-                   .Where(x => x.ProductCategoryId == id);
+                productList = _productRepository.GetAll()
+                   .Where(x => x.ProductCategoryId == id)
+                   .Select(ProductListItemViewModel.FromProduct)
+                   .ToList();
             }
                 
             var viewModel = new ProductCategoryViewModel()
@@ -73,7 +77,10 @@ namespace Kundbolaget.Controllers
                 ProductCategories = _productCategoryRepository.GetAll(),
                 ProductCategory = new ProductCategory()
             };
-
+            foreach (var product in viewModel.Products)
+            {
+                product.CurrentStock = shelfRepository.GetProductStock(product.Id);
+            }
             return View(viewModel);
         }
 

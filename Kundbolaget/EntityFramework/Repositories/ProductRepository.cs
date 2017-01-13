@@ -27,6 +27,7 @@ namespace Kundbolaget.EntityFramework.Repositories
             {
                 return db.Products
                     .Include(p => p.PriceList)
+                    .Include(c => c.ProductCategory)
                     .ToList();
             }
         }
@@ -59,6 +60,24 @@ namespace Kundbolaget.EntityFramework.Repositories
                     VatCode = viewModel.Product.VatCode
                 };
             return newProduct;
+        }
+
+        public int GetQuantityInWarehouse(int productId)
+        {
+            using (var db = new DataContext())
+            {
+                var shelfs = db.ProductsShelves
+                    .Where(x => x.ProductId == productId).ToList();
+
+                var quantity = 0;
+
+                foreach (var n in shelfs)
+                {
+                    quantity += n.CurrentAmount;
+                }
+                return quantity;
+            }
+
         }
     }
 }

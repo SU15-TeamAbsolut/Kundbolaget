@@ -7,9 +7,10 @@
 
 <h2>Ordrar</h2>
 <div>
-    @Html.ActionLink("Mottagna", "ReceivedOrders", null, new { @class = "btn btn-primary" }) |
-    @Html.ActionLink("Registrerade", "UnpickedOrders", null, new { @class = "btn btn-primary" }) |
-    @Html.ActionLink("Färdiga", "PickedOrders", null, new { @class = "btn btn-primary" })
+    @Html.ActionLink("Registrerade", "ReceivedOrders", null, new { @class = "btn btn-primary" }) |
+    @Html.ActionLink("Ej plockade", "UnpickedOrders", null, new { @class = "btn btn-primary" }) |
+    @Html.ActionLink("Plockade", "PickedOrders", null, new { @class = "btn btn-primary" })
+    @Html.ActionLink("Makulerade", "CanceledOrders", null, new { @class = "btn btn-primary" })
 </div>
 <hr/>
 

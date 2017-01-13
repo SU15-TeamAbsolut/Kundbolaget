@@ -8,7 +8,7 @@
 <h2>Orderdetaljer</h2>
 <h4>Orderrader</h4>
 
-<table class="table">
+<table class="table table-striped">
     <tr>
       <th>@Html.DisplayNameFor(item => item.Product.Name)</th>
       <th>@Html.DisplayNameFor(item => item.AmountOrdered)</th>
@@ -44,11 +44,9 @@
       </td>
       <td>@($"{item.DiscountedPrice*item.AmountOrdered:0.00}")</td>
       <td>
-          @Html.ActionLink("Ändra", "EditOrderRow", new { id = item.Id})
+          @Html.ActionLink("Ändra antal", "EditOrderRow", new { id = item.Id})
       </td>
     </tr>
 }
 
 </table>
-
-@Html.ActionLink("Tillbaka", "UnpickedOrders", null, new { @class = "btn btn-primary" })

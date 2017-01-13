@@ -1,0 +1,93 @@
+﻿@model Kundbolaget.Models.ViewModels.ManualOrderViewModel
+
+@{
+    ViewBag.Title = "CreateOrderRowManually";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Artiklar</h2>
+@using (Html.BeginForm("CreateOrderRowManually", null, new {orderId = Model.Order.Id}, FormMethod.Post))
+{
+    <p>
+        <input class="btn btn-primary" type="submit" value="Spara order" />
+    </p>
+    <table class="table">
+        <tr>
+
+            <th>
+                @Html.DisplayName("Produktnamn")
+            </th>
+            <th>
+                @Html.DisplayName("Produktkategori")
+            </th>
+            <th>
+                @Html.DisplayName("Beskrivning")
+            </th>
+            <th>
+                @Html.DisplayName("Volym(ml)")
+            </th>
+            <th>
+                @Html.DisplayName("Antal/Kolli")
+            </th>
+            <th>
+                @Html.DisplayName("Alkoholhalt(%)")
+            </th>
+            <th>
+                @Html.DisplayName("Antal")
+            </th>
+            <th>
+                @Html.DisplayName("Antal i lager")
+            </th>
+            <th></th>
+        </tr>
+
+        @for (int i = 0; i < Model.Products.Count; i++)
+        {
+            <tr>
+
+                @Html.HiddenFor(m => Model.Products[i].Id)
+
+
+                <td>
+                    @Html.DisplayFor(modelItem => Model.Products[i].Name)
+
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => Model.Products[i].ProductCategory.Name)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => Model.Products[i].Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => Model.Products[i].Volume)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => Model.Products[i].PackageAmount)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => Model.Products[i].AlcoholPercentage)
+                </td>
+                <td>
+                    @Html.EditorFor(modelItem => Model.Products[i].QuantiyOrdered, additionalViewData: new
+               {
+                   htmlAttributes = new
+                   {
+
+                       min = 0,
+                       max = Model.Products[i].QuantiyInWarehouse.Value,
+                       @class = "form-control"
+                        }
+                    })
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => Model.Products[i].QuantiyInWarehouse)
+                </td>
+            </tr>
+        }
+
+    </table>
+}
+
+
+
