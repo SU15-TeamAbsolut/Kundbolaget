@@ -413,6 +413,11 @@
     <Content Include="Views\Invoice\Create_SelectCustomer.cshtml" />
     <Content Include="Views\Order\AddOrderRow.cshtml" />
     <Content Include="Views\Order\PickAmount.cshtml" />
+    <Content Include="Views\Order\ShippedOrders.cshtml" />
+    <Content Include="Views\Order\DeliveredOrders.cshtml" />
+    <Content Include="Views\Order\Deviations.cshtml" />
+    <Content Include="Views\Order\EditDeviationOrderRow.cshtml" />
+    <Content Include="Views\Order\ConfirmDelete.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

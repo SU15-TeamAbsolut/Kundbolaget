@@ -58,9 +58,9 @@
                 @Html.DisplayFor(modelItem => item.OrderStatus)
             </td>
             <td>
-                @Html.ActionLink("Radera", "Delete", new { id = item.Id }) |
+                @Html.ActionLink("Radera", "ConfirmDelete", new { id = item.Id }) |
                 @Html.ActionLink("Ändra", "Edit", new {id = item.Id}) |
-                @Html.ActionLink("Visa", "ViewOrderRows", new {id = item.Id}) |
+                @Html.ActionLink("Visa rader", "Details", new {id = item.Id}) |
                 @Html.ActionLink("Godkänn", "ReadyForPicking", new {id = item.Id}, null)
             </td>
         </tr>
