@@ -28,7 +28,8 @@ namespace Kundbolaget.Controllers
         // GET: Invoice
         public ActionResult Index()
         {
-            return View();
+            IList<Invoice> invoices = invoiceRepository.GetAll();
+            return View(invoices);
         }
 
         // GET: Invoice/Create/{id}
