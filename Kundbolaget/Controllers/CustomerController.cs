@@ -42,7 +42,8 @@ namespace Kundbolaget.Controllers
             }
             Customer customer = _customerRepository.Find((int) id);
             customer.VisitingAddress.Country = _countryRepository.Find(customer.VisitingAddress.CountryId);
-           
+            customer.InvoiceAddress.Country = _countryRepository.Find(customer.InvoiceAddress.CountryId);
+
             return View(customer);
         }
 
