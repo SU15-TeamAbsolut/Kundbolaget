@@ -27,7 +27,7 @@ namespace Kundbolaget.Models.EntityModels
         public long OrganizationNumber { get; set; }
 
       
-        public int? InvoiceAddressId { get; set; }
+        public int InvoiceAddressId { get; set; }
         [ForeignKey("InvoiceAddressId")]
         public virtual Address InvoiceAddress { get; set; }
 
