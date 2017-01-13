@@ -1,0 +1,15 @@
+﻿@model Kundbolaget.Models.EntityModels.Order
+
+@{
+    ViewBag.Title = "ConfirmDelete";
+}
+
+<h2>Radera</h2>
+<h4>Order: #@Model.Id</h4>
+<h4>Kund: @Model.Customer.Name</h4>
+<hr/>
+<h4 style="font-weight: bold">Vill du verkligen radera ordern?</h4>
+<div>
+    @Html.ActionLink("Radera","Delete", new {id = Model.Id}, new {@class="btn btn-primary"})
+</div>
+
