@@ -63,10 +63,7 @@
             </div>
         </div>
         @Html.Partial("_Contact")
-        <div class="form-group">
-            <label class="control-label col-md-1">Land</label>
-            @Html.Partial("_CountryDropDownList", new ViewDataDictionary() { TemplateInfo = new TemplateInfo() { HtmlFieldPrefix = "VisitingAddress" } })
-        </div>
+        
         <div class="form-group">
             @Html.Label("Besöksadress", htmlAttributes: new {@class = "control-label col-md-1", style = "font-size: 20px;"})
         </div>
@@ -76,7 +73,7 @@
         </div>
         <div class="form-group">
             @Html.HiddenFor(m => Model.VisitingAddress.Id)
-            @Html.Partial("_Address", new ViewDataDictionary() {TemplateInfo = new TemplateInfo() {HtmlFieldPrefix = "VisitingAddress",}}))
+            @Html.Partial("_Address", Model.VisitingAddress)
         </div>
         <div class="form-group">
             @Html.Label("Faktureringsadress", htmlAttributes: new {@class = "control-label col-md-1", style = "font-size: 20px;"})
@@ -87,7 +84,7 @@
         </div>
         <div class="form-group">
             @Html.HiddenFor(m => Model.InvoiceAddress.Id)
-            @Html.Partial("_Address", new ViewDataDictionary() {TemplateInfo = new TemplateInfo() {HtmlFieldPrefix = "InvoiceAddress"}}))
+            @Html.Partial("_Address", Model.InvoiceAddress)
         </div>
         <hr/>
         <div class="form-group col-md-10">

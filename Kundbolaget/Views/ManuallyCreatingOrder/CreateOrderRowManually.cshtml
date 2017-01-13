@@ -18,9 +18,6 @@
                 @Html.DisplayName("Produktnamn")
             </th>
             <th>
-                @Html.DisplayName("Produktkategori")
-            </th>
-            <th>
                 @Html.DisplayName("Beskrivning")
             </th>
             <th>
@@ -54,10 +51,6 @@
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => Model.Products[i].ProductCategory.Name)
-                </td>
-
-                <td>
-                    @Html.DisplayFor(modelItem => Model.Products[i].Description)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => Model.Products[i].Volume)

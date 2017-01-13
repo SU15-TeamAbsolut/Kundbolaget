@@ -93,20 +93,15 @@ namespace Kundbolaget.Controllers
 
        
         [HttpPost]
-        public ActionResult Edit(Customer customer, Address adress, Contact contact)
+        public ActionResult Edit(Customer customer)
         {
-            customer.VisitingAddress = adress;
+            
 
             if (ModelState.IsValid)
             {
-                adress.Id = customer.VisitingAddressId;
-                customer.ContactId = contact.Id;
-                contact.AdressId = customer.VisitingAddressId;
-                _addressRepository.Update(adress);
+                _addressRepository.Update(customer.InvoiceAddress);
+                _addressRepository.Update(customer.VisitingAddress);
                 _customerRepository.Update(customer);
-                _contactRepository.Update(contact);
-               
-                
 
                 return RedirectToAction("Index");
             }
