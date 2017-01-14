@@ -112,12 +112,14 @@ namespace Kundbolaget.Controllers
             {
                 row.Price = _productRepository.Find(row.ProductId).Price;
             }
-            
-
-            
-            
-
                 return RedirectToAction("ReceivedOrders","Order");
+        }
+
+        public ActionResult Delete(int orderId)
+        {
+            _orderRepository.Delete(orderId);
+
+           return RedirectToAction("CustomerIndex");
         }
 
     }

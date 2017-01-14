@@ -76,5 +76,16 @@ namespace Kundbolaget.EntityFramework.Repositories
                     .ToList();
             }
         }
+
+        public override void Delete(int id)
+        {
+            using (var db = new DataContext())
+            {
+                var order = db.Orders.Find(id);
+                db.Orders.Remove(order);
+                db.SaveChanges();
+            }
+
+        }
     }
 }
