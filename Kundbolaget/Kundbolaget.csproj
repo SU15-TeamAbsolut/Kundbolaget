@@ -436,6 +436,7 @@
     <Content Include="Views\Invoice\Create.cshtml" />
     <Content Include="Views\Invoice\Save.cshtml" />
     <Content Include="Views\Invoice\Index.cshtml" />
+    <Content Include="Views\Invoice\Edit.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

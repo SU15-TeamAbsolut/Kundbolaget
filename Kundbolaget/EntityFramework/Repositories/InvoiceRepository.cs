@@ -37,5 +37,15 @@ namespace Kundbolaget.EntityFramework.Repositories
                 db.SaveChanges();
             }
         }
+
+        public override Invoice Find(int id)
+        {
+            using (var db = new DataContext())
+            {
+                return db.Invoices
+                    .Include(e => e.Customer)
+                    .SingleOrDefault(e => e.Id == id);
+            }
+        }
     }
 }
