@@ -8,13 +8,13 @@
 
 
 <form class="form-horizontal" action="/Product/AddPrice" method="POST">
-  <div class="formgroup">
+  <div class="formgroup" style="width: 200px">
     <label for="Price">Pris</label>
     @Html.EditorFor(model => model.Price, new { htmlAttributes = new { @class = "form-control" } })
     @Html.ValidationMessageFor(model => model.Price, "", new { @class = "text-danger" })
   </div>
 
-  <div class="formgroup">
+  <div class="formgroup"style="width: 200px">
     <label for="StartDate">Startdatum</label>
     @Html.EditorFor(model => model.StartDate, new { htmlAttributes = new { @class = "form-control" } })
     @Html.ValidationMessageFor(model => model.StartDate, "", new { @class = "text-danger", @placeholder = "Startdatum" })
@@ -23,6 +23,7 @@
   <div class="formgroup">
     @Html.HiddenFor(model => model.Id)
     @Html.HiddenFor(model => model.ProductId)
+      <br/>
     <input type="submit" value="Spara" class="btn btn-primary" />
   </div>
 </form>
