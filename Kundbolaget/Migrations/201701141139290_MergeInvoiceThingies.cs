@@ -3,7 +3,7 @@ namespace Kundbolaget.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class AddCustomerToInvoiceModel : DbMigration
+    public partial class MergeInvoiceThingies : DbMigration
     {
         public override void Up()
         {

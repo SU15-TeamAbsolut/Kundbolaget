@@ -7,13 +7,13 @@ namespace Kundbolaget.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class AddCustomerToInvoiceModel : IMigrationMetadata
+    public sealed partial class MergeInvoiceThingies : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(AddCustomerToInvoiceModel));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(MergeInvoiceThingies));
         
         string IMigrationMetadata.Id
         {
-            get { return "201701121637333_AddCustomerToInvoiceModel"; }
+            get { return "201701141139290_MergeInvoiceThingies"; }
         }
         
         string IMigrationMetadata.Source
