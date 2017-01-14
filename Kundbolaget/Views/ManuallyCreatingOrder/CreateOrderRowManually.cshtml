@@ -9,7 +9,11 @@
 @using (Html.BeginForm("CreateOrderRowManually", null, new {orderId = Model.Order.Id}, FormMethod.Post))
 {
     <p>
-        <input class="btn btn-primary" type="submit" value="Spara order" />
+        <input class="btn btn-primary" type="submit" value="Skapa order"/>
+    </p>
+    <br/>
+    <p>
+        @Html.ActionLink("Avbryt", "Delete", new { orderId = Model.Order.Id }, new {@class ="btn btn-warning"})
     </p>
     <table class="table table-striped">
         <tr>
