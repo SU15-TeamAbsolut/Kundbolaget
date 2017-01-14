@@ -177,7 +177,7 @@ namespace Kundbolaget.Controllers
                 model.Discount = 0;
             }
             _orderRowRepository.Update(model);
-            return RedirectToAction("UnpickedOrders");
+            return RedirectToAction("ReceivedOrders");
         }
 
         //For deviation edit
