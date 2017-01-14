@@ -13,7 +13,8 @@
 <table class="table table-striped">
     <tr>
         <th>@Html.DisplayNameFor(model => model.Name)</th>
-        <th style="text-align:center">Licens</th>
+        <th style="text-align: center">Licens</th>
+        <th></th>
         <th>@Html.DisplayNameFor(model => model.CreditLine)</th>
         <th>@Html.DisplayNameFor(model => model.PaymentTerm)</th>
         <th>@Html.DisplayNameFor(model => model.AccountingCode)</th>
@@ -24,26 +25,43 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.Name)
+            @Html.ActionLink(item.Name, "Details", new {id = item.Id})
         </td>
-        @*@*<td style="text-align:center">
-          @if (item.AlcoholLicense.IsValid) {
-              <span class="glyphicon glyphicon-ok" style="color:green" aria-label="Giltig licens"></span>
-          }
-          else
-          {
-              <span class="glyphicon glyphicon-remove" style="color:red" aria-label="Ogiltig licens"></span>
-          }*@
-        @*</td>*@
+
+        <td style="text-align: center">
+            @if (item.AlcoholLicense == null)
+            {
+                <span class="glyphicon glyphicon-remove" style="color: red" aria-label="Licens saknas"></span>
+            }
+            else if (!item.AlcoholLicense.IsValid)
+            {
+                <span class="glyphicon glyphicon-record" style="color: orange" aria-label="Ogiltig licens"></span>
+            }
+            else
+            {
+                <span class="glyphicon glyphicon-ok" style="color: green" aria-label="Giltig licens"></span>
+            }
+
+        </td>
+        <td>
+            @if (item.AlcoholLicense == null)
+                {
+                @Html.ActionLink("License krävs", "Create", "AlcoholLicense", new { id = item.Id }, new { @class = "btn btn-warning" })
+            }
+            else if (!item.AlcoholLicense.IsValid)
+            {
+                @Html.ActionLink("Ogiltig license", "Edit", "AlcoholLicense", new { id = item.AlcoholLicenseId }, new { @class = "btn btn-warning" })
+            }
+            else
+            {
+                @Html.ActionLink("Ändra licens", "Edit", "AlcoholLicense", new { id = item.AlcoholLicenseId }, new { @class = "btn btn-primary" })
+            }
+        </td>
+
         <td>@Html.DisplayFor(modelItem => item.CreditLine)</td>
         <td>@Html.DisplayFor(modelItem => item.PaymentTerm) dagar</td>
         <td>@Html.DisplayFor(modelItem => item.AccountingCode)</td>
         <td>@Html.DisplayFor(modelItem => item.OrganizationNumber)</td>
-        <td>
-            @Html.ActionLink("Redigera", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Visa", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Radera", "Delete", new { id=item.Id })
-        </td>
     </tr>
 }
 

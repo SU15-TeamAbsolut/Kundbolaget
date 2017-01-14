@@ -76,7 +76,7 @@
                 }
                 else if (!item.AlcoholLicense.IsValid)
                 {
-                    @Html.ActionLink("Ogiltig license", "Edit","AlcoholLicense", new { id = item.Id }, new { @class = "btn btn-warning" })
+                    @Html.ActionLink("Ogiltig license", "Edit","AlcoholLicense", new { id = item.AlcoholLicenseId}, new { @class = "btn btn-warning" })
                 }
                 else if (item.ShippingAddresses.Count != 0)
                 {
