@@ -6,7 +6,7 @@
 
 <h2>Alkohollicenser</h2>
 
-<table class="table">
+<table class="table table-striped">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.Name)
@@ -61,7 +61,7 @@
         else
         {
             <td>
-                @Html.ActionLink("Redigera", "Edit", new { id = item.AlcoholLicense.Id })
+                @Html.ActionLink("Redigera", "Edit", new { id = item.Id })
             </td>
         }
     </tr>

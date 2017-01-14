@@ -18,7 +18,7 @@ namespace Kundbolaget.Models.EntityModels
         public int CustomerId { get; set; }
         [ForeignKey("CustomerId")]
         public virtual Customer Customer { get; set; }
-        [DisplayName("Kundreferens.nr")]
+        [DisplayName("Kundreferens nr")]
         public int? CustomerOrderRef { get; set; }
         [Required]
         public int ShippingAddressId { get; set; }

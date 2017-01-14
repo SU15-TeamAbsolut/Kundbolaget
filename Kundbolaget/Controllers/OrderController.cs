@@ -94,6 +94,8 @@ namespace Kundbolaget.Controllers
                 foreach (var row in order.OrderRows)
                 {
                     row.AmountShipped = row.AmountOrdered;
+                    if (row.AmountOrdered >= 20)
+                        row.Discount = 0.08m;
                     _orderRowRepository.Update(row);
                 }
 
@@ -176,8 +178,10 @@ namespace Kundbolaget.Controllers
             {
                 model.Discount = 0;
             }
+            var orders = _orderRepository.GetAll();
+            var order = orders.SingleOrDefault(o => o.Id == model.OrderId);
             _orderRowRepository.Update(model);
-            return RedirectToAction("UnpickedOrders");
+            return RedirectToAction("Details", new {id = order.Id});
         }
 
         //For deviation edit
@@ -191,8 +195,10 @@ namespace Kundbolaget.Controllers
         [HttpPost]
         public ActionResult EditDeviationOrderRow(OrderRow model)
         {
+            var orders = _orderRepository.GetAll();
+            var order = orders.SingleOrDefault(o => o.Id == model.OrderId);
             _orderRowRepository.Update(model);
-            return RedirectToAction("ShippedOrders");
+            return RedirectToAction("Deviations", new { id = order.Id });
         }
 
         public ActionResult AddOrderRow(int? id)

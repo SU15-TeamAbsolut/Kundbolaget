@@ -205,7 +205,7 @@ namespace Kundbolaget.Controllers
 
             priceRepository.Create(item);
 
-            return new RedirectResult($"/Product/{item.ProductId}");
+            return new RedirectResult($"/Product/Details/{item.ProductId}");
         }
     }
 }

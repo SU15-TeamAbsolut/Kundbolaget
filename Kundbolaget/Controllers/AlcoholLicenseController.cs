@@ -57,10 +57,16 @@ namespace Kundbolaget.Controllers
         }
 
         //GET: AlcoholLicense/Edit{id}
-        public ActionResult Edit(int id)
+        public ActionResult Edit(int? id)
         {
-            var model = repository.Find(id);
-            return View(model);
+            if (!id.HasValue)
+            {
+               return RedirectToAction("Index");
+            }
+
+            var license = repository.Find((int) id);
+
+            return View(license);
         }
 
         // POST: AlcoholLicense/Edit/{id}

@@ -98,7 +98,7 @@ namespace Kundbolaget.Controllers
                         AmountOrdered = (int)viewModel.Products[i].QuantiyOrdered,
                         OrderId = newOrder.Id,
                         ProductId = viewModel.Products[i].Id,
-                        Price = _productRepository.Find(viewModel.Products[i].Id).Price * (int)viewModel.Products[i].QuantiyOrdered
+                        Price = _productRepository.Find(viewModel.Products[i].Id).Price
                     });
                     
                 }
@@ -112,12 +112,14 @@ namespace Kundbolaget.Controllers
             {
                 row.Price = _productRepository.Find(row.ProductId).Price;
             }
-            
-
-            
-            
-
                 return RedirectToAction("ReceivedOrders","Order");
+        }
+
+        public ActionResult Delete(int orderId)
+        {
+            _orderRepository.Delete(orderId);
+
+           return RedirectToAction("CustomerIndex");
         }
 
     }
