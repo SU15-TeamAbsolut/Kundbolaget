@@ -441,7 +441,7 @@ namespace Kundbolaget.Migrations
                 },
                 new Product()
                 {
-                    Id = 18, ProductCategoryId = 2, Name = "Cidre Rosé", AlcoholPercentage = 5m,
+                    Id = 18, ProductCategoryId = 2, Name = "Cider Rosé", AlcoholPercentage = 5m,
                     Price = 75, Description = "Nyanserad, fruktig doft med inslag av röda äpplen, kryddor, halm och smultron.", AccountingCode = 00200, VatCode = 01, Volume = 750, PackageAmount = 8
                 },
                 new Product()
