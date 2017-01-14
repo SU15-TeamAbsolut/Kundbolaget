@@ -18,6 +18,8 @@ namespace Kundbolaget.EntityFramework.Repositories
                     .Include(s => s.ShippingAddresses)
                     .Include(c => c.Contact)
                     .Include(l => l.AlcoholLicense)
+                    .Include(e => e.Orders)
+                    .Include(e => e.Orders.Select(o => o.OrderRows))
                     .SingleOrDefault(c => c.Id == id);
             }
         }
@@ -32,6 +34,7 @@ namespace Kundbolaget.EntityFramework.Repositories
                     .Include(c => c.Contact)
                     .Include(c => c.AlcoholLicense)
                     .Include(e => e.Orders)
+                    .Include(e => e.Orders.Select(o => o.OrderRows))
                     .ToList();
 
 

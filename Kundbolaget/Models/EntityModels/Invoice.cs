@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
@@ -13,6 +14,11 @@ namespace Kundbolaget.Models.EntityModels
     {
         public int Id { get; set; }
 
+        [ForeignKey("CustomerId")]
+        public Customer Customer { get; set; }
+        [Required]
+        public int CustomerId { get; set; }
+
         [Required]
         public virtual IList<Order> Orders { get; set; } = new List<Order>();
 
@@ -22,6 +28,8 @@ namespace Kundbolaget.Models.EntityModels
         public virtual Address InvoiceAddress { get; set; }
 
         [Required]
+        [DisplayName("Förfallodatum")]
+        [DisplayFormat(DataFormatString = "{0:d}")]
         public DateTime DueDate { get; set; }
 
         [Required]

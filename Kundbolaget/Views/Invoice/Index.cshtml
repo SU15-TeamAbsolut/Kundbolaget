@@ -1,0 +1,45 @@
+﻿@model IEnumerable<Kundbolaget.Models.EntityModels.Invoice>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+  <tr>
+    <th>Fakturanummer</th>
+    <th>@Html.DisplayNameFor(model => model.Customer.Name)</th>
+    <th>@Html.DisplayNameFor(model => model.InvoiceAddress.Street)</th>
+    <th>@Html.DisplayNameFor(model => model.DueDate)</th>
+    <th>@Html.DisplayNameFor(model => model.InvoiceStatus)</th>
+    <th></th>
+  </tr>
+
+@foreach (var item in Model) {
+  <tr>
+    <td>@item.Id</td>
+    <td>
+      @Html.DisplayFor(modelItem => item.Customer.Name)
+    </td>
+    <td>
+      @Html.DisplayFor(modelItem => item.InvoiceAddress.Street)
+    </td>
+    <td>
+      @Html.DisplayFor(modelItem => item.DueDate)
+    </td>
+    <td>
+      @Html.DisplayFor(modelItem => item.InvoiceStatus)
+    </td>
+    <td>
+      @Html.ActionLink("Edit", "Edit", new {id = item.Id}) |
+      @Html.ActionLink("Details", "Details", new {id = item.Id}) |
+      @Html.ActionLink("Delete", "Delete", new {id = item.Id})
+    </td>
+  </tr>
+}
+
+</table>

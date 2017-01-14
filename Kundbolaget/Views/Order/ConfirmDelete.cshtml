@@ -9,8 +9,9 @@
 <hr/>
 <h4>Order: @Model.Id</h4>
 <h4>Kund: @Model.Customer.Name</h4>
-<br/>
+<hr/>
+<h4 style="font-weight: bold">Vill du verkligen makulera ordern?</h4>
 <div>
-    @Html.ActionLink("Radera","Delete", new {id = Model.Id}, new {@class="btn btn-primary"})
+    @Html.ActionLink("Makulera","Delete", new {id = Model.Id}, new {@class="btn btn-primary"})
 </div>
 

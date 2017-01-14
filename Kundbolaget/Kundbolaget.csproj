@@ -299,6 +299,10 @@
     <Compile Include="Migrations\201701121000275_MergeMigrationAgain.Designer.cs">
       <DependentUpon>201701121000275_MergeMigrationAgain.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201701121637333_AddCustomerToInvoiceModel.cs" />
+    <Compile Include="Migrations\201701121637333_AddCustomerToInvoiceModel.Designer.cs">
+      <DependentUpon>201701121637333_AddCustomerToInvoiceModel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\201701130813512_RemovedRequiredForInvoiceIdAndVisitingId.cs" />
     <Compile Include="Migrations\201701130813512_RemovedRequiredForInvoiceIdAndVisitingId.Designer.cs">
       <DependentUpon>201701130813512_RemovedRequiredForInvoiceIdAndVisitingId.cs</DependentUpon>
@@ -329,6 +333,7 @@
     <Compile Include="Models\JsonModels\JsonCustomerOrder.cs" />
     <Compile Include="Models\JsonModels\JsonOrderRow.cs" />
     <Compile Include="Models\ViewModels\ManualOrderViewModel.cs" />
+    <Compile Include="Models\ViewModels\Invoice\CreateInvoiceViewModel.cs" />
     <Compile Include="Models\ViewModels\Invoice\InvoicableCustomerViewModel.cs" />
     <Compile Include="Models\ViewModels\ProductListItemViewModel.cs" />
     <Compile Include="Models\ViewModels\ShelfWithProducts.cs" />
@@ -428,6 +433,9 @@
     <Content Include="Views\Order\Deviations.cshtml" />
     <Content Include="Views\Order\EditDeviationOrderRow.cshtml" />
     <Content Include="Views\Order\ConfirmDelete.cshtml" />
+    <Content Include="Views\Invoice\Create.cshtml" />
+    <Content Include="Views\Invoice\Save.cshtml" />
+    <Content Include="Views\Invoice\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -468,6 +476,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201701121000275_MergeMigrationAgain.resx">
       <DependentUpon>201701121000275_MergeMigrationAgain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201701121637333_AddCustomerToInvoiceModel.resx">
+      <DependentUpon>201701121637333_AddCustomerToInvoiceModel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201701130813512_RemovedRequiredForInvoiceIdAndVisitingId.resx">
       <DependentUpon>201701130813512_RemovedRequiredForInvoiceIdAndVisitingId.cs</DependentUpon>

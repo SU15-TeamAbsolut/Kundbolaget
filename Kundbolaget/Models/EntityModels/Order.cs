@@ -44,6 +44,10 @@ namespace Kundbolaget.Models.EntityModels
 
         public virtual IList<OrderRow> OrderRows { get; set; } = new List<OrderRow>();
 
+        /// <summary>
+        /// Total cost for the entire order, including discounts
+        /// </summary>
+        [DisplayFormat(DataFormatString = "{0:C}")]
         public decimal Total => GetOrderTotal();
 
         private decimal GetOrderTotal()
