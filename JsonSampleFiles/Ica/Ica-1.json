@@ -1,7 +1,8 @@
 {
-  "CustomerId":10002,
-  "DeliveryDate":"2018-03-18T22:31:21.7282317+01:00",
-  "DeliveryAddressId":28,
+  "CustomerId":10000,
+  "CustomerOrderRef":950521910,
+  "DeliveryDate":"2017-01-20",
+  "DeliveryAddressId":2,
   "OrderRows":[
     {
       "ArticleId":10004,

@@ -1,0 +1,20 @@
+{
+  "CustomerId":10000,
+  "CustomerOrderRef":418962964,
+  "DeliveryDate":"2017-01-31",
+  "DeliveryAddressId":1,
+  "OrderRows":[
+    {
+      "ArticleId":10001,
+      "Amount":54
+    },
+    {
+      "ArticleId":10023,
+      "Amount":19
+    },
+    {
+      "ArticleId":10030,
+      "Amount":28
+    }
+  ]
+}
