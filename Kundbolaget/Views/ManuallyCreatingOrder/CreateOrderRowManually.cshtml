@@ -13,8 +13,13 @@
     </p>
     <br/>
     <p>
-        @Html.ActionLink("Avbryt", "Delete", new { orderId = Model.Order.Id }, new {@class ="btn btn-warning"})
+        @Html.ActionLink("Avbryt", "Delete", new {orderId = Model.Order.Id}, new {@class = "btn btn-warning"})
     </p>
+
+    <div>
+        @Html.ValidationMessage("QuantiyOrdered")
+    </div>
+
     <table class="table table-striped">
         <tr>
 

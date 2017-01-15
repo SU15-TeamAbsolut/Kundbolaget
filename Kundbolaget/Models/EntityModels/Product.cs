@@ -5,6 +5,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using Kundbolaget.Models.CustomValidation;
+using Kundbolaget.Models.ViewModels;
 
 namespace Kundbolaget.Models.EntityModels
 {
@@ -57,7 +58,7 @@ namespace Kundbolaget.Models.EntityModels
         public int? QuantiyInWarehouse { get; set; }
 
         [NotMapped]
-        public int? QuantiyOrdered { get; set; }
+        public int QuantiyOrdered { get; set; } = 0;
 
         private decimal GetPrice()
         {
@@ -82,5 +83,7 @@ namespace Kundbolaget.Models.EntityModels
                 StartDate = DateTime.Now
             });
         }
+
+        
     }
 }

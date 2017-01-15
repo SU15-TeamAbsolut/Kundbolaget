@@ -77,7 +77,6 @@ namespace Kundbolaget.Controllers
             foreach (var product in viewModel.Products)
             {
                 product.QuantiyInWarehouse = _productRepository.GetQuantityInWarehouse(product.Id);
-                product.QuantiyOrdered = null;
             }
 
             return View(viewModel);
@@ -86,33 +85,53 @@ namespace Kundbolaget.Controllers
         [HttpPost]
         public ActionResult CreateOrderRowManually(ManualOrderViewModel viewModel, int orderId)
         {
-
-            var newOrder = _orderRepository.Find(orderId);
-
-            for (int i = 0; i < viewModel.Products.Count; i++)
+            
+                // Order is not empty, create new order
+            if (viewModel.ValidateOrder(viewModel))
             {
-                if (viewModel.Products[i].QuantiyOrdered != 0 && viewModel.Products[i].QuantiyOrdered != null)
+                var newOrder = _orderRepository.Find(orderId);
+
+                for (int i = 0; i < viewModel.Products.Count; i++)
                 {
-                    newOrder.OrderRows.Add(new OrderRow()
+                    if (viewModel.Products[i].QuantiyOrdered != 0 && viewModel.Products[i].QuantiyOrdered != null)
                     {
-                        AmountOrdered = (int)viewModel.Products[i].QuantiyOrdered,
-                        OrderId = newOrder.Id,
-                        ProductId = viewModel.Products[i].Id,
-                        Price = _productRepository.Find(viewModel.Products[i].Id).Price
-                    });
-                    
+                        newOrder.OrderRows.Add(new OrderRow()
+                        {
+                            AmountOrdered = (int)viewModel.Products[i].QuantiyOrdered,
+                            OrderId = newOrder.Id,
+                            ProductId = viewModel.Products[i].Id,
+                            Price = _productRepository.Find(viewModel.Products[i].Id).Price
+                        });
+
+                    }
+
                 }
+                foreach (var row in newOrder.OrderRows)
+                {
+                    _orderRowRepository.Create(row);
+                }
+                foreach (var row in newOrder.OrderRows)
+                {
+                    row.Price = _productRepository.Find(row.ProductId).Price;
+                }
+                return RedirectToAction("ReceivedOrders", "Order");
 
             }
-            foreach (var row in newOrder.OrderRows)
+            // Order is empty
+            else
             {
-                _orderRowRepository.Create(row);
+                viewModel.Order = _orderRepository.Find(orderId);
+                viewModel.Products = _productRepository.GetAll();
+
+                foreach (var product in viewModel.Products)
+                {
+                    product.QuantiyInWarehouse = _productRepository.GetQuantityInWarehouse(product.Id);
+                }
+                ModelState.AddModelError("QuantiyOrdered", "Ordern är tom");
+                return View(viewModel);
             }
-            foreach(var row in newOrder.OrderRows)
-            {
-                row.Price = _productRepository.Find(row.ProductId).Price;
-            }
-                return RedirectToAction("ReceivedOrders","Order");
+
+           
         }
 
         public ActionResult Delete(int orderId)
