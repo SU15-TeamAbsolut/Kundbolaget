@@ -48,11 +48,19 @@ namespace Kundbolaget.Models.EntityModels
         /// Total cost for the entire order, including discounts
         /// </summary>
         [DisplayFormat(DataFormatString = "{0:C}")]
-        public decimal Total => GetOrderTotal();
+        public decimal TotalOrdered => GetTotalOrdered();
 
-        private decimal GetOrderTotal()
+        [DisplayFormat(DataFormatString = "{0:C}")]
+        public decimal TotalDelivered => GetTotalDelivered();
+
+        private decimal GetTotalDelivered()
         {
-            return OrderRows.Sum(r => r.DiscountedPrice * r.AmountOrdered);
+            return OrderRows.Sum(r => r.TotalShippedPrice);
+        }
+
+        private decimal GetTotalOrdered()
+        {
+            return OrderRows.Sum(r => r.TotalOrderedPrice);
         }
     }
 

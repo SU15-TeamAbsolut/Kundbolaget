@@ -22,24 +22,31 @@ namespace Kundbolaget.EntityFramework.Repositories
             }
         }
 
-        public override void Create(Invoice item)
+        public override void Create(Invoice invoice)
         {
             using (var db = new DataContext())
             {
-                item.Customer = null;
+                // TODO: Workaround for lack of invoice address
+                if (invoice.Customer.InvoiceAddressId == 0)
+                {
+                    invoice.InvoiceAdressId = invoice.Customer.VisitingAddressId;
+                }
 
-                IEnumerable<int> orderIds = item.Orders.Select(o => o.Id);
-                item.Orders = new List<Order>();
+                // Remove customer from object or it'll get duplicated because reasons
+                invoice.Customer = null;
+
+                IEnumerable<int> orderIds = invoice.Orders.Select(o => o.Id);
+                invoice.Orders = new List<Order>();
                 foreach (int id in orderIds)
                 {
-                    var order = db.Orders.Find(id);
+                    Order order = db.Orders.Find(id);
 
                     // Set orders to invoiced
                     order.OrderStatus = OrderStatus.Invoiced;
-                    item.Orders.Add(order);
+                    invoice.Orders.Add(order);
                 }
 
-                db.Invoices.Add(item);
+                db.Invoices.Add(invoice);
                 db.SaveChanges();
             }
         }
@@ -50,8 +57,12 @@ namespace Kundbolaget.EntityFramework.Repositories
             {
                 return db.Invoices
                     .Include(e => e.Customer)
+                    .Include(e => e.InvoiceAddress)
+                    .Include(e => e.Orders)
+                    .Include(e => e.Orders.Select(o => o.OrderRows))
                     .SingleOrDefault(e => e.Id == id);
             }
         }
+
     }
 }
