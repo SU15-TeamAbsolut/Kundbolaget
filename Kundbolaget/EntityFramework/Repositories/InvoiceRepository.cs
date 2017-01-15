@@ -26,16 +26,25 @@ namespace Kundbolaget.EntityFramework.Repositories
             {
                 item.Customer = null;
 
-                foreach (var order in item.Orders)
+                IEnumerable<int> orderIds = item.Orders.Select(o => o.Id);
+                item.Orders = new List<Order>();
+                foreach (int id in orderIds)
                 {
-                    order.OrderStatus = OrderStatus.Invoiced;
-
-                    db.Orders.Attach(order);
-                    db.Entry(order).State = EntityState.Modified;
+                    item.Orders.Add(db.Orders.Find(id));
                 }
 
                 db.Invoices.Add(item);
                 db.SaveChanges();
+            }
+        }
+
+        public override Invoice Find(int id)
+        {
+            using (var db = new DataContext())
+            {
+                return db.Invoices
+                    .Include(e => e.Customer)
+                    .SingleOrDefault(e => e.Id == id);
             }
         }
     }
