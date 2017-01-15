@@ -6,15 +6,30 @@
 }
 
 <h2>Artiklar</h2>
-@using (Html.BeginForm("CreateOrderRowManually", null, new {orderId = Model.Order.Id}, FormMethod.Post))
+@using (Html.BeginForm("CreateOrderRowManually", null, new { orderId = Model.Order.Id }, FormMethod.Post))
 {
+
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
     <p>
         <input class="btn btn-primary" type="submit" value="Skapa order"/>
     </p>
     <br/>
     <p>
-        @Html.ActionLink("Avbryt", "Delete", new { orderId = Model.Order.Id }, new {@class ="btn btn-warning"})
+        @Html.ActionLink("Avbryt", "Delete", new {orderId = Model.Order.Id}, new {@class = "btn btn-warning"})
     </p>
+    <br/>
+
+
+    if (IsPost)
+    {
+        if (!Model.ValidateOrder(Model))
+        {
+            <div class="alert alert-danger"><span class="glyphicon glyphicon-warning-sign"></span>@Html.ValidationMessage("QuantiyOrdered")</div>
+        }
+
+    }
+
     <table class="table table-striped">
         <tr>
 
@@ -54,6 +69,7 @@
 
                 <td>
                     @Html.DisplayFor(modelItem => Model.Products[i].Name)
+                    @Html.HiddenFor(modelItem => Model.Products[i].Name)
 
                 </td>
                 <td>
@@ -72,19 +88,12 @@
                     @Html.DisplayFor(modelItem => Model.Products[i].Price)
                 </td>
                 <td>
-                    @Html.EditorFor(modelItem => Model.Products[i].QuantiyOrdered, additionalViewData: new
-               {
-                   htmlAttributes = new
-                   {
-
-                       min = 0,
-                       max = Model.Products[i].QuantiyInWarehouse.Value,
-                       @class = "form-control"
-                        }
-                    })
+               @Html.EditorFor(m => Model.Products[i].QuantiyOrdered, new {@class = "form-control"})
+               @Html.ValidationMessageFor(model => Model.Products[i].QuantiyOrdered, "", new { @class = "text-danger" })
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => Model.Products[i].QuantiyInWarehouse)
+                    @Html.HiddenFor(modelItem => Model.Products[i].QuantiyInWarehouse)
                 </td>
             </tr>
         }
