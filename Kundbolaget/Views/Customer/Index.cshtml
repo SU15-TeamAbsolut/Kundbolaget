@@ -13,8 +13,7 @@
 <table class="table table-striped">
     <tr>
         <th>@Html.DisplayNameFor(model => model.Name)</th>
-        <th style="text-align: center">Licens</th>
-        <th></th>
+        <th style="text-align: center">Alkohollicens</th>
         <th>@Html.DisplayNameFor(model => model.CreditLine)</th>
         <th>@Html.DisplayNameFor(model => model.PaymentTerm)</th>
         <th>@Html.DisplayNameFor(model => model.AccountingCode)</th>
@@ -42,19 +41,17 @@
                 <span class="glyphicon glyphicon-ok" style="color: green" aria-label="Giltig licens"></span>
             }
 
-        </td>
-        <td>
             @if (item.AlcoholLicense == null)
                 {
-                @Html.ActionLink("Licens krävs", "Create", "AlcoholLicense", new { id = item.Id }, new { @class = "btn btn-sm btn-danger" })
+                @Html.ActionLink("Skapa", "Create", "AlcoholLicense", new { id = item.Id }, new { @class = "btn btn-sm btn-danger" })
             }
             else if (!item.AlcoholLicense.IsValid)
             {
-                @Html.ActionLink("Ogiltig licens", "Edit", "AlcoholLicense", new { id = item.AlcoholLicenseId }, new { @class = "btn btn-sm btn-warning" })
+                @Html.ActionLink("Ogiltig", "Edit", "AlcoholLicense", new { id = item.AlcoholLicenseId }, new { @class = "btn btn-sm btn-warning" })
             }
             else
             {
-                @Html.ActionLink("Ändra licens", "Edit", "AlcoholLicense", new { id = item.AlcoholLicenseId }, new { @class = "btn btn-sm btn-default" })
+                @Html.ActionLink("Ändra", "Edit", "AlcoholLicense", new { id = item.AlcoholLicenseId }, new { @class = "btn btn-sm btn-default" })
             }
         </td>
 
