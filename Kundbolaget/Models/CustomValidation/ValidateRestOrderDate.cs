@@ -13,7 +13,7 @@ namespace Kundbolaget.Models.CustomValidation
             {
                 var order = (Order)validationContext.ObjectInstance;
 
-                if (order.DesiredDeliveryDate < order.OrderPlaced)
+                if (order.DesiredDeliveryDate.Date < order.OrderPlaced.Date)
                 {
                     return new ValidationResult("Önskat leveransdatum kan inte vara tidigare än orderns mottagna datum");
                 }
