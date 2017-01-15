@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Routing;
 using Kundbolaget.EntityFramework.Repositories;
 using Kundbolaget.Enums;
 using Kundbolaget.Models.EntityModels;
@@ -69,6 +70,11 @@ namespace Kundbolaget.Controllers
         [HttpPost]
         public ActionResult Save(FormCollection form)
         {
+            if (form["SelectedOrders"] == null)
+            {
+                return RedirectToAction("Create", "Invoice", new RouteValueDictionary(new { id = form["Customer.Id"] }));
+            }
+
             int customerId = int.Parse(form["Customer.Id"]);
             var customer = customerRepository.Find(customerId);
             var date = form["DueDate"];

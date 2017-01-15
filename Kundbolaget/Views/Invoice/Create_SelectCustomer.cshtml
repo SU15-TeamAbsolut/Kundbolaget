@@ -8,7 +8,7 @@
 
 <div class="alert alert-info">Följande kunder har ofakturerade ordrar.</div>
 
-<table class="table table-striped">
+<table class="table table-condensedx table-striped">
   <tr>
     <th>Kundnummer</th>
     <th>Kund</th>
@@ -28,11 +28,11 @@
     <td>
   @if (row.InvoicableOrders.Any())
   {
-      <a href="@Url.Action("Create", "Invoice", new {id = row.Customer.Id})" class="btn btn-primary">Fakturera</a>
+      <a href="@Url.Action("Create", "Invoice", new {id = row.Customer.Id})" class="btn btn-xs btn-primary">Fakturera</a>
   }
   else
   {
-      <button disabled href="@Url.Action("Create", "Invoice", new {id = row.Customer.Id})" class="btn btn-default">Fakturera</button>
+      <button disabled href="@Url.Action("Create", "Invoice", new {id = row.Customer.Id})" class="btn btn-xs btn-default">Fakturera</button>
 
   }
     </td>

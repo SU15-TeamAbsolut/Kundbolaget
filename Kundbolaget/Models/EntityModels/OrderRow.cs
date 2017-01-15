@@ -20,15 +20,26 @@ namespace Kundbolaget.Models.EntityModels
         [ForeignKey("ProductId")]
         public virtual Product Product { get; set; }
         [DisplayName("Pris")]
+        [DisplayFormat(DataFormatString = "{0:C}")]
         public decimal Price {get; set;}
         [DisplayName("Rabatt")]
         public decimal Discount { get; set; }
         [DisplayName("Rabattpris")]
+        [DisplayFormat(DataFormatString = "{0:C}")]
         public decimal DiscountedPrice => Price*(1 - Discount);
-        [DisplayName("Antal/Kolli")]
+        [DisplayName("Antal beställt")]
         public int AmountOrdered { get; set; }
         [DisplayName("Antal skickat")]
         public int? AmountShipped { get; set; }
+
+        [DisplayName("Totalpris beställt")]
+        [DisplayFormat(DataFormatString = "{0:C}")]
+        public decimal TotalOrderedPrice => GetTotalOrderedPrice();
+
+        private decimal GetTotalOrderedPrice()
+        {
+            return DiscountedPrice * AmountOrdered;
+        }
 
         // Used for order rows when fulfilling an order
         [NotMapped]
