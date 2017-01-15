@@ -47,12 +47,12 @@ namespace Kundbolaget.Migrations
         {
             ProductPrice[] prices =
             {
-                new ProductPrice { Id = 1, ProductId = 10000, Price = 18, StartDate = DateTime.Now.AddDays(-90) },
-                new ProductPrice { Id = 2, ProductId = 10000, Price = 29, StartDate = DateTime.Now.AddDays(-60) },
-                new ProductPrice { Id = 3, ProductId = 10000, Price = 27, StartDate = DateTime.Now.AddDays(-30) },
-                new ProductPrice { Id = 4, ProductId = 10000, Price = 35, StartDate = DateTime.Now.AddDays(-7) },
-                new ProductPrice { Id = 5, ProductId = 10000, Price = 9, StartDate = DateTime.Now.AddDays(7) },
-                new ProductPrice { Id = 6, ProductId = 10000, Price = 22, StartDate = DateTime.Now.AddDays(30) },
+                new ProductPrice { Id = 1, ProductId = 10000, Price = 180, StartDate = DateTime.Now.AddDays(-90) },
+                new ProductPrice { Id = 2, ProductId = 10000, Price = 290, StartDate = DateTime.Now.AddDays(-60) },
+                new ProductPrice { Id = 3, ProductId = 10000, Price = 270, StartDate = DateTime.Now.AddDays(-30) },
+                new ProductPrice { Id = 4, ProductId = 10000, Price = 350, StartDate = DateTime.Now.AddDays(-7) },
+                new ProductPrice { Id = 5, ProductId = 10000, Price = 90, StartDate = DateTime.Now.AddDays(7) },
+                new ProductPrice { Id = 6, ProductId = 10000, Price = 220, StartDate = DateTime.Now.AddDays(30) },
             };
 
             context.ProductPrices.AddOrUpdate(prices);
