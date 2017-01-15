@@ -25,7 +25,7 @@
     <td>@row.InvoicableOrders.Count()</td>
     <td>@Html.DisplayFor(m => row.Customer.CreditLine)</td>
     <td>@Html.DisplayFor(m => row.OrderTotal)</td>
-    <td><a @(row.InvoicableOrders.Any() ? "" : "disabled")  href="@Url.Action("Create", "Invoice", new {id = row.Customer.Id})" class="btn btn-primary">Fakturera</a></td>
+    <td><button @(row.InvoicableOrders.Any() ? "" : "disabled")  href="@Url.Action("Create", "Invoice", new {id = row.Customer.Id})" class="btn btn-primary">Fakturera</button></td>
   </tr>
 }
 </table>
