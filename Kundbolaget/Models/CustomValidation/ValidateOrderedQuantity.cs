@@ -18,7 +18,7 @@ namespace Kundbolaget.Models.CustomValidation
             {
                 return new ValidationResult("Beställt antal överstig antalet i lagret");
             }
-            if (product.QuantiyOrdered.Value < 0)
+            if (product.QuantiyOrdered < 0)
             {
                 return new ValidationResult("Beställt antal måste överstiga noll");
             }
