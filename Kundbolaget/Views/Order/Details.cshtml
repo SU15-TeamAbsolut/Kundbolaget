@@ -1,5 +1,4 @@
-﻿@using System.Web.UI.WebControls.Expressions
-@model IEnumerable<Kundbolaget.Models.EntityModels.OrderRow>
+﻿@model Kundbolaget.Models.EntityModels.Order
 
 @{
     ViewBag.Title = "Details";
@@ -8,18 +7,18 @@
 <h2>Orderdetaljer</h2>
 <h4>Orderrader</h4>
 
-<table class="table table-striped">
+<table class="table table-condensed table-striped">
     <tr>
-      <th>@Html.DisplayNameFor(item => item.Product.Name)</th>
+      <th>Namn</th>
       <th>Beställt</th>
       <th>À-pris</th>
-      <th>@Html.DisplayNameFor(item => item.Discount)</th>
-      <th>@Html.DisplayNameFor(item => item.DiscountedPrice)</th>
+      <th>Rabatt</th>
+      <th>Rabatterat pris</th>
       <th>Totalt pris</th>
       <th></th>
     </tr>
 
-@foreach (var item in Model) {
+@foreach (var item in Model.OrderRows) {
     <tr>
       <td>@Html.DisplayFor(modelItem => item.Product.Name)</td>
       <td>@Html.DisplayFor(modelItem => item.AmountOrdered)</td>
@@ -48,5 +47,9 @@
       </td>
     </tr>
 }
+    <tr>
+      <td colspan="5" style="text-align: right"><strong>Summa order:</strong></td>
+      <td colspan="2"><strong>@Html.DisplayFor(m => m.Total)</strong></td>
+    </tr>
 
 </table>

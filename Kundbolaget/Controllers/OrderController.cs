@@ -118,8 +118,8 @@ namespace Kundbolaget.Controllers
         
         public ActionResult Details(int id)
         {
-            var orderRows = _orderRowRepository.GetAll(id);
-            foreach (var row in orderRows)
+            var order = _orderRepository.Find(id);
+            foreach (var row in order.OrderRows)
             {
                 if (row.AmountOrdered >= 20)
                 {
@@ -130,7 +130,7 @@ namespace Kundbolaget.Controllers
                     row.Discount = 0;
                 }
             }
-            return View(orderRows);
+            return View(order);
         }
         public ActionResult ViewOrderRows(int id)
         {
