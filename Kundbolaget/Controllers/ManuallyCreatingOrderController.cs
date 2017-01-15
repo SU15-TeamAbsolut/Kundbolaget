@@ -85,26 +85,32 @@ namespace Kundbolaget.Controllers
         [HttpPost]
         public ActionResult CreateOrderRowManually(ManualOrderViewModel viewModel, int orderId)
         {
+
+            if (!ModelState.IsValid)
+            {
+                viewModel.Order = _orderRepository.Find(orderId);
+
+                return View(viewModel);
+            }
             
                 // Order is not empty, create new order
             if (viewModel.ValidateOrder(viewModel))
             {
                 var newOrder = _orderRepository.Find(orderId);
 
-                for (int i = 0; i < viewModel.Products.Count; i++)
+                foreach (Product product in viewModel.Products)
                 {
-                    if (viewModel.Products[i].QuantiyOrdered != 0 && viewModel.Products[i].QuantiyOrdered != null)
+                    if (product.QuantiyOrdered != 0 && product.QuantiyOrdered != null)
                     {
                         newOrder.OrderRows.Add(new OrderRow()
                         {
-                            AmountOrdered = (int)viewModel.Products[i].QuantiyOrdered,
+                            AmountOrdered = (int)product.QuantiyOrdered,
                             OrderId = newOrder.Id,
-                            ProductId = viewModel.Products[i].Id,
-                            Price = _productRepository.Find(viewModel.Products[i].Id).Price
+                            ProductId = product.Id,
+                            Price = _productRepository.Find(product.Id).Price
                         });
 
                     }
-
                 }
                 foreach (var row in newOrder.OrderRows)
                 {
