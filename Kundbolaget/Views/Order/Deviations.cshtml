@@ -37,10 +37,19 @@
         <td>
             @Html.DisplayFor(modelItem => item.AmountShipped)
         </td>
+        @if (@item.AmountOrdered > 0)
+        {
+            <td>
+                @Html.ActionLink("Ändra antal mottagna", "EditDeviationOrderRow", new { id = item.Id })
+            </td>
+        }
+        else
+        {
+            <td>
+                
+            </td>
+        }
         
-        <td>
-            @Html.ActionLink("Ändra antal mottagna", "EditDeviationOrderRow", new { id=item.Id })
-        </td>
     </tr>
 }
 
