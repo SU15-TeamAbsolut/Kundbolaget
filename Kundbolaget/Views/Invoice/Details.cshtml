@@ -6,7 +6,11 @@
 
 <h2>Fakturadetaljer</h2>
 
-<p>Fakturerat till @Model.Customer.Name, @Model.InvoiceAddress</p>
+<ul>
+  <li>@Model.Customer.Name</li>
+  <li>@Model.InvoiceAddress</li>
+  <li>Förfallodatum: @Html.DisplayFor(m => m.DueDate)</li>
+</ul>
 
 <table class="table">
   <tr>
