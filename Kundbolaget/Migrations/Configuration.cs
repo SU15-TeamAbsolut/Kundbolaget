@@ -227,7 +227,8 @@ namespace Kundbolaget.Migrations
                     Id = 1, Name = "Ica", OrganizationNumber = 5560210261,
                     CreditLine = 150000, PaymentTerm = 30,
                     InvoiceAddressId = 9, VisitingAddressId = 6,
-                    AlcoholLicenseId = 1, ShippingAddresses = new List<Address>()
+                    AlcoholLicenseId = 1,ContactId = 8,
+                    ShippingAddresses = new List<Address>()
                     {
                         new Address
                         {
@@ -260,7 +261,8 @@ namespace Kundbolaget.Migrations
                     Id = 2, Name = "Coop", OrganizationNumber = 5567105480,
                     CreditLine = 250000, PaymentTerm = 90,
                     InvoiceAddressId = 10, VisitingAddressId = 7,
-                    AlcoholLicenseId = 2,ShippingAddresses = new List<Address>()
+                    AlcoholLicenseId = 2,ContactId = 7,
+                    ShippingAddresses = new List<Address>()
                     {
                         new Address
                         {
@@ -294,7 +296,8 @@ namespace Kundbolaget.Migrations
                     Id= 3, Name = "Systembolaget", OrganizationNumber = 5560599473,
                     CreditLine = 50000, PaymentTerm = 30,
                     InvoiceAddressId = 11, VisitingAddressId = 8,
-                    AlcoholLicenseId = 3, ShippingAddresses = new List<Address>()
+                    AlcoholLicenseId = 3,ContactId = 6,
+                    ShippingAddresses = new List<Address>()
                     {
                         new Address
                         {
@@ -358,182 +361,182 @@ namespace Kundbolaget.Migrations
                 new Product()
                 {
                     Id = 1, ProductCategoryId = 1, Name = "117 Grythyttan", AlcoholPercentage = 5.8m,
-                    Price = 15, Description = "Humlearomatisk smak med tydlig beska, inslag av aprikos, blodgrapefrukt, gräddkola, örter och knäckebröd.", AccountingCode = 00100, VatCode = 02, Volume = 330, PackageAmount = 20
+                    Price = 300, Description = "Humlearomatisk smak med tydlig beska, inslag av aprikos, blodgrapefrukt, gräddkola, örter och knäckebröd.", AccountingCode = 00100, VatCode = 02, Volume = 330, PackageAmount = 20
                 },
                 new Product()
                 {
                     Id = 2, ProductCategoryId = 1, Name = "15 Minutes of Flame", AlcoholPercentage = 5.5m,
-                    Price = 25, Description = "Fruktig smak med tydlig beska, inslag av torkad frukt, knäckebröd, honung, kryddor och mandarin.", AccountingCode = 00100, VatCode = 02, Volume = 330, PackageAmount = 20
+                    Price = 125, Description = "Fruktig smak med tydlig beska, inslag av torkad frukt, knäckebröd, honung, kryddor och mandarin.", AccountingCode = 00100, VatCode = 02, Volume = 330, PackageAmount = 20
                 },
                 new Product()
                 {
                     Id = 3, ProductCategoryId = 2, Name = "Ahlafors ", AlcoholPercentage = 4.5m,
-                    Price = 12, Description = "Kryddig, fruktig, söt smak med tydlig karaktär av ingefära, inslag av päron och citron.", AccountingCode = 00200, VatCode = 01, Volume = 330, PackageAmount = 20
+                    Price = 240, Description = "Kryddig, fruktig, söt smak med tydlig karaktär av ingefära, inslag av päron och citron.", AccountingCode = 00200, VatCode = 01, Volume = 330, PackageAmount = 20
                 },
                 new Product()
                 {
                     Id = 4, ProductCategoryId = 2, Name = "Alice Wilson ", AlcoholPercentage = 4.5m,
-                    Price = 15, Description = "Fruktig smak med tydlig karaktär av päron, inslag av citrus och vanilj.", AccountingCode = 00200, VatCode = 01, Volume = 330, PackageAmount = 20
+                    Price = 300, Description = "Fruktig smak med tydlig karaktär av päron, inslag av citrus och vanilj.", AccountingCode = 00200, VatCode = 01, Volume = 330, PackageAmount = 20
                 },
                 new Product()
                 {
                     Id = 5, ProductCategoryId = 3, Name = "Alvarinho Curtimenta", AlcoholPercentage = 12.5m,
-                    Price = 215, Description = "Fruktig, aromatisk smak med inslag av päron, vita blommor, honung, krusbär, örter, persika och ananas.", AccountingCode = 00300, VatCode = 03, Volume = 750, PackageAmount = 15
+                    Price = 1290, Description = "Fruktig, aromatisk smak med inslag av päron, vita blommor, honung, krusbär, örter, persika och ananas.", AccountingCode = 00300, VatCode = 03, Volume = 750, PackageAmount = 6
                 },
                 new Product()
                 {
                     Id = 6, ProductCategoryId = 4, Name = "Amarone", AlcoholPercentage = 15.8m,
-                    Price = 75, Description = "Kryddigt, smakrikt vin med fatkaraktär, inslag av russin, plommon, choklad, pinjenötter, pomerans och vanilj.", AccountingCode = 00300, VatCode = 03, Volume = 750, PackageAmount = 10
+                    Price = 450, Description = "Kryddigt, smakrikt vin med fatkaraktär, inslag av russin, plommon, choklad, pinjenötter, pomerans och vanilj.", AccountingCode = 00300, VatCode = 03, Volume = 750, PackageAmount = 6
                 },
                 new Product()
                 {
                     Id = 7, ProductCategoryId = 3, Name = "Bennati Soave Classico", AlcoholPercentage = 12.5m,
-                    Price = 85, Description = "Fruktig, något blommig doft med inslag av päron, ananas och citrus.", AccountingCode = 00300, VatCode = 03, Volume = 750, PackageAmount = 8
+                    Price = 510, Description = "Fruktig, något blommig doft med inslag av päron, ananas och citrus.", AccountingCode = 00300, VatCode = 03, Volume = 750, PackageAmount = 6
                 },
                 new Product()
                 {
                     Id = 8, ProductCategoryId = 3, Name = "Calvet Réserve Sauvignon Blanc", AlcoholPercentage = 11.5m,
-                    Price = 119, Description = "Fruktig, aromatisk doft med inslag gröna äpplen, färska örter, gula päron och citrus.", AccountingCode = 00300, VatCode = 03, Volume = 750, PackageAmount = 8
+                    Price = 714, Description = "Fruktig, aromatisk doft med inslag gröna äpplen, färska örter, gula päron och citrus.", AccountingCode = 00300, VatCode = 03, Volume = 750, PackageAmount = 6
                 },
                 new Product()
                 {
                     Id = 9, ProductCategoryId = 3, Name = "Iona Sauvignon Blanc", AlcoholPercentage = 14m,
-                    Price = 135, Description = "Aromatisk, ungdomlig, fruktig doft med inslag av krusbär, päron, nässlor och citrus.", AccountingCode = 00300, VatCode = 03, Volume = 750, PackageAmount = 8
+                    Price = 810, Description = "Aromatisk, ungdomlig, fruktig doft med inslag av krusbär, päron, nässlor och citrus.", AccountingCode = 00300, VatCode = 03, Volume = 750, PackageAmount = 6
                 },
                 new Product()
                 {
                     Id = 10, ProductCategoryId = 3, Name = "Running Duck Sauvignon Blanc Semillon", AlcoholPercentage = 13m,
-                    Price = 79, Description = "Fruktig, aromatisk doft med inslag av päron, nässlor, sparris och lime.", AccountingCode = 00300, VatCode = 03, Volume = 750, PackageAmount = 8
+                    Price = 474, Description = "Fruktig, aromatisk doft med inslag av päron, nässlor, sparris och lime.", AccountingCode = 00300, VatCode = 03, Volume = 750, PackageAmount = 6
                 },
                 new Product()
                 {
                     Id = 11, ProductCategoryId = 4, Name = "Allegrini Valpolicella Superiore", AlcoholPercentage = 13.5m,
-                    Price = 109, Description = "Nyanserad, kryddig doft med inslag av fat, mörka bär, peppar, mynta och mörk choklad.", AccountingCode = 00300, VatCode = 03, Volume = 750, PackageAmount = 8
+                    Price = 654, Description = "Nyanserad, kryddig doft med inslag av fat, mörka bär, peppar, mynta och mörk choklad.", AccountingCode = 00300, VatCode = 03, Volume = 750, PackageAmount = 6
                 },
                 new Product()
                 {
                     Id = 12, ProductCategoryId = 4, Name = "Barbera del Monferrato Livio Pavese", AlcoholPercentage = 14m,
-                    Price = 109, Description = "Kryddig, utvecklad doft med fatkaraktär, inslag av torkade körsbär, tobak, korinter, mörk choklad och lavendel.", AccountingCode = 00300, VatCode = 03, Volume = 750, PackageAmount = 8
+                    Price = 654, Description = "Kryddig, utvecklad doft med fatkaraktär, inslag av torkade körsbär, tobak, korinter, mörk choklad och lavendel.", AccountingCode = 00300, VatCode = 03, Volume = 750, PackageAmount = 6
                 },
                 new Product()
                 {
                     Id = 13, ProductCategoryId = 4, Name = "Brunello di Montalcino Fattoi", AlcoholPercentage = 15m,
-                    Price = 219, Description = "Kryddig, utvecklad doft med fatkaraktär, inslag av torkade körsbär, nougat, pomerans, kanel, tobak och peppar.", AccountingCode = 00300, VatCode = 03, Volume = 750, PackageAmount = 8
+                    Price = 1314, Description = "Kryddig, utvecklad doft med fatkaraktär, inslag av torkade körsbär, nougat, pomerans, kanel, tobak och peppar.", AccountingCode = 00300, VatCode = 03, Volume = 750, PackageAmount = 6
                 },
                 new Product()
                 {
                     Id = 14, ProductCategoryId = 5, Name = "Angostura 1919", AlcoholPercentage = 40m,
-                    Price = 359, Description = "Stor, nyanserad doft med tydlig fatkaraktär, inslag av mango, ananas, vaniljfudge, marsipan och arrak.", AccountingCode = 00300, VatCode = 03, Volume = 700, PackageAmount = 6
+                    Price = 2154, Description = "Stor, nyanserad doft med tydlig fatkaraktär, inslag av mango, ananas, vaniljfudge, marsipan och arrak.", AccountingCode = 00300, VatCode = 03, Volume = 700, PackageAmount = 6
                 },
                 new Product()
                 {
                     Id = 15, ProductCategoryId = 5, Name = "Brugal 1888 Gran Reserva Familiar", AlcoholPercentage = 40m,
-                    Price = 499, Description = "Nyanserad doft med tydlig fatkaraktär, inslag av torkade dadlar, apelsinmarmelad, choklad, farinsocker och vanilj.", AccountingCode = 00300, VatCode = 03, Volume = 700, PackageAmount = 6
+                    Price = 2994, Description = "Nyanserad doft med tydlig fatkaraktär, inslag av torkade dadlar, apelsinmarmelad, choklad, farinsocker och vanilj.", AccountingCode = 00300, VatCode = 03, Volume = 700, PackageAmount = 6
                 },
                 new Product()
                 {
                     Id = 16, ProductCategoryId = 5, Name = "Havana Club Añejo Blanco", AlcoholPercentage = 37.5m,
-                    Price = 249, Description = "Fruktig doft med inslag av päron, arrak, gräs och vanilj.", AccountingCode = 00300, VatCode = 03, Volume = 700, PackageAmount = 6
+                    Price = 1494, Description = "Fruktig doft med inslag av päron, arrak, gräs och vanilj.", AccountingCode = 00300, VatCode = 03, Volume = 700, PackageAmount = 6
                 },
                 new Product()
                 {
                     Id = 17, ProductCategoryId = 5, Name = "Plantation Nr 509 20th Anniversary XO Barbados", AlcoholPercentage = 40m,
-                    Price = 509, Description = "Komplex, kryddig doft med tydlig fatkaraktär, inslag av torkad frukt, mandelmassa, kokos, muscovadosocker, arrak och vanilj.", AccountingCode = 00300, VatCode = 03, Volume = 700, PackageAmount = 6
+                    Price = 3054, Description = "Komplex, kryddig doft med tydlig fatkaraktär, inslag av torkad frukt, mandelmassa, kokos, muscovadosocker, arrak och vanilj.", AccountingCode = 00300, VatCode = 03, Volume = 700, PackageAmount = 6
                 },
                 new Product()
                 {
                     Id = 18, ProductCategoryId = 2, Name = "Cider Rosé", AlcoholPercentage = 5m,
-                    Price = 75, Description = "Nyanserad, fruktig doft med inslag av röda äpplen, kryddor, halm och smultron.", AccountingCode = 00200, VatCode = 01, Volume = 750, PackageAmount = 8
+                    Price = 600, Description = "Nyanserad, fruktig doft med inslag av röda äpplen, kryddor, halm och smultron.", AccountingCode = 00200, VatCode = 01, Volume = 750, PackageAmount = 8
                 },
                 new Product()
                 {
                     Id = 19, ProductCategoryId = 2, Name = "Kiviks Ekologisk Äppelcider", AlcoholPercentage = 4.5m,
-                    Price = 18.9m, Description = "Fruktig doft med tydlig karaktär av äpplen, inslag av örter, päron och citrus.", AccountingCode = 00200, VatCode = 01, Volume = 330, PackageAmount = 20
+                    Price = 480, Description = "Fruktig doft med tydlig karaktär av äpplen, inslag av örter, päron och citrus.", AccountingCode = 00200, VatCode = 01, Volume = 330, PackageAmount = 24
                 },
                 new Product()
                 {
                     Id = 20, ProductCategoryId = 2, Name = "Make Momma Proud", AlcoholPercentage = 6m,
-                    Price = 36.9m, Description = "Fruktig doft med tydlig karaktär av röda äpplen, inslag av passionsfrukt, honung och citrus.", AccountingCode = 00200, VatCode = 01, Volume = 330, PackageAmount = 20
+                    Price = 888, Description = "Fruktig doft med tydlig karaktär av röda äpplen, inslag av passionsfrukt, honung och citrus.", AccountingCode = 00200, VatCode = 01, Volume = 330, PackageAmount = 24
                 },
                 new Product()
                 {
                     Id = 21, ProductCategoryId = 6, Name = "Ardbeg Uigeadail", AlcoholPercentage = 54.2m,
-                    Price = 699, Description = "Komplex, påtaglig rökig doft med fatkaraktär, inslag av aprikos, tjära, mörk choklad, jod och nötter.", AccountingCode = 00200, VatCode = 01, Volume = 700, PackageAmount = 6
+                    Price = 4194, Description = "Komplex, påtaglig rökig doft med fatkaraktär, inslag av aprikos, tjära, mörk choklad, jod och nötter.", AccountingCode = 00200, VatCode = 01, Volume = 700, PackageAmount = 6
                 },
                 new Product()
                 {
                     Id = 22, ProductCategoryId = 6, Name = "Bell's ", AlcoholPercentage = 40,
-                    Price = 239, Description = "Aningen maltig doft med inslag av fat, halm, valnötter och rök.", AccountingCode = 00200, VatCode = 01, Volume = 700, PackageAmount = 6
+                    Price = 1434, Description = "Aningen maltig doft med inslag av fat, halm, valnötter och rök.", AccountingCode = 00200, VatCode = 01, Volume = 700, PackageAmount = 6
                 },
                 new Product()
                 {
                     Id = 23, ProductCategoryId = 6, Name = "Blanton's", AlcoholPercentage = 51.5m,
-                    Price = 539, Description = "Komplex doft med karaktär av kolade ekfat, inslag av apelsinchoklad, torkade aprikoser, nougat, örter och vaniljfudge.", AccountingCode = 00200, VatCode = 01, Volume = 700, PackageAmount = 6
+                    Price = 3234, Description = "Komplex doft med karaktär av kolade ekfat, inslag av apelsinchoklad, torkade aprikoser, nougat, örter och vaniljfudge.", AccountingCode = 00200, VatCode = 01, Volume = 700, PackageAmount = 6
                 },
                 new Product()
                 {
                     Id = 24, ProductCategoryId = 6, Name = "Evan Williams ", AlcoholPercentage = 43m,
-                    Price = 299, Description = "Kryddig doft med tydlig karaktär av kolade ekfat, inslag av torkade aprikoser, nötter, knäck, kokos och vanilj.", AccountingCode = 00200, VatCode = 01, Volume = 700, PackageAmount = 6
+                    Price = 1794, Description = "Kryddig doft med tydlig karaktär av kolade ekfat, inslag av torkade aprikoser, nötter, knäck, kokos och vanilj.", AccountingCode = 00200, VatCode = 01, Volume = 700, PackageAmount = 6
                 },
                 new Product()
                 {
                     Id = 25, ProductCategoryId = 7, Name = "Beefeater London Dry Gin", AlcoholPercentage = 40m,
-                    Price = 250, Description = "Kryddig doft med inslag av enbär, citron och korianderfrö.", AccountingCode = 00200, VatCode = 01, Volume = 700, PackageAmount = 8
+                    Price = 1500, Description = "Kryddig doft med inslag av enbär, citron och korianderfrö.", AccountingCode = 00200, VatCode = 01, Volume = 700, PackageAmount = 6
                 },
                 new Product()
                 {
                     Id = 26, ProductCategoryId = 7, Name = "Göteborg Gin Old Fashioned Gin", AlcoholPercentage = 45m,
-                    Price = 295, Description = "Kryddig smak med inslag av citrusskal, enbär, päron och koriander. Serveras som drinkingrediens.", AccountingCode = 00200, VatCode = 01, Volume = 500, PackageAmount = 10
+                    Price = 2360, Description = "Kryddig smak med inslag av citrusskal, enbär, päron och koriander. Serveras som drinkingrediens.", AccountingCode = 00200, VatCode = 01, Volume = 500, PackageAmount = 8
                 },
                 new Product()
                 {
                     Id = 27, ProductCategoryId = 7, Name = "Gordon's London Dry Gin", AlcoholPercentage = 37.5m,
-                    Price = 239, Description = "Stor doft med tydlig karaktär av enbär, inslag av koriander, örter och citrus.", AccountingCode = 00200, VatCode = 01, Volume = 700, PackageAmount = 8
+                    Price = 1434, Description = "Stor doft med tydlig karaktär av enbär, inslag av koriander, örter och citrus.", AccountingCode = 00200, VatCode = 01, Volume = 700, PackageAmount = 6
                 },
                 new Product()
                 {
                     Id = 28, ProductCategoryId = 8, Name = "Lustau Solera Reserva", AlcoholPercentage = 18.5m,
-                    Price = 99, Description = "Nyanserad doft med inslag av torkad frukt, hasselnötter, choklad och apelsinskal.", AccountingCode = 00200, VatCode = 01, Volume = 375, PackageAmount = 10
+                    Price = 990, Description = "Nyanserad doft med inslag av torkad frukt, hasselnötter, choklad och apelsinskal.", AccountingCode = 00200, VatCode = 01, Volume = 375, PackageAmount = 10
                 },
                 new Product()
                 {
                     Id = 29, ProductCategoryId = 8, Name = "Dry Sack", AlcoholPercentage = 15m,
-                    Price = 99, Description = "Nötig, druvig doft med inslag av pomerans, nougat, torkade fikon och örter.", AccountingCode = 00200, VatCode = 01, Volume = 750, PackageAmount = 8
+                    Price = 594, Description = "Nötig, druvig doft med inslag av pomerans, nougat, torkade fikon och örter.", AccountingCode = 00200, VatCode = 01, Volume = 750, PackageAmount = 6
                 },
                 new Product()
                 {
                     Id = 30, ProductCategoryId = 8, Name = "Lustau Solera Reserva Dublett", AlcoholPercentage = 18.5m,
-                    Price = 99, Description = "Nyanserad smak med inslag av torkad frukt, hasselnötter, choklad, farinsocker och apelsinskal. Serveras vid cirka 14°C som aperitif eller till kallskuret.", AccountingCode = 00200, VatCode = 01, Volume = 375, PackageAmount = 10
+                    Price = 990, Description = "Nyanserad smak med inslag av torkad frukt, hasselnötter, choklad, farinsocker och apelsinskal. Serveras vid cirka 14°C som aperitif eller till kallskuret.", AccountingCode = 00200, VatCode = 01, Volume = 375, PackageAmount = 10
                 },
                 new Product()
                 {
                     Id = 31, ProductCategoryId = 9, Name = "El Paseillo Charro", AlcoholPercentage = 40m,
-                    Price = 399, Description = "Nyanserad, kryddig smak med tydlig fatkaraktär, inslag av halm, vanilj, pomerans, örter och vanilj. Serveras rumstempererad som digestif.", AccountingCode = 00200, VatCode = 01, Volume = 700, PackageAmount = 8
+                    Price = 2394, Description = "Nyanserad, kryddig smak med tydlig fatkaraktär, inslag av halm, vanilj, pomerans, örter och vanilj. Serveras rumstempererad som digestif.", AccountingCode = 00200, VatCode = 01, Volume = 700, PackageAmount = 6
                 },
                 new Product()
                 {
                     Id = 32, ProductCategoryId = 9, Name = "Patrón", AlcoholPercentage = 40m,
-                    Price = 699, Description = "Nyanserad smak med fatkaraktär, inslag av färska örter, macadamianötter, päron, halm och citrusskal. Serveras rumstempererad som digestif.", AccountingCode = 00200, VatCode = 01, Volume = 700, PackageAmount = 8
+                    Price = 4194, Description = "Nyanserad smak med fatkaraktär, inslag av färska örter, macadamianötter, päron, halm och citrusskal. Serveras rumstempererad som digestif.", AccountingCode = 00200, VatCode = 01, Volume = 700, PackageAmount = 6
                 },
                 new Product()
                 {
                     Id = 33, ProductCategoryId = 9, Name = "Sierra Tequila Silver", AlcoholPercentage = 38m,
-                    Price = 199, Description = "Robust smak med inslag av gräs och citrusskal. Används som drinkingrediens.", AccountingCode = 00200, VatCode = 01, Volume = 700, PackageAmount = 10
+                    Price = 1194, Description = "Robust smak med inslag av gräs och citrusskal. Används som drinkingrediens.", AccountingCode = 00200, VatCode = 01, Volume = 700, PackageAmount = 6
                 },
                 new Product()
                 {
                     Id = 34, ProductCategoryId = 10, Name = "Blossa Starkvinsglögg", AlcoholPercentage = 38m,
-                    Price = 83, Description = "Kryddig, mycket söt smak med inslag av kryddnejlika, ingefära, russin och kanel.", AccountingCode = 00200, VatCode = 01, Volume = 750, PackageAmount = 8
+                    Price = 498, Description = "Kryddig, mycket söt smak med inslag av kryddnejlika, ingefära, russin och kanel.", AccountingCode = 00200, VatCode = 01, Volume = 750, PackageAmount = 6
                 },
                 new Product()
                 {
                     Id = 35, ProductCategoryId = 10, Name = "Dufvenkrooks Julspecial", AlcoholPercentage = 20m,
-                    Price = 95, Description = "Söt, kryddig smak med inslag av ingefära, muskot, kardemumma, röda äpplen, pomerans, torkad frukt och örter.", AccountingCode = 00200, VatCode = 01, Volume = 500, PackageAmount = 8
+                    Price = 760, Description = "Söt, kryddig smak med inslag av ingefära, muskot, kardemumma, röda äpplen, pomerans, torkad frukt och örter.", AccountingCode = 00200, VatCode = 01, Volume = 500, PackageAmount = 8
                 },
                 new Product()
                 {
                     Id = 36, ProductCategoryId = 10, Name = "Grythyttan Skogsglögg", AlcoholPercentage = 14.5m,
-                    Price = 91, Description = "Kryddig, söt smak med inslag av lingon, blåbär, kanel, kryddnejlika, pomerans och ingefära.", AccountingCode = 00200, VatCode = 01, Volume = 750, PackageAmount = 6
+                    Price = 596, Description = "Kryddig, söt smak med inslag av lingon, blåbär, kanel, kryddnejlika, pomerans och ingefära.", AccountingCode = 00200, VatCode = 01, Volume = 750, PackageAmount = 6
                 },
                 #endregion
             };
@@ -550,6 +553,9 @@ namespace Kundbolaget.Migrations
                 new Contact() {Id = 3, AdressId = 14, Email = "Henrik.Storm@gmail.com", Name = "Henrik Storm", PhoneNumber = "0589-18105"},
                 new Contact() {Id = 4, AdressId = 15, Email = "Greta.Andersson@gmail.com", Name = "Greta Andersson", PhoneNumber = "08-777850"},
                 new Contact() {Id = 5, AdressId = 16, Email = "Eva.Dahl@gmail.com", Name = "Eva Dahl", PhoneNumber = "0221-34600"},
+                new Contact() {Id = 6, AdressId = 6, Email = "Erik.Svensson@gmail.com", Name = "Erik Svensson", PhoneNumber = "0221-34800"},
+                new Contact() {Id = 7, AdressId = 7, Email = "Fredrik.Ekström@gmail.com", Name = "Fredrik Ekström", PhoneNumber = "08-789120"},
+                new Contact() {Id = 8, AdressId = 8, Email = "Stina.Eriksson@gmail.com", Name = "Stina Eriksson", PhoneNumber = "08-12580"},
             };
             context.Contacts.AddOrUpdate(contacts);
         }

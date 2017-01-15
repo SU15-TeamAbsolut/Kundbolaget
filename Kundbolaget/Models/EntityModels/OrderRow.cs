@@ -25,7 +25,7 @@ namespace Kundbolaget.Models.EntityModels
         public decimal Discount { get; set; }
         [DisplayName("Rabattpris")]
         public decimal DiscountedPrice => Price*(1 - Discount);
-        [DisplayName("Antal beställt")]
+        [DisplayName("Antal/Kolli")]
         public int AmountOrdered { get; set; }
         [DisplayName("Antal skickat")]
         public int? AmountShipped { get; set; }
