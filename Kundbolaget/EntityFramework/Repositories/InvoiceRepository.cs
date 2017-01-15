@@ -16,6 +16,8 @@ namespace Kundbolaget.EntityFramework.Repositories
                 return db.Invoices
                     .Include(e => e.Customer)
                     .Include(e => e.InvoiceAddress)
+                    .Include(e => e.Orders)
+                    .Include(e => e.Orders.Select(o => o.OrderRows))
                     .ToList();
             }
         }
@@ -30,7 +32,11 @@ namespace Kundbolaget.EntityFramework.Repositories
                 item.Orders = new List<Order>();
                 foreach (int id in orderIds)
                 {
-                    item.Orders.Add(db.Orders.Find(id));
+                    var order = db.Orders.Find(id);
+
+                    // Set orders to invoiced
+                    order.OrderStatus = OrderStatus.Invoiced;
+                    item.Orders.Add(order);
                 }
 
                 db.Invoices.Add(item);

@@ -29,10 +29,18 @@ namespace Kundbolaget.Models.EntityModels
 
         [Required]
         [DisplayName("Förfallodatum")]
-        [DisplayFormat(DataFormatString = "{0:d}")]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime DueDate { get; set; }
 
         [Required]
         public InvoiceStatus InvoiceStatus { get; set; } = InvoiceStatus.Created;
+
+        [DisplayFormat(DataFormatString = "{0:C}")]
+        public decimal DueSum => GetDueSum();
+
+        private decimal GetDueSum()
+        {
+            return Orders.Sum(o => o.Total);
+        }
     }
 }

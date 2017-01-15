@@ -4,15 +4,13 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Fakturor</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
+<table class="table table-striped">
   <tr>
     <th>Fakturanummer</th>
     <th>@Html.DisplayNameFor(model => model.Customer.Name)</th>
+    <th>Att betala</th>
     <th>@Html.DisplayNameFor(model => model.DueDate)</th>
     <th>@Html.DisplayNameFor(model => model.InvoiceStatus)</th>
     <th></th>
@@ -22,6 +20,7 @@
   <tr>
     <td>@item.Id</td>
     <td>@item.Customer.Name</td>
+    <td>@Html.DisplayFor(m => item.DueSum)</td>
     <td>@Html.DisplayFor(modelItem => item.DueDate)</td>
     <td>@Html.DisplayFor(modelItem => item.InvoiceStatus)</td>
     <td>
