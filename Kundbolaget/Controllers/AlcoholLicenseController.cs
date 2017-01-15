@@ -79,7 +79,7 @@ namespace Kundbolaget.Controllers
             }
 
             repository.Update(model);
-            return RedirectToAction("Index");
+            return RedirectToAction("Index", "Customer");
         }
 
         // GET: AlcoholLicense/Details/{id}

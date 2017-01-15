@@ -33,7 +33,8 @@ namespace Kundbolaget.Models.EntityModels
         private bool CheckValidLicense()
         {
             return IsActive
-                && DateTime.Today <= EndDate;
+                && DateTime.Today <= EndDate
+                && DateTime.Today >= StartDate;
         }
     }
 }

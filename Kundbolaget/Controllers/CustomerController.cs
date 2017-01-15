@@ -102,6 +102,8 @@ namespace Kundbolaget.Controllers
             {
                 _addressRepository.Update(customer.InvoiceAddress);
                 _addressRepository.Update(customer.VisitingAddress);
+                customer.Contact.AdressId = customer.VisitingAddressId;
+                _contactRepository.Update(customer.Contact);
                 _customerRepository.Update(customer);
 
                 return RedirectToAction("Index");
