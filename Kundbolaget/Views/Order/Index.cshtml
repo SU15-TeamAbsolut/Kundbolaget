@@ -1,21 +1,67 @@
-﻿@using Kundbolaget.Enums
-@model IEnumerable<Kundbolaget.Models.EntityModels.Order>
+﻿@model IEnumerable<Kundbolaget.Models.EntityModels.Order>
 
 @{
     ViewBag.Title = "Index";
 }
 
 <h2>Ordrar</h2>
-<div>
-    @Html.ActionLink("Registrerade", "ReceivedOrders", null, new { @class = "btn btn-primary" }) |
-    @Html.ActionLink("Ej plockade", "UnpickedOrders", null, new { @class = "btn btn-primary" }) |
-    @Html.ActionLink("Plockade", "PickedOrders", null, new { @class = "btn btn-primary" })
-    @Html.ActionLink("Makulerade", "CanceledOrders", null, new { @class = "btn btn-primary" })
-</div>
-<hr/>
+<H4>Alla ordrar</H4>
+<br/>
 
 
-
-                
-           
+<table class="table table-striped">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Id)
+        </th>
+        <th>
+            Kund
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CustomerOrderRef)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ShippingAddress)
+        </th>
         
+        <th>
+            @Html.DisplayNameFor(model => model.OrderPlaced)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DesiredDeliveryDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OrderStatus)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Customer.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CustomerOrderRef)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ShippingAddress.Street),
+            @Html.DisplayFor(modelItem => item.ShippingAddress.ZipNumber),
+            @Html.DisplayFor(modelItem => item.ShippingAddress.City)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OrderPlaced)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DesiredDeliveryDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OrderStatus)
+        </td>
+    </tr>
+}
+
+</table>
