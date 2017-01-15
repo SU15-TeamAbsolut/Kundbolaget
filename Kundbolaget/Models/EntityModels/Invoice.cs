@@ -33,6 +33,7 @@ namespace Kundbolaget.Models.EntityModels
         public DateTime DueDate { get; set; }
 
         [Required]
+        [DisplayName("Faktura status")]
         public InvoiceStatus InvoiceStatus { get; set; } = InvoiceStatus.Created;
 
         [DisplayFormat(DataFormatString = "{0:C}")]

@@ -11,21 +11,23 @@
   <li>@Model.InvoiceAddress</li>
   <li>Förfallodatum: @Html.DisplayFor(m => m.DueDate)</li>
 </ul>
-
-<table class="table">
+<br/>
+<table class="table table-striped">
   <tr>
     <th>Order-id</th>
     <th>Orderrader</th>
     <th>Summa beställt</th>
-    <th>Summa levererat</th>
+      <th>Summa levererat</th>
+      <th></th>
   </tr>
 @foreach (var order in Model.Orders)
 {
     <tr>
-      <td><a href="@Url.Action("Details", "Order", new { id = order.Id })">@order.Id</a></td>
+      <td>@Html.DisplayFor(m => order.Id)</td>
       <td>@order.OrderRows.Count</td>
       <td>@Html.DisplayFor(m => order.TotalOrdered)</td>
-      <td>@Html.DisplayFor(m => order.TotalDelivered)</td>
+        <td>@Html.DisplayFor(m => order.TotalDelivered)</td>
+        <td>@Html.ActionLink("Visa rader", "Details","Order", new {id = order.Id},null)</td>
     </tr>
 }
 
@@ -33,5 +35,5 @@
 </table>
 
 <p>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Tillbaka", "Index",null, new {@class= "btn btn-primary"})
 </p>
