@@ -16,21 +16,21 @@
     <td>@orderRow.Product.Name</td>
     <td>@orderRow.AmountOrdered</td>
     <td>@orderRow.AmountInStock</td>
-    <td>@orderRow.Price</td>
+    <td>@Html.DisplayFor(m => orderRow.Price)</td>
     <td>@if (orderRow.Discount > 0)
         {
           <text>@($"{orderRow.Discount*100:0.##}%")</text>
               }
               else
               {
-          <text></text>
-	      }
+          <text>&mdash;</text>
+        }
     </td>
-    <td>@($"{orderRow.DiscountedPrice * orderRow.AmountOrdered:0.00}")</td>
+    <td>@Html.DisplayFor(m => orderRow.TotalOrderedPrice)</td>
   </tr>
   }
   <tr>
     <td colspan="6" style="text-align: right"><strong>Summa order:</strong></td>
-    <td><strong>@($"{Model.Total:0.00}")</strong></td>    
+    <td><strong>@Html.DisplayFor(m => m.Total)</strong></td>    
   </tr>
 </table>

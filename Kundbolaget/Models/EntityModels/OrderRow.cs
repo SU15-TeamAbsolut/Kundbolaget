@@ -36,6 +36,20 @@ namespace Kundbolaget.Models.EntityModels
         [DisplayFormat(DataFormatString = "{0:C}")]
         public decimal TotalOrderedPrice => GetTotalOrderedPrice();
 
+        [DisplayName("Totalpris Levererat")]
+        [DisplayFormat(DataFormatString = "{0:C}")]
+        public decimal TotalShippedPrice => GetTotalDeliveredPrice();
+
+        private decimal GetTotalDeliveredPrice()
+        {
+            if (AmountShipped != null)
+            {
+                return DiscountedPrice * AmountShipped.Value;
+            }
+
+            return 0;
+        }
+
         private decimal GetTotalOrderedPrice()
         {
             return DiscountedPrice * AmountOrdered;
