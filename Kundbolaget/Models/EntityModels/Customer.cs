@@ -18,6 +18,7 @@ namespace Kundbolaget.Models.EntityModels
         public string Password { get; set; }
 
         [DisplayName("Kreditgräns")]
+        [DisplayFormat(DataFormatString = "{0:C}")]
         public int CreditLine { get; set; }
 
         [DisplayName("Betalningsvillkor")]

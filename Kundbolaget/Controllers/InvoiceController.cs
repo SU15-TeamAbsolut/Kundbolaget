@@ -97,5 +97,22 @@ namespace Kundbolaget.Controllers
 
             return View(invoice);
         }
+
+        // GET: Invoice/Edit/{id}
+        public ActionResult Edit(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            Invoice invoice = invoiceRepository.Find(id.Value);
+            if (invoice == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.NotFound);
+            }
+
+            return View(invoice);
+        }
     }
 }
