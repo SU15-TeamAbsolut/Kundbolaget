@@ -39,9 +39,9 @@ namespace Kundbolaget.Controllers
         // GET: Order
         public ActionResult Index()
         {
-            //var model = _orderRepository.GetAll();
+            var orders = _orderRepository.GetAll();
 
-            return View();
+            return View(orders);
         }
 
         public ActionResult ReceivedOrders()

@@ -11,7 +11,7 @@ namespace Kundbolaget.Models.EntityModels
 
         public int Id { get; set; }
         [Required]
-        [DisplayName("Namn")]
+        [DisplayName("Kund")]
         public string Name { get; set; }
 
         [DisplayName("Lösenord")]
