@@ -77,7 +77,8 @@ namespace Kundbolaget.Controllers
             }
 
             // Check that alcohol license is valid
-            if (!viewModel.Order.Customer.AlcoholLicense.IsValid)
+            if (viewModel.Order.Customer.AlcoholLicense == null
+                || !viewModel.Order.Customer.AlcoholLicense.IsValid)
             {
                 viewModel.OrderIsValid = false;
                 viewModel.ErrorMessage += $"Kund #{customerOrderData.CustomerId} har ingen giltig alkohollicens";
