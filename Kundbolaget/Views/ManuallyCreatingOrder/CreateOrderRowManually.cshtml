@@ -18,10 +18,17 @@
     <p>
         @Html.ActionLink("Avbryt", "Delete", new {orderId = Model.Order.Id}, new {@class = "btn btn-warning"})
     </p>
+    <br/>
 
-    <div>
-        @Html.ValidationMessage("QuantiyOrdered")
-    </div>
+
+    if (IsPost)
+    {
+        if (!Model.ValidateOrder(Model))
+        {
+            <div class="alert alert-danger"><span class="glyphicon glyphicon-warning-sign"></span>@Html.ValidationMessage("QuantiyOrdered")</div>
+        }
+
+    }
 
     <table class="table table-striped">
         <tr>
