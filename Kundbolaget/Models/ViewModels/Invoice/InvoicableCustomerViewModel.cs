@@ -13,9 +13,23 @@ namespace Kundbolaget.Models.ViewModels.Invoice
         public Customer Customer { get; set; }
         public IEnumerable<Order> InvoicableOrders { get; set; } = new List<Order>();
         [DisplayFormat(DataFormatString = "{0:C}")]
-        public decimal OrderTotal => GetOrderTotal();
+        public decimal OrderTotalOrdered => GetOrderTotalOrdered();
 
-        private decimal GetOrderTotal()
+        public decimal OrderTotalDelivered => GetOrderTotalDelivered();
+
+        private decimal GetOrderTotalOrdered()
+        {
+            if (!InvoicableOrders.Any())
+            {
+                return 0;
+            }
+
+            return InvoicableOrders
+                .SelectMany(o => o.OrderRows)
+                .Sum(r => r.DiscountedPrice * (r.AmountOrdered));
+        }
+
+        private decimal GetOrderTotalDelivered()
         {
             if (!InvoicableOrders.Any())
             {

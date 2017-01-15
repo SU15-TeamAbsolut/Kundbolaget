@@ -1,0 +1,33 @@
+﻿@model Kundbolaget.Models.EntityModels.Invoice
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Fakturadetaljer</h2>
+
+<p>Fakturerat till @Model.Customer.Name, @Model.InvoiceAddress</p>
+
+<table class="table">
+  <tr>
+    <th>Order-id</th>
+    <th>Orderrader</th>
+    <th>Summa beställt</th>
+    <th>Summa levererat</th>
+  </tr>
+@foreach (var order in Model.Orders)
+{
+    <tr>
+      <td><a href="@Url.Action("Details", "Order", new { id = order.Id })">@order.Id</a></td>
+      <td>@order.OrderRows.Count</td>
+      <td>@Html.DisplayFor(m => order.TotalOrdered)</td>
+      <td>@Html.DisplayFor(m => order.TotalDelivered)</td>
+    </tr>
+}
+
+
+</table>
+
+<p>
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -40,7 +40,7 @@ namespace Kundbolaget.Models.EntityModels
 
         private decimal GetDueSum()
         {
-            return Orders.Sum(o => o.Total);
+            return Orders.Sum(o => o.TotalOrdered);
         }
     }
 }

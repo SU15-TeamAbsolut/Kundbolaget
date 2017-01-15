@@ -120,5 +120,35 @@ namespace Kundbolaget.Controllers
 
             return View(invoice);
         }
+
+        // POST: Invoice/Edit/{}id
+        [HttpPost]
+        public ActionResult Edit(Invoice item)
+        {
+            Invoice invoice = invoiceRepository.Find(item.Id);
+
+            invoice.DueDate = item.DueDate;
+            invoice.InvoiceStatus = item.InvoiceStatus;
+
+            invoiceRepository.Update(invoice);
+            return RedirectToAction("Index", "Invoice");
+        }
+
+        // GET: Invoice/Details/{id}
+        public ActionResult Details(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            Invoice invoice = invoiceRepository.Find(id.Value);
+            if (invoice == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.NotFound);
+            }
+
+            return View(invoice);
+        }
     }
 }
